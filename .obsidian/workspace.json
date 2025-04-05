@@ -11,10 +11,14 @@
             "id": "5471edcbf0c03108",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "docs/journal_template.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "journal_template"
             }
           }
         ]
@@ -163,12 +167,13 @@
   },
   "active": "5471edcbf0c03108",
   "lastOpenFiles": [
+    "docs/journal.md",
+    "docs/journal_template.md",
     "docs/img/project_snapshots/board_eod_2025-04-02.png",
     "docs/img/project_snapshots/initial_milestones.png",
     "docs/img/project_snapshots",
     "docs/img/Project Snapshots",
     "docs/img/New folder",
-    "docs/journal.md",
     "docs/research.md",
     "docs/journal_template.md.md",
     "docs/img/initial_milestones.png",

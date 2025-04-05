@@ -1,5 +1,27 @@
 # Project Sourcebound Dev Journal
+---
+## Apr 5 - 2.5 hours
 
+### Objective(s)
+
+1. Finish majority of design and documentation
+2. Setup project to begin first milestone
+### Details
+#### Key Accomplishments
+
+* I knocked out the C1 and C2 diagrams here: https://miro.com/app/board/uXjVIG8i9E0=/
+* I populated all the known tasks needed to complete Milestone 1 (including acceptance criteria)
+#### Challenges / Notes
+
+* I was sick the last couple of days, which set back my milestones; we're recovering, though, and are back on track (I think).  I may have to push a little Monday or Tuesday to knock out a chunk of work.  It definitely won't be ready by Wednesday, which is the technical due date.
+* I also didn't quite map out the ECS C3 diagram, but it's the first thing on my agenda tomorrow, and probably the only thing keeping me from "closing" M0.
+#### Next Steps
+
+* Complete C3 diagram
+* Get project and test harness setup
+* Write some code!! (for basic foundational stuff, anyway)
+
+---
 ## Apr 2, 2025 - 5 hours
 
 ### Objective(s)
