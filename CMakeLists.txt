@@ -3,4 +3,18 @@ project(sourcebound)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(sourcebound src/main.cpp)
+add_subdirectory(external/googletest)
+add_executable(sourcebound src/main.cpp
+)
+
+add_executable(unit_tests
+        tests/test_dummy.cpp
+)
+
+target_link_libraries(unit_tests
+        gtest
+        gtest_main
+)
+
+include(GoogleTest)
+gtest_discover_tests(unit_tests)

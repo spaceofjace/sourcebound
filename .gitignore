@@ -61,3 +61,8 @@
 
 # Other
 *.log
+
+# Ignore GoogleTest build artifacts
+/external/googletest/build/
+/external/googletest/*.o
+/external/googletest/*.obj
