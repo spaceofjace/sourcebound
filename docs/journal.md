@@ -1,0 +1,47 @@
+# Project Sourcebound Dev Journal
+---
+## Apr 5 - 2.5 hours
+
+### Objective(s)
+
+1. Finish majority of design and documentation
+2. Setup project to begin first milestone
+### Details
+#### Key Accomplishments
+
+* I knocked out the C1 and C2 diagrams here: https://miro.com/app/board/uXjVIG8i9E0=/
+* I populated all the known tasks needed to complete Milestone 1 (including acceptance criteria)
+#### Challenges / Notes
+
+* I was sick the last couple of days, which set back my milestones; we're recovering, though, and are back on track (I think).  I may have to push a little Monday or Tuesday to knock out a chunk of work.  It definitely won't be ready by Wednesday, which is the technical due date.
+* I also didn't quite map out the ECS C3 diagram, but it's the first thing on my agenda tomorrow, and probably the only thing keeping me from "closing" M0.
+#### Next Steps
+
+* Complete C3 diagram
+* Get project and test harness setup
+* Write some code!! (for basic foundational stuff, anyway)
+
+---
+## Apr 2, 2025 - 5 hours
+
+### Objective(s)
+
+1. To understand the game itself and prepare for designing my own implementation.
+2. To setup repo and some initial documents for managing efforts.
+### Details
+
+#### Key Accomplishments
+
+* Completed extensive reading of materials about Arkanoid
+* Spent about 1-1.5 hours playing the original(?) and a clone online
+* Got a project page and repo setup, and generated some initial documentation of my current research findings
+
+#### Challenges / Notes
+
+* My first time using Github Projects, but wanted to experiment with it, and have some tie between it and the repo itself.
+* There's a LOT of research material out there, so I won't be able to absorb it all, but hoping I have a strong foundation for beginning design elements; not sure I will update the document more, but I dated it just in case.
+
+#### Next Steps
+
+* Add decisions.md file for detailing design and tool decisions.
+* Begin work on high-level design documents.
