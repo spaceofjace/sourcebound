@@ -1,6 +1,26 @@
 # Project Sourcebound Dev Journal
 ---
-## Apr 5 - 2.5 hours
+## Apr 7, 2025 - 3 hours
+
+### Objective(s)
+
+1. Get project and source folders setup
+2. Configure IDE to ensure Visual Studio 2022 x64 compatibility
+3. Setup Google Test and a single mock test
+### Details
+#### Key Accomplishments
+
+* All the project stuff is set, and I should be ready to begin coding tomorrow.
+#### Challenges / Notes
+
+* Download and project setup was finnicky, which I _should_ have expected, but as always there were a few gotchas along the way.
+* It's unclear if GoogleTests will be compatible with Visual Studio 2022, but I'll probably spend some time later to investigate.
+#### Next Steps
+
+* Begin tests and implementation of the core ECS pieces.
+
+---
+## Apr 5, 2025 - 2.5 hours
 
 ### Objective(s)
 
