@@ -31,6 +31,12 @@
 *.out
 *.app
 
+# Obsidian related files
+.obsidian/
+.obsidian/plugins/
+.trash/
+.obsidian/cache/
+
 # CMake build artifacts
 /cmake-build-*/
 
