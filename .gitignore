@@ -30,3 +30,34 @@
 *.exe
 *.out
 *.app
+
+# CMake build artifacts
+/cmake-build-*/
+
+/build/
+/build-release/
+
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/install_manifest.txt
+/compile_commands.json
+
+# CLion and IDE files
+/.idea/
+/*.iml
+
+# Visual Studio files
+/.vs/
+/*.VC.db
+/*.VC.opendb
+
+# Executables and binary outputs
+/*.exe
+/*.dll
+/*.lib
+/*.obj
+/*.pdb
+
+# Other
+*.log
