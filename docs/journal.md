@@ -1,5 +1,24 @@
 # Project Sourcebound Dev Journal
 ---
+## Apr 21, 2025 - 2.5 hours
+
+### Objective(s)
+
+1. Implement EntityManager
+### Details
+#### Key Accomplishments
+
+* Built out basic entity creation system, including some logic for reusing entities
+* Basic test cases are in place for the interface
+#### Challenges / Notes
+
+* Possible the re-use logic is a bit overkill at this stage, but I am trying to walk the boundary between a custom implementation and a commercial implementation of an ECS, so at least some *basic* optimizations seem worthwhile. 
+* My C++ definitely is a bit dated; slowly coming up to speed on some modern concepts, e.g., `nodiscard` and `std::optional`. (Fortunately all simple, I am just having to remember to use these modern semantics.)
+#### Next Steps
+
+* Build ComponentManager; this one will be a bit more substantial, for sure.
+
+---
 ## Apr 7, 2025 - 3 hours
 
 ### Objective(s)
