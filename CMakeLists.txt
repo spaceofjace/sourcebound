@@ -13,6 +13,10 @@ add_executable(sourcebound src/main.cpp
         include/ecs/IComponentManager.h
         include/ecs/IComponentArray.h
         include/ecs/DenseComponentArray.h
+        include/logger/Logger.h
+        include/logger/sinks/ConsoleSink.h
+        src/logger/Logger.cpp
+        include/logger/sinks/ISink.h
 )
 
 add_executable(unit_tests
@@ -23,6 +27,9 @@ add_executable(unit_tests
         include/ecs/IComponentArray.h
         include/ecs/IComponentManager.h
         tests/component_manager_tests.cpp
+        tests/logger_tests.cpp
+        src/logger/Logger.cpp
+        include/logger/sinks/ISink.h
 )
 
 target_link_libraries(unit_tests
