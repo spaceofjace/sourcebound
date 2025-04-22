@@ -11,22 +11,28 @@
 
 class EntityManager final : public IEntityManager {
 public:
+  //For now, actively disable and copy and move since typically this will be a singleton resource
+  EntityManager(const EntityManager&) = delete;
+  EntityManager& operator=(const EntityManager&) = delete;
+  EntityManager(EntityManager&&) = delete;
+  EntityManager& operator=(EntityManager&&) = delete;
+
   explicit EntityManager(bool enableReuse = false, std::optional<uint32_t> maxReusePoolSize = std::nullopt);
-  Entity CreateEntity() override;
-  bool DestroyEntity(Entity entity) override;
-  bool IsAlive(Entity entity) override;
+  Entity create_entity() override;
+  bool destroy_entity(Entity entity) override;
+  [[nodiscard]] bool is_alive(Entity entity) const override;
   [[nodiscard]] const std::unordered_set<Entity> &
-  GetAllEntities() const override;
-  void ClearAll() override;
+  get_all_entities() const override;
+  void clear_all() override;
   ~EntityManager() override = default;
 private:
-  std::unordered_set<Entity> entities;
-  uint32_t nextEntityId = 0;
+  std::unordered_set<Entity> entities_;
+  uint32_t next_entity_id_ = 0;
 
-  bool enableReuse = false;
+  bool reuse_enabled_ = false;
   //Values used if reuse is enabled
-  std::optional<uint32_t> maxReusePoolSize = std::nullopt;
-  std::optional<std::stack<Entity>> recycledEntities = std::nullopt;
+  std::optional<uint32_t> max_reuse_pool_size_ = std::nullopt;
+  std::optional<std::stack<Entity>> recycled_entities_ = std::nullopt;
 };
 
 #endif //ENTITYMANAGER_H

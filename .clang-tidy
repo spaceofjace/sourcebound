@@ -1,0 +1,28 @@
+Checks: >
+  clang-analyzer-*,
+  bugprone-*,
+  modernize-*,
+  -modernize-use-trailing-return-type, # making optional, even if it is preferred
+  performance-*,
+  readability-*,
+  cppcoreguidelines-*,
+  google-*,
+  -google-runtime-references,  # optional; disables a strict ref rule
+  -cppcoreguidelines-pro-type-vararg,  # allows printf etc
+  -cppcoreguidelines-owning-memory  # allows raw new/delete for now
+
+WarningsAsErrors: ''
+
+HeaderFilterRegex: '.*'
+FormatStyle: google
+CheckOptions:
+  - key:             readability-identifier-naming.ClassCase
+    value:           PascalCase
+  - key:             readability-identifier-naming.FunctionCase
+    value:           snake_case
+  - key:             readability-identifier-naming.VariableCase
+    value:           snake_case
+  - key:             readability-identifier-naming.MemberCase
+    value:           snake_case
+  - key:             readability-identifier-naming.PrivateMemberSuffix
+    value:           _

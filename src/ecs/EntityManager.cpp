@@ -5,54 +5,54 @@
 #include "../../include/ecs/EntityManager.h"
 
 EntityManager::EntityManager(const bool enableReuse, const std::optional<uint32_t> maxReusePoolSize)
-  : enableReuse(enableReuse), maxReusePoolSize(maxReusePoolSize){
+  : reuse_enabled_(enableReuse), max_reuse_pool_size_(maxReusePoolSize){
 
   if (enableReuse) {
-    recycledEntities.emplace();
+    recycled_entities_.emplace();
   }
 }
 
-Entity EntityManager::CreateEntity() {
+Entity EntityManager::create_entity() {
   std::optional<Entity> newEntity;
-  if (enableReuse && !recycledEntities->empty()) {
-    newEntity = recycledEntities->top();
-    recycledEntities->pop();
+  if (reuse_enabled_ && !recycled_entities_->empty()) {
+    newEntity = recycled_entities_->top();
+    recycled_entities_->pop();
   } else {
-    newEntity = Entity{ nextEntityId, 0};
-    nextEntityId++;
+    newEntity = Entity{ next_entity_id_, 0};
+    next_entity_id_++;
   }
 
-  entities.insert(*newEntity);
+  entities_.insert(*newEntity);
   return *newEntity;
 }
 
-bool EntityManager::DestroyEntity(const Entity entity) {
-  const auto foundEntity = entities.find(entity);
-  if (foundEntity == entities.end()) { return false; }
+bool EntityManager::destroy_entity(const Entity entity) {
+  const auto foundEntity = entities_.find(entity);
+  if (foundEntity == entities_.end()) { return false; }
 
-  if (enableReuse) {
-    if (!maxReusePoolSize || recycledEntities->size() < *maxReusePoolSize) {
+  if (reuse_enabled_) {
+    if (!max_reuse_pool_size_ || recycled_entities_->size() < *max_reuse_pool_size_) {
       Entity updatedEntity = *foundEntity;
       updatedEntity.version++;
-      recycledEntities->push(updatedEntity);
+      recycled_entities_->push(updatedEntity);
     }
   }
 
-  entities.erase(foundEntity);
+  entities_.erase(foundEntity);
   return true;
 }
 
-bool EntityManager::IsAlive(const Entity entity) {
-  return entities.find(entity) != entities.end();
+bool EntityManager::is_alive(const Entity entity) const {
+  return entities_.find(entity) != entities_.end();
 }
 
-const std::unordered_set<Entity> &EntityManager::GetAllEntities() const {
-  return entities;
+const std::unordered_set<Entity> &EntityManager::get_all_entities() const {
+  return entities_;
 }
 
-void EntityManager::ClearAll() {
-  entities.clear();
-  if (enableReuse) {
-    recycledEntities.reset();
+void EntityManager::clear_all() {
+  entities_.clear();
+  if (reuse_enabled_) {
+    recycled_entities_.reset();
   }
 }
