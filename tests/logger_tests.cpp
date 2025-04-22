@@ -6,23 +6,10 @@
 #include <gtest/gtest.h>
 #include <sstream>
 #include <memory>
-#include "..\include\logger\Logger.h"
-#include "..\include\logger\sinks\ISink.h"
+#include "../include/logger/Logger.h"
+#include "mocks/MockSink.h"
 
 using namespace sb::log;
-
-class MockSink : public ISink {
-public:
-  MockSink() = default;
-
-  void log(const Level level, const std::string_view message) override {
-    last_level = level;
-    last_message = std::string(message);
-  }
-
-  Level last_level;
-  std::string last_message;
-};
 
 TEST(LoggerTest, LogsDebugMessage) {
   auto mock = std::make_shared<MockSink>();

@@ -14,9 +14,10 @@
 #include <typeindex>
 #include <unordered_map>
 
+#include "../logger/sinks/ConsoleSink.h"
+#include "DenseComponentArray.h"
 #include "Entity.h"
 #include "IComponentArray.h"
-#include "DenseComponentArray.h"
 
 class IComponentManager {
 public:
@@ -44,10 +45,7 @@ class ComponentManager : IComponentManager {
   void register_component() {
     auto type_index = std::type_index(typeid(T));
     if (component_types_.find(type_index) != component_types_.end()) {
-
-      // TODO: Will need to replace test with logging functionality once added
-      assert(false && "Component type already registered!");
-
+      sb::log::Logger::error("[ComponentManager] Component type already registered!");
       return;
     }
     component_types_[type_index] = next_component_type_;
@@ -57,19 +55,25 @@ class ComponentManager : IComponentManager {
 
   template <typename T>
   void add_component(Entity entity, const T& component) {
+    const auto type_index = std::type_index(typeid(T));
+    if (component_arrays_.find(type_index) == component_arrays_.end()) {
+      sb::log::Logger::error("[ComponentManager] Component doesn't exist for this entity.");
+      throw std::runtime_error("[ComponentManager] Component type not registered before use");
+    }
 
-    // TODO: Will need to replace test with logging functionality once added
-    assert(!has_component<T>(entity) && "Component already exists for this entity.");
-
+    if (has_component<T>(entity)) {
+      sb::log::Logger::error("[ComponentManager] Component already exists for this entity.");
+      throw std::runtime_error("[ComponentManager] Component already exists for this entity");
+    }
     auto component_array = get_component_array<T>();
     component_array->insert_data(entity, component);
   }
 
   template <typename T>
   void remove_component(Entity entity) {
-
-    // TODO: Will need to replace test with logging functionality once added
-    assert(has_component<T>(entity) && "Trying to remove component that doesn't exist.");
+    if (!has_component<T>(entity)) {
+      sb::log::Logger::error("[ComponentManager] Component doesn't exist for this entity.");
+    }
 
     auto component_array = get_component_array<T>();
     component_array->remove_data(entity);
@@ -77,9 +81,12 @@ class ComponentManager : IComponentManager {
 
   template <typename T>
   T& get_component(Entity entity) {
+    if (!has_component<T>(entity)) {
+      sb::log::Logger::error("[ComponentManager] Component doesn't exist for this entity.");
 
-    // TODO: Will need to replace test with logging functionality once added
-    assert(has_component<T>(entity) && "Attempted to get a component that doesn't exist.");
+      //Throwing as this particular scenario could lead to very bad behavior
+      throw std::runtime_error("[ComponentManager] Tried to get nonexistent component.");
+    }
 
     auto component_array = get_component_array<T>();
     return component_array->get_data(entity);
@@ -115,9 +122,12 @@ class ComponentManager : IComponentManager {
     const auto type_index = std::type_index(typeid(T));
     const auto it = map.find(type_index);
 
-    // TODO: Will need to replace test with logging functionality once added
-    assert(it != map.end() && "Component type not registered before use.");
-    assert(it->second && "Component storage pointer is null.");
+    if (it == map.end()) {
+      sb::log::Logger::error("[ComponentManager] Component type not registered before use.");
+    }
+    else if (!it->second) {
+      sb::log::Logger::error("[ComponentManager] Component storage pointer is null.");
+    }
 
     //allows for code reuse for const and non-const contexts
     using PointerType = std::conditional_t<std::is_const_v<MapType>,

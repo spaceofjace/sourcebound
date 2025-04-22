@@ -4,8 +4,10 @@
 //
 
 #include <gtest/gtest.h>
+
 #include "../include/ecs/Entity.h"
 #include "../include/ecs/IComponentManager.h"
+#include "mocks/MockSink.h"
 
 struct Position {
   float x, y;
@@ -32,24 +34,41 @@ TEST(ComponentManagerTest, CanAddAndRetrieveComponent) {
   EXPECT_FLOAT_EQ(pos.y, 10.0f);
 }
 
-// TODO: Will need to replace test with logging functionality once added
-TEST(ComponentManagerTest, DuplicateRegistrationTriggersAssert) {
+TEST(ComponentManagerTest, DuplicateRegistrationTriggersErrorLog) {
+  auto mock_sink = std::make_shared<MockSink>();
+  Logger::set_sink(mock_sink);
+
   ComponentManager cm;
   cm.register_component<Position>();
-  EXPECT_DEATH(cm.register_component<Position>(), "Component type already registered!");
+
+  cm.register_component<Position>();
+
+  EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
+  EXPECT_EQ(mock_sink->last_message, "[ComponentManager] Component type already registered!");
 }
 
-// TODO: Will need to replace test with logging functionality once added
-TEST(ComponentManagerTest, AddComponentBeforeRegisterTriggersAssert) {
+TEST(ComponentManagerTest, AddComponentBeforeRegisterTriggersErrorLogAndThrows) {
+  auto mock_sink = std::make_shared<MockSink>();
+  Logger::set_sink(mock_sink);
+
   ComponentManager cm;
   Entity entity{2, 0};
 
-  EXPECT_DEATH(cm.add_component<Velocity>(entity, {1.0f, 1.0f}),
-               "Component type not registered before use");
+  EXPECT_THROW( // Should log error and throw    NOLINT(*-type-traits)
+    cm.add_component<Velocity>(entity, {1.0f, 1.0f}),
+    std::runtime_error
+  );
+
+  EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
+  EXPECT_EQ(mock_sink->last_message,
+            "[ComponentManager] Component doesn't exist for this entity.");
 }
 
-// TODO: Will need to replace test with logging functionality once added
-TEST(ComponentManagerTest, GetAfterRemoveTriggersAssert) {
+TEST(ComponentManagerTest, GetAfterRemoveTriggersErrorLogAndThrows) {
+
+  auto mock_sink = std::make_shared<MockSink>();
+  Logger::set_sink(mock_sink);
+
   ComponentManager cm;
   cm.register_component<Position>();
 
@@ -58,8 +77,13 @@ TEST(ComponentManagerTest, GetAfterRemoveTriggersAssert) {
   cm.remove_component<Position>(entity);
 
   EXPECT_FALSE(cm.has_component<Position>(entity));
-  EXPECT_DEATH(cm.get_component<Position>(entity),
-               "Attempted to get a component that doesn't exist.");
+  EXPECT_THROW( // Should log error and throw   NOLINT(*-type-traits)
+    cm.get_component<Position>(entity),
+    std::runtime_error
+  );
+  EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
+  EXPECT_EQ(mock_sink->last_message,
+            "[ComponentManager] Component doesn't exist for this entity.");
 }
 
 TEST(ComponentManagerTest, HasComponentIsCorrect) {
