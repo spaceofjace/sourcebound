@@ -9,12 +9,20 @@ add_executable(sourcebound src/main.cpp
         include/ecs/Entity.h
         src/ecs/EntityManager.cpp
         include/ecs/EntityManager.h
+        include/ecs/components/Components.h
+        include/ecs/IComponentManager.h
+        include/ecs/IComponentArray.h
+        include/ecs/DenseComponentArray.h
 )
 
 add_executable(unit_tests
         tests/test_dummy.cpp
         tests/entity_manager_tests.cpp
         src/ecs/EntityManager.cpp
+        include/ecs/components/Components.h
+        include/ecs/IComponentArray.h
+        include/ecs/IComponentManager.h
+        tests/component_manager_tests.cpp
 )
 
 target_link_libraries(unit_tests

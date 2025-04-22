@@ -1,0 +1,11 @@
+# Tests will deviate from standard conventions
+Checks: >
+  clang-analyzer-*,
+  bugprone-*,
+  performance-*,
+  modernize-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -readability-function-size,
+  -modernize-use-trailing-return-type
+HeaderFilterRegex: '.*'
+FormatStyle: google
