@@ -1,12 +1,11 @@
 //
 // Created by Jace Shultz (spaceofjace) on 4/21/2025.
 //
-#include "../include/ecs/EntityManager.h"
-
 #include <gtest/gtest.h>
 
-TEST(EntityManagerTests, CreateEntity_MultipleCreatesHaveUniqueIds)
-{
+#include "../include/ecs/EntityManager.h"
+
+TEST(EntityManagerTests, CreateEntity_MultipleCreatesHaveUniqueIds) {
   EntityManager em;
 
   Entity a = em.create_entity();
