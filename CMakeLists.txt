@@ -18,6 +18,7 @@ add_executable(sourcebound src/main.cpp
         src/logger/Logger.cpp
         include/logger/sinks/ISink.h
         tests/mocks/MockSink.h
+        include/ecs/ecs_config.h
 )
 
 add_executable(unit_tests

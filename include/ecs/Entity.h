@@ -8,6 +8,8 @@
 #include <cstdint>
 #include <functional>
 
+namespace sb::ecs {
+
 struct Entity {
   uint32_t id;
   uint32_t version;
@@ -16,8 +18,11 @@ struct Entity {
   bool operator!=(const Entity& other) const { return !(*this == other); }
 };
 
-template <> struct std::hash<Entity> {
-  std::size_t operator()(const Entity &e) const noexcept {
+} // namespace sb::ecs
+
+template <>
+struct std::hash<sb::ecs::Entity> {
+  std::size_t operator()(const sb::ecs::Entity& e) const noexcept {
     const std::size_t idHash = std::hash<uint32_t>{}(e.id);
     const std::size_t versionHash = std::hash<uint32_t>{}(e.version);
 

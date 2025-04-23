@@ -6,6 +6,9 @@
 #ifndef ICOMPONENTARRAY_H
 #define ICOMPONENTARRAY_H
 #include "Entity.h"
+
+namespace sb::ecs {
+
 class IComponentArray {
 public:
   virtual ~IComponentArray() = default;
@@ -19,4 +22,5 @@ public:
   virtual void entity_destroyed(Entity entity) = 0;
 };
 
+} // namespace sb::ecs
 #endif //ICOMPONENTARRAY_H

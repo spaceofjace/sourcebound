@@ -6,10 +6,6 @@
 #ifndef ICOMPONENTMANAGER_H
 #define ICOMPONENTMANAGER_H
 
-#ifndef NDEBUG
-#include <cassert>
-#endif
-
 #include <memory>
 #include <typeindex>
 #include <unordered_map>
@@ -19,6 +15,7 @@
 #include "Entity.h"
 #include "IComponentArray.h"
 
+namespace sb::ecs {
 class IComponentManager {
 public:
   virtual ~IComponentManager() = default;
@@ -34,7 +31,7 @@ public:
 };
 
 class ComponentManager : IComponentManager {
- public:
+public:
   ComponentManager() = default;
   ComponentManager(const ComponentManager&) = delete;
   ComponentManager& operator=(const ComponentManager&) = delete;
@@ -104,7 +101,7 @@ class ComponentManager : IComponentManager {
     }
   }
 
- private:
+private:
   using ComponentType = std::size_t;
 
   template <typename T>
@@ -140,4 +137,6 @@ class ComponentManager : IComponentManager {
   std::unordered_map<std::type_index, std::shared_ptr<IComponentArray>> component_arrays_;
   ComponentType next_component_type_ = 0;
 };
+
+} // namespace sb::ecs
 #endif //ICOMPONENTMANAGER_H

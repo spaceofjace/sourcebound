@@ -9,10 +9,11 @@
 #include "IComponentArray.h"
 #include <unordered_map>
 
+namespace sb::ecs {
 // Staying simple with dense array for now, but will hopefully be able to switch to be sparse later
 template <typename T>
 class DenseComponentArray final : public IComponentArray {
-  public:
+public:
   void insert_data(Entity entity, const T& component) {
     entity_to_component_[entity] = component;
   }
@@ -33,8 +34,9 @@ class DenseComponentArray final : public IComponentArray {
     remove_data(entity);
   }
 
-  private:
+private:
   std::unordered_map<Entity, T> entity_to_component_;
 };
 
+} // namespace sb::ecs
 #endif //DENSECOMPONENTARRAY_H

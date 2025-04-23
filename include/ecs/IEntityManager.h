@@ -9,6 +9,8 @@
 
 #include <unordered_set>
 
+namespace sb::ecs {
+
 class IEntityManager {
 public:
   virtual ~IEntityManager() = default;
@@ -26,4 +28,6 @@ public:
     get_all_entities() const = 0;
   virtual void clear_all() = 0;
 };
+
+} // namespace sb::ecs
 #endif //IENTITYMANAGER_H

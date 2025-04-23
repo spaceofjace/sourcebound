@@ -9,6 +9,8 @@
 #include "../include/ecs/IComponentManager.h"
 #include "mocks/MockSink.h"
 
+using namespace sb::ecs;
+
 struct Position {
   float x, y;
 };

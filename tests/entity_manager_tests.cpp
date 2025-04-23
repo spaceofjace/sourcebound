@@ -2,8 +2,9 @@
 // Created by Jace Shultz (spaceofjace) on 4/21/2025.
 //
 #include <gtest/gtest.h>
-
 #include "../include/ecs/EntityManager.h"
+
+using namespace sb::ecs;
 
 TEST(EntityManagerTests, CreateEntity_MultipleCreatesHaveUniqueIds) {
   EntityManager em;

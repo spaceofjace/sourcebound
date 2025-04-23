@@ -9,6 +9,8 @@
 #include <stack>
 #include <unordered_set>
 
+namespace sb::ecs {
+
 class EntityManager final : public IEntityManager {
 public:
   //For now, actively disable and copy and move since typically this will be a singleton resource
@@ -35,4 +37,5 @@ private:
   std::optional<std::stack<Entity>> recycled_entities_ = std::nullopt;
 };
 
+}  // namespace sb::ecs
 #endif //ENTITYMANAGER_H
