@@ -1,5 +1,6 @@
 //
-// Created by Jace Shultz (spaceofjace) on 4/21/2025.
+// Created by Jace Shultz on 4/21/2025.
+// Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
 #ifndef ENTITYMANAGER_H
@@ -13,7 +14,6 @@ namespace sb::ecs {
 
 class EntityManager final : public IEntityManager {
 public:
-  //For now, actively disable and copy and move since typically this will be a singleton resource
   EntityManager(const EntityManager&) = delete;
   EntityManager& operator=(const EntityManager&) = delete;
   EntityManager(EntityManager&&) = delete;
@@ -25,10 +25,14 @@ public:
   [[nodiscard]] bool is_alive(Entity entity) const override;
   [[nodiscard]] const std::unordered_set<Entity> &
   get_all_entities() const override;
+  void set_signature(EntityId entityId, Signature signature) override;
+  [[nodiscard]] Signature get_signature(EntityId entityId) const override;
+  [[nodiscard]] bool try_get_signature(EntityId entityId, Signature& signature) const override;
   void clear_all() override;
   ~EntityManager() override = default;
 private:
   std::unordered_set<Entity> entities_;
+  std::unordered_map<uint32_t, Signature> signatures_;
   uint32_t next_entity_id_ = 0;
 
   bool reuse_enabled_ = false;

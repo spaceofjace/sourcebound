@@ -1,5 +1,6 @@
 //
-// Created by Jace Shultz (spaceofjace) on 4/21/2025.
+// Created by Jace Shultz on 4/21/2025.
+// Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
 #ifndef ENTITY_H
@@ -8,11 +9,16 @@
 #include <cstdint>
 #include <functional>
 
+#include "ecs_config.h"
+
 namespace sb::ecs {
 
 struct Entity {
-  uint32_t id;
-  uint32_t version;
+  EntityId id;
+  Version version;
+
+  static Entity null() { return {UINT32_MAX, UINT32_MAX}; }
+  [[nodiscard]] bool is_null() const { return id == UINT32_MAX; }
 
   bool operator==(const Entity& other) const { return id == other.id && version == other.version; }
   bool operator!=(const Entity& other) const { return !(*this == other); }
@@ -23,8 +29,8 @@ struct Entity {
 template <>
 struct std::hash<sb::ecs::Entity> {
   std::size_t operator()(const sb::ecs::Entity& e) const noexcept {
-    const std::size_t idHash = std::hash<uint32_t>{}(e.id);
-    const std::size_t versionHash = std::hash<uint32_t>{}(e.version);
+    const std::size_t idHash = std::hash<sb::ecs::EntityId>{}(e.id);
+    const std::size_t versionHash = std::hash<sb::ecs::Version>{}(e.version);
 
     // combine hashes using XOR and bit shift similar to boost's hash_combine
     // https://www.boost.org/doc/libs/1_55_0/doc/html/hash/reference.html#boost.hash_combine
