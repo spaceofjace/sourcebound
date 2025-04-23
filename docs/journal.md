@@ -1,5 +1,26 @@
 # Project Sourcebound Dev Journal
 ---
+## Apr 22, 2025 - 6 hours
+
+### Objective(s)
+
+1. Complete ComponentManager
+2. Complete SystemManager
+### Details
+#### Key Accomplishments
+
+* Very nearly completed all the baseline implementations for the three "bigs" for the ECS system.  I am sure I missed something, but we'll find out along the way.
+* Added a simple logging system, with expandability or swappable with a library, if desired.
+#### Challenges / Notes
+
+* Logger was found work, though it probably shouldn't have been; logging is pretty much a given in any system. :P
+* I want to think very carefully about error handling.  I'm currently throwing in some unrecoverable cases, but I need to ponder on that more...
+#### Next Steps
+
+* Going to add some simple components and entities.
+* After that, going to tackle some input systems (hopefully.)
+
+---
 ## Apr 21, 2025 - 2.5 hours
 
 ### Objective(s)
