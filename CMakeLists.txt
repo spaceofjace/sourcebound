@@ -19,6 +19,10 @@ add_executable(sourcebound src/main.cpp
         include/logger/sinks/ISink.h
         tests/mocks/MockSink.h
         include/ecs/ecs_config.h
+        include/ecs/ISystemManager.h
+        include/ecs/SystemManager.h
+        include/ecs/ISystem.h
+        src/ecs/SystemManager.cpp
 )
 
 add_executable(unit_tests
@@ -32,6 +36,11 @@ add_executable(unit_tests
         tests/logger_tests.cpp
         src/logger/Logger.cpp
         include/logger/sinks/ISink.h
+        include/ecs/ISystemManager.h
+        include/ecs/SystemManager.h
+        include/ecs/ISystem.h
+        src/ecs/SystemManager.cpp
+        tests/system_manager_tests.cpp
 )
 
 target_link_libraries(unit_tests
