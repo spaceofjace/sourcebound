@@ -57,6 +57,17 @@ TEST(EntityManagerTest, IsAlive_ReturnsFalseForUnknownEntityId) {
   EXPECT_FALSE(em.is_alive(Entity{ 12345, 1000})); // No entities were created
 }
 
+TEST(EntityManagerTest, IsAlive_ReturnsFalseIfVersionMismatch) {
+  EntityManager em(true);
+  Entity a = em.create_entity();
+  em.destroy_entity(a);
+
+  Entity b = em.create_entity();  // Should reuse e1.id, but increment version
+  
+  EXPECT_FALSE(em.is_alive(a));  // Same ID, old version
+  EXPECT_TRUE(em.is_alive(b));   // Correct ID and version
+}
+
 TEST(EntityManagerTest, ClearAll_EmptiesEntityList) {
   EntityManager em;
   em.create_entity();

@@ -65,7 +65,8 @@ bool EntityManager::destroy_entity(const Entity entity) {
 }
 
 bool EntityManager::is_alive(const Entity entity) const {
-  return entities_.find(entity) != entities_.end();
+  const auto found = entities_.find(entity);
+  return found != entities_.end() && found->version == entity.version;
 }
 
 const std::unordered_set<Entity>& EntityManager::get_all_entities() const {
