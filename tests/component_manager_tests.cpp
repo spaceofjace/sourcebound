@@ -49,21 +49,17 @@ TEST(ComponentManagerTest, DuplicateRegistrationTriggersErrorLog) {
   EXPECT_EQ(mock_sink->last_message, "[ComponentManager] Component type already registered!");
 }
 
-TEST(ComponentManagerTest, AddComponentBeforeRegisterTriggersErrorLogAndThrows) {
+TEST(ComponentManagerTest, AddComponentBeforeRegisterTriggersErrorLog) {
   auto mock_sink = std::make_shared<MockSink>();
   Logger::set_sink(mock_sink);
 
   ComponentManager cm;
   Entity entity{2, 0};
-
-  EXPECT_THROW( // Should log error and throw    NOLINT(*-type-traits)
-    cm.add_component<Velocity>(entity, {1.0f, 1.0f}),
-    std::runtime_error
-  );
-
+  cm.add_component<Velocity>(entity, {1.0f, 1.0f});
+  
   EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
   EXPECT_EQ(mock_sink->last_message,
-            "[ComponentManager] Component doesn't exist for this entity.");
+            "[ComponentManager] Tried to add unregistered component type.");
 }
 
 TEST(ComponentManagerTest, GetAfterRemoveTriggersErrorLogAndThrows) {

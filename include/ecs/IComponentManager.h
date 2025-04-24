@@ -26,23 +26,18 @@ public:
   IComponentManager(IComponentManager&&) = delete;
   IComponentManager& operator=(IComponentManager&&) = delete;
 
-  // This is the only usable non-templated function
+  // This is the only non-templated function
   virtual void entity_destroyed(Entity entity) = 0;
 };
 
-class ComponentManager : IComponentManager {
-public:
-  ComponentManager() = default;
-  ComponentManager(const ComponentManager&) = delete;
-  ComponentManager& operator=(const ComponentManager&) = delete;
-  ComponentManager(ComponentManager&&) = delete;
-  ComponentManager& operator=(ComponentManager&&) = delete;
+class ComponentManager final : IComponentManager {
+ public:
 
   template <typename T>
   void register_component() {
     auto type_index = std::type_index(typeid(T));
     if (component_types_.find(type_index) != component_types_.end()) {
-      sb::log::Logger::error("[ComponentManager] Component type already registered!");
+      log::Logger::error("[ComponentManager] Component type already registered!");
       return;
     }
     component_types_[type_index] = next_component_type_;
@@ -52,24 +47,24 @@ public:
 
   template <typename T>
   void add_component(Entity entity, const T& component) {
-    const auto type_index = std::type_index(typeid(T));
-    if (component_arrays_.find(type_index) == component_arrays_.end()) {
-      sb::log::Logger::error("[ComponentManager] Component doesn't exist for this entity.");
-      throw std::runtime_error("[ComponentManager] Component type not registered before use");
+    if (ComponentType component_type; !try_get_component_type<T>(component_type)) {
+      log::Logger::error("[ComponentManager] Tried to add unregistered component type.");
+      return;
     }
 
     if (has_component<T>(entity)) {
-      sb::log::Logger::error("[ComponentManager] Component already exists for this entity.");
-      throw std::runtime_error("[ComponentManager] Component already exists for this entity");
+      log::Logger::warn("[ComponentManager] Component already exists for this entity.");
+      return;
     }
-    auto component_array = get_component_array<T>();
-    component_array->insert_data(entity, component);
+
+    get_component_array<T>()->insert_data(entity, component);
   }
 
   template <typename T>
   void remove_component(Entity entity) {
     if (!has_component<T>(entity)) {
-      sb::log::Logger::error("[ComponentManager] Component doesn't exist for this entity.");
+      log::Logger::warn("[ComponentManager] Component doesn't exist for this entity.");
+      return; // safe to skip
     }
 
     auto component_array = get_component_array<T>();
@@ -81,7 +76,7 @@ public:
     if (!has_component<T>(entity)) {
       sb::log::Logger::error("[ComponentManager] Component doesn't exist for this entity.");
 
-      //Throwing as this particular scenario could lead to very bad behavior
+      // Throwing as this particular scenario could lead to very bad behavior
       throw std::runtime_error("[ComponentManager] Tried to get nonexistent component.");
     }
 
@@ -95,15 +90,40 @@ public:
     return component_array->has_data(entity);
   }
 
-  void entity_destroyed(const Entity entity) override{
+  void entity_destroyed(const Entity entity) override {
     for (auto& [type_index, component_array] : component_arrays_) {
       component_array->entity_destroyed(entity);
     }
   }
 
-private:
-  using ComponentType = std::size_t;
+  template <typename T>
+  [[nodiscard]] ComponentType get_component_type() const {
+    ComponentType component_type;
 
+    if (!try_get_component_type<T>(component_type)) {
+      log::Logger::error("[ComponentManager] Failed to get component type.");
+      return static_cast<ComponentType>(-1);
+    }
+
+    return component_type;
+  }
+
+  template <typename T>
+  [[nodiscard]] bool try_get_component_type(ComponentType& component_type) const {
+    auto type_index = std::type_index(typeid(T));
+    auto type = component_types_.find(type_index);
+
+    if (type == component_types_.end()) {
+      log::Logger::warn("[ComponentManager] Tried to get unregistered component type.");
+      return false;
+    }
+
+    component_type = type->second;
+    return true;
+  }
+
+
+ private:
   template <typename T>
   DenseComponentArray<T>* get_component_array() {
     return get_component_array_from_map<T>(component_arrays_);
@@ -120,19 +140,18 @@ private:
     const auto it = map.find(type_index);
 
     if (it == map.end()) {
-      sb::log::Logger::error("[ComponentManager] Component type not registered before use.");
-    }
-    else if (!it->second) {
-      sb::log::Logger::error("[ComponentManager] Component storage pointer is null.");
+      log::Logger::error("[ComponentManager] Component type not registered before use.");
+    } else if (!it->second) {
+      log::Logger::error("[ComponentManager] Component storage pointer is null.");
     }
 
-    //allows for code reuse for const and non-const contexts
-    using PointerType = std::conditional_t<std::is_const_v<MapType>,
-                                           const DenseComponentArray<T>,
+    // allows for code reuse for const and non-const contexts
+    using PointerType = std::conditional_t<std::is_const_v<MapType>, const DenseComponentArray<T>,
                                            DenseComponentArray<T>>;
     return static_cast<PointerType*>(it->second.get());
   }
 
+ private:
   std::unordered_map<std::type_index, ComponentType> component_types_;
   std::unordered_map<std::type_index, std::shared_ptr<IComponentArray>> component_arrays_;
   ComponentType next_component_type_ = 0;
