@@ -56,7 +56,7 @@ TEST(ComponentManagerTest, AddComponentBeforeRegisterTriggersErrorLog) {
   ComponentManager cm;
   Entity entity{2, 0};
   cm.add_component<Velocity>(entity, {1.0f, 1.0f});
-  
+
   EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
   EXPECT_EQ(mock_sink->last_message,
             "[ComponentManager] Tried to add unregistered component type.");
