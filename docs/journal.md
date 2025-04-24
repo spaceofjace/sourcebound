@@ -1,5 +1,31 @@
 # Project Sourcebound Dev Journal
 ---
+## Apr 24, 2025 - 3 hours
+
+Note: also captures work from Apr 23; time spent reflects time from both days.
+### Objective(s)
+
+1. Update EntityManager to allow signature tracking (will be important in eventual system management).
+2. Validate EntityManager and ComponentManager together in integration tests.
+### Details
+#### Key Accomplishments
+
+* Found a couple bugs/missing functionality as I wrote the new integration tests.
+	- `is_alive` did not check version
+	- needed helpers for getting `ComponentType` for signature management
+	- revised some error handling to be more "stable"
+- Overall, was pretty solid code, functionally speaking.
+#### Challenges / Notes
+
+* As noted in my last entry, I want to be thoughtful about places where I am throwing exceptions vs. logging errors; I'll need to take a pass to be sure I adjust any old code I wrote.
+* I want to move the templated code into `.impl` files, and even though there's only one function in `IComponentManager` that is not templated (for now), I want to add an appropriate `.cpp` file for it.  (This can catch any expanded growth.)
+#### Next Steps
+
+* Next is taking some of the logic represented in the ECS integration tests and putting it in a `GameWorld` API to centralize these behaviors.
+	* I don't (yet) want to move into a heavily event-based architecture, but it may be cleaner for things like `EntityDestroyedEvent` (for cleaning up, etc.)
+* I think this makes sense to do before input management, but that's next on the list.
+
+---
 ## Apr 22, 2025 - 6 hours
 
 ### Objective(s)
