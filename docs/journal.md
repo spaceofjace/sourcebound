@@ -1,5 +1,23 @@
 # Project Sourcebound Dev Journal
 ---
+## May 8, 2025 - 3 hours
+
+### Objective(s)
+
+1. Implement the GameWorld facade
+### Details
+#### Key Accomplishments
+
+* Added the facade, and built it in a way that it's truly "injectable" with mocks
+* Extracted and added a bunch of mocks to use in future testing
+#### Challenges / Notes
+
+* Working with templates is obviously much more complex than C# generics or similar; this does add a bit of noise to the code, and though I considered other options to avoid templating the *class* (integration testing instead of unit testing, injecting the concrete implementation, a gross-feeling dynamic_cast), this seemed like the good middle ground to allow flexibility and correctly adhere to the open/closed principle.
+#### Next Steps
+
+* Inputs next, I think.
+
+---
 ## Apr 24, 2025 - 3 hours
 
 Note: also captures work from Apr 23; time spent reflects time from both days.
