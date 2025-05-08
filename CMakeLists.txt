@@ -23,6 +23,9 @@ add_executable(sourcebound src/main.cpp
         include/ecs/SystemManager.h
         include/ecs/ISystem.h
         src/ecs/SystemManager.cpp
+        include/gamestate/IGameWorld.h
+        include/gamestate/GameWorld.h
+        tests/mocks/MockSystemManager.h
 )
 
 add_executable(unit_tests
@@ -42,7 +45,11 @@ add_executable(unit_tests
         src/ecs/SystemManager.cpp
         tests/system_manager_tests.cpp
         tests/ecs_integration_tests.cpp
+        include/gamestate/IGameWorld.h
+        tests/mocks/MockComponentManager.h
+        tests/mocks/MockEntityManager.h
         tests/mocks/MockSystem.h
+        tests/game_world_tests.cpp
 )
 
 target_link_libraries(unit_tests

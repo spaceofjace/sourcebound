@@ -11,8 +11,8 @@
 
 using namespace sb::log;
 
-class MockSink : public ISink {
-public:
+struct MockSink : public ISink {
+
   MockSink() = default;
 
   void log(const Level level, const std::string_view message) override {
