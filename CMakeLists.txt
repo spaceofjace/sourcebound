@@ -42,6 +42,7 @@ add_executable(unit_tests
         src/ecs/SystemManager.cpp
         tests/system_manager_tests.cpp
         tests/ecs_integration_tests.cpp
+        tests/mocks/MockSystem.h
 )
 
 target_link_libraries(unit_tests

@@ -20,9 +20,9 @@ public:
   ISystemManager(ISystemManager&&) = delete;
   ISystemManager& operator=(ISystemManager&&) = delete;
 
-
+  virtual void update(float delta_time) = 0;
   virtual void entity_destroyed(Entity entity) = 0;
-  virtual void entity_signature_changed(Entity entity, const sb::ecs::Signature& signature) = 0;
+  virtual void entity_signature_changed(Entity entity, const Signature& signature) = 0;
 };
 
 }  // namespace sb::ecs

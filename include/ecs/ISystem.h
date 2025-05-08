@@ -19,6 +19,7 @@ public:
   ISystem(ISystem&&) = delete;
   ISystem& operator=(ISystem&&) = delete;
 
+  virtual void update(float delta_time) = 0;
   std::unordered_set<Entity> entities;
 };
 

@@ -8,13 +8,9 @@
 #include "../include/ecs/SystemManager.h"
 #include "../include/logger/Logger.h"
 #include "mocks/MockSink.h"
+#include "mocks/MockSystem.h"
 
 using namespace sb::ecs;
-
-struct MockSystem : ISystem {
-  // Placeholder mock system
-  // Will likely extract into separate file when more mocking behavior becomes necessary
-};
 
 TEST(SystemManagerTest, CanRegisterSystem) {
   SystemManager sm;

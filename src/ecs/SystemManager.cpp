@@ -24,4 +24,10 @@ void SystemManager::entity_signature_changed(const Entity entity, const Signatur
   }
 }
 
+void SystemManager::update(const float delta_time) {
+  for (const auto& [type, system] : systems_) {
+    system->update(delta_time);
+  }
+}
+
 } // namespace sb::ecs

@@ -25,6 +25,7 @@ public:
 
   void entity_destroyed(Entity entity) override;
   void entity_signature_changed(Entity entity, const Signature& signature) override;
+  void update(float delta_time) override;
 
   template <typename T>
   std::shared_ptr<T> register_system() {
