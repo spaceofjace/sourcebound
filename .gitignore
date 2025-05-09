@@ -30,3 +30,45 @@
 *.exe
 *.out
 *.app
+
+# Obsidian related files
+.obsidian/
+.obsidian/plugins/
+.trash/
+.obsidian/cache/
+
+# CMake build artifacts
+/cmake-build-*/
+
+/build/
+/build-release/
+
+/CMakeFiles/
+/CMakeCache.txt
+/Makefile
+/install_manifest.txt
+/compile_commands.json
+
+# CLion and IDE files
+/.idea/
+/*.iml
+
+# Visual Studio files
+/.vs/
+/*.VC.db
+/*.VC.opendb
+
+# Executables and binary outputs
+/*.exe
+/*.dll
+/*.lib
+/*.obj
+/*.pdb
+
+# Other
+*.log
+
+# Ignore GoogleTest build artifacts
+/external/googletest/build/
+/external/googletest/*.o
+/external/googletest/*.obj

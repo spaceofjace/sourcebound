@@ -1,0 +1,23 @@
+# .clang-format
+# Based on Google C++ Style Guide
+
+BasedOnStyle: Google
+
+# Optional customizations you might want:
+IndentWidth: 2                # Google uses 2 spaces
+TabWidth: 2
+UseTab: Never
+
+AllowShortFunctionsOnASingleLine: Empty
+BreakBeforeBraces: Attach     # Same-line opening brace (K&R style)
+AlwaysBreakTemplateDeclarations: Yes
+ColumnLimit: 100              # Google allows up to 100 chars
+DerivePointerAlignment: false
+PointerAlignment: Left        # `int* ptr` instead of `int *ptr`
+
+SpacesBeforeTrailingComments: 1
+SpaceBeforeParens: ControlStatements  # if (x), not if( x )
+
+# Keeps includes sorted and grouped
+SortIncludes: CaseSensitive
+IncludeBlocks: Regroup

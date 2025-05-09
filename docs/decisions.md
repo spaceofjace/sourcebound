@@ -52,6 +52,17 @@ I will be using **JSON** for gameplay data and save/load files.
 - Requires careful parsing and validation.
 - While more mergeable than some datatypes, it requires consistent structure to be "merge-safe."
 ---
+## Use GoogleTests as testing framework
+
+### Decision:  
+I will be using GoogleTests as my test harness for writing unit tests.
+### Reasoning:  
+- Supported internally by my chosen IDE (JetBrains' CLion).
+- Extensive testing framework that should mirror typical frameworks used by studios in practice.
+### Tradeoffs:  
+- Adds a lot of source code to the base to include the framework manually.
+- Probably more complex than I need it to be for a "simple" project.
+---
 ## TEMPLATE
 
 ### Decision:  
