@@ -1,5 +1,26 @@
 # Project Sourcebound Dev Journal
 ---
+## May 9, 2025 - 2 hours
+
+### Objective(s)
+
+1. Prepare for input system development.
+### Details
+#### Key Accomplishments
+
+* Expanded and updated architecture diagram to reflect input system.
+* Created new milestone to represent growing complexity of input system.
+* Generated full task list for new input systems.
+#### Challenges / Notes
+
+* In thinking about rebinding and an extendable engine system, I realized the system was growing in complexity quickly.  
+	* Recognized I needed to stop and think about this more expansively.
+	* This resulted in an update to the architecture diagram AND the generation of a new milestone.
+* I'm obviously adding a lot of work for myself, but I want to be sure this project is a good reflection of how I approach problems.
+#### Next Steps
+
+* Begin implementation of input mapping systems.
+---
 ## May 8, 2025 - 3 hours
 
 ### Objective(s)
