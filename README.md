@@ -30,7 +30,7 @@ To get up and running with Sourcebound:
 
 Sourcebound is built with developer clarity in mind. Explore the following documents to understand how the engine works and how to contribute:
 
-- [Architecture Overview](docs/architecture/project-sourcebound-overview-v2) - Explore the ECS architecture and module breakdown.
+- [Architecture Overview](docs/architecture/project-sourcebound-overview-v2.jpg) - Explore the ECS architecture and module breakdown.
 - [Design Decisions](docs/decisions.md) - Rationale behind key design choices.
 - [Research Notes](docs/research.md) - Background research informing the engine design.
 - [Development Journal](docs/journal.md) - A log of my development progress and goals.
