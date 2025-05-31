@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file ISystemManager.h
+ * @ingroup ECS
+ * @brief Declares the interface for managing registered systems.
+ */
+
 #ifndef ISYSTEMMANAGER_H
 #define ISYSTEMMANAGER_H
 #include "Entity.h"
@@ -10,6 +16,11 @@
 
 namespace sb::ecs {
 
+/**
+ * @interface ISystemManager
+ * @ingroup ECS
+ * @brief Interface for system registration, lifecycle control, and execution.
+ */
 class ISystemManager {
 public:
   virtual ~ISystemManager() = default;

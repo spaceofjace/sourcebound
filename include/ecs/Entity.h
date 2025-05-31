@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file Entity.h
+ * @ingroup ECS
+ * @brief Simple struct for Entity in the ECS module (includes version)
+ */
+
 #ifndef ENTITY_H
 #define ENTITY_H
 
@@ -12,6 +18,16 @@
 #include "ecs_config.h"
 
 namespace sb::ecs {
+
+/**
+ * @struct Entity
+ * @ingroup ECS
+ * @brief Represents a lightweight handle used to identify components in the ECS.
+ *
+ * Internally, this wraps pair of values (id + version) to ensure uniqueness.
+ * Also includes hash similar to boost's hash-combine implementation:
+ *   https://www.boost.org/doc/libs/1_55_0/doc/html/hash/reference.html#boost.hash_combine
+ */
 
 struct Entity {
   EntityId id;
@@ -33,7 +49,6 @@ struct std::hash<sb::ecs::Entity> {
     const std::size_t versionHash = std::hash<sb::ecs::Version>{}(e.version);
 
     // combine hashes using XOR and bit shift similar to boost's hash_combine
-    // https://www.boost.org/doc/libs/1_55_0/doc/html/hash/reference.html#boost.hash_combine
     return idHash ^ (versionHash << 1);
   }
 };

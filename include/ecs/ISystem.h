@@ -2,6 +2,11 @@
 // Created by Jace Shultz on 4/22/2025.
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
+/**
+ * @file ISystem.h
+ * @ingroup ECS
+ * @brief Declares the interface for all game systems in the ECS framework.
+ */
 
 #ifndef ISYSTEM_H
 #define ISYSTEM_H
@@ -9,6 +14,11 @@
 #include <unordered_set>
 namespace sb::ecs {
 
+/**
+ * @interface ISystem
+ * @ingroup ECS
+ * @brief Abstract base class for ECS systems. Systems operate on entities and components each frame.
+ */
 class ISystem {
 public:
   virtual ~ISystem() = default;

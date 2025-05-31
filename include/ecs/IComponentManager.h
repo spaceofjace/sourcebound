@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file IComponentManager.h
+ * @ingroup ECS
+ * @brief System for managing components and their relationship to specific entities
+ */
+
 #ifndef ICOMPONENTMANAGER_H
 #define ICOMPONENTMANAGER_H
 
