@@ -6,6 +6,8 @@ This project began as a proof of concept to explore ECS architecture, showcase m
 
 The initial goal is to implement an Arkanoid clone, with plans to extend the engine through additional simple games (such as Pong) as the architecture matures.
 
+(This repo is intended as a personal architecture playground, not a generalized engine or public library.)
+
 ---
 
 ## [Getting Started](#-getting-started)
