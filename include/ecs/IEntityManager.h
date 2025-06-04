@@ -4,7 +4,7 @@
 //
 
 /**
- * @defgroup ECS (Entity-Component-System)
+ * @defgroup ECS Entity-Component-System
  * @brief Core module defining entities, components, and systems.
  *
  * This group contains all classes and interfaces related to the Entity-Component-System architecture,
