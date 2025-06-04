@@ -30,9 +30,11 @@ To get up and running with Sourcebound:
 
 ## [Documentation](#-documentation)
 
-Sourcebound is built with developer clarity in mind. Explore the following documents to understand how the engine works and how to contribute:
+Sourcebound is intended as an example of well-documented code, and the following documents are designed to provide better clarity for how and why it is built the way it is.
+### System and Code Documentation
 
 - [Architecture Overview](docs/architecture/project-sourcebound-overview-v2.jpg) - Explore the ECS architecture and module breakdown.
+- [Code Documentation](https://spaceofjace.github.io/sourcebound/) - Doxygen-generated documentation.
 - [Design Decisions](docs/decisions.md) - Rationale behind key design choices.
 - [Research Notes](docs/research.md) - Background research informing the engine design.
 - [Development Journal](docs/journal.md) - A log of my development progress and goals.
@@ -58,7 +60,7 @@ ctest
 
 ## [Contributing](#-contributing)
 
-I am currently not seeking collaborators on this project as I largely intend it as an example of how I approach building code and systems; that said, please feel free to reach out if you’re interested in collaborating on a substantial expansion in the future.
+I am currently not seeking collaborators on this project as I largely intend it as an example of how I approach building code and systems; that said, if you do have an interest in the project, please contact me as perhaps there is something we can figure out.
 
 ---
 
