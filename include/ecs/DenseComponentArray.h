@@ -3,14 +3,28 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file DenseComponentArray.h
+ * @ingroup ECS
+ * @brief Provides dense storage for components of a specific type.
+ */
+
 #ifndef DENSECOMPONENTARRAY_H
 #define DENSECOMPONENTARRAY_H
 
 #include "IComponentArray.h"
 #include <unordered_map>
 
+/**
+ * @class DenseComponentArray
+ * @ingroup ECS
+ * @brief Provides dense storage for components of a specific type.
+ *
+ * Used by ComponentManager to enable efficient iteration and cache-friendly access.
+ * (Can be swapped for a sparse array later)
+ */
+
 namespace sb::ecs {
-// Staying simple with dense array for now, but will hopefully be able to switch to be sparse later
 template <typename T>
 class DenseComponentArray final : public IComponentArray {
 public:

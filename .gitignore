@@ -72,3 +72,6 @@
 /external/googletest/build/
 /external/googletest/*.o
 /external/googletest/*.obj
+
+# Ignore doxygen build artifacts
+docs/doxygen/

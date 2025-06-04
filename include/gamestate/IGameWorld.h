@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file IGameWorld.h
+ * @ingroup ECS
+ * @brief Declares the interface for interacting with the active game world state.
+ */
+
 #ifndef IGAMEWORLD_H
 #define IGAMEWORLD_H
 
@@ -10,6 +16,17 @@
 
 namespace sb::ecs {
 
+/**
+ * @interface IGameWorld
+ * @ingroup ECS
+ * @brief Abstract representation of a game world. Used to interact with ECS layers and runtime data.
+ *
+ * GameWorld serves two primary purposes here:
+ *   1. to centralize entry points for common ECS operations and ensure correct coordination across
+ *      modules.
+ *   2. to theoretically allow replacement with a more complete, more robust ECS (e.g., flecs) at
+ *      some later stage, if desired.
+ */
 class IGameWorld {
 public:
   IGameWorld() = default;

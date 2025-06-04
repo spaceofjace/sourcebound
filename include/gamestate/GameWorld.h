@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file GameWorld.h
+ * @ingroup ECS
+ * @brief Defines the concrete game world used by the main loop.
+ */
+
 #ifndef GAMEWORLD_H
 #define GAMEWORLD_H
 #include <memory>
@@ -14,12 +20,11 @@
 
 namespace sb::ecs {
 
-// GameWorld is acting as a facade for common ECS operations; this serves two purposes:
-//  1. It provides a single point of entry and allows for certain operations to be correctly managed
-//      (e.g., component signature management on entities)
-//  2. It *theoretically* allows for this facade to be swapped with a more robust library,
-//      such as flecs or something similar.
-
+/**
+ * @class GameWorld
+ * @ingroup ECS
+ * @brief Encapsulates the game state and manages ECS coordination, system updates, and entity access.
+ */
 template <typename EntityMgr, typename ComponentMgr, typename SystemMgr>
 class GameWorld final : public IGameWorld {
  public:
