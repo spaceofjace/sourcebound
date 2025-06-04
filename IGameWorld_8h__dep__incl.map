@@ -1,0 +1,5 @@
+<map id="IGameWorld.h" name="IGameWorld.h">
+<area shape="rect" id="Node000001" title="Declares the interface for interacting with the active game world state." alt="" coords="5,5,120,31"/>
+<area shape="rect" id="Node000002" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="7,79,118,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,44,65,79,60,79,60,44"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="sb::ecs::IGameWorld" name="sb::ecs::IGameWorld">
+<area shape="rect" id="Node000001" title="Abstract representation of a game world." alt="" coords="34,5,189,31"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1GameWorld.html" title="Encapsulates the game state and manages ECS coordination, system updates, and entity access." alt="" coords="5,79,217,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="114,44,114,79,109,79,109,44"/>
+</map>

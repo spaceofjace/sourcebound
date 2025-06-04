@@ -1,0 +1,19 @@
+<map id="DenseComponentArray.h" name="DenseComponentArray.h">
+<area shape="rect" id="Node000001" title="Provides dense storage for components of a specific type." alt="" coords="129,5,311,31"/>
+<area shape="rect" id="Node000002" href="$IComponentArray_8h.html" title="A data structure built for managing a specific component type." alt="" coords="67,79,213,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="209,33,165,72,161,68,205,29"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="238,79,362,104"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="235,29,279,68,275,72,231,33"/>
+<area shape="rect" id="Node000003" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="105,152,175,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="143,104,143,138,137,138,137,104"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="5,225,72,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="125,180,68,219,65,215,122,175"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="97,225,183,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="143,178,143,212,137,212,137,178"/>
+<area shape="rect" id="Node000006" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="207,225,310,251"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="160,175,229,216,226,220,158,180"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="184,299,243,324"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="253,252,230,289,226,286,249,250"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="267,299,338,324"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="268,250,291,286,286,288,264,252"/>
+</map>

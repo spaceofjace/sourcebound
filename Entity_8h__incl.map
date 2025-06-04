@@ -1,0 +1,13 @@
+<map id="Entity.h" name="Entity.h">
+<area shape="rect" id="Node000001" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="105,5,175,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,72,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,33,68,73,65,68,122,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="97,79,183,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="143,31,143,65,137,65,137,31"/>
+<area shape="rect" id="Node000004" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="207,79,310,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="160,28,229,69,226,74,158,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="184,152,243,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="253,106,230,142,226,139,249,103"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="267,152,338,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="268,103,291,139,286,142,264,106"/>
+</map>

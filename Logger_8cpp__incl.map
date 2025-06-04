@@ -1,0 +1,18 @@
+<map id="Logger.cpp" name="Logger.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="118,5,210,31"/>
+<area shape="rect" id="Node000002" href="$Logger_8h.html" title="Central static logging interface for the application." alt="" coords="41,167,180,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,32,134,80,124,117,117,153,112,152,119,116,130,78,154,29"/>
+<area shape="rect" id="Node000006" href="$ConsoleSink_8h.html" title="Concrete implementation of ISink that logs to the console." alt="" coords="145,79,301,119"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="175,29,203,66,198,69,171,32"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,255,83,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,209,65,246,61,242,93,205"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="115,328,213,353"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="120,206,158,314,153,316,115,208"/>
+<area shape="rect" id="Node000005" href="$ISink_8h.html" title="Declares the logging sink interface." alt="" coords="157,255,261,280"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="136,205,185,244,182,248,133,209"/>
+<area shape="poly" id="edge5_Node000005_Node000004" title=" " alt="" coords="204,282,181,318,176,315,200,279"/>
+<area shape="poly" id="edge8_Node000006_Node000002" title=" " alt="" coords="199,121,148,160,145,156,196,117"/>
+<area shape="poly" id="edge9_Node000006_Node000005" title=" " alt="" coords="224,119,214,241,209,241,218,119"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="255,174,335,199"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="241,117,278,161,274,165,237,121"/>
+</map>

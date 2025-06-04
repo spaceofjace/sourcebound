@@ -1,0 +1,19 @@
+<map id="sb::log::Logger::error" name="sb::log::Logger::error">
+<area shape="rect" id="Node000001" title=" " alt="" coords="260,237,416,262"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1ComponentManager.html#a483646b6b2c00e1c33bb1a591f30f822" title=" " alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="324,225,307,188,283,143,250,98,210,59,191,48,194,43,214,55,254,95,287,140,312,185,329,222"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1EntityManager.html#af0dbf8a3f8833be0384a50c16b986dba" title=" " alt="" coords="23,69,194,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="317,227,272,175,243,147,211,124,187,112,189,107,213,119,246,143,276,171,321,224"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1ecs_1_1ComponentManager.html#ad1829095b8fc57b0f93d2f7f7e42f43e" title=" " alt="" coords="5,133,212,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="302,232,211,188,179,176,181,171,213,183,304,228"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1ecs_1_1ComponentManager.html#a30ed0816113fb8b7ba44ce6d1fc26d33" title=" " alt="" coords="5,197,212,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="246,239,212,234,213,229,247,234"/>
+<area shape="rect" id="Node000006" href="$classsb_1_1ecs_1_1SystemManager.html#a22c4c21ba95606a5d44dfbe406b1b49f" title=" " alt="" coords="18,261,199,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="247,265,200,271,199,266,246,259"/>
+<area shape="rect" id="Node000007" href="$classsb_1_1ecs_1_1ComponentManager.html#a4d43cd77ccac51e5bc5e807f43f2780f" title=" " alt="" coords="5,325,212,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="304,271,213,316,181,328,179,323,211,311,302,266"/>
+<area shape="rect" id="Node000008" href="$classsb_1_1ecs_1_1SystemManager.html#a37a9320a05090c482d47b251541ea4dc" title=" " alt="" coords="18,389,199,429"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="321,275,276,328,246,355,213,380,189,392,187,387,211,375,243,351,272,324,317,272"/>
+<area shape="rect" id="Node000009" href="$classsb_1_1ecs_1_1SystemManager.html#a1b9429431124dc125fbe8442b1d6920a" title=" " alt="" coords="18,453,199,493"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="329,276,312,313,287,358,254,404,214,443,194,456,191,451,210,439,250,401,283,356,307,311,324,274"/>
+</map>

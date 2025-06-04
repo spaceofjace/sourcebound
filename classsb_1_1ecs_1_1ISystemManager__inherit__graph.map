@@ -1,0 +1,5 @@
+<map id="sb::ecs::ISystemManager" name="sb::ecs::ISystemManager">
+<area shape="rect" id="Node000001" title="Interface for system registration, lifecycle control, and execution." alt="" coords="5,5,191,31"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1SystemManager.html" title="Manages the lifecycle and controls execution order of ECS systems." alt="" coords="7,79,189,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,44,101,79,95,79,95,44"/>
+</map>

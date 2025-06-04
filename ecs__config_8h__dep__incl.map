@@ -1,0 +1,40 @@
+<map id="ecs_config.h" name="ecs_config.h">
+<area shape="rect" id="Node000001" title="Configuration constants and type definitions for ECS modules." alt="" coords="341,5,443,31"/>
+<area shape="rect" id="Node000002" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="357,79,427,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="395,44,395,79,389,79,389,44"/>
+<area shape="rect" id="Node000007" href="$IEntityManager_8h.html" title="Interface for managing entities and their signatures." alt="" coords="774,152,906,177"/>
+<area shape="poly" id="edge22_Node000001_Node000007" title=" " alt="" coords="441,32,805,149,804,154,440,38"/>
+<area shape="rect" id="Node000009" href="$EntityManager_8cpp.html" title=" " alt="" coords="950,299,1093,324"/>
+<area shape="poly" id="edge21_Node000001_Node000009" title=" " alt="" coords="458,27,550,44,667,70,794,105,919,149,992,175,1020,192,1045,224,1050,244,1048,265,1032,299,1027,297,1042,264,1045,245,1040,227,1016,196,990,179,918,155,793,110,666,75,549,49,457,32"/>
+<area shape="rect" id="Node000012" href="$SystemManager_8h.html" title="Defines the concrete implementation of ISystemManager.h." alt="" coords="241,225,380,251"/>
+<area shape="poly" id="edge24_Node000001_Node000012" title=" " alt="" coords="327,23,250,32,163,53,120,70,79,92,43,119,13,153,8,165,13,176,27,187,48,197,107,213,176,224,241,230,241,236,175,229,106,219,47,202,24,192,8,179,3,165,8,151,39,115,76,87,118,65,162,48,250,26,326,18"/>
+<area shape="rect" id="Node000014" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="23,152,166,177"/>
+<area shape="poly" id="edge23_Node000001_Node000014" title=" " alt="" coords="357,39,119,154,117,150,355,34"/>
+<area shape="rect" id="Node000003" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="603,372,714,397"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="343,99,314,105,283,115,255,131,233,153,228,183,226,239,227,295,231,323,256,340,294,354,341,365,395,372,507,380,603,382,603,387,507,385,394,378,340,370,292,359,253,345,227,325,222,295,221,239,223,182,228,151,252,127,281,110,312,100,342,94"/>
+<area shape="rect" id="Node000004" href="$IComponentArray_8h.html" title="A data structure built for managing a specific component type." alt="" coords="473,152,620,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="430,107,522,149,520,154,428,112"/>
+<area shape="rect" id="Node000006" href="$IComponentManager_8h.html" title="System for managing components and their relationship to specific entities." alt="" coords="487,299,657,324"/>
+<area shape="poly" id="edge8_Node000002_Node000006" title=" " alt="" coords="397,117,410,182,425,217,446,249,463,265,484,278,526,296,524,301,481,283,460,269,442,252,420,220,405,183,391,118"/>
+<area shape="poly" id="edge9_Node000002_Node000007" title=" " alt="" coords="441,98,774,150,773,156,441,103"/>
+<area shape="rect" id="Node000010" href="$IGameWorld_8h.html" title="Declares the interface for interacting with the active game world state." alt="" coords="713,225,828,251"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="441,98,532,117,583,131,633,150,704,187,757,223,754,227,701,192,631,154,581,136,530,122,440,103"/>
+<area shape="rect" id="Node000011" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="242,152,329,177"/>
+<area shape="poly" id="edge15_Node000002_Node000011" title=" " alt="" coords="365,114,304,154,301,150,362,109"/>
+<area shape="poly" id="edge20_Node000002_Node000012" title=" " alt="" coords="381,118,319,226,315,224,376,115"/>
+<area shape="poly" id="edge18_Node000002_Node000014" title=" " alt="" coords="344,107,143,155,142,149,342,102"/>
+<area shape="rect" id="Node000005" href="$DenseComponentArray_8h.html" title="Provides dense storage for components of a specific type." alt="" coords="455,225,638,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="549,191,549,225,544,225,544,191"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="600,181,629,198,653,224,657,236,656,248,643,269,621,287,598,301,595,296,618,283,639,266,651,246,652,237,648,227,626,202,597,185"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="558,263,570,298,565,299,553,265"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="598,330,646,370,643,374,595,335"/>
+<area shape="poly" id="edge12_Node000007_Node000003" title=" " alt="" coords="848,191,850,221,842,252,828,275,811,295,770,330,727,356,689,374,687,370,724,352,767,326,807,292,824,272,837,250,845,220,843,191"/>
+<area shape="rect" id="Node000008" href="$EntityManager_8h.html" title="Concrete implementation of IEntityManager (includes option for reuse)" alt="" coords="903,225,1031,251"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="874,182,947,223,945,227,871,186"/>
+<area shape="poly" id="edge11_Node000008_Node000009" title=" " alt="" coords="986,260,1014,297,1010,300,982,263"/>
+<area shape="poly" id="edge14_Node000010_Node000003" title=" " alt="" coords="755,263,670,373,665,370,751,260"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="296,189,309,224,304,226,291,191"/>
+<area shape="rect" id="Node000013" href="$SystemManager_8cpp.html" title=" " alt="" coords="241,299,396,324"/>
+<area shape="poly" id="edge17_Node000012_Node000013" title=" " alt="" coords="316,264,320,298,315,299,311,265"/>
+<area shape="poly" id="edge19_Node000014_Node000012" title=" " alt="" coords="143,179,276,223,275,228,141,184"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="IComponentManager.h" name="IComponentManager.h">
+<area shape="rect" id="Node000001" title="System for managing components and their relationship to specific entities." alt="" coords="5,5,175,31"/>
+<area shape="rect" id="Node000002" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="35,79,145,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,44,93,79,87,79,87,44"/>
+</map>

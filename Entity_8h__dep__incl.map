@@ -1,0 +1,34 @@
+<map id="Entity.h" name="Entity.h">
+<area shape="rect" id="Node000001" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="417,5,488,31"/>
+<area shape="rect" id="Node000002" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="231,299,341,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="403,22,341,26,264,35,181,53,102,81,49,108,31,126,15,153,9,170,8,185,11,199,17,211,40,235,72,254,111,270,152,283,231,300,230,305,151,288,109,275,69,259,36,239,13,214,6,200,3,185,4,168,10,151,27,122,46,104,100,76,180,48,263,30,340,21,403,17"/>
+<area shape="rect" id="Node000003" href="$IComponentArray_8h.html" title="A data structure built for managing a specific component type." alt="" coords="113,79,259,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,35,230,81,228,76,403,30"/>
+<area shape="rect" id="Node000005" href="$IComponentManager_8h.html" title="System for managing components and their relationship to specific entities." alt="" coords="140,225,309,251"/>
+<area shape="poly" id="edge7_Node000001_Node000005" title=" " alt="" coords="405,36,363,54,324,81,290,118,264,159,231,226,227,224,259,156,286,114,320,77,361,50,403,31"/>
+<area shape="rect" id="Node000006" href="$IEntityManager_8h.html" title="Interface for managing entities and their signatures." alt="" coords="335,79,467,104"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="438,43,411,80,407,77,434,40"/>
+<area shape="rect" id="Node000009" href="$IGameWorld_8h.html" title="Declares the interface for interacting with the active game world state." alt="" coords="537,152,651,177"/>
+<area shape="poly" id="edge12_Node000001_Node000009" title=" " alt="" coords="474,40,532,102,583,150,579,154,528,106,470,43"/>
+<area shape="rect" id="Node000010" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="543,79,629,104"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="487,35,565,76,563,81,485,39"/>
+<area shape="rect" id="Node000011" href="$SystemManager_8h.html" title="Defines the concrete implementation of ISystemManager.h." alt="" coords="675,152,814,177"/>
+<area shape="poly" id="edge19_Node000001_Node000011" title=" " alt="" coords="502,27,571,46,643,76,697,114,736,150,732,154,694,118,641,81,569,51,501,32"/>
+<area shape="rect" id="Node000013" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="705,79,848,104"/>
+<area shape="poly" id="edge17_Node000001_Node000013" title=" " alt="" coords="502,27,725,76,724,81,501,33"/>
+<area shape="rect" id="Node000004" href="$DenseComponentArray_8h.html" title="Provides dense storage for components of a specific type." alt="" coords="25,152,208,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="167,116,130,154,126,150,163,112"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="204,114,222,151,228,191,228,225,223,225,223,192,217,153,200,117"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="147,183,208,223,206,227,144,187"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="246,260,278,297,274,300,242,263"/>
+<area shape="poly" id="edge11_Node000006_Node000002" title=" " alt="" coords="392,118,323,252,295,300,291,297,318,249,387,115"/>
+<area shape="rect" id="Node000007" href="$EntityManager_8h.html" title="Concrete implementation of IEntityManager (includes option for reuse)" alt="" coords="385,152,513,177"/>
+<area shape="poly" id="edge9_Node000006_Node000007" title=" " alt="" coords="418,114,443,150,439,153,414,117"/>
+<area shape="rect" id="Node000008" href="$EntityManager_8cpp.html" title=" " alt="" coords="385,225,528,251"/>
+<area shape="poly" id="edge10_Node000007_Node000008" title=" " alt="" coords="454,191,458,225,453,226,449,191"/>
+<area shape="poly" id="edge13_Node000009_Node000002" title=" " alt="" coords="587,192,569,224,541,253,492,279,440,296,388,307,342,311,341,306,387,301,438,291,490,274,538,249,564,221,582,189"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="625,107,720,149,718,154,623,112"/>
+<area shape="rect" id="Node000012" href="$SystemManager_8cpp.html" title=" " alt="" coords="667,225,822,251"/>
+<area shape="poly" id="edge16_Node000011_Node000012" title=" " alt="" coords="747,191,747,225,742,225,742,191"/>
+<area shape="poly" id="edge18_Node000013_Node000011" title=" " alt="" coords="768,118,752,153,747,151,763,116"/>
+</map>
