@@ -3,6 +3,14 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file ecs_config.h
+ * @ingroup ECS
+ * @brief Configuration constants and type definitions for ECS modules.
+ *
+ * Contains core settings, typedefs, and flags for ECS behavior.
+ */
+
 #ifndef ECS_CONFIG_H
 #define ECS_CONFIG_H
 

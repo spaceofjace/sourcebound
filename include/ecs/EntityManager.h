@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file EntityManager.h
+ * @ingroup ECS
+ * @brief Concrete implementation of IEntityManager (includes option for reuse)
+ */
+
 #ifndef ENTITYMANAGER_H
 #define ENTITYMANAGER_H
 #include "IEntityManager.h"
@@ -11,6 +17,15 @@
 #include <unordered_set>
 
 namespace sb::ecs {
+
+/**
+ * @class EntityManager
+ * @ingroup ECS
+ * @brief Concrete manager of entity lifetime and ensures uniqueness of alive entities.
+ *
+ * A concrete implementation of IEntityManager that uses versioning to support potential entity
+ * reuse (with a specific pool size), if desired.
+ */
 
 class EntityManager final : public IEntityManager {
 public:

@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file SystemManager.h
+ * @ingroup ECS
+ * @brief Defines the concrete implementation of ISystemManager.h
+ */
+
 #ifndef SYSTEMMANAGER_H
 #define SYSTEMMANAGER_H
 
@@ -18,6 +24,11 @@
 #include "ecs_config.h"
 
 namespace sb::ecs {
+/**
+ * @class SystemManager
+ * @ingroup ECS
+ * @brief Manages the lifecycle and controls execution order of ECS systems.
+ */
 
 class SystemManager final : public ISystemManager {
 public:

@@ -1,5 +1,26 @@
 # Project Sourcebound Dev Journal
 ---
+## Jun 4, 2025 - 2.5 hours
+
+(note: this includes some time spent on May 29, 2025)
+### Objective(s)
+
+1. Prepare repo for public viewing
+2. Add README
+3. Add Doxygen workflows as Github actions
+### Details
+#### Key Accomplishments
+
+* Still much to do in terms of code documentation, but at least the first steps are there, and all the high-level file documentation is in place.
+#### Challenges / Notes
+
+* Will take some time to go back and document all the functions and members of the code.
+* I probably should have formalized all this as tasks in the project, but wanted to get it all in place in case any prospective employers looked at my codebase.
+#### Next Steps
+
+* Pausing on code documentation for now, but will eventually go back and add more detail in passes.
+
+---
 ## May 9, 2025 - 2 hours
 
 ### Objective(s)
@@ -20,6 +41,7 @@
 #### Next Steps
 
 * Begin implementation of input mapping systems.
+
 ---
 ## May 8, 2025 - 3 hours
 

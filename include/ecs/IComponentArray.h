@@ -3,6 +3,12 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file IComponentArray.h
+ * @ingroup ECS
+ * @brief A data structure built for managing a specific component type
+ */
+
 #ifndef ICOMPONENTARRAY_H
 #define ICOMPONENTARRAY_H
 #include "Entity.h"

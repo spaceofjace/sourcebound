@@ -3,6 +3,20 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @defgroup ECS Entity-Component-System
+ * @brief Core module defining entities, components, and systems.
+ *
+ * This group contains all classes and interfaces related to the Entity-Component-System architecture,
+ * including entity management, component storage, and system processing.
+ */
+
+/**
+ * @file IEntityManager.h
+ * @ingroup ECS
+ * @brief Interface for managing entities and their signatures
+ */
+
 #ifndef IENTITYMANAGER_H
 #define IENTITYMANAGER_H
 
@@ -12,6 +26,14 @@
 #include "ecs_config.h"
 
 namespace sb::ecs {
+
+/**
+ * @interface IEntityManager
+ * @ingroup ECS
+ * @brief Abstract interface for entity lifecycle operations.
+ *
+ * Allows creation, destruction, and querying of entities, as well as entity signature management.
+ */
 
 class IEntityManager {
 public:

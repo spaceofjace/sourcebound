@@ -3,6 +3,14 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+/**
+ * @file ConsoleSink.h
+ * @ingroup Logging
+ * @brief Concrete implementation of ISink that logs to the console.
+ *
+ * Sends log messages to either `std::clog` or `std::cerr` based on severity.
+ */
+
 #ifndef CONSOLESINK_H
 #define CONSOLESINK_H
 
@@ -13,6 +21,14 @@
 
 namespace sb::log {
 
+/**
+ * @class ConsoleSink
+ * @ingroup Logging
+ * @brief Outputs log messages to the standard output streams.
+ *
+ * `Info` and `Debug` messages are sent to `std::clog`, while `Warning` and `Error`
+ * messages go to `std::cerr`. Formats messages with a log level prefix.
+ */
 class ConsoleSink final : public ISink {
 public:
   ConsoleSink() = default;
