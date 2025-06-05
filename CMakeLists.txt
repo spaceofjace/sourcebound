@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 3.30)
 project(sourcebound)
 
+set(SDL3_DIR "${CMAKE_SOURCE_DIR}/external/SDL3/install/cmake/")
+find_package(SDL3 REQUIRED CONFIG)
+
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(external/googletest)
@@ -50,6 +53,20 @@ add_executable(unit_tests
         tests/mocks/MockEntityManager.h
         tests/mocks/MockSystem.h
         tests/game_world_tests.cpp
+)
+
+target_include_directories(sourcebound PUBLIC
+        "${CMAKE_SOURCE_DIR}/external/SDL3/install/include/SDL3"
+)
+
+target_link_libraries(sourcebound PUBLIC
+        SDL3::SDL3-shared
+)
+
+add_custom_command(TARGET sourcebound POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${CMAKE_SOURCE_DIR}/external/SDL3/install/bin/SDL3.dll"
+        $<TARGET_FILE_DIR:sourcebound>
 )
 
 target_link_libraries(unit_tests
