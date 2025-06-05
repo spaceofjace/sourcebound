@@ -1,5 +1,25 @@
 # Project Sourcebound Dev Journal
 ---
+## Jun 5, 2025 – 3.5 hours
+
+### Objective(s)
+
+1. Integrate SDL3 into Sourcebound as a linked runtime dependency
+2. Establish normalized `InputCode` abstraction for keyboard, mouse, and gamepad inputs
+### Details
+
+#### Key Accomplishments
+
+* Successfully configured and installed SDL3 as a local external dependency with working CMake linkage.
+* Implemented `InputCode` struct using `std::variant` in preparation and support of multiple input sources (and configuration of key bindings)
+#### Challenges / Notes
+
+* Embedding SDL3 the way I did was _painful_ and required multiple attempts to get everything linking and usable in code.
+#### Next Steps
+
+- Consume input code in KeyboardInputHandler (which will require IKeyProvider or similar to allow proper unit testing)
+
+---
 ## Jun 4, 2025 - 2.5 hours
 
 (note: this includes some time spent on May 29, 2025)
