@@ -4,6 +4,8 @@ project(sourcebound)
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/external/SDL3/install/cmake/")
 find_package(SDL3 REQUIRED CONFIG)
 
+include_directories("${CMAKE_SOURCE_DIR}/external/SDL3/install/include")
+
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(external/googletest)
@@ -29,6 +31,7 @@ add_executable(sourcebound src/main.cpp
         include/gamestate/IGameWorld.h
         include/gamestate/GameWorld.h
         tests/mocks/MockSystemManager.h
+        include/input/InputCode.h
 )
 
 add_executable(unit_tests
@@ -53,10 +56,12 @@ add_executable(unit_tests
         tests/mocks/MockEntityManager.h
         tests/mocks/MockSystem.h
         tests/game_world_tests.cpp
+        include/input/InputCode.h
+        tests/input_code_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC
-        "${CMAKE_SOURCE_DIR}/external/SDL3/install/include/SDL3"
+        "${CMAKE_SOURCE_DIR}/external/SDL3/install/include"
 )
 
 target_link_libraries(sourcebound PUBLIC
@@ -69,7 +74,12 @@ add_custom_command(TARGET sourcebound POST_BUILD
         $<TARGET_FILE_DIR:sourcebound>
 )
 
+target_include_directories(unit_tests PUBLIC
+        "${CMAKE_SOURCE_DIR}/external/SDL3/install/include"
+)
+
 target_link_libraries(unit_tests
+        SDL3::SDL3-shared
         gtest
         gtest_main
 )
