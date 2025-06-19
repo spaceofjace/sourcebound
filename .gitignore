@@ -75,3 +75,8 @@
 
 # Ignore doxygen build artifacts
 docs/doxygen/
+
+# External Build artifacts (for SDL3)
+!external/SDL3/install/bin/SDL3.dll
+!external/SDL3/install/lib/SDL3.lib
+!external/SDL3/install/bin/SDL3.pdb
