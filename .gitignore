@@ -77,4 +77,4 @@
 docs/doxygen/
 
 # External Build artifacts (for SDL3)
-!external/SDL3/
+!external/SDL3/**
