@@ -1,4 +1,4 @@
-## Date - Rough Time Spent
+## {{date:YYYY-MM-DD}} - Rough Time Spent
 
 ### Objective(s)
 
