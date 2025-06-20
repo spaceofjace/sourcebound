@@ -1,5 +1,29 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-06-20 - 10 hours 
+
+Includes time from 2025-06-19
+### Objective(s)
+
+1. Implement bindings support.
+2. Implement an input normalizer to translate into commands
+3. Implement a command queue and commands
+4. Implement basic keyboard polling
+### Details
+#### Key Accomplishments
+
+* I mean I did all of the goals listed, including writing all the doxygen docs and tests (though maybe I missed something somewhere)
+#### Challenges / Notes
+
+* I think I jumped in too fast and implemented things in the wrong order; this ended up making it a massive changelist, which is not my preferred way to work.
+* I walked back my decision to use intents -> commands because this does add too much indirection without much benefit at this stage.  It's probably a change I will eventually look into doing at some future stage, just to better understand how to properly support scripting, playback, AI...but I need to get to a working renderer and gameplay loop.  (This can be a future optimization.)
+#### Next Steps
+
+* Need to wire up input handling in the GameWorld.
+* Maybe see if theres a way to run it all through a console and validate keyboard inputs are triggering commands.
+* Need to update architecture and decisions docs to reflect reversal of decision.
+
+---
 ## Jun 5, 2025 – 3.5 hours
 
 ### Objective(s)
