@@ -38,8 +38,9 @@ public:
   Entity create_entity() override;
   bool destroy_entity(Entity entity) override;
   [[nodiscard]] bool is_alive(Entity entity) const override;
-  [[nodiscard]] const std::unordered_set<Entity> &
-    get_all_entities() const override;
+  [[nodiscard]] const std::unordered_set<Entity> & get_all_entities() const override;
+  [[nodiscard]] std::vector<Entity> get_entities_with_signature(
+    const Signature& target_signature) const override;
   void set_signature(EntityId entityId, Signature signature) override;
   [[nodiscard]] Signature get_signature(EntityId entityId) const override;
   [[nodiscard]] bool try_get_signature(EntityId entityId, Signature& signature) const override;

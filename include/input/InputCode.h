@@ -135,7 +135,7 @@ struct InputCode {
     }, data);
   }
 
-  static InputCode InputCode::from_string(const std::string& str) {
+  static InputCode from_string(const std::string& str) {
     const auto separator = str.find(':');
     if (separator == std::string::npos) {
       throw std::invalid_argument("Malformed InputCode string: " + str);
@@ -183,6 +183,18 @@ struct InputCode {
     return !(*this == other);
   }
 };
-
 } // namespace sb::input
+
+template <>
+struct std::hash<sb::input::InputCode> {
+  std::size_t operator()(const sb::input::InputCode& code) const noexcept {
+    const auto code_hash = std::hash<std::string>{}(code.to_string());
+    const std::size_t kind_hash = std::hash<sb::input::InputKind>{}(code.kind);
+    const std::size_t device_type_hash = std::hash<sb::input::DeviceType>{}(code.device);
+    const std::size_t data_hash = std::hash<sb::input::InputData>{}(code.data);
+
+    // combine hashes using XOR and bit shift similar to boost's hash_combine
+    return code_hash ^ (kind_hash << 2) ^ (device_type_hash >> 2) ^ (data_hash << 4);
+  }
+};
 #endif //INPUTCODE_H

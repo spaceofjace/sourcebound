@@ -32,6 +32,26 @@ add_executable(sourcebound src/main.cpp
         include/gamestate/GameWorld.h
         tests/mocks/MockSystemManager.h
         include/input/InputCode.h
+        include/input/IInputHandler.h
+        src/input/KeyboardHandler.cpp
+        include/input/KeyboardHandler.h
+        include/input/IBindingMap.h
+        include/input/IInputNormalizer.h
+        include/input/InputNormalizer.h
+        include/input/InputAction.h
+        include/gamestate/ICommand.h
+        include/input/HardcodedBindingMap.h
+        src/input/HardCodedBindingMap.cpp
+        src/input/InputNormalizer.cpp
+        include/gamestate/PlayerMoveCommand.h
+        tests/mocks/MockCommandQueue.h
+        include/gamestate/ICommandQueue.h
+        src/gamestate/PlayerMoveCommand.cpp
+        src/input/CommandQueue.cpp
+        include/gamestate/CommandQueue.h
+        include/input/IEventSource.h
+        include/input/SDLEventSource.h
+        include/input/BaseInputHandler.h
 )
 
 add_executable(unit_tests
@@ -58,6 +78,34 @@ add_executable(unit_tests
         tests/game_world_tests.cpp
         include/input/InputCode.h
         tests/input_code_tests.cpp
+        include/input/IInputHandler.h
+        src/input/KeyboardHandler.cpp
+        include/input/KeyboardHandler.h
+        include/input/IBindingMap.h
+        include/input/IInputNormalizer.h
+        include/input/InputNormalizer.h
+        include/input/InputAction.h
+        include/gamestate/ICommand.h
+        include/input/HardcodedBindingMap.h
+        src/input/HardCodedBindingMap.cpp
+        src/input/InputNormalizer.cpp
+        include/gamestate/PlayerMoveCommand.h
+        tests/mocks/MockCommandQueue.h
+        include/gamestate/ICommandQueue.h
+        src/gamestate/PlayerMoveCommand.cpp
+        src/input/CommandQueue.cpp
+        include/gamestate/CommandQueue.h
+        include/input/IEventSource.h
+        tests/keyboard_handler_tests.cpp
+        tests/mocks/MockInputNormalizer.h
+        tests/mocks/MockEventSource.h
+        include/input/BaseInputHandler.h
+        tests/player_move_command_tests.cpp
+        tests/mocks/MockBindingMap.h
+        tests/input_normalizer_tests.cpp
+        tests/mocks/SimpleMockCommand.h
+        tests/command_queue_tests.cpp
+        tests/hardcoded_bindings_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC
@@ -81,6 +129,7 @@ target_include_directories(unit_tests PUBLIC
 target_link_libraries(unit_tests
         SDL3::SDL3-shared
         gtest
+        gmock
         gtest_main
 )
 

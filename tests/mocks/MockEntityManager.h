@@ -59,5 +59,17 @@ struct MockEntityManager : IEntityManager {
   [[nodiscard]] bool try_get_signature(EntityId entityId, Signature& signature) const override {
     return false;
   }
+
+  [[nodiscard]] std::vector<Entity> get_entities_with_signature(
+    const Signature& target_signature) const override {
+    std::vector<Entity> result;
+    for (const Entity& entity : entities) {
+      auto iterator = signatures.find(entity.id);
+      if (iterator != signatures.end() && (iterator->second & target_signature) == target_signature) {
+        result.push_back(entity);
+      }
+    }
+    return result;
+  }
 };
 #endif //MOCKENTITYMANAGER_H

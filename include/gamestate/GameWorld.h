@@ -5,7 +5,7 @@
 
 /**
  * @file GameWorld.h
- * @ingroup ECS
+ * @ingroup gamestate
  * @brief Defines the concrete game world used by the main loop.
  */
 
@@ -14,26 +14,33 @@
 #include <memory>
 
 #include "../ecs/Entity.h"
+#include "IGameWorld.h"
+#include "../ecs/ecs_config.h"
+
+//These includes are needed for the templated methods
 #include "../ecs/IEntityManager.h"
 #include "../ecs/IComponentManager.h"
-#include "IGameWorld.h"
 
-namespace sb::ecs {
-
+namespace sb::gamestate {
+using ecs::Entity;
+using ecs::Signature;
 /**
  * @class GameWorld
- * @ingroup ECS
+ * @ingroup gamestate
  * @brief Encapsulates the game state and manages ECS coordination, system updates, and entity access.
  */
-template <typename EntityMgr, typename ComponentMgr, typename SystemMgr>
+template <typename EntityMgr, typename ComponentMgr, typename SystemMgr, typename CmdQueue>
 class GameWorld final : public IGameWorld {
  public:
   GameWorld(std::shared_ptr<EntityMgr> entity_manager,
             std::shared_ptr<ComponentMgr> component_manager,
-            std::shared_ptr<SystemMgr> system_manager)
+            std::shared_ptr<SystemMgr> system_manager,
+            std::shared_ptr<CmdQueue> cmd_queue)
       : entity_manager_(std::move(entity_manager)),
         component_manager_(std::move(component_manager)),
-        system_manager_(std::move(system_manager)) {}
+        system_manager_(std::move(system_manager)),
+        cmd_queue_(std::move(cmd_queue))
+  {}
 
   Entity create_entity() override {
     return entity_manager_->create_entity();
@@ -56,6 +63,11 @@ class GameWorld final : public IGameWorld {
     return entity_manager_->is_alive(entity);
   }
 
+  [[nodiscard]] std::vector<Entity> get_entities_with_signature(
+      const Signature& target_signature) const override {
+    return entity_manager_->get_entities_with_signature(target_signature);
+  }
+
   template <typename T>
   void add_component(Entity entity, const T& component) {
     component_manager_->template add_component<T>(entity, component);
@@ -73,6 +85,11 @@ class GameWorld final : public IGameWorld {
   }
 
   template <typename T>
+  std::size_t get_component_type() {
+    return component_manager_->template get_component_type<T>();
+  }
+
+  template <typename T>
   T& get_component(Entity entity) {
     return component_manager_->template get_component<T>(entity);
   }
@@ -86,6 +103,7 @@ class GameWorld final : public IGameWorld {
   std::shared_ptr<EntityMgr> entity_manager_;
   std::shared_ptr<ComponentMgr> component_manager_;
   std::shared_ptr<SystemMgr> system_manager_;
+  std::shared_ptr<CmdQueue> cmd_queue_;
 };
 
 }  // namespace sb::ecs
