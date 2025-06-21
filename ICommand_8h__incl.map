@@ -1,0 +1,20 @@
+<map id="ICommand.h" name="ICommand.h">
+<area shape="rect" id="Node000001" title="An abstract representation of an action to be executed in the game engine." alt="" coords="79,5,185,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="31,79,89,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,33,83,71,80,67,118,29"/>
+<area shape="rect" id="Node000003" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="113,79,295,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,29,184,67,181,71,142,33"/>
+<area shape="rect" id="Node000004" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="127,152,198,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="199,106,179,141,174,139,195,103"/>
+<area shape="rect" id="Node000007" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="207,225,310,251"/>
+<area shape="poly" id="edge9_Node000003_Node000007" title=" " alt="" coords="211,104,252,212,247,213,206,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,225,72,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="144,180,72,221,69,216,141,175"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="97,225,183,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="161,178,150,213,145,211,156,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="180,175,233,215,230,219,177,180"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="185,299,244,324"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="254,252,231,288,227,286,249,250"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="269,299,339,324"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="268,250,292,286,287,289,264,252"/>
+</map>

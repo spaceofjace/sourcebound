@@ -1,0 +1,7 @@
+<map id="sb::gamestate::GameWorld" name="sb::gamestate::GameWorld">
+<area shape="rect" id="Node000001" title="Encapsulates the game state and manages ECS coordination, system updates, and entity access." alt="" coords="119,93,318,119"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1gamestate_1_1IGameWorld.html" title="Abstract representation of a game world." alt="" coords="5,13,208,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,44,204,91,201,95,133,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="232,5,429,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="294,55,237,95,234,91,291,51"/>
+</map>

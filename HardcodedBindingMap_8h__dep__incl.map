@@ -1,0 +1,7 @@
+<map id="HardcodedBindingMap.h" name="HardcodedBindingMap.h">
+<area shape="rect" id="Node000001" title="A preconfigured set of hardcoded bindings until serialization is available." alt="" coords="95,5,277,31"/>
+<area shape="rect" id="Node000002" href="$HardCodedBindingMap_8cpp.html" title=" " alt="" coords="5,79,204,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,42,120,80,116,76,161,38"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title=" " alt="" coords="227,79,310,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,38,257,76,253,80,208,42"/>
+</map>

@@ -1,0 +1,8 @@
+<map id="sb::ecs::ComponentManager::entity_destroyed" name="sb::ecs::ComponentManager::entity_destroyed">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,212,69"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1ComponentManager.html#a6093a6371f115a5d40b5e84a4cdc5616" title=" " alt="" coords="260,29,467,69"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="212,47,246,47,246,52,212,52"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="320,30,318,20,325,10,340,5,363,3,390,6,405,13,402,18,389,11,363,8,341,10,328,15,323,21,326,28"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1log_1_1Logger.html#aece2091991667b9ec7ed33de30e8b53b" title=" " alt="" coords="515,37,672,62"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="467,47,501,47,501,52,467,52"/>
+</map>

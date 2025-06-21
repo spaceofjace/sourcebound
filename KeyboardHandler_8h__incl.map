@@ -1,0 +1,29 @@
+<map id="KeyboardHandler.h" name="KeyboardHandler.h">
+<area shape="rect" id="Node000001" title="Concrete implementation of the InputHandler interface for polling keyboard inputs." alt="" coords="311,5,456,31"/>
+<area shape="rect" id="Node000002" href="$BaseInputHandler_8h.html" title=" " alt="" coords="309,79,458,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="386,31,386,65,381,65,381,31"/>
+<area shape="rect" id="Node000003" href="$IInputHandler_8h.html" title="An abstraction representing some source of player inputs (keyboard, mouse, controller,..." alt="" coords="323,152,444,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="386,104,386,138,381,138,381,104"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="222,225,299,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="365,180,294,221,291,216,362,175"/>
+<area shape="rect" id="Node000005" href="$IEventSource_8h.html" title=" " alt="" coords="324,225,443,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="386,178,386,212,381,212,381,178"/>
+<area shape="rect" id="Node000007" href="$IInputNormalizer_8h.html" title="An abstraction for translating raw inputs through bindings and into commands." alt="" coords="467,225,609,251"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="409,175,501,217,499,222,407,180"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="310,299,457,324"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="386,251,386,285,381,285,381,251"/>
+<area shape="rect" id="Node000008" href="$InputCode_8h.html" title="Defines a unified abstraction for all input bindings." alt="" coords="488,299,588,324"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="541,251,541,285,535,285,535,251"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="5,372,169,397"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="488,324,469,327,175,373,175,367,468,321,487,318"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="194,372,357,397"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="496,327,332,371,330,366,495,321"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="381,372,545,397"/>
+<area shape="poly" id="edge10_Node000008_Node000011" title=" " alt="" coords="528,326,487,364,484,361,524,322"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="569,372,656,397"/>
+<area shape="poly" id="edge11_Node000008_Node000012" title=" " alt="" coords="552,322,592,361,589,364,548,326"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="681,372,739,397"/>
+<area shape="poly" id="edge12_Node000008_Node000013" title=" " alt="" coords="567,322,670,364,668,369,565,326"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="764,372,832,397"/>
+<area shape="poly" id="edge13_Node000008_Node000014" title=" " alt="" coords="580,321,751,368,750,373,579,327"/>
+</map>

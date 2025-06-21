@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsb_1_1ecs_1_1IEntityManager.html" title="Abstract interface for entity lifecycle operations." alt="" coords="5,5,180,31"/>
+<area shape="rect" id="Node000001" href="$classsb_1_1ecs_1_1EntityManager.html" title="Concrete manager of entity lifetime and ensures uniqueness of alive entities." alt="" coords="228,5,399,31"/>
+<area shape="poly" id="edge3_Node000000_Node000001" title=" " alt="" coords="194,15,228,15,228,21,194,21"/>
+</map>

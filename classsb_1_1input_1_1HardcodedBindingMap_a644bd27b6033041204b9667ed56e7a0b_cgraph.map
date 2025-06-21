@@ -1,0 +1,5 @@
+<map id="sb::input::HardcodedBindingMap::load_bindings" name="sb::input::HardcodedBindingMap::load_bindings">
+<area shape="rect" id="Node000001" title="Loads input bindings from persistent storage." alt="" coords="5,5,211,45"/>
+<area shape="rect" id="Node000002" href="$structsb_1_1input_1_1InputCode.html#a8a917b1135e32e7d1c243dbb998a831e" title=" " alt="" coords="259,5,411,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="211,23,245,23,245,28,211,28"/>
+</map>

@@ -1,0 +1,25 @@
+<map id="ConsoleSink.h" name="ConsoleSink.h">
+<area shape="rect" id="Node000001" title="Concrete implementation of ISink that logs to the console." alt="" coords="277,5,391,31"/>
+<area shape="rect" id="Node000002" href="$EntityManager_8cpp.html" title=" " alt="" coords="5,79,148,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="280,37,119,81,118,76,279,32"/>
+<area shape="rect" id="Node000003" href="$IComponentManager_8h.html" title="System for managing components and their relationship to specific entities." alt="" coords="172,79,341,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="313,42,271,80,268,76,310,38"/>
+<area shape="rect" id="Node000009" href="$Logger_8cpp.html" title=" " alt="" coords="365,79,457,104"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="358,38,400,76,397,80,355,42"/>
+<area shape="rect" id="Node000010" href="$SystemManager_8h.html" title="Defines the concrete implementation of ISystemManager.h." alt="" coords="482,79,621,104"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="383,32,517,76,515,81,381,37"/>
+<area shape="rect" id="Node000004" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="201,152,312,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="259,118,259,152,254,152,254,118"/>
+<area shape="rect" id="Node000008" href="$main_8cpp.html" title=" " alt="" coords="365,225,447,251"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="282,111,325,150,397,223,393,227,321,154,279,115"/>
+<area shape="rect" id="Node000005" href="$PlayerMoveCommand_8h.html" title="A command for triggering player (paddle) movement." alt="" coords="162,225,341,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="257,191,255,225,250,225,252,191"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="294,181,383,223,380,228,292,186"/>
+<area shape="rect" id="Node000006" href="$InputNormalizer_8cpp.html" title=" " alt="" coords="76,299,229,324"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="226,261,170,301,167,296,223,256"/>
+<area shape="rect" id="Node000007" href="$PlayerMoveCommand_8cpp.html" title=" " alt="" coords="253,299,447,324"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="280,256,335,296,332,301,276,261"/>
+<area shape="poly" id="edge12_Node000010_Node000008" title=" " alt="" coords="519,113,491,131,464,154,434,192,414,227,409,224,429,189,460,150,488,127,516,109"/>
+<area shape="rect" id="Node000011" href="$SystemManager_8cpp.html" title=" " alt="" coords="474,152,629,177"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="554,118,554,152,549,152,549,118"/>
+</map>

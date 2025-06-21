@@ -1,0 +1,18 @@
+<map id="IEntityManager.h" name="IEntityManager.h">
+<area shape="rect" id="Node000001" title="Interface for managing entities and their signatures." alt="" coords="114,5,246,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,120,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,33,95,74,92,69,160,28"/>
+<area shape="rect" id="Node000003" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="145,79,215,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,31,183,65,177,65,177,31"/>
+<area shape="rect" id="Node000006" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="235,152,338,177"/>
+<area shape="poly" id="edge8_Node000001_Node000006" title=" " alt="" coords="192,29,229,77,273,139,269,142,225,80,187,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="33,152,100,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="163,106,98,147,95,142,160,102"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="125,152,211,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="181,105,175,139,170,138,175,104"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="199,102,259,142,256,147,196,106"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="213,225,272,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="282,179,259,215,255,212,277,176"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="297,225,367,251"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="296,176,320,212,315,215,292,179"/>
+</map>

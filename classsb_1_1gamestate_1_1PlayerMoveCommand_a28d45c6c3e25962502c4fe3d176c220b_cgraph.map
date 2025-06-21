@@ -1,0 +1,5 @@
+<map id="sb::gamestate::PlayerMoveCommand::apply" name="sb::gamestate::PlayerMoveCommand::apply">
+<area shape="rect" id="Node000001" title="Executes this intent against the game world." alt="" coords="5,5,205,45"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1log_1_1Logger.html#a189c87ac0f86aea34e952e4c0f82eefc" title=" " alt="" coords="253,13,404,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="205,23,240,23,240,28,205,28"/>
+</map>

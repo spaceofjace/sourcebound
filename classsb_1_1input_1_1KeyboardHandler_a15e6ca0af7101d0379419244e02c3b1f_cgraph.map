@@ -1,0 +1,11 @@
+<map id="sb::input::KeyboardHandler::poll_inputs" name="sb::input::KeyboardHandler::poll_inputs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,101,204,141"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1BaseInputHandler.html#a497ff52e3ef170e39b8f8170658cd807" title=" " alt="" coords="252,5,455,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="148,99,251,55,272,47,274,52,253,60,150,104"/>
+<area shape="rect" id="Node000003" href="$structsb_1_1input_1_1InputCode.html#a8a917b1135e32e7d1c243dbb998a831e" title=" " alt="" coords="277,69,429,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="204,106,263,98,264,104,205,111"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1input_1_1IInputNormalizer.html#a0e5e44c3a126874a299692279d3fd7a9" title=" " alt="" coords="256,133,451,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="205,131,243,136,242,142,204,137"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1input_1_1BaseInputHandler.html#ab635c1d63d2f28b1e48b8c558bff0e36" title=" " alt="" coords="252,197,455,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="150,139,253,183,274,190,272,195,251,188,148,144"/>
+</map>

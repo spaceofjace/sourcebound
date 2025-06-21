@@ -1,0 +1,26 @@
+<map id="CommandQueue.h" name="CommandQueue.h">
+<area shape="rect" id="Node000001" title="Concrete implementation of ICommandQueue." alt="" coords="30,5,173,31"/>
+<area shape="rect" id="Node000002" href="$ICommandQueue_8h.html" title="A lightweight wrapper for queuing commands." alt="" coords="28,79,175,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,31,104,65,99,65,99,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,152,83,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="94,106,64,143,60,139,90,103"/>
+<area shape="rect" id="Node000004" href="$ICommand_8h.html" title="An abstract representation of an action to be executed in the game engine." alt="" coords="107,152,213,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="113,103,144,140,140,143,109,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="59,225,117,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="150,180,111,218,108,214,146,176"/>
+<area shape="rect" id="Node000006" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="141,225,323,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="174,176,212,214,209,218,170,180"/>
+<area shape="rect" id="Node000007" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="155,299,226,324"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="227,252,207,288,202,285,223,250"/>
+<area shape="rect" id="Node000010" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="235,372,338,397"/>
+<area shape="poly" id="edge12_Node000006_Node000010" title=" " alt="" coords="239,250,280,358,275,360,234,252"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="33,372,100,397"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="172,326,100,367,97,363,169,322"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="125,372,211,397"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="189,325,178,360,173,358,184,324"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="208,322,261,361,258,366,205,326"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="213,445,272,471"/>
+<area shape="poly" id="edge10_Node000010_Node000011" title=" " alt="" coords="282,399,259,435,255,432,277,396"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="297,445,367,471"/>
+<area shape="poly" id="edge11_Node000010_Node000012" title=" " alt="" coords="296,396,320,432,315,435,292,399"/>
+</map>

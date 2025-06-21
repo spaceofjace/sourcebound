@@ -1,0 +1,19 @@
+<map id="IComponentArray.h" name="IComponentArray.h">
+<area shape="rect" id="Node000001" title="A data structure built for managing a specific component type." alt="" coords="215,5,362,31"/>
+<area shape="rect" id="Node000002" href="$DenseComponentArray_8h.html" title="Provides dense storage for components of a specific type." alt="" coords="133,79,316,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="271,43,237,80,233,77,267,39"/>
+<area shape="rect" id="Node000003" href="$IComponentManager_8h.html" title="System for managing components and their relationship to specific entities." alt="" coords="204,152,373,177"/>
+<area shape="poly" id="edge9_Node000001_Node000003" title=" " alt="" coords="311,40,328,70,332,87,330,105,317,132,301,153,297,150,313,129,325,103,326,87,323,72,306,43"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="246,113,280,150,276,154,242,116"/>
+<area shape="rect" id="Node000004" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="187,225,297,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="276,190,252,227,247,224,271,187"/>
+<area shape="rect" id="Node000008" href="$main_8cpp.html" title=" " alt="" coords="294,299,377,324"/>
+<area shape="poly" id="edge8_Node000003_Node000008" title=" " alt="" coords="299,189,311,225,334,298,329,299,306,226,294,191"/>
+<area shape="rect" id="Node000005" href="$PlayerMoveCommand_8h.html" title="A command for triggering player (paddle) movement." alt="" coords="91,299,270,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="225,263,193,300,189,297,221,260"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="269,257,322,296,318,301,266,261"/>
+<area shape="rect" id="Node000006" href="$InputNormalizer_8cpp.html" title=" " alt="" coords="5,372,159,397"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="156,334,100,374,97,370,152,330"/>
+<area shape="rect" id="Node000007" href="$PlayerMoveCommand_8cpp.html" title=" " alt="" coords="183,372,376,397"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="209,330,265,370,262,374,206,334"/>
+</map>

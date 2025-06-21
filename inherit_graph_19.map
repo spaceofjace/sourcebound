@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsb_1_1input_1_1IInputHandler.html" title="Interface for polling device input, translating them to input codes, and then passing them on to an i..." alt="" coords="5,5,180,31"/>
+<area shape="rect" id="Node000001" href="$classsb_1_1input_1_1BaseInputHandler.html" title=" " alt="" coords="228,5,431,31"/>
+<area shape="poly" id="edge9_Node000000_Node000001" title=" " alt="" coords="194,15,228,15,228,21,194,21"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1KeyboardHandler.html" title="polls inputs through the SDL library and passes those on to a normalizer for translation into game en..." alt="" coords="479,5,677,31"/>
+<area shape="poly" id="edge10_Node000001_Node000002" title=" " alt="" coords="444,15,478,15,478,21,444,21"/>
+</map>

@@ -1,0 +1,20 @@
+<map id="IBindingMap.h" name="IBindingMap.h">
+<area shape="rect" id="Node000001" title="Represents a source of loadable and saveable bindings." alt="" coords="148,5,263,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,152,64,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,33,61,145,57,141,190,29"/>
+<area shape="rect" id="Node000003" href="$InputAction_8h.html" title="Defines a list of bindable player actions." alt="" coords="151,79,259,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,31,208,65,203,65,203,31"/>
+<area shape="rect" id="Node000004" href="$InputCode_8h.html" title="Defines a unified abstraction for all input bindings." alt="" coords="309,79,409,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="231,28,322,70,320,75,229,33"/>
+<area shape="poly" id="edge8_Node000004_Node000002" title=" " alt="" coords="309,105,78,154,77,149,308,100"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="89,152,253,177"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="329,107,215,149,213,144,328,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="277,152,440,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="361,104,361,138,356,138,356,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="465,152,629,177"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="390,102,504,144,502,149,388,107"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="653,152,739,177"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="409,101,640,149,639,154,408,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="763,152,831,177"/>
+<area shape="poly" id="edge9_Node000004_Node000009" title=" " alt="" coords="410,96,559,116,750,149,749,154,558,122,409,101"/>
+</map>

@@ -1,0 +1,68 @@
+<map id="ecs_config.h" name="ecs_config.h">
+<area shape="rect" id="Node000001" title="Configuration constants and type definitions for ECS modules." alt="" coords="703,5,805,31"/>
+<area shape="rect" id="Node000002" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="653,79,724,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="736,43,701,80,697,77,732,39"/>
+<area shape="rect" id="Node000003" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="771,372,881,397"/>
+<area shape="poly" id="edge40_Node000001_Node000003" title=" " alt="" coords="820,24,882,37,950,60,984,77,1015,97,1043,122,1067,151,1072,165,1072,183,1058,227,1025,276,976,326,952,343,927,356,877,374,875,369,925,351,950,338,972,322,1021,273,1053,225,1067,183,1067,166,1062,153,1040,125,1012,101,981,81,948,65,880,42,818,29"/>
+<area shape="rect" id="Node000011" href="$IEntityManager_8h.html" title="Interface for managing entities and their signatures." alt="" coords="149,152,281,177"/>
+<area shape="poly" id="edge41_Node000001_Node000011" title=" " alt="" coords="699,37,259,154,257,149,697,32"/>
+<area shape="rect" id="Node000013" href="$EntityManager_8cpp.html" title=" " alt="" coords="5,299,148,324"/>
+<area shape="poly" id="edge39_Node000001_Node000013" title=" " alt="" coords="690,29,557,47,394,74,314,91,241,110,181,131,138,154,122,169,109,187,92,228,83,268,80,299,74,298,78,267,87,226,105,184,118,165,135,150,179,127,240,105,313,86,393,69,556,42,689,24"/>
+<area shape="rect" id="Node000016" href="$SystemManager_8h.html" title="Defines the concrete implementation of ISystemManager.h." alt="" coords="754,225,893,251"/>
+<area shape="poly" id="edge43_Node000001_Node000016" title=" " alt="" coords="764,43,822,224,817,226,759,45"/>
+<area shape="rect" id="Node000018" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="909,152,1052,177"/>
+<area shape="poly" id="edge42_Node000001_Node000018" title=" " alt="" coords="785,36,964,149,961,154,782,41"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="738,104,782,122,829,147,873,181,892,201,907,224,919,251,923,274,918,298,907,325,896,341,883,355,853,374,850,370,879,350,892,338,902,323,913,297,917,274,914,252,902,227,887,204,869,185,826,151,779,127,736,109"/>
+<area shape="rect" id="Node000008" href="$IComponentArray_8h.html" title="A data structure built for managing a specific component type." alt="" coords="423,152,570,177"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="646,111,529,154,527,149,644,106"/>
+<area shape="rect" id="Node000010" href="$IComponentManager_8h.html" title="System for managing components and their relationship to specific entities." alt="" coords="443,299,612,324"/>
+<area shape="poly" id="edge13_Node000002_Node000010" title=" " alt="" coords="640,95,564,100,521,108,478,120,436,136,399,159,369,189,347,226,344,242,347,255,355,266,367,276,402,291,443,300,442,305,400,296,364,280,351,270,342,257,339,242,342,224,364,186,396,155,434,132,476,115,520,103,564,95,639,89"/>
+<area shape="poly" id="edge14_Node000002_Node000011" title=" " alt="" coords="640,103,282,156,281,151,639,97"/>
+<area shape="rect" id="Node000014" href="$IGameWorld_8h.html" title="Declares the interface for interacting with the active game world state." alt="" coords="615,225,730,251"/>
+<area shape="poly" id="edge19_Node000002_Node000014" title=" " alt="" coords="665,115,648,132,637,153,634,172,640,191,663,223,658,226,635,193,629,173,631,151,644,129,661,111"/>
+<area shape="rect" id="Node000015" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="645,152,732,177"/>
+<area shape="poly" id="edge21_Node000002_Node000015" title=" " alt="" coords="691,118,691,152,686,152,686,118"/>
+<area shape="poly" id="edge38_Node000002_Node000016" title=" " alt="" coords="711,112,747,150,815,223,811,227,743,154,707,116"/>
+<area shape="poly" id="edge25_Node000002_Node000018" title=" " alt="" coords="738,102,934,149,933,154,737,107"/>
+<area shape="rect" id="Node000004" href="$PlayerMoveCommand_8h.html" title="A command for triggering player (paddle) movement." alt="" coords="738,445,917,471"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="829,411,830,445,824,445,824,411"/>
+<area shape="rect" id="Node000007" href="$main_8cpp.html" title=" " alt="" coords="621,445,703,471"/>
+<area shape="poly" id="edge6_Node000003_Node000007" title=" " alt="" coords="788,405,690,448,688,443,786,400"/>
+<area shape="rect" id="Node000005" href="$InputNormalizer_8cpp.html" title=" " alt="" coords="1005,519,1159,544"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="882,472,1041,516,1040,521,881,477"/>
+<area shape="rect" id="Node000006" href="$PlayerMoveCommand_8cpp.html" title=" " alt="" coords="731,519,924,544"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="830,484,830,519,825,519,825,484"/>
+<area shape="rect" id="Node000009" href="$DenseComponentArray_8h.html" title="Provides dense storage for components of a specific type." alt="" coords="357,225,540,251"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="483,190,459,227,454,224,479,187"/>
+<area shape="poly" id="edge12_Node000008_Node000010" title=" " alt="" coords="525,185,541,203,554,224,557,245,554,266,538,299,533,297,548,264,552,245,549,226,537,206,521,188"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="473,258,516,296,513,300,470,262"/>
+<area shape="poly" id="edge10_Node000010_Node000003" title=" " alt="" coords="589,325,778,369,777,374,588,330"/>
+<area shape="poly" id="edge11_Node000010_Node000007" title=" " alt="" coords="549,332,653,443,649,447,546,336"/>
+<area shape="poly" id="edge18_Node000011_Node000003" title=" " alt="" coords="238,185,318,254,373,291,431,322,521,350,614,368,701,377,771,381,771,386,700,383,613,373,520,356,429,326,370,296,315,258,235,189"/>
+<area shape="rect" id="Node000012" href="$EntityManager_8h.html" title="Concrete implementation of IEntityManager (includes option for reuse)" alt="" coords="103,225,231,251"/>
+<area shape="poly" id="edge15_Node000011_Node000012" title=" " alt="" coords="202,190,177,227,173,224,198,187"/>
+<area shape="poly" id="edge17_Node000012_Node000007" title=" " alt="" coords="186,260,215,292,251,322,299,348,350,371,453,408,548,433,621,448,620,453,547,438,451,413,348,376,297,353,249,326,211,296,182,263"/>
+<area shape="poly" id="edge16_Node000012_Node000013" title=" " alt="" coords="143,261,93,301,90,296,140,257"/>
+<area shape="poly" id="edge20_Node000014_Node000003" title=" " alt="" coords="686,262,704,292,728,322,764,350,801,370,798,374,761,354,724,326,699,295,682,265"/>
+<area shape="poly" id="edge22_Node000015_Node000016" title=" " alt="" coords="724,181,803,223,800,227,721,186"/>
+<area shape="poly" id="edge24_Node000016_Node000007" title=" " alt="" coords="784,259,754,277,728,300,703,338,685,379,667,446,662,444,680,378,698,336,724,297,751,273,781,254"/>
+<area shape="rect" id="Node000017" href="$SystemManager_8cpp.html" title=" " alt="" coords="738,299,893,324"/>
+<area shape="poly" id="edge23_Node000016_Node000017" title=" " alt="" coords="823,265,819,299,814,298,818,264"/>
+<area shape="poly" id="edge26_Node000018_Node000003" title=" " alt="" coords="985,191,984,221,980,256,969,293,951,326,934,342,915,356,874,374,872,369,912,351,931,338,947,322,964,291,974,255,979,221,979,191"/>
+<area shape="poly" id="edge37_Node000018_Node000016" title=" " alt="" coords="944,185,850,228,848,223,942,181"/>
+<area shape="rect" id="Node000019" href="$ICommand_8h.html" title="An abstract representation of an action to be executed in the game engine." alt="" coords="1089,225,1195,251"/>
+<area shape="poly" id="edge27_Node000018_Node000019" title=" " alt="" coords="1020,180,1117,223,1115,228,1018,185"/>
+<area shape="poly" id="edge36_Node000019_Node000004" title=" " alt="" coords="1185,255,1210,273,1230,297,1237,318,1241,345,1238,374,1225,399,1188,410,1109,423,917,449,917,443,1109,418,1187,405,1222,395,1233,373,1236,346,1232,319,1225,300,1206,277,1182,259"/>
+<area shape="rect" id="Node000020" href="$ICommandQueue_8h.html" title="A lightweight wrapper for queuing commands." alt="" coords="1069,299,1215,324"/>
+<area shape="poly" id="edge28_Node000019_Node000020" title=" " alt="" coords="1145,264,1145,299,1139,299,1139,264"/>
+<area shape="poly" id="edge32_Node000020_Node000003" title=" " alt="" coords="1079,330,878,374,877,369,1077,324"/>
+<area shape="rect" id="Node000021" href="$CommandQueue_8h.html" title="Concrete implementation of ICommandQueue." alt="" coords="905,372,1048,397"/>
+<area shape="poly" id="edge29_Node000020_Node000021" title=" " alt="" coords="1104,332,1005,374,1003,369,1102,327"/>
+<area shape="rect" id="Node000023" href="$InputNormalizer_8h.html" title="Concrete implementation of InputNormalizer." alt="" coords="1073,372,1211,397"/>
+<area shape="poly" id="edge33_Node000020_Node000023" title=" " alt="" coords="1145,338,1145,372,1139,372,1139,338"/>
+<area shape="poly" id="edge31_Node000021_Node000007" title=" " alt="" coords="913,403,704,450,703,445,912,398"/>
+<area shape="rect" id="Node000022" href="$CommandQueue_8cpp.html" title=" " alt="" coords="941,445,1100,471"/>
+<area shape="poly" id="edge30_Node000021_Node000022" title=" " alt="" coords="993,408,1016,444,1011,447,989,411"/>
+<area shape="poly" id="edge34_Node000023_Node000005" title=" " alt="" coords="1137,412,1115,472,1091,520,1086,517,1110,470,1132,410"/>
+<area shape="poly" id="edge35_Node000023_Node000007" title=" " alt="" coords="1059,400,726,448,704,452,703,446,726,443,1059,395"/>
+</map>

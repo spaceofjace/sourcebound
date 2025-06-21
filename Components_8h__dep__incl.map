@@ -1,0 +1,7 @@
+<map id="Components.h" name="Components.h">
+<area shape="rect" id="Node000001" title="Defines core gameplay component structures for ECS entities." alt="" coords="125,5,241,31"/>
+<area shape="rect" id="Node000002" href="$PlayerMoveCommand_8cpp.html" title=" " alt="" coords="5,79,199,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="162,42,117,80,114,76,158,38"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html" title=" " alt="" coords="223,79,306,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="208,38,253,76,250,80,205,42"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsb_1_1gamestate_1_1ICommandQueue.html" title="Functions as a communication bus for actions enqueued into the game world." alt="" coords="5,5,241,31"/>
+<area shape="rect" id="Node000001" href="$classsb_1_1gamestate_1_1CommandQueue.html" title="A simple concrete implementation for enqueuing commands." alt="" coords="289,5,521,31"/>
+<area shape="poly" id="edge6_Node000000_Node000001" title=" " alt="" coords="255,15,289,15,289,21,255,21"/>
+</map>

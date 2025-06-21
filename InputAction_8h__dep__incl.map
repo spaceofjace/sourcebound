@@ -1,0 +1,17 @@
+<map id="InputAction.h" name="InputAction.h">
+<area shape="rect" id="Node000001" title="Defines a list of bindable player actions." alt="" coords="159,5,267,31"/>
+<area shape="rect" id="Node000002" href="$HardcodedBindingMap_8h.html" title="A preconfigured set of hardcoded bindings until serialization is available." alt="" coords="75,152,257,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="206,45,194,79,172,153,167,151,189,78,201,43"/>
+<area shape="rect" id="Node000005" href="$IBindingMap_8h.html" title="Represents a source of loadable and saveable bindings." alt="" coords="203,79,318,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="230,41,255,77,251,80,226,44"/>
+<area shape="rect" id="Node000003" href="$HardCodedBindingMap_8cpp.html" title=" " alt="" coords="5,225,204,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="149,190,117,227,113,223,145,186"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html" title=" " alt="" coords="227,225,310,251"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="195,183,253,223,250,227,192,187"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="236,114,183,154,180,150,233,110"/>
+<area shape="rect" id="Node000006" href="$InputNormalizer_8h.html" title="Concrete implementation of InputNormalizer." alt="" coords="281,152,419,177"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="287,110,337,150,334,154,284,115"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="328,188,284,227,280,223,325,184"/>
+<area shape="rect" id="Node000007" href="$InputNormalizer_8cpp.html" title=" " alt="" coords="335,225,488,251"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="371,186,403,223,399,227,367,190"/>
+</map>

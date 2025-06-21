@@ -1,0 +1,7 @@
+<map id="sb::input::IInputHandler" name="sb::input::IInputHandler">
+<area shape="rect" id="Node000001" title="Interface for polling device input, translating them to input codes, and then passing them on to an i..." alt="" coords="19,5,194,31"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1BaseInputHandler.html" title=" " alt="" coords="5,79,208,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,44,109,79,104,79,104,44"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1input_1_1KeyboardHandler.html" title="polls inputs through the SDL library and passes those on to a normalizer for translation into game en..." alt="" coords="7,152,206,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="109,118,109,152,104,152,104,118"/>
+</map>

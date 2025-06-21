@@ -1,0 +1,16 @@
+<map id="sb::ecs::ComponentManager::try_get_component_type" name="sb::ecs::ComponentManager::try_get_component_type">
+<area shape="rect" id="Node000001" title=" " alt="" coords="260,165,467,205"/>
+<area shape="poly" id="edge7_Node000001_Node000001" title=" " alt="" coords="407,154,391,147,363,144,339,146,324,151,319,157,321,164,316,166,313,156,321,146,338,141,363,139,393,142,409,149"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1ComponentManager.html#a483646b6b2c00e1c33bb1a591f30f822" title=" " alt="" coords="5,5,212,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="332,157,278,107,246,82,211,60,185,48,187,43,213,55,249,77,282,103,336,153"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1ComponentManager.html#aa5d1864075c5ece5b68240bba538a85d" title=" " alt="" coords="5,69,212,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="304,162,211,124,176,112,178,107,213,119,307,157"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1ecs_1_1ComponentManager.html#ad1829095b8fc57b0f93d2f7f7e42f43e" title=" " alt="" coords="5,133,212,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="246,173,212,169,213,164,247,168"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1ecs_1_1ComponentManager.html#a30ed0816113fb8b7ba44ce6d1fc26d33" title=" " alt="" coords="5,197,212,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="247,203,213,207,212,202,246,197"/>
+<area shape="rect" id="Node000006" href="$classsb_1_1ecs_1_1ComponentManager.html#a67e4c4d40bb97e2c52d0d3c639de8c52" title=" " alt="" coords="5,261,212,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="307,213,213,252,178,264,176,259,211,247,304,209"/>
+<area shape="rect" id="Node000007" href="$classsb_1_1ecs_1_1ComponentManager.html#a545fd4d7f0acd6cd64f951e05d60ffc3" title=" " alt="" coords="5,325,212,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="336,217,282,267,249,293,213,316,187,328,185,323,211,311,246,289,278,263,332,213"/>
+</map>
