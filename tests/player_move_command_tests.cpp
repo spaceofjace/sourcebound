@@ -28,8 +28,7 @@ TEST(PlayerMoveCommandTest, AppliesVelocityToPaddleEntity) {
 
   auto sm = std::make_shared<MockSystemManager>(); // can be an empty stub
   auto cq = std::make_shared<MockCommandQueue>(); // not used in test
-  auto gw = std::make_shared<GameWorld<IEntityManager, ComponentManager,
-    ISystemManager, ICommandQueue>>(em, cm, sm, cq);
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
 
   cm->register_component<Paddle>();
   cm->register_component<Velocity>();

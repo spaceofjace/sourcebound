@@ -18,8 +18,10 @@
 #include "../ecs/ecs_config.h"
 
 //These includes are needed for the templated methods
-#include "../ecs/IEntityManager.h"
 #include "../ecs/IComponentManager.h"
+#include "../ecs/IEntityManager.h"
+#include "../ecs/ISystemManager.h"
+#include "ICommandQueue.h"
 
 namespace sb::gamestate {
 using ecs::Entity;
@@ -29,13 +31,12 @@ using ecs::Signature;
  * @ingroup gamestate
  * @brief Encapsulates the game state and manages ECS coordination, system updates, and entity access.
  */
-template <typename EntityMgr, typename ComponentMgr, typename SystemMgr, typename CmdQueue>
-class GameWorld final : public IGameWorld {
+class GameWorld final : public IGameWorld, public std::enable_shared_from_this<GameWorld> {
  public:
-  GameWorld(std::shared_ptr<EntityMgr> entity_manager,
-            std::shared_ptr<ComponentMgr> component_manager,
-            std::shared_ptr<SystemMgr> system_manager,
-            std::shared_ptr<CmdQueue> cmd_queue)
+  GameWorld(std::shared_ptr<ecs::IEntityManager> entity_manager,
+            std::shared_ptr<ecs::ComponentManager> component_manager,
+            std::shared_ptr<ecs::ISystemManager> system_manager,
+            std::shared_ptr<ICommandQueue> cmd_queue)
       : entity_manager_(std::move(entity_manager)),
         component_manager_(std::move(component_manager)),
         system_manager_(std::move(system_manager)),
@@ -48,6 +49,12 @@ class GameWorld final : public IGameWorld {
 
   void destroy_entity(Entity entity) override {
     entity_manager_->destroy_entity(entity);
+  }
+
+  void step(float delta_time) override {
+    cmd_queue_->process(shared_from_this());
+    cmd_queue_->clear();
+    update(delta_time);
   }
 
   void update(float delta_time) override {
@@ -69,42 +76,47 @@ class GameWorld final : public IGameWorld {
   }
 
   template <typename T>
+  void register_component() const {
+    component_manager_->register_component<T>();
+  }
+
+  template <typename T>
   void add_component(Entity entity, const T& component) {
-    component_manager_->template add_component<T>(entity, component);
+    component_manager_->add_component<T>(entity, component);
     Signature signature = entity_manager_->get_signature(entity.id);
-    signature.set(component_manager_->template get_component_type<T>());
+    signature.set(component_manager_->get_component_type<T>());
     entity_manager_->set_signature(entity.id, signature);
   }
 
   template <typename T>
   void remove_component(Entity entity) {
-    component_manager_->template remove_component<T>(entity);
+    component_manager_->remove_component<T>(entity);
     Signature signature = entity_manager_->get_signature(entity.id);
-    signature.reset(component_manager_->template get_component_type<T>());
+    signature.reset(component_manager_->get_component_type<T>());
     entity_manager_->set_signature(entity.id, signature);
   }
 
   template <typename T>
   std::size_t get_component_type() {
-    return component_manager_->template get_component_type<T>();
+    return component_manager_->get_component_type<T>();
   }
 
   template <typename T>
   T& get_component(Entity entity) {
-    return component_manager_->template get_component<T>(entity);
+    return component_manager_->get_component<T>(entity);
   }
 
   template <typename T>
   [[nodiscard]] bool has_component(Entity entity) const {
-    return component_manager_->template has_component<T>(entity);
+    return component_manager_->has_component<T>(entity);
   }
 
  private:
-  std::shared_ptr<EntityMgr> entity_manager_;
-  std::shared_ptr<ComponentMgr> component_manager_;
-  std::shared_ptr<SystemMgr> system_manager_;
-  std::shared_ptr<CmdQueue> cmd_queue_;
+  std::shared_ptr<ecs::IEntityManager> entity_manager_;
+  std::shared_ptr<ecs::ComponentManager> component_manager_;
+  std::shared_ptr<ecs::ISystemManager> system_manager_;
+  std::shared_ptr<ICommandQueue> cmd_queue_;
 };
 
-}  // namespace sb::ecs
+}  // namespace sb::gamestate
 #endif //GAMEWORLD_H

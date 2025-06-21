@@ -9,7 +9,7 @@
 const std::string sb::gamestate::PlayerMoveCommand::name_ = "PlayerMoveCommand";
 
 void sb::gamestate::PlayerMoveCommand::apply(
-    std::shared_ptr<GameWorld<IEntityManager, ComponentManager, ISystemManager, ICommandQueue>>
+    std::shared_ptr<GameWorld>
         world) {
 
   Signature sig;

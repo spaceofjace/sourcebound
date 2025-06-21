@@ -49,6 +49,7 @@ public:
   [[nodiscard]] virtual std::vector<Entity> get_entities_with_signature(
       const ecs::Signature& target_signature) const = 0;
   virtual void destroy_entity(Entity entity) = 0;
+  virtual void step(float delta_time) = 0;
   virtual void update(float delta_time) = 0;
   virtual void process_events() = 0;
   [[nodiscard]] virtual bool is_alive(Entity entity) const = 0;

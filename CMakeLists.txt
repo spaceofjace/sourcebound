@@ -9,7 +9,8 @@ include_directories("${CMAKE_SOURCE_DIR}/external/SDL3/install/include")
 set(CMAKE_CXX_STANDARD 17)
 
 add_subdirectory(external/googletest)
-add_executable(sourcebound src/main.cpp
+add_executable(sourcebound
+        src/main.cpp
         include/ecs/IEntityManager.h
         include/ecs/Entity.h
         src/ecs/EntityManager.cpp
@@ -47,7 +48,7 @@ add_executable(sourcebound src/main.cpp
         tests/mocks/MockCommandQueue.h
         include/gamestate/ICommandQueue.h
         src/gamestate/PlayerMoveCommand.cpp
-        src/input/CommandQueue.cpp
+        src/gamestate/CommandQueue.cpp
         include/gamestate/CommandQueue.h
         include/input/IEventSource.h
         include/input/SDLEventSource.h
@@ -93,7 +94,7 @@ add_executable(unit_tests
         tests/mocks/MockCommandQueue.h
         include/gamestate/ICommandQueue.h
         src/gamestate/PlayerMoveCommand.cpp
-        src/input/CommandQueue.cpp
+        src/gamestate/CommandQueue.cpp
         include/gamestate/CommandQueue.h
         include/input/IEventSource.h
         tests/keyboard_handler_tests.cpp

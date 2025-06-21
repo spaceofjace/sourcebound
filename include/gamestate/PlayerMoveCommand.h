@@ -28,8 +28,7 @@ class PlayerMoveCommand final : public ICommand {
   [[nodiscard]] std::string name() const override {return name_;}
   PlayerMoveCommand(const float x_velocity, const float y_velocity)
     : x_velocity_(x_velocity), y_velocity_(y_velocity) {}
-  void apply(std::shared_ptr<GameWorld<IEntityManager, ComponentManager,
-    ISystemManager, ICommandQueue>> world) override;
+  void apply(std::shared_ptr<GameWorld> world) override;
 
   //mostly exposed for testability, but may have other usage
   [[nodiscard]] float get_x() const { return x_velocity_; }

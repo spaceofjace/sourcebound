@@ -16,7 +16,6 @@
 #include "ICommand.h"
 
 namespace sb::gamestate {
-using ecs::ComponentManager;
 /**
  * @class ICommandQueue
  * @ingroup gamestate
@@ -45,8 +44,7 @@ public:
    * @brief Processes or applies all current commands to the game world.
    * @param world The world in which to apply command state effects
    */
-  virtual void process(std::shared_ptr<GameWorld<IEntityManager, ComponentManager, ISystemManager,
-    ICommandQueue>> world) = 0;
+  virtual void process(std::shared_ptr<GameWorld> world) = 0;
 };
 } // namespace sb::gamestate
 #endif //ICOMMANDQUEUE_H

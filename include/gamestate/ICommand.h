@@ -14,13 +14,10 @@
 #include <string>
 
 #include "../ecs/ISystemManager.h"
-#include "GameWorld.h"
 
 namespace sb::gamestate {
+class GameWorld;
 using ecs::ISystemManager;
-using ecs::ComponentManager;
-using ecs::IEntityManager;
-
 //forward declaration to prevent circular includes; only needed for GameWorld reference
 class ICommandQueue;
 
@@ -46,8 +43,7 @@ public:
    * @brief Executes this intent against the game world.
    * @param world The world to execute the commands against
    */
-  virtual void apply(std::shared_ptr<GameWorld<IEntityManager, ComponentManager, ISystemManager,
-    ICommandQueue>> world) = 0;
+  virtual void apply(std::shared_ptr<GameWorld> world) = 0;
 };
 
 }  // namespace sb::gamestate

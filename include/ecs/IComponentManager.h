@@ -36,7 +36,7 @@ public:
   virtual void entity_destroyed(Entity entity) = 0;
 };
 
-class ComponentManager final : IComponentManager {
+class ComponentManager final : public IComponentManager {
  public:
 
   template <typename T>
@@ -49,6 +49,12 @@ class ComponentManager final : IComponentManager {
     component_types_[type_index] = next_component_type_;
     component_arrays_[type_index] = std::make_shared<DenseComponentArray<T>>();
     ++next_component_type_;
+  }
+
+  template <typename T>
+  [[nodiscard]] bool is_registered() const {
+    auto type_index = std::type_index(typeid(T));
+    return component_types_.find(type_index) != component_types_.end();
   }
 
   template <typename T>

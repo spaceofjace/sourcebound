@@ -34,6 +34,8 @@ public:
   EntityManager(EntityManager&&) = delete;
   EntityManager& operator=(EntityManager&&) = delete;
 
+  ~EntityManager() override = default;
+
   explicit EntityManager(bool enableReuse = false, std::optional<uint32_t> maxReusePoolSize = std::nullopt);
   Entity create_entity() override;
   bool destroy_entity(Entity entity) override;
@@ -45,7 +47,6 @@ public:
   [[nodiscard]] Signature get_signature(EntityId entityId) const override;
   [[nodiscard]] bool try_get_signature(EntityId entityId, Signature& signature) const override;
   void clear_all() override;
-  ~EntityManager() override = default;
 private:
   std::unordered_set<Entity> entities_;
   std::unordered_map<uint32_t, Signature> signatures_;

@@ -16,7 +16,7 @@ using namespace sb::gamestate;
 
 TEST(GameWorldTest, CanCreateAndDestroyEntity) {
   auto em = std::make_shared<MockEntityManager>();
-  auto cm = std::make_shared<MockComponentManager>();
+  auto cm = std::make_shared<ComponentManager>(); //templated so requires the concrete impl
   auto sm = std::make_shared<MockSystemManager>();
   auto cq = std::make_shared<MockCommandQueue>();
 
@@ -31,7 +31,7 @@ TEST(GameWorldTest, CanCreateAndDestroyEntity) {
 
 TEST(GameWorldTest, CanAddAndCheckComponent) {
   auto em = std::make_shared<MockEntityManager>();
-  auto cm = std::make_shared<MockComponentManager>();
+  auto cm = std::make_shared<ComponentManager>(); //templated so requires the concrete impl
   auto sm = std::make_shared<MockSystemManager>();
   auto cq = std::make_shared<MockCommandQueue>();
 
@@ -39,6 +39,7 @@ TEST(GameWorldTest, CanAddAndCheckComponent) {
   Entity e = gw.create_entity();
 
   DummyComponent comp{123};
+  gw.register_component<DummyComponent>();
   gw.add_component<DummyComponent>(e, comp);
 
   EXPECT_TRUE(gw.has_component<DummyComponent>(e));
@@ -47,14 +48,16 @@ TEST(GameWorldTest, CanAddAndCheckComponent) {
 
 TEST(GameWorldTest, CanRemoveComponent) {
   auto em = std::make_shared<MockEntityManager>();
-  auto cm = std::make_shared<MockComponentManager>();
+  auto cm = std::make_shared<ComponentManager>(); //templated so requires the concrete impl
   auto sm = std::make_shared<MockSystemManager>();
   auto cq = std::make_shared<MockCommandQueue>();
 
   GameWorld gw(em, cm, sm, cq);
   Entity e = gw.create_entity();
 
-  gw.add_component<DummyComponent>(e, DummyComponent{999});
+  DummyComponent comp{999};
+  gw.register_component<DummyComponent>();
+  gw.add_component<DummyComponent>(e, comp);
   EXPECT_TRUE(gw.has_component<DummyComponent>(e));
 
   gw.remove_component<DummyComponent>(e);
@@ -63,7 +66,7 @@ TEST(GameWorldTest, CanRemoveComponent) {
 
 TEST(GameWorldTest, UpdateDelegatesToSystemManager) {
   auto em = std::make_shared<MockEntityManager>();
-  auto cm = std::make_shared<MockComponentManager>();
+  auto cm = std::make_shared<ComponentManager>();
 
   struct TestSystemManager : MockSystemManager {
     bool updated = false;

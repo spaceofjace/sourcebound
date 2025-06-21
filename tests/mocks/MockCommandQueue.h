@@ -16,7 +16,7 @@ struct MockCommandQueue : ICommandQueue {
   MOCK_METHOD(void, enqueue, (std::unique_ptr<ICommand> command), (override));
   MOCK_METHOD(void, clear, (), (override));
   MOCK_METHOD(void, process,
-    ((std::shared_ptr<GameWorld<IEntityManager, ComponentManager, ISystemManager, ICommandQueue>>)),
+    ((std::shared_ptr<GameWorld>)),
     (override));
 };
 

@@ -11,8 +11,7 @@ class SimpleMockCommand : public ICommand {
  public:
   [[nodiscard]] std::string name() const override {return "SimpleMockCommand";}
   bool was_applied = false;
-  void apply(std::shared_ptr<GameWorld<IEntityManager, ComponentManager, ISystemManager,
-      ICommandQueue>>) override {
+  void apply(std::shared_ptr<GameWorld>) override {
     was_applied = true;
   }
 };

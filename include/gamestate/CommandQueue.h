@@ -13,7 +13,6 @@
 #define COMMANDQUEUE_H
 #include "ICommandQueue.h"
 namespace sb::gamestate {
-using ecs::ComponentManager;
 /**
  * @class CommandQueue
  * @ingroup gamestate
@@ -26,8 +25,7 @@ class CommandQueue final : public ICommandQueue {
  public:
   void enqueue(std::unique_ptr<ICommand> command) override;
   void clear() override;
-  void process(std::shared_ptr<GameWorld<IEntityManager, ComponentManager, ISystemManager,
-    ICommandQueue>> world) override;
+  void process(std::shared_ptr<GameWorld> world) override;
 private:
   std::vector<std::unique_ptr<ICommand>> commands_;
 };
