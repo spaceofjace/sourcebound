@@ -73,6 +73,17 @@ const std::unordered_set<Entity>& EntityManager::get_all_entities() const {
   return entities_;
 }
 
+std::vector<Entity> EntityManager::get_entities_with_signature(const Signature& target_signature) const {
+  std::vector<Entity> result;
+  for (const Entity& entity : entities_) {
+    auto iterator = signatures_.find(entity.id);
+    if (iterator != signatures_.end() && (iterator->second & target_signature) == target_signature) {
+      result.push_back(entity);
+    }
+  }
+  return result;
+}
+
 void EntityManager::set_signature(const EntityId entityId, const Signature signature) {
 
   if (signature == get_signature(entityId)) {

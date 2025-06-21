@@ -63,6 +63,34 @@ I will be using GoogleTests as my test harness for writing unit tests.
 - Adds a lot of source code to the base to include the framework manually.
 - Probably more complex than I need it to be for a "simple" project.
 ---
+## Templated GameWorld with ECS Injection
+
+### Decision:
+`GameWorld` is implemented as a templated class that accepts injected types for `EntityManager`, `ComponentManager`, and `SystemManager`.
+
+### Reasoning:
+- Allows full testability using mock ECS components.
+- Cleanly separates core game logic from the ECS backend.
+- Enables future replacement with an external ECS library (e.g., Flecs) by swapping template arguments.
+### Tradeoffs:
+- Increases compile-time complexity and binary size slightly.
+- More verbose to instantiate in test and production code.
+---
+## Intent Component Architecture for Input
+
+### Decision:
+Rather than having `Command`s mutate the world directly, I route input through a `CommandProcessor` that adds _Intent Components_, which are then consumed by ECS systems.
+### Reasoning:
+- Preserves ECS purity: systems, not commands, change world state.
+- Enables delayed or interruptible behavior (e.g., collision or stun overriding movement).
+- Simplifies testing and replay: commands are data-only.
+- Makes game logic more inspectable and override-friendly.
+- Could theoretically support AI behaviors in the future.
+### Tradeoffs:
+- Requires slightly more boilerplate to pass through intent layers.
+- These actions may feel “indirect” during early implementation.  
+- Debugging may require tracing across multiple systems and steps.
+---
 ## TEMPLATE
 
 ### Decision:  

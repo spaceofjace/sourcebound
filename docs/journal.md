@@ -1,5 +1,49 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-06-20 - 10 hours 
+
+Includes time from 2025-06-19
+### Objective(s)
+
+1. Implement bindings support.
+2. Implement an input normalizer to translate into commands
+3. Implement a command queue and commands
+4. Implement basic keyboard polling
+### Details
+#### Key Accomplishments
+
+* I mean I did all of the goals listed, including writing all the doxygen docs and tests (though maybe I missed something somewhere)
+#### Challenges / Notes
+
+* I think I jumped in too fast and implemented things in the wrong order; this ended up making it a massive changelist, which is not my preferred way to work.
+* I walked back my decision to use intents -> commands because this does add too much indirection without much benefit at this stage.  It's probably a change I will eventually look into doing at some future stage, just to better understand how to properly support scripting, playback, AI...but I need to get to a working renderer and gameplay loop.  (This can be a future optimization.)
+#### Next Steps
+
+* Need to wire up input handling in the GameWorld.
+* Maybe see if theres a way to run it all through a console and validate keyboard inputs are triggering commands.
+* Need to update architecture and decisions docs to reflect reversal of decision.
+
+---
+## Jun 5, 2025 – 3.5 hours
+
+### Objective(s)
+
+1. Integrate SDL3 into Sourcebound as a linked runtime dependency
+2. Establish normalized `InputCode` abstraction for keyboard, mouse, and gamepad inputs
+### Details
+
+#### Key Accomplishments
+
+* Successfully configured and installed SDL3 as a local external dependency with working CMake linkage.
+* Implemented `InputCode` struct using `std::variant` in preparation and support of multiple input sources (and configuration of key bindings)
+#### Challenges / Notes
+
+* Embedding SDL3 the way I did was _painful_ and required multiple attempts to get everything linking and usable in code.
+#### Next Steps
+
+- Consume input code in KeyboardInputHandler (which will require IKeyProvider or similar to allow proper unit testing)
+
+---
 ## Jun 4, 2025 - 2.5 hours
 
 (note: this includes some time spent on May 29, 2025)
@@ -19,6 +63,28 @@
 #### Next Steps
 
 * Pausing on code documentation for now, but will eventually go back and add more detail in passes.
+
+---
+## May 9, 2025 - 2 hours
+
+### Objective(s)
+
+1. Prepare for input system development.
+### Details
+#### Key Accomplishments
+
+* Expanded and updated architecture diagram to reflect input system.
+* Created new milestone to represent growing complexity of input system.
+* Generated full task list for new input systems.
+#### Challenges / Notes
+
+* In thinking about rebinding and an extendable engine system, I realized the system was growing in complexity quickly.  
+	* Recognized I needed to stop and think about this more expansively.
+	* This resulted in an update to the architecture diagram AND the generation of a new milestone.
+* I'm obviously adding a lot of work for myself, but I want to be sure this project is a good reflection of how I approach problems.
+#### Next Steps
+
+* Begin implementation of input mapping systems.
 
 ---
 ## May 8, 2025 - 3 hours

@@ -184,3 +184,56 @@ TEST(EntityManagerTest, SetSignature_LogsWarningIfSameSignatureIsSetAgain) {
   EXPECT_EQ(mock_sink->last_level, sb::log::Level::Warning);
   EXPECT_EQ(mock_sink->last_message, "[EntityManager] Signature already set!");
 }
+
+TEST(EntityManagerTest, GetEntitiesWithSignature_ReturnsMatchingEntities) {
+  EntityManager em;
+  Entity a = em.create_entity();
+  Entity b = em.create_entity();
+  Entity c = em.create_entity();
+
+  Signature match;
+  match.set(1);
+  match.set(3);
+
+  em.set_signature(a.id, match);
+  em.set_signature(b.id, match);
+
+  Signature non_match;
+  non_match.set(1);
+  em.set_signature(c.id, non_match);
+
+  std::vector<Entity> result = em.get_entities_with_signature(match);
+
+  EXPECT_EQ(result.size(), 2);
+  EXPECT_NE(std::find(result.begin(), result.end(), a), result.end());
+  EXPECT_NE(std::find(result.begin(), result.end(), b), result.end());
+  EXPECT_EQ(std::find(result.begin(), result.end(), c), result.end());
+}
+TEST(EntityManagerTest, GetEntitiesWithSignature_EmptyIfNoMatch) {
+  EntityManager em;
+  Entity e = em.create_entity();
+
+  Signature sig;
+  sig.set(2);
+  em.set_signature(e.id, sig);
+
+  Signature noMatch;
+  noMatch.set(0);  // different bit
+
+  std::vector<Entity> result = em.get_entities_with_signature(noMatch);
+
+  EXPECT_TRUE(result.empty());
+}
+
+TEST(EntityManagerTest, GetEntitiesWithSignature_ReturnsEmptyWhenNoSignaturesSet) {
+  EntityManager em;
+  em.create_entity();
+  em.create_entity();
+
+  Signature target_signature;
+  target_signature.set(0);
+
+  std::vector<Entity> result = em.get_entities_with_signature(target_signature);
+
+  EXPECT_TRUE(result.empty());
+}

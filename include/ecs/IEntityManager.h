@@ -50,6 +50,8 @@ public:
   [[nodiscard]] virtual bool is_alive(Entity entity) const = 0;
   [[nodiscard]] virtual const std::unordered_set<Entity>&
     get_all_entities() const = 0;
+  [[nodiscard]] virtual std::vector<Entity> get_entities_with_signature(
+    const Signature& target_signature) const = 0;
   virtual void clear_all() = 0;
   virtual void set_signature(EntityId entityId, Signature signature) = 0;
   [[nodiscard]] virtual Signature get_signature(EntityId entityId) const = 0;

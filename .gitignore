@@ -75,3 +75,6 @@
 
 # Ignore doxygen build artifacts
 docs/doxygen/
+
+# External Build artifacts (for SDL3)
+!external/SDL3/**
