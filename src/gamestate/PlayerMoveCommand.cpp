@@ -22,4 +22,6 @@ void sb::gamestate::PlayerMoveCommand::apply(
     velocity.x = x_velocity_;
     velocity.y = y_velocity_;
   }
+
+  log::Logger::info("[Command Applied]: " + name_ + " - " + std::to_string(x_velocity_) + ", " + std::to_string(y_velocity_));
 }

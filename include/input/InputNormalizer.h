@@ -30,7 +30,9 @@ class InputNormalizer final : public IInputNormalizer {
  public:
   InputNormalizer(std::shared_ptr<IBindingMap> binding_map,
                   std::shared_ptr<ICommandQueue> command_queue)
-      : binding_map_(std::move(binding_map)), command_queue_(std::move(command_queue)) {}
+      : binding_map_(std::move(binding_map)), command_queue_(std::move(command_queue)) {
+    binding_map_->load_bindings("bindings.json");
+  }
   void normalize_input(const InputCode& code, float value) override;
 
  private:
