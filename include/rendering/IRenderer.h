@@ -23,6 +23,8 @@
 
 #ifndef IRENDERER_H
 #define IRENDERER_H
+#include "Color.h"
+
 namespace sb::rendering {
 
 /**
@@ -35,48 +37,49 @@ namespace sb::rendering {
  */
 class IRenderer {
 public:
+
+  IRenderer() = default;
   virtual ~IRenderer() = default;
 
-  /**
-   * @brief Clears the current rendering surface.
-   */
+  IRenderer(const IRenderer&) = delete;
+  IRenderer& operator=(const IRenderer&) = delete;
+  IRenderer(IRenderer&&) = delete;
+  IRenderer& operator=(IRenderer&&) = delete;
+
+/**
+ * @brief Clears the current rendering surface.
+ */
   virtual void clear() = 0;
 
-  /**
-   * @brief Presents the rendered frame to the display.
-   */
+/**
+ * @brief Presents the rendered frame to the display.
+ */
   virtual void present() = 0;
 
-  /**
-   * @brief Draws a filled rectangle.
-   *
-   * @param pos_x The X coordinate of the rectangle's top-left corner.
-   * @param pos_y The Y coordinate of the rectangle's top-left corner.
-   * @param width The width of the rectangle.
-   * @param height The height of the rectangle.
-   * @param red Red channel (0–255).
-   * @param green Green channel (0–255).
-   * @param blue Blue channel (0–255).
-   * @param alpha Alpha (0–255).
-   * @param filled filled if true, otherwise a 1 pixel outline
-   */
-  virtual void draw_rect(int pos_x, int pos_y, int width, int height,
-    int red, int green, int blue, int alpha, bool filled) = 0;
+/**
+ * @brief Draws a filled rectangle.
+ *
+ * @param pos_x The X coordinate of the rectangle's top-left corner.
+ * @param pos_y The Y coordinate of the rectangle's top-left corner.
+ * @param width The width of the rectangle.
+ * @param height The height of the rectangle.
+ * @param color Defines color channels (RGBA) to render.
+ * @param filled filled if true, otherwise a 1 pixel outline
+ */
+  virtual void draw_rect(int pos_x, int pos_y, int width, int height, const Color& color,
+    bool filled) = 0;
 
-  /**
-   * @brief Draws a filled circle.
-   *
-   * @param center_x X coordinate of the circle center.
-   * @param center_y Y coordinate of the circle center.
-   * @param radius Radius of the circle.
-   * @param red Red channel (0–255).
-   * @param green Green channel (0–255).
-   * @param blue Blue channel (0–255).
-   * @param alpha Alpha (0–255).
-   * @param filled filled if true, otherwise a 1 pixel outline
-   */
-  virtual void draw_circle(int center_x, int center_y, int radius,
-    int red, int green, int blue, int alpha, bool filled) = 0;
+/**
+ * @brief Draws a filled circle.
+ *
+ * @param center_x X coordinate of the circle center.
+ * @param center_y Y coordinate of the circle center.
+ * @param radius Radius of the circle.
+ * @param color Defines color channels (RGBA) to render.
+ * @param filled filled if true, otherwise a 1 pixel outline
+ */
+  virtual void draw_circle(int center_x, int center_y, int radius, const Color& color,
+    bool filled) = 0;
 };
 
 }  // namespace sb::rendering
