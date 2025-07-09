@@ -10,7 +10,7 @@
 #include "../include/input/HardcodedBindingMap.h"
 #include "../include/input/InputNormalizer.h"
 #include "../include/input/KeyboardHandler.h"
-#include "../include/input/SDLEventSource.h"
+#include "../include/input/SdlEventSource.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -24,7 +24,7 @@ int main() {
 
   auto bindings = std::make_shared<sb::input::HardcodedBindingMap>();
   auto normalizer = std::make_shared<sb::input::InputNormalizer>(bindings, cmd_queue);
-  auto event_source = std::make_shared<sb::input::SDLEventSource>();
+  auto event_source = std::make_shared<sb::input::SdlEventSource>();
   sb::input::KeyboardHandler input(normalizer, event_source);
 
   auto world = std::make_shared<sb::gamestate::GameWorld>(
