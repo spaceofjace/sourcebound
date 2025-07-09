@@ -53,6 +53,7 @@ add_executable(sourcebound
         include/input/IEventSource.h
         include/input/SDLEventSource.h
         include/input/BaseInputHandler.h
+        include/rendering/IRenderer.h
 )
 
 add_executable(unit_tests
@@ -107,6 +108,7 @@ add_executable(unit_tests
         tests/mocks/SimpleMockCommand.h
         tests/command_queue_tests.cpp
         tests/hardcoded_bindings_tests.cpp
+        include/rendering/IRenderer.h
 )
 
 target_include_directories(sourcebound PUBLIC
