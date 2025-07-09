@@ -51,7 +51,7 @@ add_executable(sourcebound
         src/gamestate/CommandQueue.cpp
         include/gamestate/CommandQueue.h
         include/input/IEventSource.h
-        include/input/SDLEventSource.h
+        include/input/SdlEventSource.h
         include/input/BaseInputHandler.h
         include/rendering/IRenderer.h
 )
