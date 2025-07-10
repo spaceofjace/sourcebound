@@ -1,5 +1,28 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-07-09 - 3 hours
+(includes a little task setup time not captured from 6/20)
+### Objective(s)
+
+1. Get basic rendering interface built and a simple renderer implemented
+### Details
+#### Key Accomplishments
+
+* So far, the rendering code is much simpler than I would have expected.
+* Decided to add common colors to improve ease of use for rendering in practice.  (Component data can reference colors.)
+#### Challenges / Notes
+
+* Would love to see how a DX implementation would compare down the line.
+	* This obviously could be improved and enhanced with things like textures and shaders.
+	* Adding text rendering *might* be more complex, but we aren't there yet.
+* SdlRenderer's dependence on SDL_Renderer essentially cuts off the ability to unit test code.  An integration test later might be worthwhile.  (And I will of course continue to ponder ways to make it more unit testable as I continue working.)
+#### Next Steps
+
+* Creating actual components.
+* Making the first pass of a RenderingSystem.
+* Adding rendering to the game loop.
+
+---
 ## 2025-06-20 - 10 hours 
 
 Includes time from 2025-06-19
