@@ -57,6 +57,9 @@ add_executable(sourcebound
         include/rendering/SdlRenderer.h
         src/rendering/SdlRenderer.cpp
         include/rendering/Color.h
+        include/ecs/RenderSystem.h
+        src/ecs/RenderSystem.cpp
+        tests/mocks/MockRenderer.h
 )
 
 add_executable(unit_tests
@@ -115,6 +118,10 @@ add_executable(unit_tests
         include/rendering/SdlRenderer.h
         src/rendering/SdlRenderer.cpp
         include/rendering/Color.h
+        include/ecs/RenderSystem.h
+        src/ecs/RenderSystem.cpp
+        tests/mocks/MockRenderer.h
+        tests/render_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

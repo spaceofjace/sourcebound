@@ -116,11 +116,13 @@ enum class SimpleShapeType {
  * SimpleShapeType. This component is purely visual and separate from physics.
  */
 struct RenderableSimpleShape {
-  sb::rendering::Color color;
-  SimpleShapeType type;
-  bool filled{};
+  sb::rendering::Color color = sb::rendering::Colors::transparent;
+  SimpleShapeType type = SimpleShapeType::Invalid;
+  bool filled = false;
 
-  explicit RenderableSimpleShape(const sb::rendering::Color& color, const SimpleShapeType type,
+  RenderableSimpleShape() = default;
+
+  RenderableSimpleShape(const sb::rendering::Color& color, const SimpleShapeType type,
     const bool filled)
       : color(color), type(type), filled(filled) {}
 };

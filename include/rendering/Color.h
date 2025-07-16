@@ -39,6 +39,13 @@ struct Color {
   constexpr Color(const int red_channel, const int green_channel, const int blue_channel, // NOLINT(*-easily-swappable-parameters)
                   const int alpha_channel = kMaxChannelValue)
       : red(red_channel), green(green_channel), blue(blue_channel), alpha(alpha_channel) {}
+
+  bool operator==(const Color& rhs) const {
+    return red == rhs.red &&
+           green == rhs.green &&
+           blue == rhs.blue &&
+           alpha == rhs.alpha;
+  }
 };
 
 namespace Colors {
