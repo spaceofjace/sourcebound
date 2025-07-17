@@ -3,6 +3,7 @@
 
 #include "../include/ecs/EntityManager.h"
 #include "../include/ecs/IComponentManager.h"
+#include "../include/ecs/RenderSystem.h"
 #include "../include/ecs/SystemManager.h"
 #include "../include/ecs/components/Components.h"
 #include "../include/gamestate/CommandQueue.h"
@@ -11,6 +12,7 @@
 #include "../include/input/InputNormalizer.h"
 #include "../include/input/KeyboardHandler.h"
 #include "../include/input/SdlEventSource.h"
+#include "../include/rendering/SdlRenderer.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -31,7 +33,7 @@ int main() {
       entity_mgr, component_mgr, system_mgr, cmd_queue
   );
 
-  if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+  if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_EVENTS) < 0) {
     std::cerr << "SDL_Init failed: " << SDL_GetError() << std::endl;
     return 1;
   }
@@ -44,18 +46,48 @@ int main() {
     return 1;
   }
 
+  SDL_Renderer* sdl_renderer = SDL_CreateRenderer(window, nullptr);
+  if (!sdl_renderer) {
+    std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
+    SDL_DestroyWindow(window);
+    SDL_Quit();
+    return 1;
+  }
+
   TimePoint lastFrameTime = Clock::now();
   bool isRunning = true;
 
   world->register_component<Velocity>();
   world->register_component<Paddle>();
+  world->register_component<Ball>();
+  world->register_component<Transform>();
+  world->register_component<RenderableSimpleShape>();
+
+  auto renderer = std::make_shared<sb::rendering::SdlRenderer>(sdl_renderer);
+  auto render_system = system_mgr->register_system<sb::ecs::RenderSystem>(renderer, component_mgr);
+
+  sb::ecs::Signature renderSig;
+  renderSig.reset();
+
+  renderSig.set(component_mgr->get_component_type<Transform>());
+  renderSig.set(component_mgr->get_component_type<RenderableSimpleShape>());
+  system_mgr->set_signature<sb::ecs::RenderSystem>(renderSig);
 
   auto paddle = world->create_entity();
   world->add_component(paddle, Paddle{});
+  world->add_component(paddle, Transform{{100, 150}, {}, {100, 10}, {}});
+  world->add_component(paddle, RenderableSimpleShape{sb::rendering::Colors::blue, SimpleShapeType::Rectangle, true});
   world->add_component(paddle, Velocity{0, 0});
+
+  auto ball = world->create_entity();
+  world->add_component(ball, Ball{});
+  world->add_component(ball, Transform{{150, 100}, {}, {20, 20}, {}});
+  world->add_component(ball, RenderableSimpleShape{sb::rendering::Colors::cyan, SimpleShapeType::Circle, true});
+  world->add_component(ball, Velocity{0, 0});
 
   while (isRunning) {
     SDL_Event sdl_event;
+
     while (SDL_PollEvent(&sdl_event)) {
       if (sdl_event.type == SDL_EVENT_QUIT) {
         isRunning = false;
@@ -67,9 +99,12 @@ int main() {
     float deltaTime = elapsed.count();
     lastFrameTime = currentFrameTime;
 
-    input.poll_inputs();
     // Main per-frame execution
+    input.poll_inputs();
+    renderer->clear();
     world->step(deltaTime);
+    world->update(deltaTime);
+    renderer->present();
   }
 
   SDL_DestroyWindow(window);

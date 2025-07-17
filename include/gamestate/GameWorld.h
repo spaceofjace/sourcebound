@@ -86,6 +86,7 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
     Signature signature = entity_manager_->get_signature(entity.id);
     signature.set(component_manager_->get_component_type<T>());
     entity_manager_->set_signature(entity.id, signature);
+    system_manager_->entity_signature_changed(entity, signature);
   }
 
   template <typename T>
@@ -94,6 +95,7 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
     Signature signature = entity_manager_->get_signature(entity.id);
     signature.reset(component_manager_->get_component_type<T>());
     entity_manager_->set_signature(entity.id, signature);
+    system_manager_->entity_signature_changed(entity, signature);
   }
 
   template <typename T>
