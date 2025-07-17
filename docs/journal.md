@@ -1,5 +1,29 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-07-16 - 3.5 hours
+
+### Objective(s)
+
+1. Complete simple rendering components and RenderSystem
+2. Hook up RenderSystem in main for verification.
+### Details
+#### Key Accomplishments
+
+* Circle and rectangle are correctly rendering! (See [/milestone-artifacts/m1.75-rendering/rendering_milestone_screenshot.png](/milestone-artifacts/m1.75-rendering/rendering_milestone_screenshot.png) )
+#### Challenges / Notes
+
+* It's unclear why, but I did retest that the input system was working, and found it was not.  I had never tested it on my desktop, as far as I remember.  (I believe I confirmed it on my laptop.)  This may have something to dowith how my keyboard is wired in (through a docking station) not feeding inputs.  Will need to do more investigation.  (And retest on laptop to see if it still works there.)
+	* I will also run some tests before and after the render system changes to see if the new code did somehow bork the old code.
+#### Next Steps
+
+* Validate input system isn't completely broken.
+	* If it works on my laptop, I will need to test my keyboard by plugging it directly into my PC instead of through the docking station. 
+	* If it is how my system is wired...well, I'll need to figure out how to fix that problem.
+	* As far as I can tell, there were NO keyboard events happening at all.
+* After I get that back to functional, it's just a matter of starting to pull together some core systems and get the main game loop functional!
+	* This is big...but also where the real fun begins.
+
+---
 ## 2025-07-09 - 3 hours
 (includes a little task setup time not captured from 6/20)
 ### Objective(s)
