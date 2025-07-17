@@ -17,8 +17,7 @@
 
 #ifndef COMPONENTS_H
 #define COMPONENTS_H
-#include <string>
-
+#include "../../rendering/Color.h"
 // Physics components
 
 /**
@@ -66,30 +65,66 @@ struct Transform {
 };
 
 /**
- * @struct Collider
+ * @struct CircleCollider
  * @ingroup ECS
- * @brief Data for if object should be considered a collider.
+ * @brief Defines a circular collision boundary for an entity.
  *
- * Possible this should include separate collider size in the future, but assuming simplest case
+ * Used by the physics or collision system to determine interactions with other colliders.
+ * Offsets are relative to the entity's origin (typically the center or top-left corner).
  */
-struct Collider { bool isTrigger = false; };
-
-//Graphics components
-/**
- * @struct Color
- * @ingroup ECS
- * @brief Color data for rendering (including alpha).
- */
-struct Color { float r, g, b, a; };
+struct CircleCollider {
+  float radius = 0.0F;
+  float offset_x = 0.0F;
+  float offset_y = 0.0F;
+};
 
 /**
- * @struct Sprite
+ * @struct BoxCollider
  * @ingroup ECS
- * @brief Sprite data for rendering (including color).
+ * @brief Defines an axis-aligned rectangular collision boundary for an entity.
+ *
+ * Used by the physics or collision system for bounding box intersection checks.
+ * Offsets are relative to the entity's origin (typically the top-left corner unless otherwise specified).
  */
-struct Sprite {
-  std::string texturePath;
-  Color color;
+struct BoxCollider {
+  float width = 0.0F;
+  float height = 0.0F;
+  float offset_x = 0.0F;
+  float offset_y = 0.0F;
+};
+
+//Rendering components
+/**
+ * @enum SimpleShapeType
+ * @ingroup Rendering
+ * @brief Enumerates supported primitive shape types for rendering.
+ *
+ * Used in conjunction with RenderableSimpleShape to define basic visual geometry.
+ */
+enum class SimpleShapeType {
+  Invalid = -1,   ///< Unset or unsupported shape.
+  Rectangle,      ///< A standard axis-aligned rectangle.
+  Circle,         ///< A simple filled or outlined circle.
+};
+
+/**
+ * @struct RenderableSimpleShape
+ * @ingroup ECS
+ * @brief Describes a basic shape to render for an entity.
+ *
+ * Used by the render system to draw simple geometric shapes. Shape type is defined by
+ * SimpleShapeType. This component is purely visual and separate from physics.
+ */
+struct RenderableSimpleShape {
+  sb::rendering::Color color = sb::rendering::Colors::transparent;
+  SimpleShapeType type = SimpleShapeType::Invalid;
+  bool filled = false;
+
+  RenderableSimpleShape() = default;
+
+  RenderableSimpleShape(const sb::rendering::Color& color, const SimpleShapeType type,
+    const bool filled)
+      : color(color), type(type), filled(filled) {}
 };
 
 //Gameplay components

@@ -123,7 +123,7 @@ TEST(ECSIntegration, DestroyedEntityRemovesAllComponents) {
   ComponentManager cm;
 
   cm.register_component<Transform>();
-  cm.register_component<Collider>();
+  cm.register_component<BoxCollider>();
 
   Entity e = em.create_entity();
   auto transform = Transform{
@@ -132,12 +132,12 @@ TEST(ECSIntegration, DestroyedEntityRemovesAllComponents) {
     Size{ 5,5 }
   };
   add_with_signature(em, cm, e, transform);
-  add_with_signature(em, cm, e, Collider{true});
+  add_with_signature(em, cm, e, BoxCollider{true});
 
   em.destroy_entity(e);
   cm.entity_destroyed(e);
 
   EXPECT_FALSE(cm.has_component<Transform>(e));
-  EXPECT_FALSE(cm.has_component<Collider>(e));
+  EXPECT_FALSE(cm.has_component<BoxCollider>(e));
   EXPECT_FALSE(em.is_alive(e));
 }

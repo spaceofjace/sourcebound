@@ -8,7 +8,7 @@
 #include "SDL3/SDL_events.h"
 
 namespace sb::input {
-class SDLEventSource : public IEventSource {
+class SdlEventSource : public IEventSource {
 public:
   bool poll_event(SDL_Event& event) override {
     return SDL_PollEvent(&event);

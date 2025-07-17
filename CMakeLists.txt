@@ -51,8 +51,15 @@ add_executable(sourcebound
         src/gamestate/CommandQueue.cpp
         include/gamestate/CommandQueue.h
         include/input/IEventSource.h
-        include/input/SDLEventSource.h
+        include/input/SdlEventSource.h
         include/input/BaseInputHandler.h
+        include/rendering/IRenderer.h
+        include/rendering/SdlRenderer.h
+        src/rendering/SdlRenderer.cpp
+        include/rendering/Color.h
+        include/ecs/RenderSystem.h
+        src/ecs/RenderSystem.cpp
+        tests/mocks/MockRenderer.h
 )
 
 add_executable(unit_tests
@@ -107,6 +114,14 @@ add_executable(unit_tests
         tests/mocks/SimpleMockCommand.h
         tests/command_queue_tests.cpp
         tests/hardcoded_bindings_tests.cpp
+        include/rendering/IRenderer.h
+        include/rendering/SdlRenderer.h
+        src/rendering/SdlRenderer.cpp
+        include/rendering/Color.h
+        include/ecs/RenderSystem.h
+        src/ecs/RenderSystem.cpp
+        tests/mocks/MockRenderer.h
+        tests/render_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC
