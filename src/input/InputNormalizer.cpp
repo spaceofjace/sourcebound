@@ -6,6 +6,7 @@
 #include "../../include/input/InputNormalizer.h"
 
 #include "../../include/gamestate/PlayerMoveCommand.h"
+#include "../../include/gamestate/QuitCommand.h"
 void sb::input::InputNormalizer::normalize_input(const InputCode& code, float value) {
   auto action = this->binding_map_->resolve(code);
 
@@ -22,6 +23,12 @@ void sb::input::InputNormalizer::normalize_input(const InputCode& code, float va
       command_queue_->enqueue(move(move_right_command));
       break;
     }
+    case InputAction::QuitGame:{
+      auto quit_command = std::make_unique<gamestate::QuitCommand>();
+      command_queue_->enqueue(move(quit_command));
+      break;
+    }
+    case InputAction::LaunchBall:
     case InputAction::None:
     default:
       break;

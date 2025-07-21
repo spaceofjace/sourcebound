@@ -27,6 +27,7 @@ enum class InputAction {
   MoveRight,
   LaunchBall,
   PauseGame,
+  QuitGame,
 };
 } // namespace sb::input
 #endif //INPUTACTION_H

@@ -29,7 +29,7 @@ void KeyboardHandler::poll_inputs() {
     }
     else if (event.type == SDL_EVENT_QUIT) {
       quit = true;
-      //Do I need a QuitCommand?
+      this->normalizer().normalize_input(InputCode::VirtualQuit(), 1.0F);
     }
   }
 }

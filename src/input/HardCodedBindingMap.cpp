@@ -5,6 +5,9 @@
 
 #include "../../include/input/HardcodedBindingMap.h"
 sb::input::InputAction sb::input::HardcodedBindingMap::resolve(const InputCode& input) const {
+  if (input == InputCode::VirtualQuit()) {
+    return InputAction::QuitGame;
+  }
   auto found_binding = this->bindings_.find(input);
   if (found_binding != this->bindings_.end()) {
     return found_binding->second;
@@ -20,6 +23,7 @@ void sb::input::HardcodedBindingMap::load_bindings(const std::string& path) {
   bindings_.emplace(InputCode::FromKeyboard(SDL_SCANCODE_LEFT), InputAction::MoveLeft);
   bindings_.emplace(InputCode::FromKeyboard(SDL_SCANCODE_RIGHT), InputAction::MoveRight);
   bindings_.emplace(InputCode::FromKeyboard(SDL_SCANCODE_SPACE), InputAction::LaunchBall);
+  bindings_.emplace(InputCode::FromKeyboard(SDL_SCANCODE_ESCAPE), InputAction::QuitGame);
 }
 void sb::input::HardcodedBindingMap::save_bindings(const std::string& path) const {
   //no-op
