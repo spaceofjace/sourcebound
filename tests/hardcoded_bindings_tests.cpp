@@ -35,4 +35,7 @@ TEST(HardcodedBindingMapTest, LoadBindingsSetsDefaultKeys) {
             InputAction::MoveRight);
   EXPECT_EQ(bindings.resolve(sb::input::InputCode::FromKeyboard(SDL_SCANCODE_SPACE)),
             InputAction::LaunchBall);
+  EXPECT_EQ(bindings.resolve(sb::input::InputCode::FromKeyboard(SDL_SCANCODE_ESCAPE)),
+            InputAction::QuitGame);
+  EXPECT_EQ(bindings.resolve(InputCode::VirtualQuit()), InputAction::QuitGame);
 }

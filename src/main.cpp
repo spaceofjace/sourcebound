@@ -54,9 +54,6 @@ int main() {
     return 1;
   }
 
-  TimePoint lastFrameTime = Clock::now();
-  bool isRunning = true;
-
   world->register_component<Velocity>();
   world->register_component<Paddle>();
   world->register_component<Ball>();
@@ -85,24 +82,23 @@ int main() {
   world->add_component(ball, RenderableSimpleShape{sb::rendering::Colors::cyan, SimpleShapeType::Circle, true});
   world->add_component(ball, Velocity{0, 0});
 
-  while (isRunning) {
-    SDL_Event sdl_event;
+  TimePoint lastFrameTime = Clock::now();
 
-    while (SDL_PollEvent(&sdl_event)) {
-      if (sdl_event.type == SDL_EVENT_QUIT) {
-        isRunning = false;
-      }
-    }
-
+  while (true) {
     TimePoint currentFrameTime = Clock::now();
     std::chrono::duration<float> elapsed = currentFrameTime - lastFrameTime;
-    float deltaTime = elapsed.count();
+    const float deltaTime = elapsed.count();
     lastFrameTime = currentFrameTime;
 
     // Main per-frame execution
     input.poll_inputs();
     renderer->clear();
     world->step(deltaTime);
+
+    if (world->should_exit()) {
+      break;
+    }
+
     world->update(deltaTime);
     renderer->present();
   }

@@ -85,6 +85,8 @@ using InputData = std::variant<
  * @see InputData
  */
 struct InputCode {
+  static constexpr int kQuitCode = 0xFF;
+
   DeviceType device{ DeviceType::Invalid };
   InputKind kind{ InputKind::Invalid };
   InputData data;
@@ -109,6 +111,14 @@ struct InputCode {
 
   static InputCode FromGamepadAxis(SDL_GamepadAxis axis) {
     return { DeviceType::Gamepad, InputKind::Axis, axis };
+  }
+
+  /**
+ * @brief Creates a virtual InputCode used to represent system-initiated quit requests.
+ * @return A synthetic InputCode that maps to InputAction::QuitGame.
+ */
+  static InputCode VirtualQuit() {
+    return { DeviceType::Invalid, InputKind::Button, static_cast<Uint8>(kQuitCode) };
   }
 
   [[nodiscard]] bool is_axis() const { return kind == InputKind::Axis; }

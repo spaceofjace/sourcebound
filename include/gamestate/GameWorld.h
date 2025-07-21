@@ -113,11 +113,19 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
     return component_manager_->has_component<T>(entity);
   }
 
+  [[nodiscard]] bool should_exit() const override {
+    return should_exit_;
+  }
+  void request_exit() override {
+    should_exit_ = true;
+  }
+
  private:
   std::shared_ptr<ecs::IEntityManager> entity_manager_;
   std::shared_ptr<ecs::ComponentManager> component_manager_;
   std::shared_ptr<ecs::ISystemManager> system_manager_;
   std::shared_ptr<ICommandQueue> cmd_queue_;
+  bool should_exit_ = false;
 };
 
 }  // namespace sb::gamestate

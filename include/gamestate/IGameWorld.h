@@ -53,6 +53,8 @@ public:
   virtual void update(float delta_time) = 0;
   virtual void process_events() = 0;
   [[nodiscard]] virtual bool is_alive(Entity entity) const = 0;
+  [[nodiscard]] virtual bool should_exit() const = 0;
+  virtual void request_exit() = 0;
 };
 
 } // namespace sb::ecs
