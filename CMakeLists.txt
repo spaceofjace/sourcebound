@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.30)
 project(sourcebound)
+enable_testing()
 
 set(SDL3_DIR "${CMAKE_SOURCE_DIR}/external/SDL3/install/cmake/")
 find_package(SDL3 REQUIRED CONFIG)
