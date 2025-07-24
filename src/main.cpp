@@ -13,6 +13,7 @@
 #include "../include/input/KeyboardHandler.h"
 #include "../include/input/SdlEventSource.h"
 #include "../include/rendering/SdlRenderer.h"
+#include "../include/data/GameData.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -38,16 +39,28 @@ int main() {
     return 1;
   }
 
-  SDL_Window* window = SDL_CreateWindow("Sourcebound Test", 800, 600, 0);
+  // For now, using hardcoded game data; later, I expect this to be managed by a data layer
+  const sb::data::LevelData level_data;
 
-  if (!window) {
+  const auto window_height = level_data.arena_height
+      + level_data.top_margin
+      + level_data.bottom_margin;
+
+  const auto window_width = level_data.arena_width
+        + level_data.left_margin
+        + level_data.right_margin;
+
+  SDL_Window* window = SDL_CreateWindow("Sourcebound Test", static_cast<int>(window_width),
+    static_cast<int>(window_height), 0);
+
+  if (window == nullptr) {
     std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
     SDL_Quit();
     return 1;
   }
 
   SDL_Renderer* sdl_renderer = SDL_CreateRenderer(window, nullptr);
-  if (!sdl_renderer) {
+  if (sdl_renderer == nullptr) {
     std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     SDL_DestroyWindow(window);
     SDL_Quit();

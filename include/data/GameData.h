@@ -44,8 +44,8 @@ struct LevelData {
   int level_id = -1;                            /**< Unique identifier for the level */
   std::string level_name;                       /**< Optional level title or name */
 
-  float arena_width = 640.0F;                   /**< Width of the gameplay arena in pixels */
-  float arena_height = 480.0F;                  /**< Height of the gameplay arena in pixels */
+  float arena_width = 400.0F;                   /**< Width of the gameplay arena in pixels */
+  float arena_height = 800.0F;                  /**< Height of the gameplay arena in pixels */
   float wall_thickness = 16.0F;                 /**< Thickness of wall colliders around arena */
 
   // Paddle Data
