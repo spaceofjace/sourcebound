@@ -62,6 +62,7 @@ add_executable(sourcebound
         tests/mocks/MockRenderer.h
         include/gamestate/QuitCommand.h
         src/gamestate/QuitCommand.cpp
+        src/data/GameData.h
 )
 
 add_executable(unit_tests
@@ -126,6 +127,7 @@ add_executable(unit_tests
         tests/render_system_tests.cpp
         src/gamestate/QuitCommand.cpp
         tests/quit_command_test.cpp
+        src/data/GameData.h
 )
 
 target_include_directories(sourcebound PUBLIC
