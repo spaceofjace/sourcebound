@@ -1,5 +1,33 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-07-24 - 7 hours
+(includes ~2 hours from 7/23 +  ~1 hour from 7/21.)
+
+### Objective(s)
+
+1. Fix input bug (7/21)
+2. Implement basic game data (7/23)
+3. Get initial level loading setup
+### Details
+#### Key Accomplishments
+
+* I now have a game window that is initialized by (hardcoded) configurable game data.
+* This renders four walls, a "bottom wall" for out of bounds, the paddle and ball, all in correct starting positions based on the level data.
+* Cleaned up some handling, as well as fixed a bug in `EntityManager`
+* Also, unit tests run on pushes now, so I shouldn't have any sneaking failing tests anymore when I neglect to run them all.  
+	* Less pressure to run them every time, especially as a solo developer
+	* I may eventually try to get a pre-push trigger working, but as far as I know, it's not compatible with Github Desktop client, which I find easier to use.
+	* Importantly, though, failing tests will block merge to main.
+#### Challenges / Notes
+
+* Templated methods are WAY more of a pain for testability than I would have initially guessed.  I am making a task to refactor my templated methods to use type_id for registration, etc, though I may keep the templated methods for syntactic sugar.  (When you know you have the concrete type.)
+* I also forgot SDL3 renders from the corner rather than the center; I am managing this conversion within `SdlRenderer` since that is technically internal to how it is managed, and that will keep use of Transform simplified external to render systems. 
+#### Next Steps
+
+* Probably going to take on the refactor next, to better enable the init method in GameWorld to do what it needs to do. (Found work.)
+* Then next is the `PhysicsSystem`, which will hopefully play well with the `MovementSystem` already...though until I have Collision online, it won't clamp to boundaries.  Yet. 
+
+---
 ## 2025-07-16 - 3.5 hours
 
 ### Objective(s)
