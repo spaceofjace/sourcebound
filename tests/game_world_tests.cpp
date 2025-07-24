@@ -6,10 +6,12 @@
 #include <gtest/gtest.h>
 
 #include "../include/ecs/ISystem.h"
+#include "../include/ecs/components/Components.h"
 #include "../include/gamestate/GameWorld.h"
 #include "mocks/MockCommandQueue.h"
 #include "mocks/MockComponentManager.h"
 #include "mocks/MockEntityManager.h"
+#include "mocks/MockRenderer.h"
 #include "mocks/MockSystemManager.h"
 
 using namespace sb::gamestate;
@@ -79,4 +81,68 @@ TEST(GameWorldTest, UpdateDelegatesToSystemManager) {
   gw.update(0.016f);
 
   EXPECT_TRUE(sm->updated);
+}
+
+TEST(GameWorldTest, RequestExitSetsFlag) {
+  auto em = std::make_shared<MockEntityManager_GMock>();
+  auto cm = std::make_shared<ComponentManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  GameWorld gw(em, cm, sm, cq);
+
+  EXPECT_FALSE(gw.should_exit());
+  gw.request_exit();
+  EXPECT_TRUE(gw.should_exit());
+}
+
+TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
+  using namespace testing;
+
+  auto em = std::make_shared<MockEntityManager_GMock>();
+  auto cm = std::make_shared<ComponentManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  auto renderer = std::make_shared<MockRenderer>();
+  GameWorld gw(em, cm, sm, cq);
+  gw.initialize(renderer);
+
+  std::vector<sb::ecs::Entity> expected_entities = {
+    {1, 0}, {2, 0}, {3, 0}, {4, 0},
+    {5, 0}, {6, 0}
+  };
+
+  EXPECT_CALL(*em, create_entity())
+  .WillOnce(Return(Entity{1, 0}))
+  .WillOnce(Return(Entity{2, 0}))
+  .WillOnce(Return(Entity{3, 0}))
+  .WillOnce(Return(Entity{4, 0}))
+  .WillOnce(Return(Entity{5, 0}))
+  .WillOnce(Return(Entity{6, 0}));
+
+  EXPECT_CALL(*em, set_signature(_, _)).Times(AnyNumber());
+  EXPECT_CALL(*em, get_signature(_)).WillRepeatedly(Return(Signature{}));
+
+  Signature renderable_sig;
+  renderable_sig.set(cm->get_component_type<RenderableSimpleShape>());
+  renderable_sig.set(cm->get_component_type<Transform>());
+
+  EXPECT_CALL(*em, get_entities_with_signature(Eq(renderable_sig)))
+    .WillOnce(Return(expected_entities));
+
+  sb::data::LevelData level_data{};
+  gw.load_level(level_data);
+
+  auto result = gw.get_entities_with_signature(renderable_sig);
+  EXPECT_EQ(result.size(), expected_entities.size());
+}
+
+TEST(GameWorldTest, UnloadLevelClearsAllEntities) {
+  auto em = std::make_shared<MockEntityManager_GMock>();
+  auto cm = std::make_shared<ComponentManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  GameWorld gw(em, cm, sm, cq);
+
+  EXPECT_CALL(*em, clear_all()).Times(1);
+  gw.unload_level();
 }

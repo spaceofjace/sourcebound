@@ -111,7 +111,7 @@ bool EntityManager::try_get_signature(const EntityId entityId, Signature& signat
 void EntityManager::clear_all() {
   entities_.clear();
   if (reuse_enabled_) {
-    recycled_entities_.reset();
+    recycled_entities_ = std::stack<Entity>{};
   }
 }
 

@@ -67,14 +67,12 @@ int main() {
     return 1;
   }
 
-  world->register_component<Velocity>();
-  world->register_component<Paddle>();
-  world->register_component<Ball>();
-  world->register_component<Transform>();
-  world->register_component<RenderableSimpleShape>();
-
+  //I started to move this into initialize, but doing so would "kill" testability
+  // Going to remove templated calls as a primary method of using them in a follow-up refactor
   auto renderer = std::make_shared<sb::rendering::SdlRenderer>(sdl_renderer);
   auto render_system = system_mgr->register_system<sb::ecs::RenderSystem>(renderer, component_mgr);
+
+  world->initialize(renderer);
 
   sb::ecs::Signature renderSig;
   renderSig.reset();
@@ -83,17 +81,8 @@ int main() {
   renderSig.set(component_mgr->get_component_type<RenderableSimpleShape>());
   system_mgr->set_signature<sb::ecs::RenderSystem>(renderSig);
 
-  auto paddle = world->create_entity();
-  world->add_component(paddle, Paddle{});
-  world->add_component(paddle, Transform{{100, 150}, {}, {100, 10}, {}});
-  world->add_component(paddle, RenderableSimpleShape{sb::rendering::Colors::blue, SimpleShapeType::Rectangle, true});
-  world->add_component(paddle, Velocity{0, 0});
-
-  auto ball = world->create_entity();
-  world->add_component(ball, Ball{});
-  world->add_component(ball, Transform{{150, 100}, {}, {20, 20}, {}});
-  world->add_component(ball, RenderableSimpleShape{sb::rendering::Colors::cyan, SimpleShapeType::Circle, true});
-  world->add_component(ball, Velocity{0, 0});
+  world->unload_level();
+  world->load_level(level_data);
 
   TimePoint lastFrameTime = Clock::now();
 

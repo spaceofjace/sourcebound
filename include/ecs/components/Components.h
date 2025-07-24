@@ -18,6 +18,7 @@
 #ifndef COMPONENTS_H
 #define COMPONENTS_H
 #include "../../rendering/Color.h"
+#include "../../math//Vec2.h"
 // Physics components
 
 /**
@@ -25,28 +26,36 @@
  * @ingroup ECS
  * @brief Represents 2D position in coordinate system.
  */
-struct Position { float x = 0.f, y = 0.f; };
+struct Position {
+  Position() = default;
+  Position(float x, float y) : x(x), y(y) {}
+  explicit Position(const sb::math::Vec2& vec2) : x(vec2.x), y(vec2.y) {}
+  [[nodiscard]] sb::math::Vec2 as_vec2() const { return { x, y }; }
+
+  float x = 0.0F, y = 0.0F;
+};
+
 
 /**
  * @struct Velocity
  * @ingroup ECS
  * @brief Provides velocity vectors in two dimensions.
  */
-struct Velocity { float x = 0.f, y = 0.f; };
+struct Velocity { float x = 0.0F, y = 0.0F; };
 
 /**
  * @struct Size
  * @ingroup ECS
  * @brief Physical width and height scalars.
  */
-struct Size     { float width = 1.f, height = 1.f; };
+struct Size     { float width = 1.0F, height = 1.0F; };
 
 /**
  * @struct Rotation
  * @ingroup ECS
  * @brief Provides rotational angle.
  */
-struct Rotation { float angle = 0.f; };
+struct Rotation { float angle = 0.0F; };
 
 /**
  * @struct Transform
@@ -55,14 +64,24 @@ struct Rotation { float angle = 0.f; };
  */
 struct Transform {
   Position position;
-  Velocity velocity;
   Size size;
   Rotation rotation;
 
-  explicit Transform(const Position p = {}, const Velocity v = {},
-    const Size s = {}, const Rotation r = {})
-    : position(p), velocity(v), size(s), rotation(r) {}
+  explicit Transform(const Position pos = {}, const Size size = {}, const Rotation rot = {})
+    : position(pos), size(size), rotation(rot) {}
 };
+
+enum class CollisionBehavior {
+  None      = 0,
+  Clamp     = 1 << 0,
+  Bounce    = 1 << 1,
+  Destroy   = 1 << 2,
+  Trigger    = 1 << 3
+};
+
+inline CollisionBehavior operator|(CollisionBehavior lhs, CollisionBehavior rhs) {
+  return static_cast<CollisionBehavior>(static_cast<int>(lhs) | static_cast<int>(rhs));
+}
 
 /**
  * @struct CircleCollider
@@ -76,6 +95,7 @@ struct CircleCollider {
   float radius = 0.0F;
   float offset_x = 0.0F;
   float offset_y = 0.0F;
+  CollisionBehavior behavior = CollisionBehavior::None;
 };
 
 /**
@@ -91,6 +111,7 @@ struct BoxCollider {
   float height = 0.0F;
   float offset_x = 0.0F;
   float offset_y = 0.0F;
+  CollisionBehavior behavior = CollisionBehavior::None;
 };
 
 //Rendering components
@@ -151,5 +172,19 @@ struct Ball { };
  * @brief A "tag" component to indicate a paddle in the game
  */
 struct Paddle { };
+
+/**
+ * @struct Brick
+ * @ingroup ECS
+ * @brief A "tag" component to indicate a brick in the game
+ */
+struct Brick { };
+
+/**
+ * @struct Wall
+ * @ingroup ECS
+ * @brief A "tag" component to indicate a wall in the game
+ */
+struct Wall { };
 
 #endif //COMPONENTS_H

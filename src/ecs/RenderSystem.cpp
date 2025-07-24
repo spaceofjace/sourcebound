@@ -17,16 +17,14 @@ void sb::ecs::RenderSystem::update(float delta_time) {
 
     switch (renderableComponent.type) {
       case SimpleShapeType::Rectangle:
-        renderer_->draw_rect(static_cast<int>(transformComponent.position.x),
-          static_cast<int>(transformComponent.position.y),
+        renderer_->draw_rect(transformComponent.position.as_vec2(),
           static_cast<int>(transformComponent.size.width),
           static_cast<int>(transformComponent.size.height),
           renderableComponent.color,
           renderableComponent.filled);
         break;
       case SimpleShapeType::Circle:
-        renderer_->draw_circle(static_cast<int>(transformComponent.position.x),
-          static_cast<int>(transformComponent.position.y),
+        renderer_->draw_circle(transformComponent.position.as_vec2(),
           static_cast<int>(0.5F * transformComponent.size.width), //assume radius from width NOLINT(*-magic-numbers)
           renderableComponent.color,
           renderableComponent.filled);

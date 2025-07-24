@@ -4,6 +4,7 @@
 //
 
 #include "../../include/rendering/SdlRenderer.h"
+
 #include <cmath>
 
 namespace sb::rendering {
@@ -15,15 +16,16 @@ void SdlRenderer::present() {
   SDL_RenderPresent(renderer_);
 }
 
-void SdlRenderer::draw_rect(const int pos_x, const int pos_y, const int width, const int height,
+void SdlRenderer::draw_rect(const math::Vec2& center, const int width, const int height,
     const Color& color, const bool filled) {
 
   SetSdlDrawColor(renderer_, color);
 
   // SDL prefers float-based in SDL3, but ints will be simpler for a simple game
+  // SDL also uses the corner for rendering position, so we need to convert from center
   const SDL_FRect rect = {
-    static_cast<float>(pos_x),
-    static_cast<float>(pos_y),
+    (center.x - (static_cast<float>(width) * 0.5F)),
+    (center.y - (static_cast<float>(height) * 0.5F)),
     static_cast<float>(width),
     static_cast<float>(height)
   };
@@ -40,14 +42,14 @@ void SdlRenderer::draw_rect(const int pos_x, const int pos_y, const int width, c
 //  - Switching to a shader-based or OpenGL pipeline
 //  - Drawing with SDL_gfx if ported to SDL3 (not currently official)
 //
-void SdlRenderer::draw_circle(const int center_x, const int center_y, const int radius, // NOLINT(*-easily-swappable-parameters)
+void SdlRenderer::draw_circle(const math::Vec2& center, const int radius, // NOLINT(*-easily-swappable-parameters)
     const Color& color, const bool filled) {
 
   SetSdlDrawColor(renderer_, color);
 
   // SDL prefers float-based in SDL3, but ints will be simpler for a simple game
-  const auto f_center_x = static_cast<float>(center_x);
-  const auto f_center_y = static_cast<float>(center_y);
+  const auto f_center_x = static_cast<float>(center.x);
+  const auto f_center_y = static_cast<float>(center.y);
 
   // Loop over a square region centered on (center_x, center_y)
   // This covers the bounding box of the circle.

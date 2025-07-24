@@ -48,28 +48,27 @@ class SdlRenderer final : public IRenderer {
  * @brief Draws a rectangle to the rendering target.
  *
  * Uses SDL_RenderFillRect or SDL_RenderDrawRect depending on the filled flag.
+ * SDL uses top corner for render position, so a conversion from center -> top corner is needed.
  *
- * @param pos_x X coordinate of the rectangle’s top-left corner.
- * @param pos_y Y coordinate of the rectangle’s top-left corner.
+ * @param center The center point of the rectangle.
  * @param width Width of the rectangle.
  * @param height Height of the rectangle.
  * @param color Defines color channels (RGBA) to render.
  * @param filled If true, fills the rectangle; otherwise, draws a 1-pixel outline.
  */
-  void draw_rect(int pos_x, int pos_y, int width, int height, const Color& color, bool filled) override;
+  void draw_rect(const math::Vec2& center, int width, int height, const Color& color, bool filled) override;
 
 /**
  * @brief Draws a circle to the rendering target.
  *
  * This method manually rasterizes the circle, since SDL has no built-in circle API.
  *
- * @param center_x X coordinate of the circle’s center.
- * @param center_y Y coordinate of the circle’s center.
+ * @param center The center point of the circle.
  * @param radius Radius of the circle.
  * @param color Defines color channels (RGBA) to render.
  * @param filled If true, fills the circle; otherwise, draws a 1-pixel outline.
  */
-  void draw_circle(int center_x, int center_y, int radius, const Color& color, bool filled) override;
+  void draw_circle(const math::Vec2& center, int radius, const Color& color, bool filled) override;
 
  private:
   // SDL manages shutdown through SDL_DestroyRenderer, so using a standard pointer here as cleanup

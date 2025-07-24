@@ -64,6 +64,8 @@ add_executable(sourcebound
         include/gamestate/QuitCommand.h
         src/gamestate/QuitCommand.cpp
         include/data/GameData.h
+        src/gamestate/GameWorld.cpp
+        include/math/Vec2.h
 )
 
 add_executable(unit_tests
@@ -129,6 +131,8 @@ add_executable(unit_tests
         src/gamestate/QuitCommand.cpp
         tests/quit_command_test.cpp
         include/data/GameData.h
+        src/gamestate/GameWorld.cpp
+        include/math/Vec2.h
 )
 
 target_include_directories(sourcebound PUBLIC
