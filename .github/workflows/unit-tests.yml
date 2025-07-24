@@ -1,0 +1,34 @@
+name: Windows Unit Tests
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+    branches: ['**']
+
+jobs:
+  unit-tests:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up CMake + Ninja
+        uses: lukka/get-cmake@latest
+
+      - name: Configure CMake
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G "Ninja" -DCMAKE_BUILD_TYPE=Debug
+
+      - name: Build all targets
+        run: |
+          cd build
+          ninja
+
+      - name: Run tests
+        run: |
+          cd build
+          ctest --output-on-failure

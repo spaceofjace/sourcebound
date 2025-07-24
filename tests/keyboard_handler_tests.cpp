@@ -106,15 +106,13 @@ TEST(KeyboardHandlerTest, PollInputs_ExitsLoopOnQuitEvent) {
   SDL_Event quit_event{};
   quit_event.type = SDL_EVENT_QUIT;
 
-  // Simulate only a quit event
   EXPECT_CALL(*mock_event_source, poll_event(::testing::_))
     .WillOnce([&quit_event](SDL_Event& e) {
       e = quit_event;
       return true;
-    })
-    .WillOnce([](SDL_Event&) { return false; });
+    });
 
-  EXPECT_CALL(*mock_normalizer, normalize_input(::testing::_, ::testing::_)).Times(0);
+  EXPECT_CALL(*mock_normalizer, normalize_input(InputCode::VirtualQuit(), 1.0f)).Times(1);
 
   KeyboardHandler handler(mock_normalizer, mock_event_source);
   handler.poll_inputs();
