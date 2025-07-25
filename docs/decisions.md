@@ -125,16 +125,29 @@ I chose to preserve distinct types (`Position`, `Size`, and `Vec2`) rather than 
 
 ### Decision:
 Collision logic is governed by a `CollisionBehavior` enum with bitmaskable flags (e.g., `Clamp`, `Bounce`, `Destroy`, `Trigger`), stored in collider components.
-
 ### Reasoning:
 - Allows a single system to interpret collision responses based on entity configuration.
 - Supports flexible, declarative behaviors without requiring inheritance or script hooks.
 - Enables layered logic: multiple behaviors can be active on a single collider.
-
 ### Tradeoffs:
 - Requires discipline to avoid overly complex behavior combinations.
 - Systems must interpret the flags correctly and consistently (no “default” behavior).
 - Not as expressive as a full-on event or scripting system.
+
+---
+## Move Away from Templated Interfaces for Registration and instead use `type_index`
+
+### Decision:
+I am shifting away from using templated methods as the default mechanism for system/component registration and access and am shifting them to runtime safe methods using `std::type_index`.
+### Reasoning:
+- Improves testability: interfaces can now accept runtime `std::type_index` keys and injected instances without requiring template instantiation.
+- Enables mocking and dynamic composition in unit tests and runtime environments.
+- Allows future dependency contexts to be constructed from runtime configuration rather than compile-time binding.
+- Templated versions are preserved for developer ergonomics and remain available when compile-time safety or brevity is preferred.
+### Tradeoffs:
+- Slightly more verbose code in core systems or registration logic.
+- Relies on `std::type_index`, which introduces [RTTI overhead](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c146-use-dynamic_cast-where-class-hierarchy-navigation-is-unavoidable) (negligible in current scope).
+- Introduces potential for type mismatches if used inconsistently (e.g., manual `typeid()` mismatches), though these are mitigated by centralized registration patterns.
 
 ---
 ## TEMPLATE

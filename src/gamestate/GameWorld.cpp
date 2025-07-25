@@ -4,22 +4,18 @@
 //
 
 #include "../../include/gamestate/GameWorld.h"
+
+#include "../../include/ecs/RenderSystem.h"
 #include "../../include/ecs/components/Components.h"
 
 using sb::ecs::Entity;
 using sb::ecs::Signature;
 
-void sb::gamestate::GameWorld::initialize(std::shared_ptr<rendering::IRenderer> renderer) {
+void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> renderSystem) {
 
   //Register any game components used for this game
-  // may add "auto-registration" via static initializer later
-  register_component<Velocity>();
-  register_component<Paddle>();
-  register_component<Ball>();
-  register_component<Transform>();
-  register_component<RenderableSimpleShape>();
-  register_component<Wall>();
-  register_component<BoxCollider>();
+  register_components();
+  register_systems(std::move(renderSystem));
 }
 
 Entity sb::gamestate::GameWorld::create_entity() {
@@ -52,6 +48,7 @@ void sb::gamestate::GameWorld::process_events() {
 [[nodiscard]] bool sb::gamestate::GameWorld::should_exit() const {
   return should_exit_;
 }
+
 void sb::gamestate::GameWorld::request_exit() {
   should_exit_ = true;
 }
@@ -143,6 +140,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
                 RenderableSimpleShape{rendering::Colors::cyan, SimpleShapeType::Circle, true});
   add_component(ball, Velocity{0, 0});
 }
+
 void sb::gamestate::GameWorld::unload_level() {
   entity_manager_->clear_all();
 }
@@ -150,4 +148,27 @@ void sb::gamestate::GameWorld::unload_level() {
 [[nodiscard]] std::vector<Entity> sb::gamestate::GameWorld::get_entities_with_signature(
     const Signature& target_signature) const {
   return entity_manager_->get_entities_with_signature(target_signature);
+}
+
+void sb::gamestate::GameWorld::register_components() const {
+  // may add "auto-registration" via static initializer later
+  register_component<Velocity>();
+  register_component<Paddle>();
+  register_component<Ball>();
+  register_component<Transform>();
+  register_component<RenderableSimpleShape>();
+  register_component<Wall>();
+  register_component<BoxCollider>();
+}
+
+// ReSharper disable once CppMemberFunctionMayBeConst
+// actually mutates through shared pointers
+void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> renderSystem) {
+  Signature renderSig;
+  renderSig.reset();
+
+  system_manager_->register_system(typeid(ecs::RenderSystem), std::move(renderSystem));
+  renderSig.set(component_manager_->get_component_type<Transform>());
+  renderSig.set(component_manager_->get_component_type<RenderableSimpleShape>());
+  system_manager_->set_signature(typeid(ecs::RenderSystem), renderSig);
 }

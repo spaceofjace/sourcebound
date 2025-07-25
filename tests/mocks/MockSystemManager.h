@@ -11,6 +11,11 @@
 using namespace sb::ecs;
 
 struct MockSystemManager : ISystemManager {
+  void register_system(std::type_index type, std::shared_ptr<ISystem> system) override{}
+  void set_signature(std::type_index type, Signature signature) override{}
+  [[nodiscard]] std::shared_ptr<ISystem> get_system(std::type_index type) const override {
+    return nullptr;
+  }
   void update(float /*delta_time*/) override {}
   void entity_destroyed(Entity entity) override{}
   void entity_signature_changed(Entity entity, const Signature& signature) override{}

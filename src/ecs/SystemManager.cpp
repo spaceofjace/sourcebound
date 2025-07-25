@@ -30,4 +30,29 @@ void SystemManager::update(const float delta_time) {
   }
 }
 
+void SystemManager::register_system(const std::type_index type, std::shared_ptr<ISystem> system) {
+  if (systems_.find(type) != systems_.end()) {
+    log::Logger::error("[SystemManager] System already registered");
+    throw std::runtime_error("[SystemManager] System already registered.");
+  }
+  systems_[type] = std::move(system);
+}
+
+void SystemManager::set_signature(const std::type_index type, const Signature signature) {
+  if (systems_.find(type) == systems_.end()) {
+    log::Logger::error("[SystemManager] System not registered before setting signature.");
+    throw std::runtime_error("[SystemManager] System not registered before setting signature.");
+  }
+  signatures_[type] = signature;
+}
+
+std::shared_ptr<ISystem> SystemManager::get_system(const std::type_index type) const {
+  auto it = systems_.find(type);
+  if (it == systems_.end()) {
+    log::Logger::error("[SystemManager] System not registered.");
+    throw std::runtime_error("[SystemManager] System not registered.");
+  }
+  return it->second;
+}
+
 } // namespace sb::ecs

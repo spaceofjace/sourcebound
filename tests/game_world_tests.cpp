@@ -12,6 +12,7 @@
 #include "mocks/MockComponentManager.h"
 #include "mocks/MockEntityManager.h"
 #include "mocks/MockRenderer.h"
+#include "mocks/MockSystem.h"
 #include "mocks/MockSystemManager.h"
 
 using namespace sb::gamestate;
@@ -102,9 +103,9 @@ TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
   auto cm = std::make_shared<ComponentManager>();
   auto sm = std::make_shared<MockSystemManager>();
   auto cq = std::make_shared<MockCommandQueue>();
-  auto renderer = std::make_shared<MockRenderer>();
+  auto render_system = std::make_shared<MockSystem>();
   GameWorld gw(em, cm, sm, cq);
-  gw.initialize(renderer);
+  gw.initialize(render_system);
 
   std::vector<sb::ecs::Entity> expected_entities = {
     {1, 0}, {2, 0}, {3, 0}, {4, 0},

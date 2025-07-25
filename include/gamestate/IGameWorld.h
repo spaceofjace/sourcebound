@@ -22,7 +22,7 @@
 
 #include "../data/GameData.h"
 #include "../ecs/Entity.h"
-#include "../rendering/IRenderer.h"
+#include "../ecs/ISystem.h"
 
 namespace sb::gamestate {
 using ecs::Entity;
@@ -49,9 +49,13 @@ public:
 
   /**
    * @brief Initializes game world systems and registers necessary component types.
-   * @param renderer The renderer used by the world, typically passed into visual systems.
+   * @param renderSystem Rendering has an external dependency, so we are passing it through directly
+   * for now.
+   *
+   * Note: Eventually this param may be replaced with the concept of a "Context" or
+   * something very similar.
    */
-  virtual void initialize(std::shared_ptr<rendering::IRenderer> renderer) = 0;
+  virtual void initialize(std::shared_ptr<ecs::ISystem> renderSystem) = 0;
 
   /**
    * @brief Creates a new entity within the game world.
