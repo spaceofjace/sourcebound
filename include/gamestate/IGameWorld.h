@@ -21,6 +21,7 @@
 #define IGAMEWORLD_H
 
 #include "../data/GameData.h"
+#include "../data/IGameDataManager.h"
 #include "../ecs/Entity.h"
 #include "../ecs/ISystem.h"
 
@@ -55,7 +56,8 @@ public:
    * Note: Eventually this param may be replaced with the concept of a "Context" or
    * something very similar.
    */
-  virtual void initialize(std::shared_ptr<ecs::ISystem> renderSystem) = 0;
+  virtual void initialize(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager) = 0;
 
   /**
    * @brief Creates a new entity within the game world.

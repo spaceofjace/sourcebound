@@ -66,6 +66,9 @@ add_executable(sourcebound
         include/data/GameData.h
         src/gamestate/GameWorld.cpp
         include/math/Vec2.h
+        include/data/IGameDataManager.h
+        include/data/HardcodedGameDataManager.h
+        src/data/HardcodedGameDataManager.cpp
 )
 
 add_executable(unit_tests
@@ -133,6 +136,11 @@ add_executable(unit_tests
         include/data/GameData.h
         src/gamestate/GameWorld.cpp
         include/math/Vec2.h
+        include/data/IGameDataManager.h
+        include/data/HardcodedGameDataManager.h
+        src/data/HardcodedGameDataManager.cpp
+        tests/hardcoded_data_manager_tests.cpp
+        tests/mocks/MockGameDataManager.h
 )
 
 target_include_directories(sourcebound PUBLIC

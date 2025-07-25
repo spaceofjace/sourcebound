@@ -1,6 +1,8 @@
 #include <chrono>
 #include <memory>
 
+#include "../include/data/GameData.h"
+#include "../include/data/HardcodedGameDataManager.h"
 #include "../include/ecs/EntityManager.h"
 #include "../include/ecs/IComponentManager.h"
 #include "../include/ecs/RenderSystem.h"
@@ -13,7 +15,6 @@
 #include "../include/input/KeyboardHandler.h"
 #include "../include/input/SdlEventSource.h"
 #include "../include/rendering/SdlRenderer.h"
-#include "../include/data/GameData.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -40,7 +41,11 @@ int main() {
   }
 
   // For now, using hardcoded game data; later, I expect this to be managed by a data layer
-  const sb::data::LevelData level_data;
+  auto game_data_manager = std::make_shared<sb::data::HardcodedGameDataManager>();
+  game_data_manager->load_config("");
+  game_data_manager->set_current_level(1); // no level chain yet
+
+  const auto& level_data = game_data_manager->get_current_level_data();
 
   const auto window_height = level_data.arena_height
       + level_data.top_margin
@@ -50,7 +55,7 @@ int main() {
         + level_data.left_margin
         + level_data.right_margin;
 
-  SDL_Window* window = SDL_CreateWindow("Sourcebound Test", static_cast<int>(window_width),
+  SDL_Window* window = SDL_CreateWindow(level_data.level_name.c_str(), static_cast<int>(window_width),
     static_cast<int>(window_height), 0);
 
   if (window == nullptr) {
@@ -72,7 +77,7 @@ int main() {
   auto renderer = std::make_shared<sb::rendering::SdlRenderer>(sdl_renderer);
   auto render_system = std::make_shared<sb::ecs::RenderSystem>(renderer, component_mgr);
 
-  world->initialize(render_system);
+  world->initialize(render_system, game_data_manager);
   world->unload_level(); //technically not needed, but want to show the "full flow" here
   world->load_level(level_data);
 

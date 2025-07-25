@@ -11,11 +11,12 @@
 using sb::ecs::Entity;
 using sb::ecs::Signature;
 
-void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> renderSystem) {
+void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager) {
 
   //Register any game components used for this game
   register_components();
-  register_systems(std::move(renderSystem));
+  register_systems(std::move(render_system), game_data_manager);
 }
 
 Entity sb::gamestate::GameWorld::create_entity() {
@@ -163,12 +164,15 @@ void sb::gamestate::GameWorld::register_components() const {
 
 // ReSharper disable once CppMemberFunctionMayBeConst
 // actually mutates through shared pointers
-void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> renderSystem) {
+void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager) {
   Signature renderSig;
   renderSig.reset();
 
-  system_manager_->register_system(typeid(ecs::RenderSystem), std::move(renderSystem));
+  system_manager_->register_system(typeid(ecs::RenderSystem), std::move(render_system));
   renderSig.set(component_manager_->get_component_type<Transform>());
   renderSig.set(component_manager_->get_component_type<RenderableSimpleShape>());
   system_manager_->set_signature(typeid(ecs::RenderSystem), renderSig);
+
+  //it's not needed yet, but game_data will be necessary to configure some systems
 }

@@ -49,7 +49,8 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
       system_manager_(std::move(system_manager)),
       cmd_queue_(std::move(cmd_queue)) {}
 
-  void initialize(std::shared_ptr<ecs::ISystem> renderSystem) override;
+  void initialize(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager) override;
   Entity create_entity() override;
   [[nodiscard]] std::vector<Entity> get_entities_with_signature(
       const ecs::Signature& target_signature) const override;
@@ -110,7 +111,8 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
   bool should_exit_ = false;
 
   void register_components() const;
-  void register_systems(std::shared_ptr<ecs::ISystem> renderSystem);
+  void register_systems(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager);
 };
 
 }  // namespace sb::gamestate
