@@ -5,11 +5,14 @@
 
 #include "../../include/gamestate/GameWorld.h"
 
+#include "../../include/ecs/systems/PhysicsSystem.h"
 #include "../../include/ecs/RenderSystem.h"
 #include "../../include/ecs/components/Components.h"
 
 using sb::ecs::Entity;
 using sb::ecs::Signature;
+using sb::ecs::PhysicsSystem;
+using sb::ecs::RenderSystem;
 
 void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> render_system,
     std::shared_ptr<data::IGameDataManager> game_data_manager) {
@@ -136,6 +139,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
 
   auto ball = create_entity();
   add_component(ball, Ball{});
+  add_component(ball, StuckToPaddle{});
   add_component(ball, Transform{{ball_x, ball_y}, {ball_diameter, ball_diameter}, {0}});
   add_component(ball,
                 RenderableSimpleShape{rendering::Colors::cyan, SimpleShapeType::Circle, true});
@@ -160,6 +164,7 @@ void sb::gamestate::GameWorld::register_components() const {
   register_component<RenderableSimpleShape>();
   register_component<Wall>();
   register_component<BoxCollider>();
+  register_component<StuckToPaddle>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -169,10 +174,18 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   Signature renderSig;
   renderSig.reset();
 
-  system_manager_->register_system(typeid(ecs::RenderSystem), std::move(render_system));
+  system_manager_->register_system(typeid(RenderSystem), std::move(render_system));
   renderSig.set(component_manager_->get_component_type<Transform>());
   renderSig.set(component_manager_->get_component_type<RenderableSimpleShape>());
-  system_manager_->set_signature(typeid(ecs::RenderSystem), renderSig);
+  system_manager_->set_signature(typeid(RenderSystem), renderSig);
 
-  //it's not needed yet, but game_data will be necessary to configure some systems
+  //Will soon try to refactor to allow bindings so this can be injectable
+  Signature physicsSig;
+  physicsSig.reset();
+  physicsSig.set(component_manager_->get_component_type<Transform>());
+  physicsSig.set(component_manager_->get_component_type<Velocity>());
+
+  auto physics_system = std::make_shared<PhysicsSystem>(game_data_manager, component_manager_);
+  system_manager_->register_system(typeid(PhysicsSystem), physics_system);
+  system_manager_->set_signature(typeid(PhysicsSystem), physicsSig);
 }

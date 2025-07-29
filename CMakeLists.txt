@@ -69,6 +69,8 @@ add_executable(sourcebound
         include/data/IGameDataManager.h
         include/data/HardcodedGameDataManager.h
         src/data/HardcodedGameDataManager.cpp
+        include/ecs/systems/PhysicsSystem.h
+        src/ecs/systems/PhysicsSystem.cpp
 )
 
 add_executable(unit_tests
@@ -141,6 +143,9 @@ add_executable(unit_tests
         src/data/HardcodedGameDataManager.cpp
         tests/hardcoded_data_manager_tests.cpp
         tests/mocks/MockGameDataManager.h
+        include/ecs/systems/PhysicsSystem.h
+        src/ecs/systems/PhysicsSystem.cpp
+        tests/physics_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

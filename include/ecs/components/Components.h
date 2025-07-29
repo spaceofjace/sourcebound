@@ -187,4 +187,11 @@ struct Brick { };
  */
 struct Wall { };
 
+/**
+ * @struct StuckToPaddle
+ * @ingroup ECS
+ * @brief A "tag" component for unlaunched ball
+ */
+struct StuckToPaddle { };
+
 #endif //COMPONENTS_H
