@@ -24,6 +24,9 @@ public:
     return fallback_level_;
   }
 
+  void set_paddle_speed(float speed) { fallback_level_.paddle_speed = speed; }
+  void set_ball_speed(float speed) { fallback_level_.ball_speed = speed; }
+
 private:
   static constexpr int kFallbackLevelId = -1;
   sb::data::LevelData fallback_level_;

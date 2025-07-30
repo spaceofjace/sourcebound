@@ -14,25 +14,24 @@ void sb::gamestate::PlayerMoveCommand::apply(
 
   Signature sig;
   sig.set(world->get_component_type<Paddle>());
-  sig.set(world->get_component_type<Velocity>());
+  sig.set(world->get_component_type<Direction>());
 
   auto paddles = world->get_entities_with_signature(sig);
   for (const auto& entity : paddles) {
-    auto& velocity = world->get_component<Velocity>(entity);
-    velocity.x = x_velocity_;
-    velocity.y = y_velocity_;
+    auto& direction = world->get_component<Direction>(entity);
+    direction.x = x_direction_;
+    direction.y = y_direction_;
   }
   sig.reset();
-  sig.set(world->get_component_type<Ball>());
-  sig.set(world->get_component_type<Velocity>());
-  auto balls = world->get_entities_with_signature(sig);
-  for (const auto& entity : balls) {
+  sig.set(world->get_component_type<StuckToPaddle>());
+  auto entities = world->get_entities_with_signature(sig);
+  for (const auto& entity : entities) {
     if (world->has_component<StuckToPaddle>(entity)) {
-      auto& velocity = world->get_component<Velocity>(entity);
-      velocity.x = x_velocity_;
-      velocity.y = y_velocity_;
+      auto& direction = world->get_component<Direction>(entity);
+      direction.x = x_direction_;
+      direction.y = y_direction_;
     }
   }
 
-  log::Logger::info("[Command Applied]: " + name_ + " - " + std::to_string(x_velocity_) + ", " + std::to_string(y_velocity_));
+  log::Logger::info("[Command Applied]: " + name_ + " - " + std::to_string(x_direction_) + ", " + std::to_string(y_direction_));
 }

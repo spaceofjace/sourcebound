@@ -124,12 +124,12 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
 
   auto paddle = create_entity();
   add_component(paddle, Paddle{});
-  add_component(
-      paddle,
-      Transform{{paddle_x, paddle_y}, {level_data.paddle_width, level_data.paddle_height}, {0}});
-  add_component(paddle,
-                RenderableSimpleShape{rendering::Colors::blue, SimpleShapeType::Rectangle, true});
+  add_component(paddle, Transform{{paddle_x, paddle_y}, {level_data.paddle_width,
+    level_data.paddle_height}, {0}});
+  add_component(paddle, RenderableSimpleShape{rendering::Colors::blue,
+    SimpleShapeType::Rectangle, true});
   add_component(paddle, Velocity{0, 0});
+  add_component(paddle, Direction{0, 0});
 
   // Ball
   const float ball_x = paddle_x + level_data.ball_offset.x;
@@ -140,10 +140,12 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
   auto ball = create_entity();
   add_component(ball, Ball{});
   add_component(ball, StuckToPaddle{});
-  add_component(ball, Transform{{ball_x, ball_y}, {ball_diameter, ball_diameter}, {0}});
-  add_component(ball,
-                RenderableSimpleShape{rendering::Colors::cyan, SimpleShapeType::Circle, true});
+  add_component(ball, Transform{{ball_x, ball_y}, {ball_diameter,
+    ball_diameter}, {0}});
+  add_component(ball, RenderableSimpleShape{rendering::Colors::cyan,
+    SimpleShapeType::Circle, true});
   add_component(ball, Velocity{0, 0});
+  add_component(ball, Direction{0, 0});
 }
 
 void sb::gamestate::GameWorld::unload_level() {
@@ -165,6 +167,7 @@ void sb::gamestate::GameWorld::register_components() const {
   register_component<Wall>();
   register_component<BoxCollider>();
   register_component<StuckToPaddle>();
+  register_component<Direction>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -184,6 +187,7 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   physicsSig.reset();
   physicsSig.set(component_manager_->get_component_type<Transform>());
   physicsSig.set(component_manager_->get_component_type<Velocity>());
+  physicsSig.set(component_manager_->get_component_type<Direction>());
 
   auto physics_system = std::make_shared<PhysicsSystem>(game_data_manager, component_manager_);
   system_manager_->register_system(typeid(PhysicsSystem), physics_system);

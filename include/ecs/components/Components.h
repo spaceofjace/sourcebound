@@ -44,11 +44,18 @@ struct Position {
 struct Velocity { float x = 0.0F, y = 0.0F; };
 
 /**
+ * @struct Direction
+ * @ingroup ECS
+ * @brief Provides normalized direction vector
+ */
+struct Direction { float x = 0.0F, y = 0.0F; };
+
+/**
  * @struct Size
  * @ingroup ECS
  * @brief Physical width and height scalars.
  */
-struct Size     { float width = 1.0F, height = 1.0F; };
+struct Size { float width = 1.0F, height = 1.0F; };
 
 /**
  * @struct Rotation

@@ -12,22 +12,22 @@ void sb::ecs::PhysicsSystem::update(float delta_time) {
 
   for (const auto& entity : entities) {
     auto& velocity = component_manager_->get_component<Velocity>(entity);
+    auto& direction = component_manager_->get_component<Direction>(entity);
     auto& transform = component_manager_->get_component<Transform>(entity);
 
-    if (component_manager_->has_component<Paddle>(entity)) {
-      // Movement comes from input: this is a directional vector
-      // will adjust this to be a directional vector and modify velocity separately here
+    if (component_manager_->has_component<Paddle>(entity) ||
+      component_manager_->has_component<StuckToPaddle>(entity)) {
       const float paddle_speed = level_data.paddle_speed;
-      transform.position.x += paddle_speed * velocity.x * delta_time;
+      velocity.x = direction.x * paddle_speed * delta_time;
+      velocity.y = direction.y * paddle_speed * delta_time;
+      transform.position.x += velocity.x;
+      transform.position.y += velocity.y;
     } else if (component_manager_->has_component<Ball>(entity)) {
-      if(component_manager_->has_component<StuckToPaddle>(entity)){
-        // may move this to a Ball Follow System later
-        const float paddle_speed = level_data.paddle_speed;
-        transform.position.x += paddle_speed * velocity.x * delta_time;
-      } else {
-        const float ball_speed = level_data.ball_speed;
-        transform.position.x += ball_speed * velocity.x * delta_time;
-      }
+      const float ball_speed = level_data.ball_speed;
+      velocity.x = direction.x * ball_speed * delta_time;
+      velocity.y = direction.y * ball_speed * delta_time;
+      transform.position.x += velocity.x;
+      transform.position.y += velocity.y;
     } else {
       // Skip or log unsupported entity type
     }
