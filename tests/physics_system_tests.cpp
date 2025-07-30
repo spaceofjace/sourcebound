@@ -24,7 +24,7 @@ TEST(PhysicsSystemTest, MovesPaddleAndStuckBallCorrectly) {
   mock_data->set_paddle_speed(200.0f);
   mock_data->set_ball_speed(400.0f);
 
-  auto physics = std::make_shared<PhysicsSystem>(mock_data, cm);
+  auto physics = std::make_shared<PhysicsSystem>(mock_data);
 
   Entity paddle{1};
   cm->add_component<Velocity>(paddle, Velocity{});
@@ -48,7 +48,7 @@ TEST(PhysicsSystemTest, MovesPaddleAndStuckBallCorrectly) {
   cm->add_component<Ball>(launched_ball, Ball{});
   physics->entities.insert(launched_ball);
 
-  physics->update(1.0f);  // delta_time = 1.0s
+  physics->update(1.0f, *cm);  // delta_time = 1.0s
 
   const auto& paddle_x = cm->get_component<Transform>(paddle).position.x;
   const auto& stuck_x = cm->get_component<Transform>(stuck_ball).position.x;

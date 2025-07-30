@@ -74,8 +74,9 @@ TEST(GameWorldTest, UpdateDelegatesToSystemManager) {
 
   struct TestSystemManager : MockSystemManager {
     bool updated = false;
-    void update(float) override { updated = true; }
+    void update_all(float, ComponentManager&) override { updated = true; } // <-- updated signature
   };
+
   auto sm = std::make_shared<TestSystemManager>();
   auto cq = std::make_shared<MockCommandQueue>();
 

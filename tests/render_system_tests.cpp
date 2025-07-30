@@ -24,7 +24,7 @@ TEST(RenderSystemTest, RendersCircleShapeCorrectly) {
   auto mock_renderer = std::make_shared<MockRenderer>();
   auto real_component_mgr = std::make_shared<ComponentManager>();
 
-  RenderSystem render_system(mock_renderer, real_component_mgr);
+  RenderSystem render_system(mock_renderer);
 
   Entity entity{1, 0};
   render_system.entities.insert(entity);
@@ -47,14 +47,14 @@ TEST(RenderSystemTest, RendersCircleShapeCorrectly) {
       Eq(true)))
     .Times(1);
 
-  render_system.update(0.0f);
+  render_system.update(0.0f, *real_component_mgr);
 }
 
 TEST(RenderSystemTest, RendersRectangleShapeCorrectly) {
   auto mock_renderer = std::make_shared<MockRenderer>();
   auto real_component_mgr = std::make_shared<ComponentManager>();
 
-  RenderSystem render_system(mock_renderer, real_component_mgr);
+  RenderSystem render_system(mock_renderer);
 
   Entity entity{2, 0};
   render_system.entities.insert(entity);
@@ -78,7 +78,7 @@ TEST(RenderSystemTest, RendersRectangleShapeCorrectly) {
       shape.filled))
     .Times(1);
 
-  render_system.update(0.0f);
+  render_system.update(0.0f, *real_component_mgr);
 }
 
 TEST(RenderSystemTest, LogsErrorOnInvalidShapeType) {
@@ -88,7 +88,7 @@ TEST(RenderSystemTest, LogsErrorOnInvalidShapeType) {
   auto mock_renderer = std::make_shared<MockRenderer>();
   auto real_component_mgr = std::make_shared<ComponentManager>();
 
-  RenderSystem render_system(mock_renderer, real_component_mgr);
+  RenderSystem render_system(mock_renderer);
 
   Entity entity{3, 0};
   render_system.entities.insert(entity);
@@ -103,7 +103,7 @@ TEST(RenderSystemTest, LogsErrorOnInvalidShapeType) {
   real_component_mgr->add_component<RenderableSimpleShape>(entity, shape);
 
   // No EXPECT_CALL since we only log — but this shouldn't crash
-  render_system.update(0.0f);
+  render_system.update(0.0f, *real_component_mgr);
 
   EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
   EXPECT_EQ(mock_sink->last_message,"Unsupported shape type detected for entity ID: " +

@@ -16,7 +16,7 @@ struct MockSystemManager : ISystemManager {
   [[nodiscard]] std::shared_ptr<ISystem> get_system(std::type_index type) const override {
     return nullptr;
   }
-  void update(float /*delta_time*/) override {}
+  void update_all(float /*delta_time*/, ComponentManager& /*component_manager*/) override {}
   void entity_destroyed(Entity entity) override{}
   void entity_signature_changed(Entity entity, const Signature& signature) override{}
 };

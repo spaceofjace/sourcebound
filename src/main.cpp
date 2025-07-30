@@ -75,7 +75,7 @@ int main() {
   //I started to move this into initialize, but doing so would "kill" testability
   // Going to remove templated calls as a primary method of using them in a follow-up refactor
   auto renderer = std::make_shared<sb::rendering::SdlRenderer>(sdl_renderer);
-  auto render_system = std::make_shared<sb::ecs::RenderSystem>(renderer, component_mgr);
+  auto render_system = std::make_shared<sb::ecs::RenderSystem>(renderer);
 
   world->initialize(render_system, game_data_manager);
   world->unload_level(); //technically not needed, but want to show the "full flow" here

@@ -38,7 +38,7 @@ void sb::gamestate::GameWorld::step(const float delta_time) {
 
 void sb::gamestate::GameWorld::update(const float delta_time) {
   //Will have more here as more comes online
-  system_manager_->update(delta_time);
+  system_manager_->update_all(delta_time, *component_manager_);
 }
 
 void sb::gamestate::GameWorld::process_events() {
@@ -189,7 +189,7 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   physicsSig.set(component_manager_->get_component_type<Velocity>());
   physicsSig.set(component_manager_->get_component_type<Direction>());
 
-  auto physics_system = std::make_shared<PhysicsSystem>(game_data_manager, component_manager_);
+  auto physics_system = std::make_shared<PhysicsSystem>(game_data_manager);
   system_manager_->register_system(typeid(PhysicsSystem), physics_system);
   system_manager_->set_signature(typeid(PhysicsSystem), physicsSig);
 }

@@ -10,10 +10,10 @@
 #include "../../include/ecs/components/Components.h"
 #include "../../include/logger/sinks/ConsoleSink.h"
 
-void sb::ecs::RenderSystem::update(float delta_time) {
+void sb::ecs::RenderSystem::update(float delta_time, ComponentManager& component_manager) {
   for (const auto& entity : entities) {
-    auto const renderableComponent = component_mgr_->get_component<RenderableSimpleShape>(entity);
-    auto const transformComponent = component_mgr_->get_component<Transform>(entity);
+    auto const renderableComponent = component_manager.get_component<RenderableSimpleShape>(entity);
+    auto const transformComponent = component_manager.get_component<Transform>(entity);
 
     switch (renderableComponent.type) {
       case SimpleShapeType::Rectangle:

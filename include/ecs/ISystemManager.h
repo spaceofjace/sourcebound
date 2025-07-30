@@ -39,8 +39,9 @@ public:
   * Each system may respond to delta time independently.
   *
   * @param delta_time Time passed since the last update.
+  * @param component_manager Used to retrieve and modify components
   */
-  virtual void update(float delta_time) = 0;
+  virtual void update_all(float delta_time, ComponentManager& component_manager) = 0;
 
   /**
   * @brief Removes the specified entity from all system tracking.

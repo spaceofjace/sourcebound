@@ -30,16 +30,13 @@ namespace sb::ecs {
  */
 class PhysicsSystem final : public ISystem {
 public:
-  explicit PhysicsSystem(std::shared_ptr<data::IGameDataManager> game_data_manager,
-    std::shared_ptr<ComponentManager> component_manager)
-      : game_data_manager_(std::move(game_data_manager)),
-        component_manager_(std::move(component_manager)) {}
+  explicit PhysicsSystem(std::shared_ptr<data::IGameDataManager> game_data_manager)
+      : game_data_manager_(std::move(game_data_manager)) {}
 
-  void update(float delta_time) override;
+  void update(float delta_time, ComponentManager& component_manager) override;
 
 private:
   std::shared_ptr<data::IGameDataManager> game_data_manager_;
-  std::shared_ptr<ComponentManager> component_manager_;
 };
 } // namespace sb::ecs
 #endif //PHYSICSSYSTEM_H
