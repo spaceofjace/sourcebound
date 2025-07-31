@@ -75,6 +75,8 @@ add_executable(sourcebound
         src/ecs/systems/CollisionSystem.cpp
         include/ecs/systems/FollowSystem.h
         src/ecs/systems/FollowSystem.cpp
+        include/gamestate/LaunchBallCommand.h
+        src/gamestate/LaunchBallCommand.cpp
 )
 
 add_executable(unit_tests
@@ -156,6 +158,9 @@ add_executable(unit_tests
         include/ecs/systems/FollowSystem.h
         src/ecs/systems/FollowSystem.cpp
         tests/follow_system_tests.cpp
+        include/gamestate/LaunchBallCommand.h
+        src/gamestate/LaunchBallCommand.cpp
+        tests/launch_ball_command_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

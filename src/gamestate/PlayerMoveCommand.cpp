@@ -8,9 +8,7 @@
 
 const std::string sb::gamestate::PlayerMoveCommand::name_ = "PlayerMoveCommand";
 
-void sb::gamestate::PlayerMoveCommand::apply(
-    std::shared_ptr<GameWorld>
-        world) {
+void sb::gamestate::PlayerMoveCommand::apply(std::shared_ptr<GameWorld> world) {
 
   Signature sig;
   sig.set(world->get_component_type<Paddle>());
