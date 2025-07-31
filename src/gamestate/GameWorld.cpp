@@ -69,56 +69,51 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
 
   // Left Wall
   const auto left_wall = create_entity();
-  add_component(left_wall, Wall{});
+  add_component(left_wall, ecs::Wall{});
   const float left_wall_x = level_data.left_margin + (level_data.wall_thickness / 2.0F);
   const float vertical_wall_center_y = window_height / 2.0F;
-  add_component(left_wall, Transform{{left_wall_x, vertical_wall_center_y},
-                                     {level_data.wall_thickness, level_data.arena_height},
-                                     {0}});
-  add_component(left_wall,
-                RenderableSimpleShape{rendering::Colors::red, SimpleShapeType::Rectangle, true});
-  add_component(left_wall, BoxCollider{level_data.wall_thickness, level_data.arena_height, 0, 0,
-                                       CollisionBehavior::Clamp | CollisionBehavior::Bounce});
+  add_component(left_wall, ecs::Transform{{left_wall_x, vertical_wall_center_y},
+    {level_data.wall_thickness, level_data.arena_height}, {0}});
+  add_component(left_wall, ecs::RenderableSimpleShape{rendering::Colors::red, sb::ecs::SimpleShapeType::Rectangle, true});
+  add_component(left_wall, ecs::BoxCollider{level_data.wall_thickness, level_data.arena_height, 0, 0,
+    ecs::CollisionBehavior::Clamp | ecs::CollisionBehavior::Bounce});
 
   // Right Wall
   const auto right_wall = create_entity();
-  add_component(right_wall, Wall{});
-  const float right_wall_x =
-      window_width - level_data.right_margin - (level_data.wall_thickness / 2.0F);
-  add_component(right_wall, Transform{{right_wall_x, vertical_wall_center_y},
-                                      {level_data.wall_thickness, level_data.arena_height},
-                                      {0}});
-  add_component(right_wall,
-                RenderableSimpleShape{rendering::Colors::red, SimpleShapeType::Rectangle, true});
-  add_component(right_wall, BoxCollider{level_data.wall_thickness, level_data.arena_height, 0, 0,
-                                        CollisionBehavior::Clamp | CollisionBehavior::Bounce});
+  add_component(right_wall, ecs::Wall{});
+  const float right_wall_x = window_width - level_data.right_margin -
+    (level_data.wall_thickness / 2.0F);
+  add_component(right_wall, ecs::Transform{{right_wall_x, vertical_wall_center_y},
+    {level_data.wall_thickness, level_data.arena_height}, {0}});
+  add_component(right_wall, ecs::RenderableSimpleShape{rendering::Colors::red,
+    ecs::SimpleShapeType::Rectangle, true});
+  add_component(right_wall, ecs::BoxCollider{level_data.wall_thickness, level_data.arena_height,
+    0, 0, ecs::CollisionBehavior::Clamp | ecs::CollisionBehavior::Bounce});
 
   // Top Wall
   const auto top_wall = create_entity();
-  add_component(top_wall, Wall{});
+  add_component(top_wall, ecs::Wall{});
   const float top_wall_y = level_data.top_margin + (level_data.wall_thickness / 2.0F);
   const float horizontal_wall_center_x = window_width / 2.0f;
-  add_component(top_wall, Transform{{horizontal_wall_center_x, top_wall_y},
-                                    {level_data.arena_width, level_data.wall_thickness},
-                                    {0}});
-  add_component(top_wall,
-                RenderableSimpleShape{rendering::Colors::red, SimpleShapeType::Rectangle, true});
-  add_component(top_wall, BoxCollider{level_data.arena_width, level_data.wall_thickness, 0, 0,
-                                      CollisionBehavior::Clamp | CollisionBehavior::Bounce});
+  add_component(top_wall, ecs::Transform{{horizontal_wall_center_x, top_wall_y},
+    {level_data.arena_width, level_data.wall_thickness},{0}});
+  add_component(top_wall, ecs::RenderableSimpleShape{rendering::Colors::red,
+    ecs::SimpleShapeType::Rectangle, true});
+  add_component(top_wall, ecs::BoxCollider{level_data.arena_width, level_data.wall_thickness, 0, 0,
+    ecs::CollisionBehavior::Clamp | ecs::CollisionBehavior::Bounce});
 
   // Bottom Wall (out of bounds)
   const auto bottom_wall = create_entity();
-  add_component(bottom_wall, Wall{});
+  add_component(bottom_wall, ecs::Wall{});
   const float bottom_wall_y =
       window_height - level_data.bottom_margin - (level_data.wall_thickness / 2.0F);
-  add_component(bottom_wall, Transform{{horizontal_wall_center_x, bottom_wall_y},
-                                       {level_data.arena_width - (level_data.wall_thickness * 2),
-                                        level_data.wall_thickness},
-                                       {0}});
-  add_component(bottom_wall, RenderableSimpleShape{rendering::Colors::yellow,
-                                                   SimpleShapeType::Rectangle, false});
-  add_component(bottom_wall, BoxCollider{level_data.arena_width, level_data.wall_thickness, 0, 0,
-                                         CollisionBehavior::Destroy | CollisionBehavior::Trigger});
+  add_component(bottom_wall, ecs::Transform{{horizontal_wall_center_x, bottom_wall_y},
+    {level_data.arena_width - (level_data.wall_thickness * 2),
+      level_data.wall_thickness}, {0}});
+  add_component(bottom_wall, ecs::RenderableSimpleShape{rendering::Colors::yellow,
+    ecs::SimpleShapeType::Rectangle, false});
+  add_component(bottom_wall, ecs::BoxCollider{level_data.arena_width, level_data.wall_thickness, 0, 0,
+    ecs::CollisionBehavior::Destroy | ecs::CollisionBehavior::Trigger});
 
   // Paddle
   const float paddle_x =
@@ -127,15 +122,16 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
                          (level_data.paddle_height / 2.0F) + level_data.paddle_offset.y;
 
   auto paddle = create_entity();
-  add_component(paddle, Paddle{});
-  add_component(paddle, Transform{{paddle_x, paddle_y}, {level_data.paddle_width,
+  add_component(paddle, ecs::Paddle{});
+  add_component(paddle, ecs::Transform{{paddle_x, paddle_y}, {level_data.paddle_width,
     level_data.paddle_height}, {0}});
-  add_component(paddle, RenderableSimpleShape{rendering::Colors::blue,
-    SimpleShapeType::Rectangle, true});
-  add_component(paddle, Velocity{0, 0});
-  add_component(paddle, Direction{0, 0});
-  add_component(paddle, BoxCollider{level_data.paddle_width, level_data.paddle_height, 0, 0,
-    CollisionBehavior::Clamp | CollisionBehavior::Bounce});
+  add_component(paddle, ecs::RenderableSimpleShape{rendering::Colors::blue,
+    ecs::SimpleShapeType::Rectangle, true});
+  add_component(paddle, ecs::Velocity{0, 0});
+  add_component(paddle, ecs::Direction{0, 0});
+  add_component(paddle, ecs::BoxCollider{level_data.paddle_width, level_data.paddle_height, 0, 0,
+    ecs::CollisionBehavior::Bounce});
+  add_component(paddle, ecs::PositionBasedBounce{});
 
   // Ball
   const float ball_x = paddle_x + level_data.ball_offset.x;
@@ -144,19 +140,21 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
   const float ball_diameter = level_data.ball_radius * 2.0f;
 
   auto ball = create_entity();
-  add_component(ball, Ball{});
-  add_component(ball, PositionFollower{
+  add_component(ball, ecs::Ball{});
+  add_component(ball, ecs::PositionFollower{
     paddle,
     sb::math::Vec2{0.0F,
       -level_data.ball_radius - (level_data.paddle_height / 2.0F) + level_data.ball_offset.y
     }
   });
-  add_component(ball, Transform{{ball_x, ball_y}, {ball_diameter,
+  add_component(ball, ecs::Transform{{ball_x, ball_y}, {ball_diameter,
     ball_diameter}, {0}});
-  add_component(ball, RenderableSimpleShape{rendering::Colors::cyan,
-    SimpleShapeType::Circle, true});
-  add_component(ball, Velocity{0, 0});
-  add_component(ball, Direction{0, 0});
+  add_component(ball, ecs::RenderableSimpleShape{rendering::Colors::cyan,
+    ecs::SimpleShapeType::Circle, true});
+  add_component(ball, ecs::Velocity{0, 0});
+  add_component(ball, ecs::Direction{0, 0});
+  add_component(ball, ecs::CircleCollider{ball_diameter, 0, 0,
+    ecs::CollisionBehavior::Destroy | ecs::CollisionBehavior::Trigger});
 }
 
 void sb::gamestate::GameWorld::unload_level() {
@@ -170,15 +168,18 @@ void sb::gamestate::GameWorld::unload_level() {
 
 void sb::gamestate::GameWorld::register_components() const {
   // may add "auto-registration" via static initializer later
-  register_component<Velocity>();
-  register_component<Paddle>();
-  register_component<Ball>();
-  register_component<Transform>();
-  register_component<RenderableSimpleShape>();
-  register_component<Wall>();
-  register_component<BoxCollider>();
-  register_component<Direction>();
-  register_component<PositionFollower>();
+  register_component<ecs::Velocity>();
+  register_component<ecs::Paddle>();
+  register_component<ecs::Ball>();
+  register_component<ecs::Transform>();
+  register_component<ecs::RenderableSimpleShape>();
+  register_component<ecs::Wall>();
+  register_component<ecs::BoxCollider>();
+  register_component<ecs::CircleCollider>();
+  register_component<ecs::Direction>();
+  register_component<ecs::PositionFollower>();
+  register_component<ecs::CollisionBehavior>();
+  register_component<ecs::PositionBasedBounce>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -189,32 +190,31 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   render_sig.reset();
 
   system_manager_->register_system(typeid(RenderSystem), std::move(render_system));
-  render_sig.set(component_manager_->get_component_type<Transform>());
-  render_sig.set(component_manager_->get_component_type<RenderableSimpleShape>());
+  render_sig.set(component_manager_->get_component_type<ecs::Transform>());
+  render_sig.set(component_manager_->get_component_type<ecs::RenderableSimpleShape>());
   system_manager_->set_signature(typeid(RenderSystem), render_sig);
 
   //Will soon try to refactor to allow bindings so this can be injectable
   Signature physics_sig;
   physics_sig.reset();
-  physics_sig.set(component_manager_->get_component_type<Transform>());
-  physics_sig.set(component_manager_->get_component_type<Velocity>());
-  physics_sig.set(component_manager_->get_component_type<Direction>());
+  physics_sig.set(component_manager_->get_component_type<ecs::Transform>());
+  physics_sig.set(component_manager_->get_component_type<ecs::Velocity>());
+  physics_sig.set(component_manager_->get_component_type<ecs::Direction>());
 
   auto physics_system = std::make_shared<PhysicsSystem>(game_data_manager);
   system_manager_->register_system(typeid(PhysicsSystem), physics_system);
   system_manager_->set_signature(typeid(PhysicsSystem), physics_sig);
 
   Signature collision_sig;
-  collision_sig.set(component_manager_->get_component_type<Transform>());
-  collision_sig.set(component_manager_->get_component_type<BoxCollider>());
+  collision_sig.set(component_manager_->get_component_type<ecs::Transform>());
 
   auto collision_system = std::make_shared<CollisionSystem>(game_data_manager);
   system_manager_->register_system(typeid(CollisionSystem), collision_system);
   system_manager_->set_signature(typeid(CollisionSystem), collision_sig);
 
   Signature follow_sig;
-  follow_sig.set(component_manager_->get_component_type<Transform>());
-  follow_sig.set(component_manager_->get_component_type<PositionFollower>());
+  follow_sig.set(component_manager_->get_component_type<ecs::Transform>());
+  follow_sig.set(component_manager_->get_component_type<ecs::PositionFollower>());
 
   auto follow_system = std::make_shared<FollowSystem>(game_data_manager);
   system_manager_->register_system(typeid(FollowSystem), follow_system);

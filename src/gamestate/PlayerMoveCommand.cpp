@@ -6,6 +6,9 @@
 #include "../../include/gamestate/PlayerMoveCommand.h"
 #include "../../include/ecs/components/Components.h"
 
+using sb::ecs::Paddle;
+using sb::ecs::Direction;
+
 const std::string sb::gamestate::PlayerMoveCommand::name_ = "PlayerMoveCommand";
 
 void sb::gamestate::PlayerMoveCommand::apply(std::shared_ptr<GameWorld> world) {

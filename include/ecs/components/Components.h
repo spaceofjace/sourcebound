@@ -21,7 +21,7 @@
 #include "../../math//Vec2.h"
 #include "../../ecs/Entity.h"
 // Physics components
-
+namespace sb::ecs {
 /**
  * @struct Position
  * @ingroup ECS
@@ -34,6 +34,14 @@ struct Position {
   [[nodiscard]] sb::math::Vec2 as_vec2() const { return { x, y }; }
 
   float x = 0.0F, y = 0.0F;
+
+  Position operator+(const sb::math::Vec2& rhs) const {
+    return Position{x + rhs.x, y + rhs.y};
+  }
+
+  Position operator-(const sb::math::Vec2& rhs) const {
+    return Position{x - rhs.x, y - rhs.y};
+  }
 };
 
 
@@ -209,4 +217,13 @@ struct Brick { };
  */
 struct Wall { };
 
+/**
+ * @struct PositionBasedBounce
+ * @ingroup ECS
+ * @brief A "tag" component to trigger modulation based on position
+ *
+ * There may be a better way to do this, so I'll need to do some research.  (Should work for now.)
+ */
+struct PositionBasedBounce {};
+} // namespace sb::ecs
 #endif //COMPONENTS_H

@@ -77,6 +77,7 @@ add_executable(sourcebound
         src/ecs/systems/FollowSystem.cpp
         include/gamestate/LaunchBallCommand.h
         src/gamestate/LaunchBallCommand.cpp
+        include/math/MathConsts.h
 )
 
 add_executable(unit_tests
@@ -161,6 +162,7 @@ add_executable(unit_tests
         include/gamestate/LaunchBallCommand.h
         src/gamestate/LaunchBallCommand.cpp
         tests/launch_ball_command_tests.cpp
+        include/math/MathConsts.h
 )
 
 target_include_directories(sourcebound PUBLIC

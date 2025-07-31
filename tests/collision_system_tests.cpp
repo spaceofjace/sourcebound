@@ -5,9 +5,12 @@
 
 #include "../include/ecs/systems/CollisionSystem.h"
 #include "../include/ecs/components/Components.h"
+#include "../include/math/MathConsts.h"
 #include "mocks/MockComponentManager.h"
 #include "mocks/MockGameDataManager.h"
 #include <gtest/gtest.h>
+
+using namespace sb::ecs;
 
 TEST(CollisionSystemTest, ClampsEntityAgainstRightWall) {
   auto cm = std::make_shared<ComponentManager>();
@@ -17,6 +20,7 @@ TEST(CollisionSystemTest, ClampsEntityAgainstRightWall) {
   cm->register_component<Velocity>();
   cm->register_component<Ball>();
   cm->register_component<Paddle>();
+  cm->register_component<CircleCollider>();
 
   auto mock_data = std::make_shared<MockGameDataManager>();
   auto collision = std::make_shared<CollisionSystem>(mock_data);
@@ -52,6 +56,7 @@ TEST(CollisionSystemTest, NoClampIfNotOverlapping) {
   cm->register_component<Velocity>();
   cm->register_component<Ball>();
   cm->register_component<Paddle>();
+  cm->register_component<CircleCollider>();
 
   auto mock_data = std::make_shared<MockGameDataManager>();
   auto collision = std::make_shared<CollisionSystem>(mock_data);
@@ -82,6 +87,7 @@ TEST(CollisionSystemTest, IgnoresEntitiesWithoutDirection) {
   cm->register_component<Velocity>();
   cm->register_component<Ball>();
   cm->register_component<Paddle>();
+  cm->register_component<CircleCollider>();
 
   auto mock_data = std::make_shared<MockGameDataManager>();
   auto collision = std::make_shared<CollisionSystem>(mock_data);
@@ -102,4 +108,61 @@ TEST(CollisionSystemTest, IgnoresEntitiesWithoutDirection) {
 
   const auto& result = cm->get_component<Transform>(unclamped).position.x;
   EXPECT_FLOAT_EQ(result, 95.0f);  // No movement
+}
+
+TEST(CollisionSystemTest, ReflectsCircleBounceAgainstFlatWall) {
+  auto cm = std::make_shared<ComponentManager>();
+  cm->register_component<Transform>();
+  cm->register_component<CircleCollider>();
+  cm->register_component<BoxCollider>();
+  cm->register_component<Direction>();
+
+  auto mock_data = std::make_shared<MockGameDataManager>();
+  auto collision = std::make_shared<CollisionSystem>(mock_data);
+
+  Entity wall{1};
+  cm->add_component<Transform>(wall, Transform{{100.0f, 0.0f}, {20.0f, 20.0f}});
+  cm->add_component<BoxCollider>(wall, BoxCollider{20.0f, 20.0f, 0, 0, CollisionBehavior::Bounce});
+  collision->entities.insert(wall);
+
+  Entity ball{2};
+  cm->add_component<Transform>(ball, Transform{{90.0f, 0.0f}, {10.0f, 10.0f}});
+  cm->add_component<CircleCollider>(ball, CircleCollider{5.0f});
+  cm->add_component<Direction>(ball, Direction{1.0f, 0.0f});  // moving right
+  collision->entities.insert(ball);
+
+  collision->update(0.0f, *cm);
+
+  const auto& result = cm->get_component<Direction>(ball);
+  EXPECT_LT(result.x, 0.0f);  // x direction should be reversed
+}
+
+TEST(CollisionSystemTest, AppliesPositionBasedBounce) {
+  auto cm = std::make_shared<ComponentManager>();
+  cm->register_component<Transform>();
+  cm->register_component<CircleCollider>();
+  cm->register_component<BoxCollider>();
+  cm->register_component<Direction>();
+  cm->register_component<PositionBasedBounce>();
+
+  auto mock_data = std::make_shared<MockGameDataManager>();
+  auto collision = std::make_shared<CollisionSystem>(mock_data);
+
+  Entity paddle{1};
+  cm->add_component<Transform>(paddle, Transform{{100.0f, 0.0f}, {20.0f, 10.0f}});
+  cm->add_component<BoxCollider>(paddle, BoxCollider{20.0f, 10.0f, 0, 0, CollisionBehavior::Bounce});
+  cm->add_component<PositionBasedBounce>(paddle, PositionBasedBounce{});
+  collision->entities.insert(paddle);
+
+  Entity ball{2};
+  cm->add_component<Transform>(ball, Transform{{105.0f, -5.0f}, {5.0f, 5.0f}});
+  cm->add_component<CircleCollider>(ball, CircleCollider{5.0f});
+  cm->add_component<Direction>(ball, Direction{0.0f, 1.0f});  // moving down
+  collision->entities.insert(ball);
+
+  collision->update(0.0f, *cm);
+
+  const auto& result = cm->get_component<Direction>(ball);
+  EXPECT_GT(result.y, 0.0f);  // direction should now point upward
+  EXPECT_NEAR(result.x, std::sin(60.0f * sb::math::kDegToRad * 0.5f), 0.1f);  // some angle bounce
 }

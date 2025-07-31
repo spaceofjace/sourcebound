@@ -13,6 +13,8 @@
 #include "mocks/MockSystemManager.h"
 #include "../include/ecs/components/Components.h"
 
+using namespace sb::ecs;
+
 TEST(LaunchBallCommandTest, LaunchesAllBalls) {
   using namespace sb::gamestate;
   using namespace sb::ecs;

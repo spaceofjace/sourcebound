@@ -38,6 +38,7 @@ TEST(FollowSystemTest, SkipsFollowerIfTargetHasNoTransform) {
   auto cm = std::make_shared<ComponentManager>();
   cm->register_component<Transform>();
   cm->register_component<PositionFollower>();
+  cm->register_component<CircleCollider>();
 
   auto mock_data = std::make_shared<MockGameDataManager>();
   auto follow_system = std::make_shared<FollowSystem>(mock_data);
