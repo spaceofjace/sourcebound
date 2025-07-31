@@ -8,6 +8,7 @@
 #include "../../include/ecs/RenderSystem.h"
 #include "../../include/ecs/components/Components.h"
 #include "../../include/ecs/systems/CollisionSystem.h"
+#include "../../include/ecs/systems/FollowSystem.h"
 #include "../../include/ecs/systems/PhysicsSystem.h"
 
 using sb::ecs::Entity;
@@ -15,6 +16,7 @@ using sb::ecs::Signature;
 using sb::ecs::PhysicsSystem;
 using sb::ecs::RenderSystem;
 using sb::ecs::CollisionSystem;
+using sb::ecs::FollowSystem;
 
 void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> render_system,
     std::shared_ptr<data::IGameDataManager> game_data_manager) {
@@ -143,7 +145,12 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
 
   auto ball = create_entity();
   add_component(ball, Ball{});
-  add_component(ball, StuckToPaddle{});
+  add_component(ball, PositionFollower{
+    paddle,
+    sb::math::Vec2{0.0F,
+      -level_data.ball_radius - (level_data.paddle_height / 2.0F) + level_data.ball_offset.y
+    }
+  });
   add_component(ball, Transform{{ball_x, ball_y}, {ball_diameter,
     ball_diameter}, {0}});
   add_component(ball, RenderableSimpleShape{rendering::Colors::cyan,
@@ -170,8 +177,8 @@ void sb::gamestate::GameWorld::register_components() const {
   register_component<RenderableSimpleShape>();
   register_component<Wall>();
   register_component<BoxCollider>();
-  register_component<StuckToPaddle>();
   register_component<Direction>();
+  register_component<PositionFollower>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -204,4 +211,12 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   auto collision_system = std::make_shared<CollisionSystem>(game_data_manager);
   system_manager_->register_system(typeid(CollisionSystem), collision_system);
   system_manager_->set_signature(typeid(CollisionSystem), collision_sig);
+
+  Signature follow_sig;
+  follow_sig.set(component_manager_->get_component_type<Transform>());
+  follow_sig.set(component_manager_->get_component_type<PositionFollower>());
+
+  auto follow_system = std::make_shared<FollowSystem>(game_data_manager);
+  system_manager_->register_system(typeid(FollowSystem), follow_system);
+  system_manager_->set_signature(typeid(FollowSystem), follow_sig);
 }

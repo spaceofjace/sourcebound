@@ -22,16 +22,6 @@ void sb::gamestate::PlayerMoveCommand::apply(
     direction.x = x_direction_;
     direction.y = y_direction_;
   }
-  sig.reset();
-  sig.set(world->get_component_type<StuckToPaddle>());
-  auto entities = world->get_entities_with_signature(sig);
-  for (const auto& entity : entities) {
-    if (world->has_component<StuckToPaddle>(entity)) {
-      auto& direction = world->get_component<Direction>(entity);
-      direction.x = x_direction_;
-      direction.y = y_direction_;
-    }
-  }
 
   log::Logger::info("[Command Applied]: " + name_ + " - " + std::to_string(x_direction_) + ", " + std::to_string(y_direction_));
 }

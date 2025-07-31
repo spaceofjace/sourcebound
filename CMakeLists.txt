@@ -73,6 +73,8 @@ add_executable(sourcebound
         src/ecs/systems/PhysicsSystem.cpp
         include/ecs/systems/CollisionSystem.h
         src/ecs/systems/CollisionSystem.cpp
+        include/ecs/systems/FollowSystem.h
+        src/ecs/systems/FollowSystem.cpp
 )
 
 add_executable(unit_tests
@@ -151,6 +153,9 @@ add_executable(unit_tests
         include/ecs/systems/CollisionSystem.h
         src/ecs/systems/CollisionSystem.cpp
         tests/collision_system_tests.cpp
+        include/ecs/systems/FollowSystem.h
+        src/ecs/systems/FollowSystem.cpp
+        tests/follow_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

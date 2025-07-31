@@ -16,8 +16,7 @@ void sb::ecs::PhysicsSystem::update(float delta_time, ComponentManager& componen
     auto& direction = component_manager.get_component<Direction>(entity);
     auto& transform = component_manager.get_component<Transform>(entity);
 
-    if (component_manager.has_component<Paddle>(entity) ||
-      component_manager.has_component<StuckToPaddle>(entity)) {
+    if (component_manager.has_component<Paddle>(entity)) {
       const float paddle_speed = level_data.paddle_speed;
       velocity.x = direction.x * paddle_speed * delta_time;
       velocity.y = direction.y * paddle_speed * delta_time;
@@ -30,7 +29,7 @@ void sb::ecs::PhysicsSystem::update(float delta_time, ComponentManager& componen
       transform.position.x += velocity.x;
       transform.position.y += velocity.y;
     } else {
-      // Skip or log unsupported entity type
+      // Skip or log unsupported entity type?
     }
   }
 }

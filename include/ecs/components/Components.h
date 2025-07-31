@@ -19,6 +19,7 @@
 #define COMPONENTS_H
 #include "../../rendering/Color.h"
 #include "../../math//Vec2.h"
+#include "../../ecs/Entity.h"
 // Physics components
 
 /**
@@ -128,7 +129,7 @@ struct BoxCollider {
 //Rendering components
 /**
  * @enum SimpleShapeType
- * @ingroup Rendering
+ * @ingroup ECS
  * @brief Enumerates supported primitive shape types for rendering.
  *
  * Used in conjunction with RenderableSimpleShape to define basic visual geometry.
@@ -137,6 +138,16 @@ enum class SimpleShapeType {
   Invalid = -1,   ///< Unset or unsupported shape.
   Rectangle,      ///< A standard axis-aligned rectangle.
   Circle,         ///< A simple filled or outlined circle.
+};
+
+/**
+ * @struct PositionFollower
+ * @ingroup ECS
+ * @brief Makes an entity follow another entity’s Transform with a positional offset.
+ */
+struct PositionFollower {
+  sb::ecs::Entity target = sb::ecs::Entity::null(); ///< The entity to follow
+  sb::math::Vec2 offset = {};                       ///< Offset relative to the target’s position
 };
 
 /**
@@ -197,12 +208,5 @@ struct Brick { };
  * @brief A "tag" component to indicate a wall in the game
  */
 struct Wall { };
-
-/**
- * @struct StuckToPaddle
- * @ingroup ECS
- * @brief A "tag" component for unlaunched ball
- */
-struct StuckToPaddle { };
 
 #endif //COMPONENTS_H

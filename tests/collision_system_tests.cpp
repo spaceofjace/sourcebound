@@ -15,7 +15,6 @@ TEST(CollisionSystemTest, ClampsEntityAgainstRightWall) {
   cm->register_component<BoxCollider>();
   cm->register_component<Direction>();
   cm->register_component<Velocity>();
-  cm->register_component<StuckToPaddle>();
   cm->register_component<Ball>();
   cm->register_component<Paddle>();
 
@@ -51,7 +50,6 @@ TEST(CollisionSystemTest, NoClampIfNotOverlapping) {
   cm->register_component<BoxCollider>();
   cm->register_component<Direction>();
   cm->register_component<Velocity>();
-  cm->register_component<StuckToPaddle>();
   cm->register_component<Ball>();
   cm->register_component<Paddle>();
 
@@ -82,7 +80,6 @@ TEST(CollisionSystemTest, IgnoresEntitiesWithoutDirection) {
   cm->register_component<BoxCollider>();
   cm->register_component<Direction>();
   cm->register_component<Velocity>();
-  cm->register_component<StuckToPaddle>();
   cm->register_component<Ball>();
   cm->register_component<Paddle>();
 

@@ -17,8 +17,7 @@ void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& co
 
     const bool is_clampable =
       component_manager.has_component<Direction>(entity) &&
-      (component_manager.has_component<Paddle>(entity) ||
-       component_manager.has_component<StuckToPaddle>(entity));
+      component_manager.has_component<Paddle>(entity);
 
     if (is_clampable) {
       clampable_entities.push_back(entity);
