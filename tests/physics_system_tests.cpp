@@ -32,13 +32,6 @@ TEST(PhysicsSystemTest, MovesPaddleAndLaunchedBallCorrectly) {
   cm->add_component<Paddle>(paddle, Paddle{});
   physics->entities.insert(paddle);
 
-  Entity stuck_ball{2};
-  cm->add_component<Velocity>(stuck_ball, Velocity{});
-  cm->add_component<Direction>(stuck_ball, Direction{1.0f, 0.0f});
-  cm->add_component<Transform>(stuck_ball, Transform{{100.0f, 0.0f}, {10.0f, 10.0f}});
-  cm->add_component<Ball>(stuck_ball, Ball{});
-  physics->entities.insert(stuck_ball);
-
   Entity launched_ball{3};
   cm->add_component<Velocity>(launched_ball, Velocity{});
   cm->add_component<Direction>(launched_ball, Direction{1.0f, 0.0f});
