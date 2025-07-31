@@ -5,14 +5,16 @@
 
 #include "../../include/gamestate/GameWorld.h"
 
-#include "../../include/ecs/systems/PhysicsSystem.h"
 #include "../../include/ecs/RenderSystem.h"
 #include "../../include/ecs/components/Components.h"
+#include "../../include/ecs/systems/CollisionSystem.h"
+#include "../../include/ecs/systems/PhysicsSystem.h"
 
 using sb::ecs::Entity;
 using sb::ecs::Signature;
 using sb::ecs::PhysicsSystem;
 using sb::ecs::RenderSystem;
+using sb::ecs::CollisionSystem;
 
 void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> render_system,
     std::shared_ptr<data::IGameDataManager> game_data_manager) {
@@ -130,6 +132,8 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
     SimpleShapeType::Rectangle, true});
   add_component(paddle, Velocity{0, 0});
   add_component(paddle, Direction{0, 0});
+  add_component(paddle, BoxCollider{level_data.paddle_width, level_data.paddle_height, 0, 0,
+    CollisionBehavior::Clamp | CollisionBehavior::Bounce});
 
   // Ball
   const float ball_x = paddle_x + level_data.ball_offset.x;
@@ -174,22 +178,30 @@ void sb::gamestate::GameWorld::register_components() const {
 // actually mutates through shared pointers
 void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> render_system,
     std::shared_ptr<data::IGameDataManager> game_data_manager) {
-  Signature renderSig;
-  renderSig.reset();
+  Signature render_sig;
+  render_sig.reset();
 
   system_manager_->register_system(typeid(RenderSystem), std::move(render_system));
-  renderSig.set(component_manager_->get_component_type<Transform>());
-  renderSig.set(component_manager_->get_component_type<RenderableSimpleShape>());
-  system_manager_->set_signature(typeid(RenderSystem), renderSig);
+  render_sig.set(component_manager_->get_component_type<Transform>());
+  render_sig.set(component_manager_->get_component_type<RenderableSimpleShape>());
+  system_manager_->set_signature(typeid(RenderSystem), render_sig);
 
   //Will soon try to refactor to allow bindings so this can be injectable
-  Signature physicsSig;
-  physicsSig.reset();
-  physicsSig.set(component_manager_->get_component_type<Transform>());
-  physicsSig.set(component_manager_->get_component_type<Velocity>());
-  physicsSig.set(component_manager_->get_component_type<Direction>());
+  Signature physics_sig;
+  physics_sig.reset();
+  physics_sig.set(component_manager_->get_component_type<Transform>());
+  physics_sig.set(component_manager_->get_component_type<Velocity>());
+  physics_sig.set(component_manager_->get_component_type<Direction>());
 
   auto physics_system = std::make_shared<PhysicsSystem>(game_data_manager);
   system_manager_->register_system(typeid(PhysicsSystem), physics_system);
-  system_manager_->set_signature(typeid(PhysicsSystem), physicsSig);
+  system_manager_->set_signature(typeid(PhysicsSystem), physics_sig);
+
+  Signature collision_sig;
+  collision_sig.set(component_manager_->get_component_type<Transform>());
+  collision_sig.set(component_manager_->get_component_type<BoxCollider>());
+
+  auto collision_system = std::make_shared<CollisionSystem>(game_data_manager);
+  system_manager_->register_system(typeid(CollisionSystem), collision_system);
+  system_manager_->set_signature(typeid(CollisionSystem), collision_sig);
 }

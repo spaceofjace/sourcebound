@@ -90,6 +90,10 @@ inline CollisionBehavior operator|(CollisionBehavior lhs, CollisionBehavior rhs)
   return static_cast<CollisionBehavior>(static_cast<int>(lhs) | static_cast<int>(rhs));
 }
 
+inline CollisionBehavior operator&(CollisionBehavior lhs, CollisionBehavior rhs) {
+  return static_cast<CollisionBehavior>(static_cast<int>(lhs) & static_cast<int>(rhs));
+}
+
 /**
  * @struct CircleCollider
  * @ingroup ECS

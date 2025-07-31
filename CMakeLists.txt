@@ -71,6 +71,8 @@ add_executable(sourcebound
         src/data/HardcodedGameDataManager.cpp
         include/ecs/systems/PhysicsSystem.h
         src/ecs/systems/PhysicsSystem.cpp
+        include/ecs/systems/CollisionSystem.h
+        src/ecs/systems/CollisionSystem.cpp
 )
 
 add_executable(unit_tests
@@ -146,6 +148,9 @@ add_executable(unit_tests
         include/ecs/systems/PhysicsSystem.h
         src/ecs/systems/PhysicsSystem.cpp
         tests/physics_system_tests.cpp
+        include/ecs/systems/CollisionSystem.h
+        src/ecs/systems/CollisionSystem.cpp
+        tests/collision_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC
