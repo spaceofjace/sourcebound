@@ -30,16 +30,16 @@ namespace sb::ecs {
 struct Position {
   Position() = default;
   Position(float x, float y) : x(x), y(y) {}
-  explicit Position(const sb::math::Vec2& vec2) : x(vec2.x), y(vec2.y) {}
+  explicit Position(const math::Vec2& vec2) : x(vec2.x), y(vec2.y) {}
   [[nodiscard]] sb::math::Vec2 as_vec2() const { return { x, y }; }
 
   float x = 0.0F, y = 0.0F;
 
-  Position operator+(const sb::math::Vec2& rhs) const {
+  Position operator+(const math::Vec2& rhs) const {
     return Position{x + rhs.x, y + rhs.y};
   }
 
-  Position operator-(const sb::math::Vec2& rhs) const {
+  Position operator-(const math::Vec2& rhs) const {
     return Position{x - rhs.x, y - rhs.y};
   }
 };

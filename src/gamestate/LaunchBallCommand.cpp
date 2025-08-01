@@ -10,6 +10,7 @@ using sb::ecs::Ball;
 using sb::ecs::Direction;
 using sb::ecs::PositionFollower;
 using sb::ecs::Transform;
+using sb::ecs::CircleCollider;
 
 const std::string sb::gamestate::LaunchBallCommand::name_ = "LaunchBallCommand";
 void sb::gamestate::LaunchBallCommand::apply(std::shared_ptr<GameWorld> world) {
@@ -18,7 +19,7 @@ void sb::gamestate::LaunchBallCommand::apply(std::shared_ptr<GameWorld> world) {
   sig.set(world->get_component_type<Direction>());
   sig.set(world->get_component_type<PositionFollower>());
   sig.set(world->get_component_type<Transform>());
-  sig.set(world->get_component_type<ecs::CircleCollider>());
+  sig.set(world->get_component_type<CircleCollider>());
 
   auto balls = world->get_entities_with_signature(sig);
   for (const auto& ball : balls) {
@@ -27,7 +28,7 @@ void sb::gamestate::LaunchBallCommand::apply(std::shared_ptr<GameWorld> world) {
     direction.y = -1.0F; //negative is up in the SDL coordinate system
 
     auto& transform = world->get_component<Transform>(ball);
-    auto& circle_collider = world->get_component<ecs::CircleCollider>(ball);
+    auto& circle_collider = world->get_component<CircleCollider>(ball);
     transform.position.y -= ( circle_collider.radius + circle_collider.offset_y + 1.0F);
 
     world->remove_component<PositionFollower>(ball);
