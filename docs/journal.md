@@ -1,5 +1,36 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-07-31 - 10 hours
+(includes 2 hours of refactor on 7/25, 2 hours on 7/29 + 7/30 for physics and Direction Component)
+
+### Objective(s)
+
+1. Get simple physics online.
+2. Get some collision behaviors in game.
+### Details
+#### Key Accomplishments
+
+* Added basic physics calculations
+* Completed several important refactors.
+	* Added non-templated methods to `SystemManager` for improved testability.
+	* Switched `ComponentManager` as a passthrough to update instead of doing constructor injection.
+	* Added Direction component as a concept.
+	* Moved components to be in the namespace.
+* Added a `FollowSystem` as solution to the Stuck Ball.
+* Added clamp code in collision system.
+* Added bounce code (including position based bounce) in collision system.
+#### Challenges / Notes
+
+* I have run into a lot of discovered work along the way for this implementation; some of these things I knew would come, but happened much sooner than expected.
+* I need to also go through and replace a lot of the templated methods with non-templated versions for many of my classes.  It's just the death of testability otherwise, even if they look pretty.
+* I wasn't expecting the orbiting bug, but this is my first implementation of a `CollisionSystem`, so it was instructive to research.
+#### Next Steps
+
+* My main priority is to get some destroy logic and brick breaking code online. However....
+* I need to create some refactor tasks and figure out when to tackle those.
+* I also want top restructure my folders, which is going to be...painful.
+
+---
 ## 2025-07-24 - 7 hours
 (includes ~2 hours from 7/23 +  ~1 hour from 7/21.)
 
