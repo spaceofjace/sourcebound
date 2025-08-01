@@ -33,47 +33,37 @@ using ecs::Signature;
  */
 class GameWorld final : public IGameWorld, public std::enable_shared_from_this<GameWorld> {
  public:
+  GameWorld() = default;
+  ~GameWorld() override = default;
+  GameWorld(const GameWorld&) = delete;
+  GameWorld& operator=(const GameWorld&) = delete;
+  GameWorld(GameWorld&&) = delete;
+  GameWorld& operator=(GameWorld&&) = delete;
+
   GameWorld(std::shared_ptr<ecs::IEntityManager> entity_manager,
-            std::shared_ptr<ecs::ComponentManager> component_manager,
-            std::shared_ptr<ecs::ISystemManager> system_manager,
-            std::shared_ptr<ICommandQueue> cmd_queue)
-      : entity_manager_(std::move(entity_manager)),
-        component_manager_(std::move(component_manager)),
-        system_manager_(std::move(system_manager)),
-        cmd_queue_(std::move(cmd_queue))
-  {}
+          std::shared_ptr<ecs::ComponentManager> component_manager,
+          std::shared_ptr<ecs::ISystemManager> system_manager,
+          std::shared_ptr<ICommandQueue> cmd_queue)
+    : entity_manager_(std::move(entity_manager)),
+      component_manager_(std::move(component_manager)),
+      system_manager_(std::move(system_manager)),
+      cmd_queue_(std::move(cmd_queue)) {}
 
-  Entity create_entity() override {
-    return entity_manager_->create_entity();
-  }
-
-  void destroy_entity(Entity entity) override {
-    entity_manager_->destroy_entity(entity);
-  }
-
-  void step(float delta_time) override {
-    cmd_queue_->process(shared_from_this());
-    cmd_queue_->clear();
-    update(delta_time);
-  }
-
-  void update(float delta_time) override {
-    //Will have more here as more comes online
-    system_manager_->update(delta_time);
-  }
-
-  void process_events() override {
-    //TODO Requires event manager system
-  }
-
-  [[nodiscard]] bool is_alive(Entity entity) const override {
-    return entity_manager_->is_alive(entity);
-  }
-
+  void initialize(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager) override;
+  Entity create_entity() override;
   [[nodiscard]] std::vector<Entity> get_entities_with_signature(
-      const Signature& target_signature) const override {
-    return entity_manager_->get_entities_with_signature(target_signature);
-  }
+      const ecs::Signature& target_signature) const override;
+  void destroy_entity(Entity entity) override;
+  void step(float delta_time) override;
+  void update(float delta_time) override;
+  void process_events() override;
+  [[nodiscard]] bool is_alive(Entity entity) const override;
+  void load_level(const data::LevelData& level_data) override;
+  void unload_level() override;
+
+  [[nodiscard]] bool should_exit() const override;
+  void request_exit() override;
 
   template <typename T>
   void register_component() const {
@@ -113,19 +103,16 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
     return component_manager_->has_component<T>(entity);
   }
 
-  [[nodiscard]] bool should_exit() const override {
-    return should_exit_;
-  }
-  void request_exit() override {
-    should_exit_ = true;
-  }
-
  private:
   std::shared_ptr<ecs::IEntityManager> entity_manager_;
   std::shared_ptr<ecs::ComponentManager> component_manager_;
   std::shared_ptr<ecs::ISystemManager> system_manager_;
   std::shared_ptr<ICommandQueue> cmd_queue_;
   bool should_exit_ = false;
+
+  void register_components() const;
+  void register_systems(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager);
 };
 
 }  // namespace sb::gamestate

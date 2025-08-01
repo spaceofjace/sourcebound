@@ -63,6 +63,21 @@ add_executable(sourcebound
         tests/mocks/MockRenderer.h
         include/gamestate/QuitCommand.h
         src/gamestate/QuitCommand.cpp
+        include/data/GameData.h
+        src/gamestate/GameWorld.cpp
+        include/math/Vec2.h
+        include/data/IGameDataManager.h
+        include/data/HardcodedGameDataManager.h
+        src/data/HardcodedGameDataManager.cpp
+        include/ecs/systems/PhysicsSystem.h
+        src/ecs/systems/PhysicsSystem.cpp
+        include/ecs/systems/CollisionSystem.h
+        src/ecs/systems/CollisionSystem.cpp
+        include/ecs/systems/FollowSystem.h
+        src/ecs/systems/FollowSystem.cpp
+        include/gamestate/LaunchBallCommand.h
+        src/gamestate/LaunchBallCommand.cpp
+        include/math/MathConsts.h
 )
 
 add_executable(unit_tests
@@ -127,6 +142,27 @@ add_executable(unit_tests
         tests/render_system_tests.cpp
         src/gamestate/QuitCommand.cpp
         tests/quit_command_test.cpp
+        include/data/GameData.h
+        src/gamestate/GameWorld.cpp
+        include/math/Vec2.h
+        include/data/IGameDataManager.h
+        include/data/HardcodedGameDataManager.h
+        src/data/HardcodedGameDataManager.cpp
+        tests/hardcoded_data_manager_tests.cpp
+        tests/mocks/MockGameDataManager.h
+        include/ecs/systems/PhysicsSystem.h
+        src/ecs/systems/PhysicsSystem.cpp
+        tests/physics_system_tests.cpp
+        include/ecs/systems/CollisionSystem.h
+        src/ecs/systems/CollisionSystem.cpp
+        tests/collision_system_tests.cpp
+        include/ecs/systems/FollowSystem.h
+        src/ecs/systems/FollowSystem.cpp
+        tests/follow_system_tests.cpp
+        include/gamestate/LaunchBallCommand.h
+        src/gamestate/LaunchBallCommand.cpp
+        tests/launch_ball_command_tests.cpp
+        include/math/MathConsts.h
 )
 
 target_include_directories(sourcebound PUBLIC

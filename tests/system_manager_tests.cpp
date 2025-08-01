@@ -109,3 +109,37 @@ TEST(SystemManagerTest, EntitySignatureChangedTracksEntitiesCorrectly) {
   sm.entity_signature_changed(entity, nonmatching);
   EXPECT_FALSE(system->entities.find(entity) != system->entities.end());
 }
+
+TEST(SystemManagerTest, RegisterSystem_ByTypeIndex_Succeeds) {
+  SystemManager sm;
+  auto system = std::make_shared<MockSystem>();
+  EXPECT_NO_THROW(sm.register_system(typeid(MockSystem), system));
+}
+
+TEST(SystemManagerTest, GetSystem_ByTypeIndex_ThrowsIfUnregistered) {
+  SystemManager sm;
+  EXPECT_THROW(
+      sm.get_system(typeid(MockSystem)),
+      std::runtime_error
+  );
+}
+
+TEST(SystemManagerTest, SetSignature_ByTypeIndex_ThrowsIfUnregistered) {
+  SystemManager sm;
+  Signature sig;
+  sig.set(1);
+
+  EXPECT_THROW(
+      sm.set_signature(typeid(MockSystem), sig),
+      std::runtime_error
+  );
+}
+
+TEST(SystemManagerTest, GetSystem_ByTypeIndex_ReturnsRegisteredInstance) {
+  SystemManager sm;
+  auto system = std::make_shared<MockSystem>();
+  sm.register_system(typeid(MockSystem), system);
+
+  auto retrieved = sm.get_system(typeid(MockSystem));
+  EXPECT_EQ(system, retrieved);
+}

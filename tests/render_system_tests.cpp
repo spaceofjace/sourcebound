@@ -24,12 +24,12 @@ TEST(RenderSystemTest, RendersCircleShapeCorrectly) {
   auto mock_renderer = std::make_shared<MockRenderer>();
   auto real_component_mgr = std::make_shared<ComponentManager>();
 
-  RenderSystem render_system(mock_renderer, real_component_mgr);
+  RenderSystem render_system(mock_renderer);
 
   Entity entity{1, 0};
   render_system.entities.insert(entity);
 
-  Transform transform = Transform{{100.f, 200.f}, {}, {25.f, 25.f}, {}};
+  Transform transform = Transform{{100.f, 200.f}, {25.f, 25.f}, {}};
   RenderableSimpleShape shape = RenderableSimpleShape{ Colors::red, SimpleShapeType::Circle, true};
 
   real_component_mgr->register_component<Transform>();
@@ -41,26 +41,25 @@ TEST(RenderSystemTest, RendersCircleShapeCorrectly) {
 
   EXPECT_CALL(*mock_renderer,
     draw_circle(
-      Eq(static_cast<int>(transform.position.x)),
-      Eq(static_cast<int>(transform.position.y)),
+      Eq(transform.position.as_vec2()),
       Eq(static_cast<int>(transform.size.width * 0.5f)), //halves in production code
       Eq(Colors::red),
       Eq(true)))
     .Times(1);
 
-  render_system.update(0.0f);
+  render_system.update(0.0f, *real_component_mgr);
 }
 
 TEST(RenderSystemTest, RendersRectangleShapeCorrectly) {
   auto mock_renderer = std::make_shared<MockRenderer>();
   auto real_component_mgr = std::make_shared<ComponentManager>();
 
-  RenderSystem render_system(mock_renderer, real_component_mgr);
+  RenderSystem render_system(mock_renderer);
 
   Entity entity{2, 0};
   render_system.entities.insert(entity);
 
-  Transform transform = Transform{{10.f, 20.f}, {}, {60.f, 30.f}, {}};
+  Transform transform = Transform{{10.f, 20.f}, {60.f, 30.f}, {}};
   RenderableSimpleShape shape = RenderableSimpleShape{Colors::cyan, SimpleShapeType::Rectangle, false};
 
   real_component_mgr->register_component<Transform>();
@@ -72,15 +71,14 @@ TEST(RenderSystemTest, RendersRectangleShapeCorrectly) {
 
   EXPECT_CALL(*mock_renderer,
     draw_rect(
-      static_cast<int>(transform.position.x),
-      static_cast<int>(transform.position.y),
+      Eq(transform.position.as_vec2()),
       static_cast<int>(transform.size.width),
       static_cast<int>(transform.size.height),
       shape.color,
       shape.filled))
     .Times(1);
 
-  render_system.update(0.0f);
+  render_system.update(0.0f, *real_component_mgr);
 }
 
 TEST(RenderSystemTest, LogsErrorOnInvalidShapeType) {
@@ -90,12 +88,12 @@ TEST(RenderSystemTest, LogsErrorOnInvalidShapeType) {
   auto mock_renderer = std::make_shared<MockRenderer>();
   auto real_component_mgr = std::make_shared<ComponentManager>();
 
-  RenderSystem render_system(mock_renderer, real_component_mgr);
+  RenderSystem render_system(mock_renderer);
 
   Entity entity{3, 0};
   render_system.entities.insert(entity);
 
-  auto transform = Transform{{10.f, 10.f}, {}, {10.f, 10.f}, {}};
+  auto transform = Transform{{10.f, 10.f}, {10.f, 10.f}, {}};
   auto shape = RenderableSimpleShape {Colors::dark_gray, SimpleShapeType::Invalid, true};
 
   real_component_mgr->register_component<Transform>();
@@ -105,7 +103,7 @@ TEST(RenderSystemTest, LogsErrorOnInvalidShapeType) {
   real_component_mgr->add_component<RenderableSimpleShape>(entity, shape);
 
   // No EXPECT_CALL since we only log — but this shouldn't crash
-  render_system.update(0.0f);
+  render_system.update(0.0f, *real_component_mgr);
 
   EXPECT_EQ(mock_sink->last_level, sb::log::Level::Error);
   EXPECT_EQ(mock_sink->last_message,"Unsupported shape type detected for entity ID: " +

@@ -23,6 +23,7 @@
 
 #ifndef IRENDERER_H
 #define IRENDERER_H
+#include "../math/Vec2.h"
 #include "Color.h"
 
 namespace sb::rendering {
@@ -57,28 +58,26 @@ public:
   virtual void present() = 0;
 
 /**
- * @brief Draws a filled rectangle.
+ * @brief Draws a filled rectangle based on a centerpoint
  *
- * @param pos_x The X coordinate of the rectangle's top-left corner.
- * @param pos_y The Y coordinate of the rectangle's top-left corner.
+ * @param center The center point of the rectangle.
  * @param width The width of the rectangle.
  * @param height The height of the rectangle.
  * @param color Defines color channels (RGBA) to render.
  * @param filled filled if true, otherwise a 1 pixel outline
  */
-  virtual void draw_rect(int pos_x, int pos_y, int width, int height, const Color& color,
+  virtual void draw_rect(const math::Vec2& center, int width, int height, const Color& color,
     bool filled) = 0;
 
 /**
  * @brief Draws a filled circle.
  *
- * @param center_x X coordinate of the circle center.
- * @param center_y Y coordinate of the circle center.
+  * @param center The center point of the circle.
  * @param radius Radius of the circle.
  * @param color Defines color channels (RGBA) to render.
  * @param filled filled if true, otherwise a 1 pixel outline
  */
-  virtual void draw_circle(int center_x, int center_y, int radius, const Color& color,
+  virtual void draw_circle(const math::Vec2& center, int radius, const Color& color,
     bool filled) = 0;
 };
 

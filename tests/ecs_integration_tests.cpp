@@ -40,7 +40,6 @@ TEST(ECSIntegration, CreatePaddleEntity_WithTransformAndTag) {
 
   auto transform = Transform{
     Position{10, 10},
-    Velocity{0, 0},
     Size{ 20,5 }
   };
   add_with_signature(em, cm, paddle, transform);
@@ -63,8 +62,6 @@ TEST(ECSIntegration, CreatePaddleEntity_WithTransformAndTag) {
   EXPECT_EQ(t.position.y, 10);
   EXPECT_EQ(t.size.width, 20);
   EXPECT_EQ(t.size.height, 5);
-  EXPECT_EQ(t.velocity.x, 0);
-  EXPECT_EQ(t.velocity.y, 0);
 }
 
 TEST(ECSIntegration, EntityReuse_ChangesVersionAndResetsComponents) {
@@ -76,7 +73,6 @@ TEST(ECSIntegration, EntityReuse_ChangesVersionAndResetsComponents) {
   Entity a = em.create_entity();
   auto transform = Transform{
     Position{10, 10},
-    Velocity{0, 0},
     Size{ 20,5 }
   };
   add_with_signature(em, cm, a, transform);
@@ -103,7 +99,6 @@ TEST(ECSIntegration, SignatureUpdatedAfterComponentRemoval) {
   add_with_signature(em, cm, ball, Ball{});
   auto transform = Transform{
     Position{0, 0},
-    Velocity{1, 0},
     Size{ 20,5 }
   };
   add_with_signature(em, cm, ball, transform);
@@ -128,7 +123,6 @@ TEST(ECSIntegration, DestroyedEntityRemovesAllComponents) {
   Entity e = em.create_entity();
   auto transform = Transform{
     Position{1, 2},
-    Velocity{0, 0},
     Size{ 5,5 }
   };
   add_with_signature(em, cm, e, transform);

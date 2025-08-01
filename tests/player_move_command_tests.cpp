@@ -3,21 +3,17 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
+#include <gtest/gtest.h>
+
 #include "../../../include/gamestate/PlayerMoveCommand.h"
-#include "../include/ecs/ISystem.h"
 #include "../include/gamestate/GameWorld.h"
 #include "mocks/MockCommandQueue.h"
 #include "mocks/MockComponentManager.h"
 #include "mocks/MockEntityManager.h"
 #include "mocks/MockSystemManager.h"
+#include "../include/ecs/components/Components.h"
 
-struct Paddle { };
-
-struct Velocity {
-  float x, y;
-};
-
-TEST(PlayerMoveCommandTest, AppliesVelocityToPaddleEntity) {
+TEST(PlayerMoveCommandTest, AppliesDirectionToPaddleEntity) {
   using namespace sb::gamestate;
   using namespace sb::ecs;
 
@@ -31,16 +27,16 @@ TEST(PlayerMoveCommandTest, AppliesVelocityToPaddleEntity) {
   auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
 
   cm->register_component<Paddle>();
-  cm->register_component<Velocity>();
+  cm->register_component<Direction>();
 
   Entity paddle = gw->create_entity();
   gw->add_component<Paddle>(paddle, Paddle{});
-  gw->add_component<Velocity>(paddle, Velocity{0.f, 0.f});
+  gw->add_component<Direction>(paddle, Direction{0.f, 0.f});
 
-  PlayerMoveCommand move_cmd(1.5f, -2.0f);
+  PlayerMoveCommand move_cmd(1.0f, 0);
   move_cmd.apply(gw);
 
-  const auto& velocity = gw->get_component<Velocity>(paddle);
-  EXPECT_FLOAT_EQ(velocity.x, 1.5f);
-  EXPECT_FLOAT_EQ(velocity.y, -2.0f);
+  const auto& direction = gw->get_component<Direction>(paddle);
+  EXPECT_FLOAT_EQ(direction.x, 1.0f);
+  EXPECT_FLOAT_EQ(direction.y, 0);
 }
