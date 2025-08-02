@@ -20,8 +20,8 @@
 #ifndef IGAMEWORLD_H
 #define IGAMEWORLD_H
 
-#include "../data/GameData.h"
 #include "../data/IGameDataManager.h"
+#include "../data/LevelData.h"
 #include "../ecs/Entity.h"
 #include "../ecs/ISystem.h"
 

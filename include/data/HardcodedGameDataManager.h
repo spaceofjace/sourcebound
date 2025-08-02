@@ -51,6 +51,33 @@ public:
   void set_current_level(int level_id) override;
 
 private:
+  /**
+  * @brief Constructs a BrickConfig with hitpoints, visual color, and collider size.
+  *
+  * This utility wraps the process of assembling a brick with defaulted component values
+  * based on hit strength and a provided color. The resulting brick includes:
+  * - `HitsRequired` set to the given value
+  * - `RenderableSimpleShape` using the specified fill color and brick size
+  * - `BoxCollider` matching the brick's dimensions with bounce and trigger enabled
+  *
+  * @param hits Number of hits required to break the brick.
+  * @param color Fill color used for rendering the brick.
+  * @param layout Reference to the current brick layout configuration (size, margins).
+  * @return A complete BrickConfig instance with all relevant components populated.
+  */
+  static BrickConfig make_brick(int hits, const rendering::Color& color, const BrickLayoutConfig& layout);
+
+  /**
+  * @brief Creates a row of empty (nullopt) brick cells.
+  *
+  * Used to insert spacing or non-playable rows into the brick grid.
+  * Typically applied to top or bottom padding rows or gaps in level design.
+  *
+  * @param num_cols Number of columns in the brick grid.
+  * @return A vector of std::optional<BrickConfig>, all set to std::nullopt.
+  */
+  static std::vector<std::optional<BrickConfig>> make_empty_row(int num_cols);
+
   int current_level_id_ = 0;
   std::unordered_map<int, LevelData> levels_;
 };
