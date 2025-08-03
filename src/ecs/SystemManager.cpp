@@ -24,9 +24,9 @@ void SystemManager::entity_signature_changed(const Entity entity, const Signatur
   }
 }
 
-void SystemManager::update_all(const float delta_time, ComponentManager& component_manager) {
+void SystemManager::update_all(const float delta_time, gamestate::GameWorld& game_world) {
   for (const auto& [type, system] : systems_) {
-    system->update(delta_time, component_manager);
+    system->update(delta_time, game_world);
   }
 }
 

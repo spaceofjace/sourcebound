@@ -75,7 +75,7 @@ TEST(GameWorldTest, UpdateDelegatesToSystemManager) {
 
   struct TestSystemManager : MockSystemManager {
     bool updated = false;
-    void update_all(float, ComponentManager&) override { updated = true; } // <-- updated signature
+    void update_all(float, GameWorld&) override { updated = true; } // <-- updated signature
   };
 
   auto sm = std::make_shared<TestSystemManager>();
@@ -113,9 +113,9 @@ TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
   auto sink = std::make_shared<MockSink>();
   Logger::set_sink(sink);
 
-  GameWorld gw(em, cm, sm, cq);
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
 
-  gw.initialize(render_system, data_manager);
+  gw->initialize(render_system, data_manager);
 
   std::vector<sb::ecs::Entity> expected_entities = {
     {1, 0}, {2, 0}, {3, 0}, {4, 0},
@@ -136,9 +136,9 @@ TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
   EXPECT_CALL(*em, get_entities_with_signature(Eq(renderable_sig)))
     .WillOnce(Return(expected_entities));
 
-  gw.load_level(data_manager->get_current_level_data());
+  gw->load_level(data_manager->get_current_level_data());
 
-  auto result = gw.get_entities_with_signature(renderable_sig);
+  auto result = gw->get_entities_with_signature(renderable_sig);
   EXPECT_EQ(result.size(), expected_entities.size());
 }
 

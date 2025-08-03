@@ -103,6 +103,20 @@ inline CollisionBehavior operator&(CollisionBehavior lhs, CollisionBehavior rhs)
   return static_cast<CollisionBehavior>(static_cast<int>(lhs) & static_cast<int>(rhs));
 }
 
+enum class TriggerType {
+  None,
+  Hit,
+  Destroy
+};
+
+struct Triggerable {
+  std::vector<TriggerType> types { TriggerType::None };
+};
+
+struct WasTriggered {
+  Entity source;
+};
+
 /**
  * @struct CircleCollider
  * @ingroup ECS
@@ -157,6 +171,15 @@ struct PositionFollower {
   sb::ecs::Entity target = sb::ecs::Entity::null(); ///< The entity to follow
   sb::math::Vec2 offset = {};                       ///< Offset relative to the target’s position
 };
+
+/**
+ * @struct PositionBasedBounce
+ * @ingroup ECS
+ * @brief A "tag" component to trigger modulation based on position
+ *
+ * There may be a better way to do this, so I'll need to do some research.  (Should work for now.)
+ */
+struct PositionBasedBounce {};
 
 /**
  * @struct RenderableSimpleShape
@@ -217,13 +240,13 @@ struct Brick { };
  */
 struct Wall { };
 
-/**
- * @struct PositionBasedBounce
- * @ingroup ECS
- * @brief A "tag" component to trigger modulation based on position
- *
- * There may be a better way to do this, so I'll need to do some research.  (Should work for now.)
- */
-struct PositionBasedBounce {};
+struct PendingHit {
+  int amount = 1;  // leave as default for now
+};
+
+struct PendingDestroy {};
+
+struct Indestructible {};
+
 } // namespace sb::ecs
 #endif //COMPONENTS_H

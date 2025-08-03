@@ -79,6 +79,7 @@ sb::data::BrickConfig sb::data::HardcodedGameDataManager::make_brick(
   config.visual = RenderableSimpleShape{color, ecs::SimpleShapeType::Rectangle, true};
   config.collider = BoxCollider{layout.brick_size.x, layout.brick_size.y, 0.0F, 0.0F,
     ecs::CollisionBehavior::Bounce | ecs::CollisionBehavior::Trigger};
+  config.triggers = ecs::Triggerable { { ecs::TriggerType::Hit }};
 
   return config;
 }

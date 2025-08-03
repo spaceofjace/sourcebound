@@ -33,7 +33,7 @@ public:
   explicit PhysicsSystem(std::shared_ptr<data::IGameDataManager> game_data_manager)
       : game_data_manager_(std::move(game_data_manager)) {}
 
-  void update(float delta_time, ComponentManager& component_manager) override;
+  void update(float delta_time, gamestate::GameWorld& game_world) override;
 
 private:
   std::shared_ptr<data::IGameDataManager> game_data_manager_;

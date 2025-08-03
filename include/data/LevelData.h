@@ -49,9 +49,9 @@ struct LevelData {
   float paddle_speed = 200.0F;                  /**< Paddle speed in pixels per second */
 
   // Ball Data
-  float ball_radius = 12.0F;                    /**< Radius of the ball */
-  Vec2 ball_offset = { 0.0F, 0.0F };      /**< Offset relative to the paddle */
-  float ball_speed = 200.0F;                    /**< Ball speed in pixels per second */
+  float ball_radius = 12.0F;                         /**< Radius of the ball */
+  Vec2 ball_start_offset = { 0.0F, -4.0F };   /**< Offset relative to the paddle */
+  float ball_speed = 200.0F;                         /**< Ball speed in pixels per second */
 
   // Margins
   float outer_bottom_margin = 16.0F;            /**< Margin outside bottom wall and arena edge */

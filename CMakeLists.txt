@@ -81,6 +81,12 @@ add_executable(sourcebound
         include/data/BrickConfig.h
         include/data/ArenaDimensions.h
         include/data/BrickLayoutConfig.h
+        include/ecs/systems/TriggerSystem.h
+        src/ecs/systems/TriggerSystem.cpp
+        include/ecs/systems/HitSystem.h
+        include/ecs/systems/DestructionSystem.h
+        src/ecs/systems/HitSystem.cpp
+        src/ecs/systems/DestructionSystem.cpp
 )
 
 add_executable(unit_tests
@@ -168,6 +174,11 @@ add_executable(unit_tests
         include/math/MathConsts.h
         include/data/ArenaDimensions.h
         include/data/BrickLayoutConfig.h
+        include/ecs/systems/TriggerSystem.h
+        src/ecs/systems/TriggerSystem.cpp
+        include/ecs/systems/HitSystem.h
+        src/ecs/systems/HitSystem.cpp
+        src/ecs/systems/DestructionSystem.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

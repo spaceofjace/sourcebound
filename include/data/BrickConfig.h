@@ -33,6 +33,7 @@ struct BrickConfig {
   std::optional<HitsRequired> hits;             /**< Optional number of hits required to destroy the brick. */
   std::optional<RenderableSimpleShape> visual;  /**< Optional visual appearance of the brick. */
   std::optional<BoxCollider> collider;          /**< Optional physics collider used for interaction or bounce. */
+  std::optional<ecs::Triggerable> triggers;     /**< Optional triggers to fire if Triggered */
 };
 
 }

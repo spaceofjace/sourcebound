@@ -32,7 +32,7 @@ public:
   RenderSystem(std::shared_ptr<rendering::IRenderer> renderer)
     : renderer_(std::move(renderer)) {};
 
-  void update(float delta_time, ComponentManager& component_manager) override;
+  void update(float delta_time, gamestate::GameWorld& game_world) override;
 
 private:
   std::shared_ptr<rendering::IRenderer> renderer_;

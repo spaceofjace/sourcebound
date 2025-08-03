@@ -53,7 +53,7 @@ inline ArenaDimensions calculate_arena_dimensions(const LevelData& level) {
 
   // Paddle Gameplay Space at the lower part
   const float paddle_space = level.paddle_offset.y + level.paddle_height;
-  const float ball_space = level.ball_offset.y + (level.ball_radius * 2);
+  const float ball_space = level.ball_start_offset.y + (level.ball_radius * 2);
   const float buffer = paddle_space + ball_space + level.wall_thickness + 4.0F; //extra padding
 
   const float arena_width = (static_cast<float>(num_cols) * layout.brick_size.x) +

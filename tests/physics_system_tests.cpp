@@ -3,11 +3,15 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
-#include "../include/ecs/systems/PhysicsSystem.h"
-#include "../include/ecs/components/Components.h"
-#include "mocks/MockComponentManager.h"
-#include "mocks/MockGameDataManager.h"
 #include <gtest/gtest.h>
+
+#include "../include/ecs/components/Components.h"
+#include "../include/ecs/systems/PhysicsSystem.h"
+#include "mocks/MockCommandQueue.h"
+#include "mocks/MockComponentManager.h"
+#include "mocks/MockEntityManager.h"
+#include "mocks/MockGameDataManager.h"
+#include "mocks/MockSystemManager.h"
 
 using namespace sb::ecs;
 
@@ -22,6 +26,12 @@ TEST(PhysicsSystemTest, MovesPaddleAndLaunchedBallCorrectly) {
   auto mock_data = std::make_shared<MockGameDataManager>();
   mock_data->set_paddle_speed(200.0f);
   mock_data->set_ball_speed(400.0f);
+
+  //unfortunately need concrete version of ComponentManager and GameWorld for now
+  auto em = std::make_shared<MockEntityManager>();
+  auto sm = std::make_shared<MockSystemManager>(); // can be an empty stub
+  auto cq = std::make_shared<MockCommandQueue>(); // not used in test
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
 
   auto physics = std::make_shared<PhysicsSystem>(mock_data);
 
@@ -39,7 +49,7 @@ TEST(PhysicsSystemTest, MovesPaddleAndLaunchedBallCorrectly) {
   cm->add_component<Ball>(launched_ball, Ball{});
   physics->entities.insert(launched_ball);
 
-  physics->update(1.0f, *cm);  // delta_time = 1.0s
+  physics->update(1.0f, *gw);  // delta_time = 1.0s
 
   const auto& paddle_x = cm->get_component<Transform>(paddle).position.x;
   const auto& launched_x = cm->get_component<Transform>(launched_ball).position.x;

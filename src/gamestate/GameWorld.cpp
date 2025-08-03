@@ -5,19 +5,25 @@
 
 #include "../../include/gamestate/GameWorld.h"
 
+
+#include "../../include/data/ArenaDimensions.h"
 #include "../../include/ecs/RenderSystem.h"
 #include "../../include/ecs/components/Components.h"
 #include "../../include/ecs/systems/CollisionSystem.h"
 #include "../../include/ecs/systems/FollowSystem.h"
 #include "../../include/ecs/systems/PhysicsSystem.h"
-#include "../../include/data/ArenaDimensions.h"
+#include "../../include/ecs/systems/TriggerSystem.h"
+#include "../../include/ecs/systems/HitSystem.h"
+#include "../../include/ecs/systems/DestructionSystem.h"
 
-using sb::ecs::Entity;
+
+using sb::ecs::CollisionSystem;
 using sb::ecs::Signature;
 using sb::ecs::PhysicsSystem;
 using sb::ecs::RenderSystem;
 using sb::ecs::CollisionSystem;
 using sb::ecs::FollowSystem;
+using sb::ecs::Entity;
 
 void sb::gamestate::GameWorld::initialize(std::shared_ptr<ecs::ISystem> render_system,
     std::shared_ptr<data::IGameDataManager> game_data_manager) {
@@ -33,6 +39,8 @@ Entity sb::gamestate::GameWorld::create_entity() {
 
 void sb::gamestate::GameWorld::destroy_entity(const Entity entity) {
   entity_manager_->destroy_entity(entity);
+  component_manager_->entity_destroyed(entity);
+  system_manager_->entity_destroyed(entity);
 }
 
 void sb::gamestate::GameWorld::step(const float delta_time) {
@@ -43,7 +51,7 @@ void sb::gamestate::GameWorld::step(const float delta_time) {
 
 void sb::gamestate::GameWorld::update(const float delta_time) {
   //Will have more here as more comes online
-  system_manager_->update_all(delta_time, *component_manager_);
+  system_manager_->update_all(delta_time, *this);
 }
 
 void sb::gamestate::GameWorld::process_events() {
@@ -80,6 +88,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
   add_component(left_wall, ecs::RenderableSimpleShape{rendering::Colors::red, sb::ecs::SimpleShapeType::Rectangle, true});
   add_component(left_wall, ecs::BoxCollider{level_data.wall_thickness, vertical_wall_height, 0, 0,
     ecs::CollisionBehavior::Clamp | ecs::CollisionBehavior::Bounce});
+  add_component(left_wall, ecs::Indestructible{});
 
   // Right Wall
   const auto right_wall = create_entity();
@@ -92,6 +101,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
     ecs::SimpleShapeType::Rectangle, true});
   add_component(right_wall, ecs::BoxCollider{level_data.wall_thickness, vertical_wall_height,
     0, 0, ecs::CollisionBehavior::Clamp | ecs::CollisionBehavior::Bounce});
+  add_component(right_wall, ecs::Indestructible{});
 
   // Top Wall
   const auto top_wall = create_entity();
@@ -104,6 +114,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
     ecs::SimpleShapeType::Rectangle, true});
   add_component(top_wall, ecs::BoxCollider{horizontal_wall_width, level_data.wall_thickness, 0, 0,
     ecs::CollisionBehavior::Clamp | ecs::CollisionBehavior::Bounce});
+  add_component(top_wall, ecs::Indestructible{});
 
   // Bottom Wall (out of bounds)
   const auto bottom_wall = create_entity();
@@ -114,8 +125,9 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
       level_data.wall_thickness}, {0}});
   add_component(bottom_wall, ecs::RenderableSimpleShape{rendering::Colors::yellow,
     ecs::SimpleShapeType::Rectangle, false});
-  add_component(bottom_wall, ecs::BoxCollider{horizontal_wall_width, level_data.wall_thickness, 0, 0,
-    ecs::CollisionBehavior::Destroy | ecs::CollisionBehavior::Trigger});
+  add_component(bottom_wall, ecs::BoxCollider{horizontal_wall_width - (level_data.wall_thickness * 2), level_data.wall_thickness, 0, 0,
+    ecs::CollisionBehavior::Trigger});
+  add_component(bottom_wall, ecs::Triggerable { { ecs::TriggerType::Destroy }});
 
   // Paddle
   const float paddle_x =
@@ -137,11 +149,15 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
   add_component(paddle, ecs::BoxCollider{level_data.paddle_width, level_data.paddle_height, 0, 0,
     ecs::CollisionBehavior::Bounce});
   add_component(paddle, ecs::PositionBasedBounce{});
+  add_component(paddle, ecs::Indestructible{});
+
+  log::Logger::info("Paddle X: " + std::to_string(paddle_x) + " Y: " + std::to_string(paddle_y));
+  log::Logger::info("Paddle Width: " + std::to_string(level_data.paddle_width) + " Height: " + std::to_string(level_data.paddle_height));
 
   // Ball
-  const float ball_x = paddle_x + level_data.ball_offset.x;
+  const float ball_x = paddle_x + level_data.ball_start_offset.x;
   const float ball_y = paddle_y - (level_data.paddle_height / 2.0F) - level_data.ball_radius +
-                       level_data.ball_offset.y;
+                       level_data.ball_start_offset.y;
   const float ball_diameter = level_data.ball_radius * 2.0F;
 
   auto ball = create_entity();
@@ -149,7 +165,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
   add_component(ball, ecs::PositionFollower{
     paddle,
     sb::math::Vec2{0.0F,
-      -level_data.ball_radius - (level_data.paddle_height / 2.0F) + level_data.ball_offset.y
+      -level_data.ball_radius - (level_data.paddle_height / 2.0F) + level_data.ball_start_offset.y
     }
   });
   add_component(ball, ecs::Transform{{ball_x, ball_y}, {ball_diameter,
@@ -158,8 +174,7 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
     ecs::SimpleShapeType::Circle, true});
   add_component(ball, ecs::Velocity{0, 0});
   add_component(ball, ecs::Direction{0, 0});
-  add_component(ball, ecs::CircleCollider{ball_diameter, 0, 0,
-    ecs::CollisionBehavior::Destroy | ecs::CollisionBehavior::Trigger});
+  add_component(ball, ecs::CircleCollider{level_data.ball_radius, 0, 0});
 
   // Bricks
   const auto& layout = level_data.brick_layout;
@@ -199,6 +214,9 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
       if (config.hits) {
         add_component(brick, *config.hits);
       }
+      if (config.triggers) {
+        add_component(brick, *config.triggers);
+      }
     }
   }
 }
@@ -228,6 +246,11 @@ void sb::gamestate::GameWorld::register_components() const {
   register_component<ecs::PositionBasedBounce>();
   register_component<ecs::HitsRequired>();
   register_component<ecs::Brick>();
+  register_component<ecs::Triggerable>();
+  register_component<ecs::WasTriggered>();
+  register_component<ecs::PendingHit>();
+  register_component<ecs::PendingDestroy>();
+  register_component<ecs::Indestructible>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -267,4 +290,29 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   auto follow_system = std::make_shared<FollowSystem>(game_data_manager);
   system_manager_->register_system(typeid(FollowSystem), follow_system);
   system_manager_->set_signature(typeid(FollowSystem), follow_sig);
+
+  Signature trigger_sig;
+  trigger_sig.set(component_manager_->get_component_type<ecs::WasTriggered>());
+  trigger_sig.set(component_manager_->get_component_type<ecs::Triggerable>());
+
+  auto trigger_system = std::make_shared<ecs::TriggerSystem>(game_data_manager);
+  system_manager_->register_system(typeid(ecs::TriggerSystem), trigger_system);
+  system_manager_->set_signature(typeid(ecs::TriggerSystem), trigger_sig);
+
+
+  Signature hit_sig;
+  hit_sig.set(component_manager_->get_component_type<ecs::PendingHit>());
+  hit_sig.set(component_manager_->get_component_type<ecs::HitsRequired>());
+
+  auto hit_system = std::make_shared<ecs::HitSystem>(game_data_manager);
+  system_manager_->register_system(typeid(ecs::HitSystem), hit_system);
+  system_manager_->set_signature(typeid(ecs::HitSystem), hit_sig);
+
+  Signature destruction_sig;
+  destruction_sig.set(component_manager_->get_component_type<ecs::PendingDestroy>());
+
+  auto destruction_system = std::make_shared<ecs::DestructionSystem>(game_data_manager,
+    this->shared_from_this());
+  system_manager_->register_system(typeid(ecs::DestructionSystem), destruction_system);
+  system_manager_->set_signature(typeid(ecs::DestructionSystem), destruction_sig);
 }

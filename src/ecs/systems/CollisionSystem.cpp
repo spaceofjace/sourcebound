@@ -6,18 +6,22 @@
 #include <algorithm>
 #include "../../../include/ecs/systems/CollisionSystem.h"
 #include "../../../include/math/MathConsts.h"
+#include "../../../include/gamestate/GameWorld.h"
 
-void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& component_manager) {
+void sb::ecs::CollisionSystem::update(float /*delta_time*/, gamestate::GameWorld& game_world) {
   std::vector<Entity> clampables;
   std::vector<Entity> clamp_bounds;
 
   std::vector<Entity> bounceables;
 
-  for (const Entity& entity : entities) {
-    if (!(component_manager.has_component<BoxCollider>(entity)
-      || !component_manager.has_component<CircleCollider>(entity))) { continue; }
+  std::vector<Entity> triggerables;
 
-    const auto& box = component_manager.get_component<BoxCollider>(entity);
+  std::vector snapshot(entities.begin(), entities.end());
+  for (const Entity& entity : snapshot) {
+    if (!game_world.has_component<BoxCollider>(entity)
+      && game_world.has_component<CircleCollider>(entity)) { continue; }
+
+    const auto& box = game_world.get_component<BoxCollider>(entity);
 
     if ((box.behavior & CollisionBehavior::Bounce) == CollisionBehavior::Bounce) {
       bounceables.push_back(entity);
@@ -26,24 +30,27 @@ void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& co
     if ((box.behavior & CollisionBehavior::Clamp) == CollisionBehavior::Clamp) {
       clamp_bounds.push_back(entity);
     }
+    else if ((box.behavior & CollisionBehavior::Trigger) == CollisionBehavior::Trigger) {
+      triggerables.push_back(entity);
+    }
 
     const bool is_clampable =
-      component_manager.has_component<Direction>(entity) &&
-      component_manager.has_component<Paddle>(entity);
+      game_world.has_component<Direction>(entity) &&
+      game_world.has_component<Paddle>(entity);
 
     if (is_clampable) {
       clampables.push_back(entity);
     }
   }
 
-  for (const Entity& entity : entities) {
-    if (!component_manager.has_component<Transform>(entity) ||
-        !component_manager.has_component<Direction>(entity) ||
-        !component_manager.has_component<CircleCollider>(entity)) { continue; }
+  for (const Entity& entity : snapshot) {
+    if (!game_world.has_component<Transform>(entity) ||
+        !game_world.has_component<Direction>(entity) ||
+        !game_world.has_component<CircleCollider>(entity)) { continue; }
 
-    auto& transform = component_manager.get_component<Transform>(entity);
-    auto& direction = component_manager.get_component<Direction>(entity);
-    const auto& circle = component_manager.get_component<CircleCollider>(entity);
+    auto& transform = game_world.get_component<Transform>(entity);
+    auto& direction = game_world.get_component<Direction>(entity);
+    const auto& circle = game_world.get_component<CircleCollider>(entity);
 
     const math::Vec2 circle_center =
         (transform.position + sb::math::Vec2{circle.offset_x, circle.offset_y}).as_vec2();
@@ -51,8 +58,8 @@ void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& co
     for (const Entity& bouncing_entity : bounceables) {
       if (bouncing_entity == entity) continue;
 
-      const auto& bounceable_transform = component_manager.get_component<Transform>(bouncing_entity);
-      const auto& box_collider = component_manager.get_component<BoxCollider>(bouncing_entity);
+      const auto& bounceable_transform = game_world.get_component<Transform>(bouncing_entity);
+      const auto& box_collider = game_world.get_component<BoxCollider>(bouncing_entity);
 
       if (!has_circle_aabb_overlap(circle, transform, box_collider, bounceable_transform)) {
         continue;
@@ -62,7 +69,7 @@ void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& co
 
       math::Vec2 reflected;
 
-      const bool is_position_based = component_manager.has_component<PositionBasedBounce>(bouncing_entity);
+      const bool is_position_based = game_world.has_component<PositionBasedBounce>(bouncing_entity);
 
       if (is_position_based) {
         const float box_center = bounceable_transform.position.x;
@@ -96,15 +103,15 @@ void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& co
   }
 
   for (const auto& entity : clampables) {
-    auto& transform = component_manager.get_component<Transform>(entity);
-    const auto& collider = component_manager.get_component<BoxCollider>(entity);
-    const auto& direction = component_manager.get_component<Direction>(entity);
+    auto& transform = game_world.get_component<Transform>(entity);
+    const auto& collider = game_world.get_component<BoxCollider>(entity);
+    const auto& direction = game_world.get_component<Direction>(entity);
 
     for (const auto& boundary : clamp_bounds) {
       if (boundary == entity) { continue; }
 
-      const auto& boundary_transform = component_manager.get_component<Transform>(boundary);
-      const auto& boundary_collider = component_manager.get_component<BoxCollider>(boundary);
+      const auto& boundary_transform = game_world.get_component<Transform>(boundary);
+      const auto& boundary_collider = game_world.get_component<BoxCollider>(boundary);
 
       if (!has_aabb_overlap(collider, transform, boundary_collider, boundary_transform)){
         continue;
@@ -134,6 +141,40 @@ void sb::ecs::CollisionSystem::update(float /*delta_time*/, ComponentManager& co
       }
     }
   }
+
+  for (const auto& entity : triggerables) {
+    if (!game_world.has_component<BoxCollider>(entity) ||
+      !game_world.has_component<Transform>(entity)) {
+      continue;
+      }
+
+    const auto& trigger_transform = game_world.get_component<Transform>(entity);
+    const auto& trigger_collider = game_world.get_component<BoxCollider>(entity);
+
+    for (const auto& other : entities) {
+      if (other == entity) continue;
+      if (!game_world.has_component<Transform>(other)) continue;
+
+      if (game_world.has_component<BoxCollider>(other)) {
+        const auto& other_transform = game_world.get_component<Transform>(other);
+        const auto& other_collider = game_world.get_component<BoxCollider>(other);
+
+        if (has_aabb_overlap(trigger_collider, trigger_transform, other_collider, other_transform)) {
+          game_world.add_component(entity, WasTriggered{other});
+          break;
+        }
+      }
+      else if (game_world.has_component<CircleCollider>(other)) {
+        const auto& other_transform = game_world.get_component<Transform>(other);
+        const auto& circle = game_world.get_component<CircleCollider>(other);
+
+        if (has_circle_aabb_overlap(circle, other_transform, trigger_collider, trigger_transform)) {
+          game_world.add_component(entity, WasTriggered{other});
+          break;
+        }
+      }
+    }
+  }
 }
 
 bool sb::ecs::CollisionSystem::has_aabb_overlap(const BoxCollider& box_a,
@@ -149,7 +190,21 @@ bool sb::ecs::CollisionSystem::has_aabb_overlap(const BoxCollider& box_a,
   const float b_top = transform_b.position.y + box_b.offset_y - (box_b.height / 2.0F);
   const float b_bottom = transform_b.position.y + box_b.offset_y + (box_b.height / 2.0F);
 
-  return a_right >= b_left && a_left <= b_right && a_bottom >= b_top && a_top <= b_bottom;
+  auto collision_detected = (a_right > b_left + kEpsilon) && (a_left < b_right - kEpsilon) &&
+       (a_bottom > b_top + kEpsilon) && (a_top < b_bottom - kEpsilon);
+
+  if (collision_detected) {
+    log::Logger::debug("[CollisionSystem]: AABB collision detected.");
+    log::Logger::debug("Transform A: pos " + std::to_string(transform_a.position.x) + ", " + std::to_string(transform_a.position.y));
+    log::Logger::debug("Transform B: pos " + std::to_string(transform_b.position.x) + ", " + std::to_string(transform_b.position.y));
+    log::Logger::debug("AABB A: pos " + std::to_string(a_left) + ", " + std::to_string(a_top) + ", " + std::to_string(a_right) + ", " + std::to_string(a_bottom));
+    log::Logger::debug("AABB B: pos " + std::to_string(b_left) + ", " + std::to_string(b_top) + ", " + std::to_string(b_right) + ", " + std::to_string(b_bottom));
+
+    log::Logger::debug("BoxCollider A: width " + std::to_string(box_a.width) + ", height " + std::to_string(box_a.height));
+    log::Logger::debug("BoxCollider B: width " + std::to_string(box_b.width) + ", height " + std::to_string(box_b.height));
+  }
+
+  return collision_detected;
 }
 
 bool sb::ecs::CollisionSystem::has_circle_aabb_overlap(const CircleCollider& circle,
@@ -159,21 +214,41 @@ bool sb::ecs::CollisionSystem::has_circle_aabb_overlap(const CircleCollider& cir
   const float cy = circle_transform.position.y + circle.offset_y;
   const float radius = circle.radius;
 
-  const float box_x = box_transform.position.x + box.offset_x;
-  const float box_y = box_transform.position.y + box.offset_y;
-  const float box_width = box.width;
-  const float box_height = box.height;
+  const float box_center_x = box_transform.position.x + box.offset_x;
+  const float box_center_y = box_transform.position.y + box.offset_y;
+  const float half_width = box.width / 2.0F;
+  const float half_height = box.height / 2.0F;
 
-  const float half_width = box_width / 2.0F;
-  const float half_height = box_height / 2.0F;
+  const float box_left = box_center_x - half_width;
+  const float box_right = box_center_x + half_width;
+  const float box_top = box_center_y - half_height;
+  const float box_bottom = box_center_y + half_height;
 
-  const float closest_x = std::max(box_x - half_width, std::min(cx, box_x + half_width));
-  const float closest_y = std::max(box_y - half_height, std::min(cy, box_y + half_height));
+  const float closest_x = std::max(box_left, std::min(cx, box_right));
+  const float closest_y = std::max(box_top, std::min(cy, box_bottom));
 
   const float dx = cx - closest_x;
   const float dy = cy - closest_y;
 
-  return (dx * dx + dy * dy) < (radius * radius);
+  const bool collision_detected = (dx * dx + dy * dy) < ((radius - kEpsilon) * (radius - kEpsilon));
+
+  if (collision_detected) {
+    log::Logger::debug("[CollisionSystem]: Circle-AABB collision detected.");
+    log::Logger::debug("Circle Center: (" + std::to_string(cx) + ", " + std::to_string(cy) + ")");
+    log::Logger::debug("Radius: " + std::to_string(radius));
+    log::Logger::debug("Circle Offset: (" + std::to_string(circle.offset_x) + ", " + std::to_string(circle.offset_y) + ")");
+
+    log::Logger::debug("Box Center: (" + std::to_string(box_center_x) + ", " + std::to_string(box_center_y) + ")");
+    log::Logger::debug("Box Size: width " + std::to_string(box.width) + ", height " + std::to_string(box.height));
+    log::Logger::debug("Box Bounds: left " + std::to_string(box_left) + ", right " + std::to_string(box_right) +
+                       ", top " + std::to_string(box_top) + ", bottom " + std::to_string(box_bottom));
+
+    log::Logger::debug("Closest Point on Box to Circle: (" + std::to_string(closest_x) + ", " + std::to_string(closest_y) + ")");
+    log::Logger::debug("dx: " + std::to_string(dx) + ", dy: " + std::to_string(dy) +
+                       ", dist^2: " + std::to_string(dx * dx + dy * dy));
+  }
+
+  return collision_detected;
 }
 
 sb::math::Vec2 sb::ecs::CollisionSystem::get_collision_normal(const sb::math::Vec2& circle_center,

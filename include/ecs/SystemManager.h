@@ -41,7 +41,7 @@ class SystemManager final : public ISystemManager {
 public:
   SystemManager() = default;
 
-  void update_all(float delta_time, ComponentManager& component_manager) override;
+  void update_all(float delta_time, gamestate::GameWorld& game_world) override;
   void entity_destroyed(Entity entity) override;
   void entity_signature_changed(Entity entity, const Signature& signature) override;
   void register_system(std::type_index type, std::shared_ptr<ISystem> system) override;
