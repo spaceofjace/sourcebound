@@ -88,6 +88,8 @@ add_executable(sourcebound
         src/ecs/systems/HitSystem.cpp
         src/ecs/systems/DestructionSystem.cpp
         include/gamestate/StageLifecycleState.h
+        include/ecs/systems/LivesSystem.h
+        src/ecs/systems/LivesSystem.cpp
 )
 
 add_executable(unit_tests
@@ -183,6 +185,9 @@ add_executable(unit_tests
         tests/trigger_system_tests.cpp
         tests/hit_system_tests.cpp
         tests/destruction_system_tests.cpp
+        include/ecs/systems/LivesSystem.h
+        src/ecs/systems/LivesSystem.cpp
+        tests/lives_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

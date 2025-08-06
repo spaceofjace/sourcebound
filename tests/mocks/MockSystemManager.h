@@ -19,6 +19,7 @@ struct MockSystemManager : ISystemManager {
   }
 
   void entity_destroyed(Entity entity) override{}
-  void entity_signature_changed(Entity entity, const Signature& signature) override{}
+  void entity_signature_changed(Entity entity, const Signature& signature) override {}
+  void clear_all() override {}
 };
 #endif //MOCKSYSTEMMANAGER_H

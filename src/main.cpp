@@ -93,6 +93,10 @@ int main() {
     if (world->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::Quit) {
       break;
     }
+    if (world->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::GameOver) {
+      world->unload_level();
+      world->load_level(game_data_manager->get_current_level_data());
+    }
 
     world->update(deltaTime);
     renderer->present();

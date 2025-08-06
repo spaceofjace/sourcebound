@@ -26,6 +26,7 @@ public:
   IComponentArray& operator=(IComponentArray&&) = delete;
 
   virtual void entity_destroyed(Entity entity) = 0;
+  virtual void clear() = 0;
 };
 
 } // namespace sb::ecs

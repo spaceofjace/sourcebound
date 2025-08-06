@@ -25,13 +25,13 @@ namespace sb::gamestate {
 * restarting, or ending the game.
 */
 enum class StageLifecycleState {
-  NotStarted,      /**< Stage has been initialized but gameplay has not yet begun */
-  Active,          /**< Stage is actively running and updating systems */
-  Paused,          /**< Stage is temporarily suspended (e.g., pause menu open) */
-  ResetRequested,  /**< A reset has been requested; the level should be reloaded */
-  Completed,       /**< Stage was successfully completed by the player */
-  GameOver,        /**< The player has lost and has no lives remaining */
-  Quit             /**< The player manually exited the stage (e.g., quit to menu) */
+  NotStarted,            /**< Stage has been initialized but gameplay has not yet begun */
+  Active,                /**< Stage is actively running and updating systems */
+  Paused,                /**< Stage is temporarily suspended (e.g., pause menu open) */
+  PlayerResetRequested,  /**< A reset has been requested; the level should be reloaded */
+  Completed,             /**< Stage was successfully completed by the player */
+  GameOver,              /**< The player has lost and has no lives remaining */
+  Quit                   /**< The player manually exited the stage (e.g., quit to menu) */
 };
 
 }

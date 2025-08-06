@@ -95,6 +95,13 @@ public:
   * @throws std::runtime_error if the system is not registered.
   */
   [[nodiscard]] virtual std::shared_ptr<ISystem> get_system(std::type_index type) const = 0;
+
+  /**
+   * @brief Clears all internal system references and resets system state.
+   *
+   * Implementations should remove all registered systems and any associated metadata.
+   */
+  virtual void clear_all() = 0;
 };
 
 }  // namespace sb::ecs
