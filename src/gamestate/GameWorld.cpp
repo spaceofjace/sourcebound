@@ -311,8 +311,7 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   Signature destruction_sig;
   destruction_sig.set(component_manager_->get_component_type<ecs::PendingDestroy>());
 
-  auto destruction_system = std::make_shared<ecs::DestructionSystem>(game_data_manager,
-    this->shared_from_this());
+  auto destruction_system = std::make_shared<ecs::DestructionSystem>(game_data_manager);
   system_manager_->register_system(typeid(ecs::DestructionSystem), destruction_system);
   system_manager_->set_signature(typeid(ecs::DestructionSystem), destruction_sig);
 }

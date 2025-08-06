@@ -16,7 +16,7 @@ void sb::ecs::DestructionSystem::update(float /*delta_time*/, gamestate::GameWor
 
     game_world.remove_component<PendingDestroy>(entity);
     if (!game_world.has_component<Indestructible>(entity)) {
-      game_world_->destroy_entity(entity);
+      game_world.destroy_entity(entity);
     }
   }
 }

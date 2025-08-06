@@ -179,6 +179,9 @@ add_executable(unit_tests
         include/ecs/systems/HitSystem.h
         src/ecs/systems/HitSystem.cpp
         src/ecs/systems/DestructionSystem.cpp
+        tests/trigger_system_tests.cpp
+        tests/hit_system_tests.cpp
+        tests/destruction_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC

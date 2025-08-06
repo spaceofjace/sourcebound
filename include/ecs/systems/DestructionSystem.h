@@ -34,9 +34,8 @@ namespace sb::ecs {
 */
 class DestructionSystem final : public ISystem {
 public:
-  explicit DestructionSystem(std::shared_ptr<data::IGameDataManager> game_data_manager,
-    std::shared_ptr<gamestate::IGameWorld> game_world)
-      : game_data_manager_(std::move(game_data_manager)), game_world_(std::move(game_world)) {}
+  explicit DestructionSystem(std::shared_ptr<data::IGameDataManager> game_data_manager)
+      : game_data_manager_(std::move(game_data_manager)) {}
 
   /**
   * @brief Checks for pending destruction and destroys entities as needed.
@@ -47,7 +46,6 @@ public:
 
 private:
   std::shared_ptr<data::IGameDataManager> game_data_manager_;
-  std::shared_ptr<gamestate::IGameWorld> game_world_;
 };
 }  // namespace sb::ecs
 #endif //DESTRUCTIONSYSTEM_H
