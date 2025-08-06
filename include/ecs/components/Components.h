@@ -205,6 +205,11 @@ struct RenderableSimpleShape {
 //These are assumed to be specific to the game being implemented, and should probably be separated
 //into their own file eventually.
 
+struct PlayerSessionState {
+  int score = 0;
+  int lives = 3;
+};
+
 /**
  * @struct HitsRequired
  * @ingroup ECS

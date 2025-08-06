@@ -24,6 +24,7 @@
 #include "../data/LevelData.h"
 #include "../ecs/Entity.h"
 #include "../ecs/ISystem.h"
+#include "StageLifecycleState.h"
 
 namespace sb::gamestate {
 using ecs::Entity;
@@ -104,17 +105,6 @@ public:
   [[nodiscard]] virtual bool is_alive(Entity entity) const = 0;
 
   /**
-   * @brief Returns true if the world has been flagged for exit (e.g., shutdown or quit).
-   * @return True if exit has been requested.
-   */
-  [[nodiscard]] virtual bool should_exit() const = 0;
-
-  /**
-   * @brief Signals that the world should shut down on the next frame.
-   */
-  virtual void request_exit() = 0;
-
-  /**
    * @brief Loads a level using the provided layout data.
    * @param level_data Game-specific level dimensions and entity parameters.
    */
@@ -124,6 +114,10 @@ public:
    * @brief Destroys all active entities and resets the world to a clean state.
    */
   virtual void unload_level() = 0;
+
+  virtual void set_stage_lifecycle_state(StageLifecycleState new_state) = 0;
+
+  virtual StageLifecycleState get_stage_lifecycle_state() = 0;
 };
 
 } // namespace sb::ecs

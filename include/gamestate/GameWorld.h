@@ -61,9 +61,8 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
   [[nodiscard]] bool is_alive(Entity entity) const override;
   void load_level(const data::LevelData& level_data) override;
   void unload_level() override;
-
-  [[nodiscard]] bool should_exit() const override;
-  void request_exit() override;
+  void set_stage_lifecycle_state(StageLifecycleState new_state) override;
+  StageLifecycleState get_stage_lifecycle_state() override;
 
   template <typename T>
   void register_component() const {
@@ -108,11 +107,12 @@ class GameWorld final : public IGameWorld, public std::enable_shared_from_this<G
   std::shared_ptr<ecs::ComponentManager> component_manager_;
   std::shared_ptr<ecs::ISystemManager> system_manager_;
   std::shared_ptr<ICommandQueue> cmd_queue_;
-  bool should_exit_ = false;
+  StageLifecycleState stage_lifecycle_state_ = StageLifecycleState::NotStarted;
 
   void register_components() const;
   void register_systems(std::shared_ptr<ecs::ISystem> render_system,
-    std::shared_ptr<data::IGameDataManager> game_data_manager);
+                        std::shared_ptr<data::IGameDataManager> game_data_manager);
+
 };
 
 }  // namespace sb::gamestate

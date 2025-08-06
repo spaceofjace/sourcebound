@@ -16,6 +16,7 @@
 #include "../include/input/SdlEventSource.h"
 #include "../include/rendering/SdlRenderer.h"
 #include "../include/data/ArenaDimensions.h"
+#include "../include/gamestate/StageLifecycleState.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -89,8 +90,12 @@ int main() {
     renderer->clear();
     world->step(deltaTime);
 
-    if (world->should_exit()) {
+    if (world->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::Quit) {
       break;
+    }
+    if (world->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::GameOver) {
+      world->unload_level();
+      world->load_level(game_data_manager->get_current_level_data());
     }
 
     world->update(deltaTime);

@@ -54,5 +54,10 @@ std::shared_ptr<ISystem> SystemManager::get_system(const std::type_index type) c
   }
   return it->second;
 }
+void SystemManager::clear_all() {
+  for (auto& system : systems_) {
+    system.second->entities.clear();
+  }
+}
 
 } // namespace sb::ecs

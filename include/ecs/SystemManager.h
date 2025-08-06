@@ -92,8 +92,9 @@ public:
   std::shared_ptr<T> get_system() {
     return std::static_pointer_cast<T>(get_system(typeid(T)));
   }
+  void clear_all() override;
 
-private:
+ private:
   std::unordered_map<std::type_index, Signature> signatures_;
   std::unordered_map<std::type_index, std::shared_ptr<ISystem>> systems_;
 };

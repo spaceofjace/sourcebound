@@ -47,8 +47,11 @@ public:
   void entity_destroyed(const Entity entity) override {
     remove_data(entity);
   }
+  void clear() override {
+    entity_to_component_.clear();
+  }
 
-private:
+ private:
   std::unordered_map<Entity, T> entity_to_component_;
 };
 

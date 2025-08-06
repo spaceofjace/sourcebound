@@ -15,6 +15,7 @@
 #include "../../include/ecs/systems/TriggerSystem.h"
 #include "../../include/ecs/systems/HitSystem.h"
 #include "../../include/ecs/systems/DestructionSystem.h"
+#include "../../include/ecs/systems/LivesSystem.h"
 
 
 using sb::ecs::CollisionSystem;
@@ -60,14 +61,6 @@ void sb::gamestate::GameWorld::process_events() {
 
 [[nodiscard]] bool sb::gamestate::GameWorld::is_alive(const Entity entity) const {
   return entity_manager_->is_alive(entity);
-}
-
-[[nodiscard]] bool sb::gamestate::GameWorld::should_exit() const {
-  return should_exit_;
-}
-
-void sb::gamestate::GameWorld::request_exit() {
-  should_exit_ = true;
 }
 
 void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
@@ -188,22 +181,22 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
         continue; // skip empty cells
       }
 
-      const float start_x = level_data.outer_left_margin + level_data.wall_thickness
-        + level_data.inner_left_margin + (layout.brick_size.x / 2.0F);
-      const float start_y = level_data.outer_top_margin + level_data.wall_thickness
-        + level_data.inner_top_margin + (layout.brick_size.y / 2.0F);
+      const float start_x = level_data.outer_left_margin + level_data.wall_thickness +
+                            level_data.inner_left_margin + (layout.brick_size.x / 2.0F);
+      const float start_y = level_data.outer_top_margin + level_data.wall_thickness +
+                            level_data.inner_top_margin + (layout.brick_size.y / 2.0F);
 
       math::Vec2 brick_pos{
-        start_x + (static_cast<float>(col) * (layout.brick_size.x + layout.brick_margin.x)),
-        start_y + (static_cast<float>(row) * (layout.brick_size.y + layout.brick_margin.y))
-      };
+          start_x + (static_cast<float>(col) * (layout.brick_size.x + layout.brick_margin.x)),
+          start_y + (static_cast<float>(row) * (layout.brick_size.y + layout.brick_margin.y))};
 
       const sb::data::BrickConfig& config = *config_opt;
       const Entity brick = create_entity();
 
       add_component(brick, ecs::Brick{});
       add_component(brick, ecs::Transform{ecs::Position{brick_pos},
-        ecs::Size{layout.brick_size.x, layout.brick_size.y}, {}});
+                                          ecs::Size{layout.brick_size.x, layout.brick_size.y},
+                                          {}});
 
       if (config.visual) {
         add_component(brick, *config.visual);
@@ -219,10 +212,25 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
       }
     }
   }
+
+  const auto player_session = create_entity();
+  add_component(player_session, ecs::PlayerSessionState{0, 1});
+
+  stage_lifecycle_state_ = StageLifecycleState::Active;
 }
 
 void sb::gamestate::GameWorld::unload_level() {
   entity_manager_->clear_all();
+  component_manager_->clear_all();
+  system_manager_->clear_all();
+  cmd_queue_->clear();
+  stage_lifecycle_state_ = StageLifecycleState::NotStarted;
+}
+void sb::gamestate::GameWorld::set_stage_lifecycle_state(const StageLifecycleState new_state) {
+  this->stage_lifecycle_state_ = new_state;
+}
+sb::gamestate::StageLifecycleState sb::gamestate::GameWorld::get_stage_lifecycle_state() {
+  return stage_lifecycle_state_;
 }
 
 [[nodiscard]] std::vector<Entity> sb::gamestate::GameWorld::get_entities_with_signature(
@@ -251,6 +259,7 @@ void sb::gamestate::GameWorld::register_components() const {
   register_component<ecs::PendingHit>();
   register_component<ecs::PendingDestroy>();
   register_component<ecs::Indestructible>();
+  register_component<ecs::PlayerSessionState>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst
@@ -299,7 +308,6 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   system_manager_->register_system(typeid(ecs::TriggerSystem), trigger_system);
   system_manager_->set_signature(typeid(ecs::TriggerSystem), trigger_sig);
 
-
   Signature hit_sig;
   hit_sig.set(component_manager_->get_component_type<ecs::PendingHit>());
   hit_sig.set(component_manager_->get_component_type<ecs::HitsRequired>());
@@ -314,4 +322,11 @@ void sb::gamestate::GameWorld::register_systems(std::shared_ptr<ecs::ISystem> re
   auto destruction_system = std::make_shared<ecs::DestructionSystem>(game_data_manager);
   system_manager_->register_system(typeid(ecs::DestructionSystem), destruction_system);
   system_manager_->set_signature(typeid(ecs::DestructionSystem), destruction_sig);
+
+  Signature lives_sig;
+  lives_sig.set(component_manager_->get_component_type<ecs::Ball>());
+
+  auto lives_system = std::make_shared<ecs::LivesSystem>(game_data_manager);
+  system_manager_->register_system(typeid(ecs::LivesSystem), lives_system);
+  system_manager_->set_signature(typeid(ecs::LivesSystem), lives_sig);
 }
