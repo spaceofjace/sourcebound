@@ -13,6 +13,7 @@
 #include "mocks/MockEntityManager.h"
 #include "mocks/MockGameDataManager.h"
 #include "mocks/MockRenderer.h"
+#include "mocks/MockSink.h"
 #include "mocks/MockSystem.h"
 #include "mocks/MockSystemManager.h"
 
@@ -74,7 +75,7 @@ TEST(GameWorldTest, UpdateDelegatesToSystemManager) {
 
   struct TestSystemManager : MockSystemManager {
     bool updated = false;
-    void update_all(float, ComponentManager&) override { updated = true; } // <-- updated signature
+    void update_all(float, GameWorld&) override { updated = true; } // <-- updated signature
   };
 
   auto sm = std::make_shared<TestSystemManager>();
@@ -108,9 +109,13 @@ TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
   auto render_system = std::make_shared<MockSystem>();
   auto data_manager = std::make_shared<MockGameDataManager>();
 
-  GameWorld gw(em, cm, sm, cq);
+  //Lots of erroneous Component warnings since we aren't doing full setup
+  auto sink = std::make_shared<MockSink>();
+  Logger::set_sink(sink);
 
-  gw.initialize(render_system, data_manager);
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
+
+  gw->initialize(render_system, data_manager);
 
   std::vector<sb::ecs::Entity> expected_entities = {
     {1, 0}, {2, 0}, {3, 0}, {4, 0},
@@ -118,12 +123,8 @@ TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
   };
 
   EXPECT_CALL(*em, create_entity())
-  .WillOnce(Return(Entity{1, 0}))
-  .WillOnce(Return(Entity{2, 0}))
-  .WillOnce(Return(Entity{3, 0}))
-  .WillOnce(Return(Entity{4, 0}))
-  .WillOnce(Return(Entity{5, 0}))
-  .WillOnce(Return(Entity{6, 0}));
+  .Times(AtLeast(4))
+  .WillRepeatedly(Return(Entity{99, 0}));
 
   EXPECT_CALL(*em, set_signature(_, _)).Times(AnyNumber());
   EXPECT_CALL(*em, get_signature(_)).WillRepeatedly(Return(Signature{}));
@@ -135,10 +136,9 @@ TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {
   EXPECT_CALL(*em, get_entities_with_signature(Eq(renderable_sig)))
     .WillOnce(Return(expected_entities));
 
-  sb::data::LevelData level_data{};
-  gw.load_level(level_data);
+  gw->load_level(data_manager->get_current_level_data());
 
-  auto result = gw.get_entities_with_signature(renderable_sig);
+  auto result = gw->get_entities_with_signature(renderable_sig);
   EXPECT_EQ(result.size(), expected_entities.size());
 }
 

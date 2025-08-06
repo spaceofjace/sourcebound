@@ -52,9 +52,9 @@ class CollisionSystem final : public ISystem {
   /**
   * @brief Performs collision detection and applies movement constraints or bounce behaviors, etc.
   * @param delta_time Frame time (unused)
-  * @param component_manager Accessor to entity components
+  * @param game_world The game world facade providing access to components
   */
-  void update(float delta_time, ComponentManager& component_manager) override;
+  void update(float delta_time, gamestate::GameWorld& game_world) override;
 
 private:
   /**
@@ -75,6 +75,7 @@ private:
   static math::Vec2 get_collision_normal(const math::Vec2& circle_center, const BoxCollider& box,
     const Transform& box_transform);
 
+  static constexpr float kEpsilon = 0.001F;
   std::shared_ptr<data::IGameDataManager> game_data_manager_;
 };
 } // namespace sb::ecs

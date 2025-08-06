@@ -3,17 +3,28 @@
 // Copyright (c) 2025 by spaceofjace. All rights reserved.
 //
 
-#include "../include/ecs/systems/CollisionSystem.h"
-#include "../include/ecs/components/Components.h"
-#include "../include/math/MathConsts.h"
-#include "mocks/MockComponentManager.h"
-#include "mocks/MockGameDataManager.h"
 #include <gtest/gtest.h>
+
+#include "../include/ecs/components/Components.h"
+#include "../include/ecs/systems/CollisionSystem.h"
+#include "../include/math/MathConsts.h"
+#include "mocks/MockCommandQueue.h"
+#include "mocks/MockComponentManager.h"
+#include "mocks/MockEntityManager.h"
+#include "mocks/MockGameDataManager.h"
+#include "mocks/MockSystemManager.h"
 
 using namespace sb::ecs;
 
 TEST(CollisionSystemTest, ClampsEntityAgainstRightWall) {
+  //unfortunately need concrete version of ComponentManager and GameWorld for now
   auto cm = std::make_shared<ComponentManager>();
+  auto em = std::make_shared<MockEntityManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
+
   cm->register_component<Transform>();
   cm->register_component<BoxCollider>();
   cm->register_component<Direction>();
@@ -38,7 +49,7 @@ TEST(CollisionSystemTest, ClampsEntityAgainstRightWall) {
   cm->add_component<Paddle>(paddle, Paddle{});  // required to be clampable
   collision->entities.insert(paddle);
 
-  collision->update(0.0f, *cm);
+  collision->update(0.0f, *gw);
 
   const auto& result = cm->get_component<Transform>(paddle).position.x;
 
@@ -49,7 +60,13 @@ TEST(CollisionSystemTest, ClampsEntityAgainstRightWall) {
 }
 
 TEST(CollisionSystemTest, NoClampIfNotOverlapping) {
+  //unfortunately need concrete version of ComponentManager and GameWorld for now
   auto cm = std::make_shared<ComponentManager>();
+  auto em = std::make_shared<MockEntityManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
+
   cm->register_component<Transform>();
   cm->register_component<BoxCollider>();
   cm->register_component<Direction>();
@@ -73,14 +90,20 @@ TEST(CollisionSystemTest, NoClampIfNotOverlapping) {
   cm->add_component<Direction>(paddle, Direction{1.0f, 0.0f});
   collision->entities.insert(paddle);
 
-  collision->update(0.0f, *cm);
+  collision->update(0.0f, *gw);
 
   const auto& result = cm->get_component<Transform>(paddle).position.x;
   EXPECT_FLOAT_EQ(result, 100.0f);  // Should be unchanged
 }
 
 TEST(CollisionSystemTest, IgnoresEntitiesWithoutDirection) {
+  //unfortunately need concrete version of ComponentManager and GameWorld for now
   auto cm = std::make_shared<ComponentManager>();
+  auto em = std::make_shared<MockEntityManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
+
   cm->register_component<Transform>();
   cm->register_component<BoxCollider>();
   cm->register_component<Direction>();
@@ -104,14 +127,20 @@ TEST(CollisionSystemTest, IgnoresEntitiesWithoutDirection) {
   cm->add_component<Direction>(unclamped, Direction{1.0f, 0.0f});
   collision->entities.insert(unclamped);
 
-  collision->update(0.0f, *cm);
+  collision->update(0.0f, *gw);
 
   const auto& result = cm->get_component<Transform>(unclamped).position.x;
   EXPECT_FLOAT_EQ(result, 95.0f);  // No movement
 }
 
 TEST(CollisionSystemTest, ReflectsCircleBounceAgainstFlatWall) {
+  //unfortunately need concrete version of ComponentManager and GameWorld for now
   auto cm = std::make_shared<ComponentManager>();
+  auto em = std::make_shared<MockEntityManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
+
   cm->register_component<Transform>();
   cm->register_component<CircleCollider>();
   cm->register_component<BoxCollider>();
@@ -132,7 +161,7 @@ TEST(CollisionSystemTest, ReflectsCircleBounceAgainstFlatWall) {
   cm->add_component<Direction>(ball, Direction{-1.0f, 0.0f});
   collision->entities.insert(ball);
 
-  collision->update(0.0f, *cm);
+  collision->update(0.0f, *gw);
 
   const auto& result = cm->get_component<Direction>(ball);
 
@@ -142,7 +171,13 @@ TEST(CollisionSystemTest, ReflectsCircleBounceAgainstFlatWall) {
 }
 
 TEST(CollisionSystemTest, AppliesPositionBasedBounce) {
+  //unfortunately need concrete version of ComponentManager and GameWorld for now
   auto cm = std::make_shared<ComponentManager>();
+  auto em = std::make_shared<MockEntityManager>();
+  auto sm = std::make_shared<MockSystemManager>();
+  auto cq = std::make_shared<MockCommandQueue>();
+  auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
+
   cm->register_component<Transform>();
   cm->register_component<CircleCollider>();
   cm->register_component<BoxCollider>();
@@ -164,7 +199,7 @@ TEST(CollisionSystemTest, AppliesPositionBasedBounce) {
   cm->add_component<Direction>(ball, Direction{0.0f, 1.0f});  // moving down
   collision->entities.insert(ball);
 
-  collision->update(0.0f, *cm);
+  collision->update(0.0f, *gw);
 
   const auto& result = cm->get_component<Direction>(ball);
   EXPECT_NEAR(result.x, 0.5f, 0.001f);

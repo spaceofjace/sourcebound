@@ -4,7 +4,7 @@
 //
 
 /**
- * @file GameData.h
+ * @file LevelData.h
  * @ingroup Data
  * @brief Contains data structures for level configuration and arena layout.
  *
@@ -17,8 +17,12 @@
  */
 #ifndef GAMEDATA_H
 #define GAMEDATA_H
+#include <optional>
 #include <string>
+
 #include "../math/Vec2.h"
+#include "BrickConfig.h"
+#include "BrickLayoutConfig.h"
 
 namespace sb::data {
 /**
@@ -36,9 +40,7 @@ struct LevelData {
   int level_id = -1;                            /**< Unique identifier for the level */
   std::string level_name;                       /**< Optional level title or name */
 
-  float arena_width = 600.0F;                   /**< Width of the gameplay arena in pixels */
-  float arena_height = 800.0F;                  /**< Height of the gameplay arena in pixels */
-  float wall_thickness = 16.0F;                 /**< Thickness of wall colliders around arena */
+  float wall_thickness = 8.0F;                 /**< Thickness of wall colliders around arena */
 
   // Paddle Data
   float paddle_width = 100.0F;                  /**< Width of the paddle */
@@ -47,15 +49,24 @@ struct LevelData {
   float paddle_speed = 200.0F;                  /**< Paddle speed in pixels per second */
 
   // Ball Data
-  float ball_radius = 12.0F;                    /**< Radius of the ball */
-  Vec2 ball_offset = { 0.0F, 0.0F };      /**< Offset relative to the paddle */
-  float ball_speed = 200.0F;                    /**< Ball speed in pixels per second */
+  float ball_radius = 12.0F;                         /**< Radius of the ball */
+  Vec2 ball_start_offset = { 0.0F, -4.0F };   /**< Offset relative to the paddle */
+  float ball_speed = 200.0F;                         /**< Ball speed in pixels per second */
 
-  // Arena Margins
-  float bottom_margin = 16.0F;                  /**< Margin between bottom wall and arena edge */
-  float top_margin = 16.0F;                     /**< Margin between top wall and arena edge */
-  float left_margin = 16.0F;                    /**< Margin between left wall and arena edge */
-  float right_margin = 16.0F;                   /**< Margin between right wall and arena edge */
+  // Margins
+  float outer_bottom_margin = 16.0F;            /**< Margin outside bottom wall and arena edge */
+  float outer_top_margin = 16.0F;               /**< Margin outside top wall and arena edge */
+  float outer_left_margin = 16.0F;              /**< Margin outside left wall and arena edge */
+  float outer_right_margin = 16.0F;             /**< Margin outside right wall and arena edge */
+
+  float inner_bottom_margin = 16.0F;            /**< Margin inside bottom wall and brick grid */
+  float inner_top_margin = 16.0F;               /**< Margin inside top wall and brick grid */
+  float inner_left_margin = 16.0F;              /**< Margin inside left wall and brick grid */
+  float inner_right_margin = 16.0F;             /**< Margin inside right wall and brick grid */
+
+  // Brick Data
+  BrickLayoutConfig brick_layout;               /**< Layout configuration for bricks */
+  std::vector<std::vector<std::optional<BrickConfig>>> bricks; /**< Grid of bricks */
 };
 } //namespace sb::data
 #endif //GAMEDATA_H

@@ -44,9 +44,9 @@ public:
   /**
   * @brief Updates all follower entities, syncing their position to their target + offset.
   * @param delta_time Unused in this system (included for interface compatibility)
-  * @param component_manager The ECS component manager providing access to components
+  * @param game_world The game world facade providing access to components
   */
-  void update(float delta_time, ComponentManager& component_manager) override;
+  void update(float delta_time, gamestate::GameWorld& game_world) override;
 
 private:
   std::shared_ptr<data::IGameDataManager> game_data_manager_;

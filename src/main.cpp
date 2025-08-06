@@ -1,8 +1,8 @@
 #include <chrono>
 #include <memory>
 
-#include "../include/data/GameData.h"
 #include "../include/data/HardcodedGameDataManager.h"
+#include "../include/data/LevelData.h"
 #include "../include/ecs/EntityManager.h"
 #include "../include/ecs/IComponentManager.h"
 #include "../include/ecs/RenderSystem.h"
@@ -15,6 +15,7 @@
 #include "../include/input/KeyboardHandler.h"
 #include "../include/input/SdlEventSource.h"
 #include "../include/rendering/SdlRenderer.h"
+#include "../include/data/ArenaDimensions.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -47,16 +48,10 @@ int main() {
 
   const auto& level_data = game_data_manager->get_current_level_data();
 
-  const auto window_height = level_data.arena_height
-      + level_data.top_margin
-      + level_data.bottom_margin;
+  auto arena_dimensions = calculate_arena_dimensions(level_data);
 
-  const auto window_width = level_data.arena_width
-        + level_data.left_margin
-        + level_data.right_margin;
-
-  SDL_Window* window = SDL_CreateWindow(level_data.level_name.c_str(), static_cast<int>(window_width),
-    static_cast<int>(window_height), 0);
+  SDL_Window* window = SDL_CreateWindow(level_data.level_name.c_str(), static_cast<int>(arena_dimensions.window_size.x),
+    static_cast<int>(arena_dimensions.window_size.y), 0);
 
   if (window == nullptr) {
     std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;

@@ -31,7 +31,7 @@
 
 #ifndef IGAMEDATAMANAGER_H
 #define IGAMEDATAMANAGER_H
-#include "GameData.h"
+#include "LevelData.h"
 namespace sb::data {
 
 /**

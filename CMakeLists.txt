@@ -63,7 +63,7 @@ add_executable(sourcebound
         tests/mocks/MockRenderer.h
         include/gamestate/QuitCommand.h
         src/gamestate/QuitCommand.cpp
-        include/data/GameData.h
+        include/data/LevelData.h
         src/gamestate/GameWorld.cpp
         include/math/Vec2.h
         include/data/IGameDataManager.h
@@ -78,6 +78,15 @@ add_executable(sourcebound
         include/gamestate/LaunchBallCommand.h
         src/gamestate/LaunchBallCommand.cpp
         include/math/MathConsts.h
+        include/data/BrickConfig.h
+        include/data/ArenaDimensions.h
+        include/data/BrickLayoutConfig.h
+        include/ecs/systems/TriggerSystem.h
+        src/ecs/systems/TriggerSystem.cpp
+        include/ecs/systems/HitSystem.h
+        include/ecs/systems/DestructionSystem.h
+        src/ecs/systems/HitSystem.cpp
+        src/ecs/systems/DestructionSystem.cpp
 )
 
 add_executable(unit_tests
@@ -142,7 +151,7 @@ add_executable(unit_tests
         tests/render_system_tests.cpp
         src/gamestate/QuitCommand.cpp
         tests/quit_command_test.cpp
-        include/data/GameData.h
+        include/data/LevelData.h
         src/gamestate/GameWorld.cpp
         include/math/Vec2.h
         include/data/IGameDataManager.h
@@ -163,6 +172,16 @@ add_executable(unit_tests
         src/gamestate/LaunchBallCommand.cpp
         tests/launch_ball_command_tests.cpp
         include/math/MathConsts.h
+        include/data/ArenaDimensions.h
+        include/data/BrickLayoutConfig.h
+        include/ecs/systems/TriggerSystem.h
+        src/ecs/systems/TriggerSystem.cpp
+        include/ecs/systems/HitSystem.h
+        src/ecs/systems/HitSystem.cpp
+        src/ecs/systems/DestructionSystem.cpp
+        tests/trigger_system_tests.cpp
+        tests/hit_system_tests.cpp
+        tests/destruction_system_tests.cpp
 )
 
 target_include_directories(sourcebound PUBLIC
