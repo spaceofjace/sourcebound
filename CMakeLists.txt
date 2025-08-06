@@ -87,6 +87,7 @@ add_executable(sourcebound
         include/ecs/systems/DestructionSystem.h
         src/ecs/systems/HitSystem.cpp
         src/ecs/systems/DestructionSystem.cpp
+        include/gamestate/StageLifecycleState.h
 )
 
 add_executable(unit_tests

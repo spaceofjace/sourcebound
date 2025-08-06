@@ -94,9 +94,9 @@ TEST(GameWorldTest, RequestExitSetsFlag) {
   auto cq = std::make_shared<MockCommandQueue>();
   GameWorld gw(em, cm, sm, cq);
 
-  EXPECT_FALSE(gw.should_exit());
-  gw.request_exit();
-  EXPECT_TRUE(gw.should_exit());
+  EXPECT_FALSE(gw.get_stage_lifecycle_state() == StageLifecycleState::Quit);
+  gw.set_stage_lifecycle_state(StageLifecycleState::Quit);
+  EXPECT_TRUE(gw.get_stage_lifecycle_state() == StageLifecycleState::Quit);
 }
 
 TEST(GameWorldTest, LoadLevelProducesRenderableEntities) {

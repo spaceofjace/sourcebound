@@ -62,14 +62,6 @@ void sb::gamestate::GameWorld::process_events() {
   return entity_manager_->is_alive(entity);
 }
 
-[[nodiscard]] bool sb::gamestate::GameWorld::should_exit() const {
-  return should_exit_;
-}
-
-void sb::gamestate::GameWorld::request_exit() {
-  should_exit_ = true;
-}
-
 void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
 
   auto arena_dimensions = calculate_arena_dimensions(level_data);
@@ -219,10 +211,18 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
       }
     }
   }
+
+  stage_lifecycle_state_ = StageLifecycleState::Active;
 }
 
 void sb::gamestate::GameWorld::unload_level() {
   entity_manager_->clear_all();
+}
+void sb::gamestate::GameWorld::set_stage_lifecycle_state(const StageLifecycleState new_state) {
+  this->stage_lifecycle_state_ = new_state;
+}
+sb::gamestate::StageLifecycleState sb::gamestate::GameWorld::get_stage_lifecycle_state() {
+  return stage_lifecycle_state_;
 }
 
 [[nodiscard]] std::vector<Entity> sb::gamestate::GameWorld::get_entities_with_signature(
