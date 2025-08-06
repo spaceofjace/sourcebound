@@ -10,8 +10,12 @@
 
 #ifndef ISYSTEM_H
 #define ISYSTEM_H
-#include "Entity.h"
 #include <unordered_set>
+
+#include "Entity.h"
+namespace sb::gamestate {
+class GameWorld;
+}
 namespace sb::ecs {
 
 /**
@@ -29,7 +33,7 @@ public:
   ISystem(ISystem&&) = delete;
   ISystem& operator=(ISystem&&) = delete;
 
-  virtual void update(float delta_time) = 0;
+  virtual void update(float delta_time, gamestate::GameWorld& game_world) = 0;
   std::unordered_set<Entity> entities;
 };
 

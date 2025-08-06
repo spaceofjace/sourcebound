@@ -20,7 +20,11 @@
 #ifndef IGAMEWORLD_H
 #define IGAMEWORLD_H
 
+#include "../data/IGameDataManager.h"
+#include "../data/LevelData.h"
 #include "../ecs/Entity.h"
+#include "../ecs/ISystem.h"
+#include "StageLifecycleState.h"
 
 namespace sb::gamestate {
 using ecs::Entity;
@@ -45,16 +49,75 @@ public:
   IGameWorld(IGameWorld&&) = delete;
   IGameWorld& operator=(IGameWorld&&) = delete;
 
+  /**
+   * @brief Initializes game world systems and registers necessary component types.
+   * @param renderSystem Rendering has an external dependency, so we are passing it through directly
+   * for now.
+   *
+   * Note: Eventually this param may be replaced with the concept of a "Context" or
+   * something very similar.
+   */
+  virtual void initialize(std::shared_ptr<ecs::ISystem> render_system,
+    std::shared_ptr<data::IGameDataManager> game_data_manager) = 0;
+
+  /**
+   * @brief Creates a new entity within the game world.
+   * @return The newly created entity.
+   */
   virtual Entity create_entity() = 0;
+
+  /**
+   * @brief Retrieves all entities that match the given signature.
+   * @param target_signature A bitmask representing required components.
+   * @return A list of matching entities.
+   */
   [[nodiscard]] virtual std::vector<Entity> get_entities_with_signature(
       const ecs::Signature& target_signature) const = 0;
+
+  /**
+   * @brief Destroys the specified entity and removes its associated components.
+   * @param entity The entity to destroy.
+   */
   virtual void destroy_entity(Entity entity) = 0;
+
+  /**
+   * @brief Executes a full simulation step: processes input commands and updates systems.
+   * @param delta_time Elapsed time since the last frame, in seconds.
+   */
   virtual void step(float delta_time) = 0;
+
+  /**
+   * @brief Updates all registered systems. Typically called once per frame.
+   * @param delta_time Elapsed time since the last frame, in seconds.
+   */
   virtual void update(float delta_time) = 0;
+
+  /**
+   * @brief Processes game world events. Placeholder for future event system integration.
+   */
   virtual void process_events() = 0;
+
+  /**
+   * @brief Checks if the specified entity is still valid and alive.
+   * @param entity The entity to verify.
+   * @return True if the entity is active, false if it has been destroyed.
+   */
   [[nodiscard]] virtual bool is_alive(Entity entity) const = 0;
-  [[nodiscard]] virtual bool should_exit() const = 0;
-  virtual void request_exit() = 0;
+
+  /**
+   * @brief Loads a level using the provided layout data.
+   * @param level_data Game-specific level dimensions and entity parameters.
+   */
+  virtual void load_level(const data::LevelData& level_data) = 0;
+
+  /**
+   * @brief Destroys all active entities and resets the world to a clean state.
+   */
+  virtual void unload_level() = 0;
+
+  virtual void set_stage_lifecycle_state(StageLifecycleState new_state) = 0;
+
+  virtual StageLifecycleState get_stage_lifecycle_state() = 0;
 };
 
 } // namespace sb::ecs

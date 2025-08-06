@@ -9,24 +9,25 @@
 
 #include "../../include/ecs/components/Components.h"
 #include "../../include/logger/sinks/ConsoleSink.h"
+#include "../../include/gamestate/GameWorld.h"
 
-void sb::ecs::RenderSystem::update(float delta_time) {
-  for (const auto& entity : entities) {
-    auto const renderableComponent = component_mgr_->get_component<RenderableSimpleShape>(entity);
-    auto const transformComponent = component_mgr_->get_component<Transform>(entity);
+void sb::ecs::RenderSystem::update(float /*delta_time*/, gamestate::GameWorld& game_world) {
+  std::vector snapshot(entities.begin(), entities.end());
+  for (const Entity& entity : snapshot) {
+
+    auto const renderableComponent = game_world.get_component<RenderableSimpleShape>(entity);
+    auto const transformComponent = game_world.get_component<Transform>(entity);
 
     switch (renderableComponent.type) {
       case SimpleShapeType::Rectangle:
-        renderer_->draw_rect(static_cast<int>(transformComponent.position.x),
-          static_cast<int>(transformComponent.position.y),
+        renderer_->draw_rect(transformComponent.position.as_vec2(),
           static_cast<int>(transformComponent.size.width),
           static_cast<int>(transformComponent.size.height),
           renderableComponent.color,
           renderableComponent.filled);
         break;
       case SimpleShapeType::Circle:
-        renderer_->draw_circle(static_cast<int>(transformComponent.position.x),
-          static_cast<int>(transformComponent.position.y),
+        renderer_->draw_circle(transformComponent.position.as_vec2(),
           static_cast<int>(0.5F * transformComponent.size.width), //assume radius from width NOLINT(*-magic-numbers)
           renderableComponent.color,
           renderableComponent.filled);

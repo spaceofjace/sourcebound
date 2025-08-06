@@ -11,7 +11,7 @@
 using namespace sb::ecs;
 
 struct MockSystem : ISystem {
-  void update(float /*delta_time*/) override {}
+  void update(float /*delta_time*/, sb::gamestate::GameWorld& /*component_manager*/) override {}
 };
 
 #endif //MOCKSYSTEM_H

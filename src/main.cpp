@@ -1,6 +1,8 @@
 #include <chrono>
 #include <memory>
 
+#include "../include/data/HardcodedGameDataManager.h"
+#include "../include/data/LevelData.h"
 #include "../include/ecs/EntityManager.h"
 #include "../include/ecs/IComponentManager.h"
 #include "../include/ecs/RenderSystem.h"
@@ -13,6 +15,8 @@
 #include "../include/input/KeyboardHandler.h"
 #include "../include/input/SdlEventSource.h"
 #include "../include/rendering/SdlRenderer.h"
+#include "../include/data/ArenaDimensions.h"
+#include "../include/gamestate/StageLifecycleState.h"
 #include "SDL3/SDL.h"
 
 using Clock = std::chrono::high_resolution_clock;
@@ -38,49 +42,40 @@ int main() {
     return 1;
   }
 
-  SDL_Window* window = SDL_CreateWindow("Sourcebound Test", 800, 600, 0);
+  // For now, using hardcoded game data; later, I expect this to be managed by a data layer
+  auto game_data_manager = std::make_shared<sb::data::HardcodedGameDataManager>();
+  game_data_manager->load_config("");
+  game_data_manager->set_current_level(1); // no level chain yet
 
-  if (!window) {
+  const auto& level_data = game_data_manager->get_current_level_data();
+
+  auto arena_dimensions = calculate_arena_dimensions(level_data);
+
+  SDL_Window* window = SDL_CreateWindow(level_data.level_name.c_str(), static_cast<int>(arena_dimensions.window_size.x),
+    static_cast<int>(arena_dimensions.window_size.y), 0);
+
+  if (window == nullptr) {
     std::cerr << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
     SDL_Quit();
     return 1;
   }
 
   SDL_Renderer* sdl_renderer = SDL_CreateRenderer(window, nullptr);
-  if (!sdl_renderer) {
+  if (sdl_renderer == nullptr) {
     std::cerr << "SDL_CreateRenderer Error: " << SDL_GetError() << std::endl;
     SDL_DestroyWindow(window);
     SDL_Quit();
     return 1;
   }
 
-  world->register_component<Velocity>();
-  world->register_component<Paddle>();
-  world->register_component<Ball>();
-  world->register_component<Transform>();
-  world->register_component<RenderableSimpleShape>();
-
+  //I started to move this into initialize, but doing so would "kill" testability
+  // Going to remove templated calls as a primary method of using them in a follow-up refactor
   auto renderer = std::make_shared<sb::rendering::SdlRenderer>(sdl_renderer);
-  auto render_system = system_mgr->register_system<sb::ecs::RenderSystem>(renderer, component_mgr);
+  auto render_system = std::make_shared<sb::ecs::RenderSystem>(renderer);
 
-  sb::ecs::Signature renderSig;
-  renderSig.reset();
-
-  renderSig.set(component_mgr->get_component_type<Transform>());
-  renderSig.set(component_mgr->get_component_type<RenderableSimpleShape>());
-  system_mgr->set_signature<sb::ecs::RenderSystem>(renderSig);
-
-  auto paddle = world->create_entity();
-  world->add_component(paddle, Paddle{});
-  world->add_component(paddle, Transform{{100, 150}, {}, {100, 10}, {}});
-  world->add_component(paddle, RenderableSimpleShape{sb::rendering::Colors::blue, SimpleShapeType::Rectangle, true});
-  world->add_component(paddle, Velocity{0, 0});
-
-  auto ball = world->create_entity();
-  world->add_component(ball, Ball{});
-  world->add_component(ball, Transform{{150, 100}, {}, {20, 20}, {}});
-  world->add_component(ball, RenderableSimpleShape{sb::rendering::Colors::cyan, SimpleShapeType::Circle, true});
-  world->add_component(ball, Velocity{0, 0});
+  world->initialize(render_system, game_data_manager);
+  world->unload_level(); //technically not needed, but want to show the "full flow" here
+  world->load_level(level_data);
 
   TimePoint lastFrameTime = Clock::now();
 
@@ -95,8 +90,12 @@ int main() {
     renderer->clear();
     world->step(deltaTime);
 
-    if (world->should_exit()) {
+    if (world->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::Quit) {
       break;
+    }
+    if (world->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::GameOver) {
+      world->unload_level();
+      world->load_level(game_data_manager->get_current_level_data());
     }
 
     world->update(deltaTime);

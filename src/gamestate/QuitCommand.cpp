@@ -9,6 +9,6 @@
 const std::string sb::gamestate::QuitCommand::name_ = "QuitCommand";
 
 void sb::gamestate::QuitCommand::apply(const std::shared_ptr<GameWorld> world) {
-  world->request_exit();
+  world->set_stage_lifecycle_state(StageLifecycleState::Quit);
   log::Logger::info("[Command Applied]: " + name_);
 }

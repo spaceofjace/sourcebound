@@ -41,94 +41,60 @@ class SystemManager final : public ISystemManager {
 public:
   SystemManager() = default;
 
-/**
- * @brief Removes the specified entity from all system tracking.
- *
- * Called automatically when an entity is destroyed.
- *
- * @param entity The entity being destroyed.
- */
+  void update_all(float delta_time, gamestate::GameWorld& game_world) override;
   void entity_destroyed(Entity entity) override;
-
-/**
- * @brief Updates entity inclusion in systems based on signature change.
- *
- * Called whenever an entity's component mask is modified.
- *
- * @param entity The modified entity.
- * @param signature The updated component signature.
- */
   void entity_signature_changed(Entity entity, const Signature& signature) override;
+  void register_system(std::type_index type, std::shared_ptr<ISystem> system) override;
+  void set_signature(std::type_index type, Signature signature) override;
+  [[nodiscard]] std::shared_ptr<ISystem> get_system(std::type_index type) const override;
 
-/**
- * @brief Calls update on all registered systems.
- *
- * Each system may respond to delta time independently.
- *
- * @param delta_time Time passed since the last update.
- */
-  void update(float delta_time) override;
-
-/**
- * @brief Registers a new ECS system.
- *
- * Accepts constructor arguments to support dependency injection.
- *
- * @tparam T The type of the system to register.
- * @tparam Args Types of arguments to forward.
- * @param args Constructor arguments for the system.
- * @return Shared pointer to the newly registered system.
- */
+  /**
+   * @brief Templated convenience method to register a system.
+   *
+   * Forwards constructor arguments and wraps the non-templated
+   * register_system using the system's type ID.
+   *
+   * @tparam T The concrete system type.
+   * @tparam Args Constructor argument types.
+   * @param args Arguments to pass to the system’s constructor.
+   * @return Shared pointer to the registered system.
+   */
   template <typename T, typename... Args>
   std::shared_ptr<T> register_system(Args&&... args) {
     const std::type_index type = typeid(T);
-    if (systems_.find(type) != systems_.end()) {
-      log::Logger::error("[SystemManager] System already registered");
-      throw std::runtime_error("[SystemManager] System already registered.");
-    }
-
     auto system = std::make_shared<T>(std::forward<Args>(args)...);
-    systems_[type] = system;
+    register_system(type, system);
     return system;
   }
 
-/**
- * @brief Assigns the required component signature for a system.
- *
- * Signature matching uses strict AND logic — all specified components
- * must be present on an entity to be matched. For OR behavior, systems
- * must manually check component presence inside their Update() method.
- *
- * @tparam T The system type.
- * @param signature Bitmask of required components.
- */
-  template <typename T>
-  void set_signature(Signature signature) {
-    if (systems_.find(typeid(T)) == systems_.end()) {
-      log::Logger::error("[SystemManager] System not registered before setting signature.");
-      throw std::runtime_error("[SystemManager] System not registered before setting signature.");
-    }
-    const std::type_index type = typeid(T);
-    signatures_[type] = signature;
-  }
-
-/**
-   * @brief Retrieves a registered system by type.
+  /**
+   * @brief Templated convenience method to assign a system signature.
+   *
+   * Calls the non-templated set_signature using the system's type ID.
    *
    * @tparam T The system type.
+   * @param signature The required component signature.
+   */
+  template <typename T>
+  void set_signature(const Signature signature) {
+    set_signature(typeid(T), signature);
+  }
+
+  /**
+   * @brief Templated convenience method to retrieve a system.
+   *
+   * Calls the non-templated get_system and casts to the correct type.
+   *
+   * @tparam T The desired system type.
    * @return Shared pointer to the system.
    */
   template <typename T>
   std::shared_ptr<T> get_system() {
-    const std::type_index type = typeid(T);
-    if (systems_.find(type) == systems_.end()) {
-      log::Logger::error("[SystemManager] System not registered.");
-      throw std::runtime_error("[SystemManager] System not registered.");
-    }
-    return std::static_pointer_cast<T>(systems_[type]);
+    return std::static_pointer_cast<T>(get_system(typeid(T)));
   }
+  void clear_all() override;
 
-private:
+ private:
   std::unordered_map<std::type_index, Signature> signatures_;
   std::unordered_map<std::type_index, std::shared_ptr<ISystem>> systems_;
 };

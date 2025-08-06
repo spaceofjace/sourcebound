@@ -12,7 +12,9 @@ class MockRenderer final : public sb::rendering::IRenderer {
 public:
   MOCK_METHOD(void, clear, (), (override));
   MOCK_METHOD(void, present, (), (override));
-  MOCK_METHOD(void, draw_rect, (int, int, int, int, const sb::rendering::Color&, bool), (override));
-  MOCK_METHOD(void, draw_circle, (int, int, int, const sb::rendering::Color&, bool), (override));
+  MOCK_METHOD(void, draw_rect, (const sb::math::Vec2& center, int width, int height,
+    const sb::rendering::Color& color, bool filled), (override));
+  MOCK_METHOD(void, draw_circle, (const sb::math::Vec2& center, int radius,
+    const sb::rendering::Color& color, bool filled), (override));
 };
 #endif //MOCKRENDERER_H

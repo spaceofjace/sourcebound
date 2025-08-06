@@ -1,5 +1,92 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-08-06 - 10 hours
+(includes time from 8/1, 8/3, and 8/5)
+### Objective(s)
+
+1. Add score and life tracking systems
+2. Finalize ball lifecycle (death, bounce, destroy)
+3. Build and test `PlayerLivesSystem`, `ScoreSystem`, and related event logic
+### Details
+#### Key Accomplishments
+
+*  Integrated score tracking via `ScoreSystem`, tied to entity destruction and events
+* Implemented `PlayerLivesSystem` to handle ball loss and game over state
+* Added `GameSessionState` and tracked it via a new session component
+* Created `PendingDestroy` marker and structured destruction logic via system
+* Finalized trigger-based damage flow and linked to score/life mechanics
+#### Challenges / Notes
+
+* I have run into a few challenges along the way; the untestability of `GAmeWorld` continues to be a pain, though integration tests are at least possible.
+	* I started to look at refactoring away from untemplated methods, but this isn't as straightforward for the common case of getting component types.  I will probably move to using void* pointers, even if this is unideal.  (I'll keep the syntactic sugar of the templates, though.)
+* I missed a few system resets, which became obvious when resetting the level.  (Not entirely unexpected, there's always *something* when you reset the first time.)
+* Still figuring out how I want to handle player session state conceptually.  I may mange it through an external "eventing" system that UI can listen to, but I need to look closely at how other ECS builds handle this sort of thing, and whether or not I'll ever need that state to control behavior in the system.
+#### Next Steps
+
+* Need to generalize ScoreEvents (currently tightly coupled to bricks)
+* Build out a formal Stage/Level reload pipeline
+* Hook up GameSession state into game loop for restart/quit handling
+
+---
+## 2025-07-31 - 10 hours
+(includes 2 hours of refactor on 7/25, 2 hours on 7/29 + 7/30 for physics and Direction Component)
+
+### Objective(s)
+
+1. Get simple physics online.
+2. Get some collision behaviors in game.
+### Details
+#### Key Accomplishments
+
+* Added basic physics calculations
+* Completed several important refactors.
+	* Added non-templated methods to `SystemManager` for improved testability.
+	* Switched `ComponentManager` as a passthrough to update instead of doing constructor injection.
+	* Added Direction component as a concept.
+	* Moved components to be in the namespace.
+* Added a `FollowSystem` as solution to the Stuck Ball.
+* Added clamp code in collision system.
+* Added bounce code (including position based bounce) in collision system.
+#### Challenges / Notes
+
+* I have run into a lot of discovered work along the way for this implementation; some of these things I knew would come, but happened much sooner than expected.
+* I need to also go through and replace a lot of the templated methods with non-templated versions for many of my classes.  It's just the death of testability otherwise, even if they look pretty.
+* I wasn't expecting the orbiting bug, but this is my first implementation of a `CollisionSystem`, so it was instructive to research.
+#### Next Steps
+
+* My main priority is to get some destroy logic and brick breaking code online. However....
+* I need to create some refactor tasks and figure out when to tackle those.
+* I also want top restructure my folders, which is going to be...painful.
+
+---
+## 2025-07-24 - 7 hours
+(includes ~2 hours from 7/23 +  ~1 hour from 7/21.)
+
+### Objective(s)
+
+1. Fix input bug (7/21)
+2. Implement basic game data (7/23)
+3. Get initial level loading setup
+### Details
+#### Key Accomplishments
+
+* I now have a game window that is initialized by (hardcoded) configurable game data.
+* This renders four walls, a "bottom wall" for out of bounds, the paddle and ball, all in correct starting positions based on the level data.
+* Cleaned up some handling, as well as fixed a bug in `EntityManager`
+* Also, unit tests run on pushes now, so I shouldn't have any sneaking failing tests anymore when I neglect to run them all.  
+	* Less pressure to run them every time, especially as a solo developer
+	* I may eventually try to get a pre-push trigger working, but as far as I know, it's not compatible with Github Desktop client, which I find easier to use.
+	* Importantly, though, failing tests will block merge to main.
+#### Challenges / Notes
+
+* Templated methods are WAY more of a pain for testability than I would have initially guessed.  I am making a task to refactor my templated methods to use type_id for registration, etc, though I may keep the templated methods for syntactic sugar.  (When you know you have the concrete type.)
+* I also forgot SDL3 renders from the corner rather than the center; I am managing this conversion within `SdlRenderer` since that is technically internal to how it is managed, and that will keep use of Transform simplified external to render systems. 
+#### Next Steps
+
+* Probably going to take on the refactor next, to better enable the init method in GameWorld to do what it needs to do. (Found work.)
+* Then next is the `PhysicsSystem`, which will hopefully play well with the `MovementSystem` already...though until I have Collision online, it won't clamp to boundaries.  Yet. 
+
+---
 ## 2025-07-16 - 3.5 hours
 
 ### Objective(s)

@@ -26,16 +26,16 @@ namespace sb::gamestate {
 class PlayerMoveCommand final : public ICommand {
  public:
   [[nodiscard]] std::string name() const override {return name_;}
-  PlayerMoveCommand(const float x_velocity, const float y_velocity)
-    : x_velocity_(x_velocity), y_velocity_(y_velocity) {}
+  PlayerMoveCommand(const float x_direction, const float y_direction)
+    : x_direction_(x_direction), y_direction_(y_direction) {}
   void apply(std::shared_ptr<GameWorld> world) override;
 
   //mostly exposed for testability, but may have other usage
-  [[nodiscard]] float get_x() const { return x_velocity_; }
-  [[nodiscard]] float get_y() const { return y_velocity_; }
+  [[nodiscard]] float get_x() const { return x_direction_; }
+  [[nodiscard]] float get_y() const { return y_direction_; }
 private:
-  float x_velocity_;
-  float y_velocity_;
+  float x_direction_;
+  float y_direction_;
   static const std::string name_;
 };
 }// namespace sb::gamestate

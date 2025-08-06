@@ -16,11 +16,12 @@
 using namespace sb::ecs;
 
 struct MockEntityManager : IEntityManager {
-  Entity next_entity{42, 0};
+  Entity next_entity{41, 0};
   std::unordered_map<EntityId, Signature> signatures;
   std::unordered_set<Entity> entities;
 
   Entity create_entity() override {
+    next_entity.id++;
     entities.insert(next_entity);
     set_signature(next_entity.id, Signature{});
     return next_entity;

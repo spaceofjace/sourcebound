@@ -11,8 +11,15 @@
 using namespace sb::ecs;
 
 struct MockSystemManager : ISystemManager {
-  void update(float /*delta_time*/) override {}
+  void update_all(float delta_time, sb::gamestate::GameWorld& game_world) override{}
+  void register_system(std::type_index type, std::shared_ptr<ISystem> system) override{}
+  void set_signature(std::type_index type, Signature signature) override{}
+  [[nodiscard]] std::shared_ptr<ISystem> get_system(std::type_index type) const override {
+    return nullptr;
+  }
+
   void entity_destroyed(Entity entity) override{}
-  void entity_signature_changed(Entity entity, const Signature& signature) override{}
+  void entity_signature_changed(Entity entity, const Signature& signature) override {}
+  void clear_all() override {}
 };
 #endif //MOCKSYSTEMMANAGER_H

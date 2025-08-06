@@ -7,6 +7,8 @@
 
 #include "../../include/gamestate/PlayerMoveCommand.h"
 #include "../../include/gamestate/QuitCommand.h"
+#include "../../include/gamestate/LaunchBallCommand.h"
+
 void sb::input::InputNormalizer::normalize_input(const InputCode& code, float value) {
   auto action = this->binding_map_->resolve(code);
 
@@ -28,7 +30,11 @@ void sb::input::InputNormalizer::normalize_input(const InputCode& code, float va
       command_queue_->enqueue(move(quit_command));
       break;
     }
-    case InputAction::LaunchBall:
+    case InputAction::LaunchBall: {
+      auto launch_command = std::make_unique<gamestate::LaunchBallCommand>();
+      command_queue_->enqueue(move(launch_command));
+      break;
+    }
     case InputAction::None:
     default:
       break;

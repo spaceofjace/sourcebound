@@ -32,8 +32,14 @@ public:
   IComponentManager(IComponentManager&&) = delete;
   IComponentManager& operator=(IComponentManager&&) = delete;
 
-  // This is the only non-templated function
   virtual void entity_destroyed(Entity entity) = 0;
+
+  /**
+  * @brief Clears all internal component storage arrays.
+  *
+  * Implementations should remove all component data but preserve registration info.
+  */
+  virtual void clear_all() = 0;
 };
 
 class ComponentManager final : public IComponentManager {
@@ -134,6 +140,11 @@ class ComponentManager final : public IComponentManager {
     return true;
   }
 
+  void clear_all() override {
+    for (const auto& array : component_arrays_) {
+      array.second->clear();
+    }
+  }
 
  private:
   template <typename T>
@@ -163,7 +174,6 @@ class ComponentManager final : public IComponentManager {
     return static_cast<PointerType*>(it->second.get());
   }
 
- private:
   std::unordered_map<std::type_index, ComponentType> component_types_;
   std::unordered_map<std::type_index, std::shared_ptr<IComponentArray>> component_arrays_;
   ComponentType next_component_type_ = 0;

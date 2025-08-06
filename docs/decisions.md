@@ -75,9 +75,12 @@ I will be using GoogleTests as my test harness for writing unit tests.
 ### Tradeoffs:
 - Increases compile-time complexity and binary size slightly.
 - More verbose to instantiate in test and production code.
----
-## Intent Component Architecture for Input
 
+---
+## (!! DEFERRED !!) Intent Component Architecture for Input
+
+***UPDATE*** (Deferred) - 
+Temporarily deferred for simplicity during early development. Current implementation allows `Command`s to directly affect world state, bypassing the intent layer.
 ### Decision:
 Rather than having `Command`s mutate the world directly, I route input through a `CommandProcessor` that adds _Intent Components_, which are then consumed by ECS systems.
 ### Reasoning:
@@ -90,6 +93,62 @@ Rather than having `Command`s mutate the world directly, I route input through a
 - Requires slightly more boilerplate to pass through intent layers.
 - These actions may feel “indirect” during early implementation.  
 - Debugging may require tracing across multiple systems and steps.
+
+---
+## Center-Based Spatial Model for Transform Components
+
+### Decision:
+Entity positions and sizes are treated as center-based in `Transform` and rendering systems.
+### Reasoning:
+- Simplifies rotation, collision math, and spatial reasoning.
+- Matches ECS-based convention for spatial transforms.
+- Cleanly maps to future physics or animation systems.
+### Tradeoffs:
+- Requires conversion to top-left–anchored coordinates for SDL rendering.
+- May introduce confusion if some systems expect top-left anchors by default.
+
+---
+## Retaining Semantic Distinctions Between Position, Size, and Vec2
+
+### Decision:
+I chose to preserve distinct types (`Position`, `Size`, and `Vec2`) rather than overloading everything with `Vec2`.
+### Reasoning:
+- Preserves semantic clarity (e.g., velocity != position != extent).
+- Improves debug readability and code self-documentation.
+- Enables flexible conversion patterns without leaking meaning.
+### Tradeoffs:
+- Slightly more boilerplate (conversion functions or overloads).
+- Requires developer discipline to avoid treating all 2D floats as interchangeable.
+
+---
+## Component-Based Collision Behavior Flags
+
+### Decision:
+Collision logic is governed by a `CollisionBehavior` enum with bitmaskable flags (e.g., `Clamp`, `Bounce`, `Destroy`, `Trigger`), stored in collider components.
+### Reasoning:
+- Allows a single system to interpret collision responses based on entity configuration.
+- Supports flexible, declarative behaviors without requiring inheritance or script hooks.
+- Enables layered logic: multiple behaviors can be active on a single collider.
+### Tradeoffs:
+- Requires discipline to avoid overly complex behavior combinations.
+- Systems must interpret the flags correctly and consistently (no “default” behavior).
+- Not as expressive as a full-on event or scripting system.
+
+---
+## Move Away from Templated Interfaces for Registration and instead use `type_index`
+
+### Decision:
+I am shifting away from using templated methods as the default mechanism for system/component registration and access and am shifting them to runtime safe methods using `std::type_index`.
+### Reasoning:
+- Improves testability: interfaces can now accept runtime `std::type_index` keys and injected instances without requiring template instantiation.
+- Enables mocking and dynamic composition in unit tests and runtime environments.
+- Allows future dependency contexts to be constructed from runtime configuration rather than compile-time binding.
+- Templated versions are preserved for developer ergonomics and remain available when compile-time safety or brevity is preferred.
+### Tradeoffs:
+- Slightly more verbose code in core systems or registration logic.
+- Relies on `std::type_index`, which introduces [RTTI overhead](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines#c146-use-dynamic_cast-where-class-hierarchy-navigation-is-unavoidable) (negligible in current scope).
+- Introduces potential for type mismatches if used inconsistently (e.g., manual `typeid()` mismatches), though these are mitigated by centralized registration patterns.
+
 ---
 ## TEMPLATE
 

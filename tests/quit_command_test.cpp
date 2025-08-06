@@ -20,10 +20,10 @@ TEST(QuitCommandTest, CallsRequestExitOnGameWorld) {
   auto cq = std::make_shared<MockCommandQueue>();
   auto gw = std::make_shared<GameWorld>(em, cm, sm, cq);
 
-  EXPECT_FALSE(gw->should_exit());
+  EXPECT_FALSE(gw->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::Quit);
 
   QuitCommand cmd;
   cmd.apply(gw);
 
-  EXPECT_TRUE(gw->should_exit());
+  EXPECT_TRUE(gw->get_stage_lifecycle_state() == sb::gamestate::StageLifecycleState::Quit);
 }

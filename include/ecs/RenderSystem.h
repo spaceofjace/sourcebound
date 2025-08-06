@@ -29,16 +29,13 @@ namespace sb::ecs {
  */
 class RenderSystem final : public ISystem {
 public:
-  RenderSystem(std::shared_ptr<rendering::IRenderer> renderer,
-               std::shared_ptr<ComponentManager> component_mgr)
-    : renderer_(std::move(renderer)),
-      component_mgr_(std::move(component_mgr)) {};
+  RenderSystem(std::shared_ptr<rendering::IRenderer> renderer)
+    : renderer_(std::move(renderer)) {};
 
-  void update(float delta_time) override;
+  void update(float delta_time, gamestate::GameWorld& game_world) override;
 
 private:
   std::shared_ptr<rendering::IRenderer> renderer_;
-  std::shared_ptr<ComponentManager> component_mgr_;
 };
 } // namespace sb::ecs
 #endif //RENDERSYSTEM_H
