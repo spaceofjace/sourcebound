@@ -1,5 +1,33 @@
 # Project Sourcebound Dev Journal
 ---
+## 2025-08-06 - 10 hours
+(includes time from 8/1, 8/3, and 8/5)
+### Objective(s)
+
+1. Add score and life tracking systems
+2. Finalize ball lifecycle (death, bounce, destroy)
+3. Build and test `PlayerLivesSystem`, `ScoreSystem`, and related event logic
+### Details
+#### Key Accomplishments
+
+*  Integrated score tracking via `ScoreSystem`, tied to entity destruction and events
+* Implemented `PlayerLivesSystem` to handle ball loss and game over state
+* Added `GameSessionState` and tracked it via a new session component
+* Created `PendingDestroy` marker and structured destruction logic via system
+* Finalized trigger-based damage flow and linked to score/life mechanics
+#### Challenges / Notes
+
+* I have run into a few challenges along the way; the untestability of `GAmeWorld` continues to be a pain, though integration tests are at least possible.
+	* I started to look at refactoring away from untemplated methods, but this isn't as straightforward for the common case of getting component types.  I will probably move to using void* pointers, even if this is unideal.  (I'll keep the syntactic sugar of the templates, though.)
+* I missed a few system resets, which became obvious when resetting the level.  (Not entirely unexpected, there's always *something* when you reset the first time.)
+* Still figuring out how I want to handle player session state conceptually.  I may mange it through an external "eventing" system that UI can listen to, but I need to look closely at how other ECS builds handle this sort of thing, and whether or not I'll ever need that state to control behavior in the system.
+#### Next Steps
+
+* Need to generalize ScoreEvents (currently tightly coupled to bricks)
+* Build out a formal Stage/Level reload pipeline
+* Hook up GameSession state into game loop for restart/quit handling
+
+---
 ## 2025-07-31 - 10 hours
 (includes 2 hours of refactor on 7/25, 2 hours on 7/29 + 7/30 for physics and Direction Component)
 
