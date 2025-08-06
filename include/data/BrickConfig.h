@@ -34,6 +34,7 @@ struct BrickConfig {
   std::optional<RenderableSimpleShape> visual;  /**< Optional visual appearance of the brick. */
   std::optional<BoxCollider> collider;          /**< Optional physics collider used for interaction or bounce. */
   std::optional<ecs::Triggerable> triggers;     /**< Optional triggers to fire if Triggered */
+  std::optional<ecs::ScoreValue> score_value;   /**< Optional score value for the brick */
 };
 
 }

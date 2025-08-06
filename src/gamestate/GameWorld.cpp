@@ -210,6 +210,9 @@ void sb::gamestate::GameWorld::load_level(const data::LevelData& level_data) {
       if (config.triggers) {
         add_component(brick, *config.triggers);
       }
+      if (config.score_value) {
+        add_component(brick, *config.score_value);
+      }
     }
   }
 
@@ -260,6 +263,7 @@ void sb::gamestate::GameWorld::register_components() const {
   register_component<ecs::PendingDestroy>();
   register_component<ecs::Indestructible>();
   register_component<ecs::PlayerSessionState>();
+  register_component<ecs::ScoreValue>();
 }
 
 // ReSharper disable once CppMemberFunctionMayBeConst

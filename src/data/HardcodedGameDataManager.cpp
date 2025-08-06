@@ -80,6 +80,7 @@ sb::data::BrickConfig sb::data::HardcodedGameDataManager::make_brick(
   config.collider = BoxCollider{layout.brick_size.x, layout.brick_size.y, 0.0F, 0.0F,
     ecs::CollisionBehavior::Bounce | ecs::CollisionBehavior::Trigger};
   config.triggers = ecs::Triggerable { { ecs::TriggerType::Hit }};
+  config.score_value = ecs::ScoreValue{hits * 100}; //for now, just a static multiplier
 
   return config;
 }

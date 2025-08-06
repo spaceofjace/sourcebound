@@ -217,6 +217,8 @@ struct PlayerSessionState {
  */
 struct HitsRequired { int hits; };
 
+struct ScoreValue { int value; };
+
 /**
  * @struct Ball
  * @ingroup ECS
