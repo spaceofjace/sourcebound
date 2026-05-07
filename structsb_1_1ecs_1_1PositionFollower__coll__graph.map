@@ -1,0 +1,7 @@
+<map id="sb::ecs::PositionFollower" name="sb::ecs::PositionFollower">
+<area shape="rect" id="Node000001" title="Makes an entity follow another entity’s Transform with a positional offset." alt="" coords="40,93,223,119"/>
+<area shape="rect" id="Node000002" href="$structsb_1_1ecs_1_1Entity.html" title="Represents a lightweight handle used to identify components in the ECS." alt="" coords="5,5,119,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,40,124,91,120,94,78,43"/>
+<area shape="rect" id="Node000003" href="$structsb_1_1math_1_1Vec2.html" title="Simple 2D vector used for positional offsets and entity placement." alt="" coords="143,5,261,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="186,43,143,94,139,91,182,39"/>
+</map>

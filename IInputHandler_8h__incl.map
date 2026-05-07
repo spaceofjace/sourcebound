@@ -1,0 +1,25 @@
+<map id="IInputHandler.h" name="IInputHandler.h">
+<area shape="rect" id="Node000001" title="An abstraction representing some source of player inputs (keyboard, mouse, controller,..." alt="" coords="323,5,444,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="222,79,299,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="365,33,294,74,291,69,362,28"/>
+<area shape="rect" id="Node000003" href="$IEventSource_8h.html" title=" " alt="" coords="324,79,443,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="386,31,386,65,381,65,381,31"/>
+<area shape="rect" id="Node000005" href="$IInputNormalizer_8h.html" title="An abstraction for translating raw inputs through bindings and into commands." alt="" coords="467,79,609,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="409,28,501,70,499,75,407,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="310,152,457,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="386,104,386,138,381,138,381,104"/>
+<area shape="rect" id="Node000006" href="$InputCode_8h.html" title="Defines a unified abstraction for all input bindings." alt="" coords="488,152,588,177"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="541,104,541,138,535,138,535,104"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="5,225,169,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="488,177,469,180,175,226,175,221,468,175,487,172"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="194,225,357,251"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="496,180,332,224,330,219,495,175"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="381,225,545,251"/>
+<area shape="poly" id="edge8_Node000006_Node000009" title=" " alt="" coords="528,179,487,218,484,214,524,175"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="569,225,656,251"/>
+<area shape="poly" id="edge9_Node000006_Node000010" title=" " alt="" coords="552,175,592,214,589,218,548,179"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="681,225,739,251"/>
+<area shape="poly" id="edge10_Node000006_Node000011" title=" " alt="" coords="567,175,670,218,668,222,565,180"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="764,225,832,251"/>
+<area shape="poly" id="edge11_Node000006_Node000012" title=" " alt="" coords="580,175,751,221,750,226,579,180"/>
+</map>

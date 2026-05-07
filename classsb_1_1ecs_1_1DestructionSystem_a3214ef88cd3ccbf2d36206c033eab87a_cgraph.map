@@ -1,0 +1,19 @@
+<map id="sb::ecs::DestructionSystem::update" name="sb::ecs::DestructionSystem::update">
+<area shape="rect" id="Node000001" title="Checks for pending destruction and destroys entities as needed." alt="" coords="5,229,204,269"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1gamestate_1_1GameWorld.html#a6b885417989272e87cb885ab0d919cd4" title="Destroys the specified entity and removes its associated components." alt="" coords="258,5,457,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,228,134,191,164,144,204,96,250,55,259,49,262,54,254,59,207,100,169,148,138,194,118,230"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1gamestate_1_1GameWorld.html#ab9ac3744a16be6a9a2892f0996f82ca2" title=" " alt="" coords="258,69,457,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,227,176,174,212,144,251,119,264,112,267,117,253,124,215,149,180,178,126,231"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1gamestate_1_1GameWorld.html#a478f5dedf7b99e96c20f1d5c612a527e" title=" " alt="" coords="258,133,457,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="147,227,251,183,273,175,274,180,253,188,149,232"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1gamestate_1_1GameWorld.html#ab3ac2a0a61dbdd5f20c59d5cd434af28" title="Retrieves all entities that match the given signature." alt="" coords="252,197,463,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="204,234,238,230,239,235,204,239"/>
+<area shape="rect" id="Node000006" href="$classsb_1_1gamestate_1_1GameWorld.html#a8d9c25cca53ddca25d6efd54e7e1354b" title=" " alt="" coords="258,261,457,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="204,259,245,264,244,270,204,265"/>
+<area shape="rect" id="Node000007" href="$classsb_1_1log_1_1Logger.html#a189c87ac0f86aea34e952e4c0f82eefc" title=" " alt="" coords="282,326,433,351"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="148,267,253,311,284,320,282,325,251,316,146,272"/>
+<area shape="rect" id="Node000008" href="$classsb_1_1gamestate_1_1GameWorld.html#abfeeeb13ab8d15e40316c0330f3c641f" title=" " alt="" coords="258,376,457,416"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="129,268,183,314,217,339,253,360,271,368,268,373,251,365,214,343,180,318,125,272"/>
+<area shape="rect" id="Node000009" href="$classsb_1_1log_1_1Logger.html#aece2091991667b9ec7ed33de30e8b53b" title=" " alt="" coords="279,441,436,466"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="119,268,140,303,170,346,208,389,253,426,267,433,265,438,251,430,204,393,166,349,135,306,114,271"/>
+</map>

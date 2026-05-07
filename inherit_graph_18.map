@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsb_1_1ecs_1_1ISystem.html" title="Abstract base class for ECS systems." alt="" coords="5,179,133,204"/>
+<area shape="rect" id="Node000001" href="$classsb_1_1ecs_1_1CollisionSystem.html" title="Processes collisions between entities using physics&#45;inspired rules and ECS&#45;friendly behavior markers." alt="" coords="191,5,371,31"/>
+<area shape="poly" id="edge5_Node000000_Node000001" title=" " alt="" coords="80,165,118,102,146,68,180,40,203,28,205,33,183,44,150,72,123,105,85,168"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1DestructionSystem.html" title="Destroys entities flagged for removal unless they are explicitly marked as Indestructible." alt="" coords="181,55,380,80"/>
+<area shape="poly" id="edge6_Node000000_Node000002" title=" " alt="" coords="88,166,128,126,153,106,180,89,208,78,210,83,183,94,156,111,131,130,92,170"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1FollowSystem.html" title="Updates the Transform of entities with PositionFollower to match a target&#39;s position + offset." alt="" coords="197,104,364,129"/>
+<area shape="poly" id="edge7_Node000000_Node000003" title=" " alt="" coords="106,170,180,138,219,127,220,132,182,143,109,175"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1ecs_1_1HitSystem.html" title="Processes PendingHit and decrements entity durability, marking for destruction if depleted." alt="" coords="209,153,352,179"/>
+<area shape="poly" id="edge8_Node000000_Node000004" title=" " alt="" coords="147,179,209,172,209,177,148,185"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1ecs_1_1LivesSystem.html" title="Checks for loss of all Ball entities and manages life count." alt="" coords="201,203,360,228"/>
+<area shape="poly" id="edge9_Node000000_Node000005" title=" " alt="" coords="148,198,202,204,201,209,147,203"/>
+<area shape="rect" id="Node000006" href="$classsb_1_1ecs_1_1PhysicsSystem.html" title="Applies movement to entities based on velocity and configuration data." alt="" coords="194,252,367,277"/>
+<area shape="poly" id="edge10_Node000000_Node000006" title=" " alt="" coords="110,207,182,237,225,249,223,255,180,242,108,212"/>
+<area shape="rect" id="Node000007" href="$classsb_1_1ecs_1_1RenderSystem.html" title="Responsible for rendering entities with a RenderableSimpleShape and Transform." alt="" coords="195,301,366,327"/>
+<area shape="poly" id="edge11_Node000000_Node000007" title=" " alt="" coords="92,212,132,250,183,286,213,299,211,304,180,291,128,255,89,216"/>
+<area shape="rect" id="Node000008" href="$classsb_1_1ecs_1_1TriggerSystem.html" title="Scans for triggered entities and applies logic based on Triggerable and WasTriggered." alt="" coords="197,351,365,376"/>
+<area shape="poly" id="edge12_Node000000_Node000008" title=" " alt="" coords="85,215,123,276,151,309,183,336,208,348,206,353,180,340,147,312,119,279,80,218"/>
+</map>

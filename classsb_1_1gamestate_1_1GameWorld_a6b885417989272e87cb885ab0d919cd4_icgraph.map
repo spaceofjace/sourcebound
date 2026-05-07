@@ -1,0 +1,5 @@
+<map id="sb::gamestate::GameWorld::destroy_entity" name="sb::gamestate::GameWorld::destroy_entity">
+<area shape="rect" id="Node000001" title="Destroys the specified entity and removes its associated components." alt="" coords="252,5,451,45"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1DestructionSystem.html#a3214ef88cd3ccbf2d36206c033eab87a" title="Checks for pending destruction and destroys entities as needed." alt="" coords="5,5,204,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,28,204,28,204,23,238,23"/>
+</map>

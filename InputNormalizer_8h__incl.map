@@ -1,0 +1,58 @@
+<map id="InputNormalizer.h" name="InputNormalizer.h">
+<area shape="rect" id="Node000001" title="Concrete implementation of InputNormalizer." alt="" coords="168,5,307,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="42,299,119,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="169,32,83,52,48,65,26,80,13,105,8,132,10,161,17,190,40,244,66,286,62,289,36,246,12,191,5,162,3,132,8,103,22,77,45,60,81,46,168,27"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="37,79,97,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,33,108,76,106,71,209,28"/>
+<area shape="rect" id="Node000004" href="$ICommandQueue_8h.html" title="A lightweight wrapper for queuing commands." alt="" coords="121,79,354,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="240,31,240,65,235,65,235,31"/>
+<area shape="rect" id="Node000017" href="$IBindingMap_8h.html" title="Represents a source of loadable and saveable bindings." alt="" coords="379,79,494,104"/>
+<area shape="poly" id="edge20_Node000001_Node000017" title=" " alt="" coords="271,28,392,71,390,76,269,33"/>
+<area shape="rect" id="Node000025" href="$IInputNormalizer_8h.html" title="An abstraction for translating raw inputs through bindings and into commands." alt="" coords="518,79,661,104"/>
+<area shape="poly" id="edge30_Node000001_Node000025" title=" " alt="" coords="295,28,520,73,519,79,294,33"/>
+<area shape="poly" id="edge4_Node000004_Node000002" title=" " alt="" coords="223,106,166,155,135,189,108,227,95,256,87,285,82,284,90,255,103,224,131,185,163,151,220,102"/>
+<area shape="rect" id="Node000005" href="$ICommand_8h.html" title="An abstract representation of an action to be executed in the game engine." alt="" coords="185,152,290,177"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="240,104,240,138,235,138,235,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="323,225,382,251"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="258,175,324,216,321,220,255,180"/>
+<area shape="rect" id="Node000007" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="118,225,299,251"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="235,179,221,214,216,212,230,177"/>
+<area shape="poly" id="edge8_Node000007_Node000002" title=" " alt="" coords="189,253,115,294,112,289,187,248"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="357,299,444,324"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="240,248,357,291,355,296,238,253"/>
+<area shape="rect" id="Node000009" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="205,372,276,397"/>
+<area shape="poly" id="edge10_Node000007_Node000009" title=" " alt="" coords="214,251,238,358,232,359,208,252"/>
+<area shape="rect" id="Node000012" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="82,445,185,471"/>
+<area shape="poly" id="edge16_Node000007_Node000012" title=" " alt="" coords="207,252,145,433,140,431,202,250"/>
+<area shape="rect" id="Node000015" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="246,299,333,324"/>
+<area shape="poly" id="edge17_Node000007_Node000015" title=" " alt="" coords="223,249,268,288,264,292,220,253"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="320,445,387,471"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="260,395,325,436,322,440,257,400"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="209,445,296,471"/>
+<area shape="poly" id="edge12_Node000009_Node000011" title=" " alt="" coords="245,397,251,431,246,432,240,398"/>
+<area shape="poly" id="edge13_Node000009_Node000012" title=" " alt="" coords="225,400,164,440,161,435,222,395"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="60,519,119,544"/>
+<area shape="poly" id="edge14_Node000012_Node000013" title=" " alt="" coords="129,472,106,508,102,506,124,470"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="144,519,214,544"/>
+<area shape="poly" id="edge15_Node000012_Node000014" title=" " alt="" coords="144,470,167,506,162,509,139,472"/>
+<area shape="poly" id="edge19_Node000015_Node000009" title=" " alt="" coords="284,326,258,362,254,359,279,323"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="300,372,415,397"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="303,322,339,360,335,364,299,326"/>
+<area shape="poly" id="edge21_Node000017_Node000006" title=" " alt="" coords="424,106,402,127,381,153,368,183,360,213,354,211,363,181,377,151,398,123,420,102"/>
+<area shape="rect" id="Node000018" href="$InputAction_8h.html" title="Defines a list of bindable player actions." alt="" coords="390,152,498,177"/>
+<area shape="poly" id="edge22_Node000017_Node000018" title=" " alt="" coords="440,104,444,138,439,139,435,105"/>
+<area shape="rect" id="Node000019" href="$InputCode_8h.html" title="Defines a unified abstraction for all input bindings." alt="" coords="534,152,634,177"/>
+<area shape="poly" id="edge23_Node000017_Node000019" title=" " alt="" coords="461,102,549,144,547,148,459,106"/>
+<area shape="poly" id="edge28_Node000019_Node000006" title=" " alt="" coords="548,180,396,226,394,221,546,175"/>
+<area shape="rect" id="Node000020" title=" " alt="" coords="498,225,662,251"/>
+<area shape="poly" id="edge24_Node000019_Node000020" title=" " alt="" coords="586,178,585,212,579,212,581,178"/>
+<area shape="rect" id="Node000021" title=" " alt="" coords="687,225,850,251"/>
+<area shape="poly" id="edge25_Node000019_Node000021" title=" " alt="" coords="615,175,726,218,724,223,613,180"/>
+<area shape="rect" id="Node000022" title=" " alt="" coords="874,225,1038,251"/>
+<area shape="poly" id="edge26_Node000019_Node000022" title=" " alt="" coords="635,173,884,220,883,225,634,178"/>
+<area shape="rect" id="Node000023" title=" " alt="" coords="1062,225,1149,251"/>
+<area shape="poly" id="edge27_Node000019_Node000023" title=" " alt="" coords="635,168,814,189,1049,222,1049,228,813,194,634,174"/>
+<area shape="rect" id="Node000024" title=" " alt="" coords="406,225,474,251"/>
+<area shape="poly" id="edge29_Node000019_Node000024" title=" " alt="" coords="562,180,477,221,475,217,560,175"/>
+<area shape="poly" id="edge31_Node000025_Node000019" title=" " alt="" coords="592,105,589,139,584,138,586,104"/>
+</map>

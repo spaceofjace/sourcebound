@@ -1,0 +1,9 @@
+<map id="sb::ecs::FollowSystem::update" name="sb::ecs::FollowSystem::update">
+<area shape="rect" id="Node000001" title="Updates all follower entities, syncing their position to their target + offset." alt="" coords="5,69,172,109"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1gamestate_1_1GameWorld.html#ab9ac3744a16be6a9a2892f0996f82ca2" title=" " alt="" coords="220,5,419,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="161,67,233,46,234,52,162,72"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1gamestate_1_1GameWorld.html#a8d9c25cca53ddca25d6efd54e7e1354b" title=" " alt="" coords="220,69,419,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="172,87,206,87,206,92,172,92"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1log_1_1Logger.html#aece2091991667b9ec7ed33de30e8b53b" title=" " alt="" coords="241,134,398,159"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="170,107,255,128,254,133,169,112"/>
+</map>

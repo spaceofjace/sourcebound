@@ -1,0 +1,5 @@
+<map id="sb::gamestate::GameWorld::set_stage_lifecycle_state" name="sb::gamestate::GameWorld::set_stage_lifecycle_state">
+<area shape="rect" id="Node000001" title=" " alt="" coords="212,5,411,45"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1LivesSystem.html#ab9c3c2348532fcd7ecf5c22fd46ca967" title="Checks for loss of all Ball entities and manages life count." alt="" coords="5,5,164,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="198,28,164,28,164,23,198,23"/>
+</map>

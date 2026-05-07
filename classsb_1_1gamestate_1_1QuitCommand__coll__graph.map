@@ -1,0 +1,5 @@
+<map id="sb::gamestate::QuitCommand" name="sb::gamestate::QuitCommand">
+<area shape="rect" id="Node000001" title="Represents a command to signal the game should exit." alt="" coords="5,79,223,104"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1gamestate_1_1ICommand.html" title="Represents a queued command derived from player input." alt="" coords="17,5,211,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,44,117,79,111,79,111,44"/>
+</map>

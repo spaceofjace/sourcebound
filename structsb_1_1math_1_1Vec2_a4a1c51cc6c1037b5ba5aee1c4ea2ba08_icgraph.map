@@ -1,0 +1,5 @@
+<map id="sb::math::Vec2::normalized" name="sb::math::Vec2::normalized">
+<area shape="rect" id="Node000001" title="Returns a normalized (unit length) version of the vector." alt="" coords="233,13,432,38"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1CollisionSystem.html#aa645e8eb7add9bb9c0524ab804390935" title="Performs collision detection and applies movement constraints or bounce behaviors,..." alt="" coords="5,5,185,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,28,185,28,185,23,220,23"/>
+</map>

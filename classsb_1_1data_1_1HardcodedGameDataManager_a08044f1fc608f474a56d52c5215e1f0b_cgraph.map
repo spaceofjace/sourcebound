@@ -1,0 +1,5 @@
+<map id="sb::data::HardcodedGameDataManager::set_current_level" name="sb::data::HardcodedGameDataManager::set_current_level">
+<area shape="rect" id="Node000001" title="Sets the current level ID (for internal tracking or stage switching)." alt="" coords="5,5,228,45"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1log_1_1Logger.html#a12d899c9a66370059c75fba7dbeff975" title=" " alt="" coords="276,13,432,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="228,23,262,23,262,28,228,28"/>
+</map>

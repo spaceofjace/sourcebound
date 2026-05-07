@@ -1,0 +1,13 @@
+<map id="SdlRenderer.h" name="SdlRenderer.h">
+<area shape="rect" id="Node000001" title="SDL implementation of the IRenderer interface." alt="" coords="93,5,205,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,149,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="139,33,101,71,97,67,136,29"/>
+<area shape="rect" id="Node000003" href="$IRenderer_8h.html" title="9*" alt="" coords="173,79,269,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="163,29,202,67,198,71,159,33"/>
+<area shape="rect" id="Node000004" href="$Vec2_8h.html" title="Simple representation of a 2D Vector." alt="" coords="107,152,221,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="214,106,184,143,180,139,210,103"/>
+<area shape="rect" id="Node000006" href="$Color_8h.html" title="Defines the Color struct used for RGBA color representation and a set of standard colors." alt="" coords="245,152,312,177"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="233,103,263,139,259,143,229,106"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="133,225,195,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="167,178,167,212,161,212,161,178"/>
+</map>

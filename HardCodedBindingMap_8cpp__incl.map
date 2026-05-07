@@ -1,0 +1,28 @@
+<map id="HardCodedBindingMap.cpp" name="HardCodedBindingMap.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="115,5,314,31"/>
+<area shape="rect" id="Node000002" href="$HardcodedBindingMap_8h.html" title="A preconfigured set of hardcoded bindings until serialization is available." alt="" coords="122,79,307,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="217,31,217,65,212,65,212,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="6,167,130,192"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="181,121,103,162,100,158,178,116"/>
+<area shape="rect" id="Node000004" href="$IBindingMap_8h.html" title="Represents a source of loadable and saveable bindings." alt="" coords="205,167,320,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="229,117,251,153,246,156,224,120"/>
+<area shape="rect" id="Node000006" href="$InputAction_8h.html" title="Defines a list of bindable player actions." alt="" coords="115,240,223,265"/>
+<area shape="poly" id="edge13_Node000002_Node000006" title=" " alt="" coords="211,120,196,167,179,227,174,226,191,166,206,118"/>
+<area shape="rect" id="Node000007" href="$InputCode_8h.html" title="Defines a unified abstraction for all input bindings." alt="" coords="307,240,407,265"/>
+<area shape="poly" id="edge14_Node000002_Node000007" title=" " alt="" coords="268,117,303,137,334,165,350,195,357,225,352,227,345,197,330,168,300,141,265,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,313,64,339"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="265,193,258,229,250,249,236,268,78,315,76,310,233,263,245,247,253,227,259,192"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="249,194,197,234,194,229,246,190"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="279,190,332,229,329,234,276,194"/>
+<area shape="poly" id="edge11_Node000007_Node000005" title=" " alt="" coords="308,266,78,316,77,311,307,261"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="666,313,830,339"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="408,260,672,308,671,313,407,266"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="88,313,251,339"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="328,268,214,311,212,306,326,263"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="275,313,439,339"/>
+<area shape="poly" id="edge9_Node000007_Node000010" title=" " alt="" coords="360,266,360,300,355,300,355,266"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="463,313,550,339"/>
+<area shape="poly" id="edge10_Node000007_Node000011" title=" " alt="" coords="382,263,471,305,469,310,380,268"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="574,313,642,339"/>
+<area shape="poly" id="edge12_Node000007_Node000012" title=" " alt="" coords="398,263,561,309,560,314,397,268"/>
+</map>

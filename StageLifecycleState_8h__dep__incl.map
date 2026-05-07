@@ -1,0 +1,48 @@
+<map id="StageLifecycleState.h" name="StageLifecycleState.h">
+<area shape="rect" id="Node000001" title="Defines the lifecycle states for a game stage (level)." alt="" coords="1065,5,1228,31"/>
+<area shape="rect" id="Node000002" href="$IGameWorld_8h.html" title="Declares the interface for interacting with the active game world state." alt="" coords="1043,79,1157,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="1134,44,1110,80,1105,77,1129,41"/>
+<area shape="rect" id="Node000021" href="$main_8cpp.html" title=" " alt="" coords="2052,225,2135,251"/>
+<area shape="poly" id="edge25_Node000001_Node000021" title=" " alt="" coords="1210,31,2053,225,2051,230,1209,36"/>
+<area shape="rect" id="Node000003" href="$DestructionSystem_8h.html" title="Finalizes entity removal for those marked with PendingDestroy unless protected by Indestructible." alt="" coords="186,152,345,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="1029,101,345,159,345,154,1029,96"/>
+<area shape="rect" id="Node000006" href="$GameWorld_8h.html" title="Defines the concrete game world used by the main loop." alt="" coords="1045,152,1155,177"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="1103,118,1103,152,1097,152,1097,118"/>
+<area shape="rect" id="Node000004" href="$DestructionSystem_8cpp.html" title=" " alt="" coords="5,225,179,251"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="226,185,121,228,119,223,224,180"/>
+<area shape="rect" id="Node000005" href="$GameWorld_8cpp.html" title=" " alt="" coords="203,225,328,251"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="268,191,268,225,263,225,263,191"/>
+<area shape="poly" id="edge7_Node000006_Node000004" title=" " alt="" coords="1031,172,671,192,191,228,179,229,179,224,190,223,671,187,1031,167"/>
+<area shape="poly" id="edge9_Node000006_Node000005" title=" " alt="" coords="1031,172,731,192,537,208,340,228,328,229,328,224,340,223,536,203,730,187,1031,167"/>
+<area shape="rect" id="Node000007" href="$CollisionSystem_8cpp.html" title=" " alt="" coords="1364,225,1519,251"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="1169,177,1387,223,1386,228,1167,183"/>
+<area shape="rect" id="Node000008" href="$FollowSystem_8cpp.html" title=" " alt="" coords="1543,225,1683,251"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="1169,173,1543,224,1543,230,1168,178"/>
+<area shape="rect" id="Node000009" href="$HitSystem_8cpp.html" title=" " alt="" coords="1708,225,1825,251"/>
+<area shape="poly" id="edge10_Node000006_Node000009" title=" " alt="" coords="1169,169,1403,190,1695,223,1708,224,1707,230,1694,228,1402,195,1169,174"/>
+<area shape="rect" id="Node000010" href="$LaunchBallCommand_8h.html" title="Defines a command that launches the ball from a held state into motion." alt="" coords="505,225,677,251"/>
+<area shape="poly" id="edge11_Node000006_Node000010" title=" " alt="" coords="1031,178,673,228,672,223,1030,173"/>
+<area shape="rect" id="Node000013" href="$LivesSystem_8cpp.html" title=" " alt="" coords="701,225,833,251"/>
+<area shape="poly" id="edge14_Node000006_Node000013" title=" " alt="" coords="1034,183,821,228,820,223,1033,178"/>
+<area shape="rect" id="Node000014" href="$PhysicsSystem_8cpp.html" title=" " alt="" coords="857,225,1004,251"/>
+<area shape="poly" id="edge15_Node000006_Node000014" title=" " alt="" coords="1061,185,959,228,957,223,1059,180"/>
+<area shape="rect" id="Node000015" href="$PlayerMoveCommand_8h.html" title="A command for triggering player (paddle) movement." alt="" coords="1849,225,2028,251"/>
+<area shape="poly" id="edge16_Node000006_Node000015" title=" " alt="" coords="1169,168,1460,190,1838,223,1849,224,1849,229,1837,228,1460,195,1169,174"/>
+<area shape="rect" id="Node000017" href="$QuitCommand_8h.html" title="Defines a command that requests the game world to initiate shutdown." alt="" coords="352,225,480,251"/>
+<area shape="poly" id="edge19_Node000006_Node000017" title=" " alt="" coords="1031,174,793,196,492,228,481,229,480,224,492,223,792,190,1031,169"/>
+<area shape="rect" id="Node000019" href="$RenderSystem_8cpp.html" title=" " alt="" coords="1028,225,1172,251"/>
+<area shape="poly" id="edge22_Node000006_Node000019" title=" " alt="" coords="1103,191,1103,225,1097,225,1097,191"/>
+<area shape="rect" id="Node000020" href="$TriggerSystem_8cpp.html" title=" " alt="" coords="1197,225,1339,251"/>
+<area shape="poly" id="edge23_Node000006_Node000020" title=" " alt="" coords="1141,180,1242,223,1239,228,1138,185"/>
+<area shape="poly" id="edge24_Node000006_Node000021" title=" " alt="" coords="1169,164,1325,168,1542,178,1789,195,2040,223,2052,225,2051,230,2040,228,1789,201,1541,183,1325,174,1169,170"/>
+<area shape="rect" id="Node000011" href="$InputNormalizer_8cpp.html" title=" " alt="" coords="709,299,862,324"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="635,253,754,296,753,301,634,258"/>
+<area shape="rect" id="Node000012" href="$LaunchBallCommand_8cpp.html" title=" " alt="" coords="497,299,684,324"/>
+<area shape="poly" id="edge13_Node000010_Node000012" title=" " alt="" coords="593,264,593,299,588,299,588,264"/>
+<area shape="poly" id="edge17_Node000015_Node000011" title=" " alt="" coords="1836,253,1550,274,1274,291,863,310,863,304,1274,285,1550,269,1835,248"/>
+<area shape="rect" id="Node000016" href="$PlayerMoveCommand_8cpp.html" title=" " alt="" coords="1842,299,2035,324"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="1941,264,1941,299,1936,299,1936,264"/>
+<area shape="poly" id="edge20_Node000017_Node000011" title=" " alt="" coords="489,251,726,296,725,301,488,256"/>
+<area shape="rect" id="Node000018" href="$QuitCommand_8cpp.html" title=" " alt="" coords="330,299,473,324"/>
+<area shape="poly" id="edge21_Node000017_Node000018" title=" " alt="" coords="413,265,406,299,401,298,408,264"/>
+</map>

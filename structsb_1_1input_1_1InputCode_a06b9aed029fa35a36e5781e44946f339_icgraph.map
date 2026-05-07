@@ -1,0 +1,9 @@
+<map id="sb::input::InputCode::VirtualQuit" name="sb::input::InputCode::VirtualQuit">
+<area shape="rect" id="Node000001" title="Creates a virtual InputCode used to represent system&#45;initiated quit requests." alt="" coords="361,37,513,77"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1KeyboardHandler.html#a15e6ca0af7101d0379419244e02c3b1f" title=" " alt="" coords="111,5,310,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="347,47,310,42,310,37,348,42"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1input_1_1HardcodedBindingMap.html#a47c3e7bb54d2ed8443020547baf4f453" title="Resolves an InputCode to its logical action." alt="" coords="108,69,313,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="348,73,314,77,313,72,347,67"/>
+<area shape="rect" id="Node000003" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,13,60,38"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="97,28,60,28,60,23,97,23"/>
+</map>

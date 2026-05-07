@@ -1,0 +1,32 @@
+<map id="ICommandQueue.h" name="ICommandQueue.h">
+<area shape="rect" id="Node000001" title="A lightweight wrapper for queuing commands." alt="" coords="35,5,181,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,225,83,251"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="107,32,54,212,49,211,102,30"/>
+<area shape="rect" id="Node000003" href="$ICommand_8h.html" title="An abstract representation of an action to be executed in the game engine." alt="" coords="119,79,225,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="121,29,155,67,151,70,117,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="287,152,345,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="196,102,281,143,279,148,194,106"/>
+<area shape="rect" id="Node000005" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="81,152,263,177"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="175,104,175,138,169,138,169,104"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="153,180,78,221,76,216,150,175"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="319,225,406,251"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="204,175,320,218,318,223,202,180"/>
+<area shape="rect" id="Node000007" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="169,299,239,324"/>
+<area shape="poly" id="edge7_Node000005_Node000007" title=" " alt="" coords="177,177,201,285,196,286,172,178"/>
+<area shape="rect" id="Node000010" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="46,372,149,397"/>
+<area shape="poly" id="edge13_Node000005_Node000010" title=" " alt="" coords="171,179,108,360,103,358,165,177"/>
+<area shape="rect" id="Node000013" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="209,225,295,251"/>
+<area shape="poly" id="edge14_Node000005_Node000013" title=" " alt="" coords="187,175,231,214,227,218,183,179"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="284,372,351,397"/>
+<area shape="poly" id="edge8_Node000007_Node000008" title=" " alt="" coords="224,322,289,362,286,367,221,326"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="173,372,259,397"/>
+<area shape="poly" id="edge9_Node000007_Node000009" title=" " alt="" coords="209,324,214,358,209,359,203,325"/>
+<area shape="poly" id="edge10_Node000007_Node000010" title=" " alt="" coords="188,326,128,367,125,362,185,322"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="24,445,83,471"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="92,399,70,435,65,432,88,396"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="107,445,178,471"/>
+<area shape="poly" id="edge12_Node000010_Node000012" title=" " alt="" coords="107,396,130,432,126,435,103,399"/>
+<area shape="poly" id="edge16_Node000013_Node000007" title=" " alt="" coords="246,253,222,289,217,286,242,250"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="264,299,379,324"/>
+<area shape="poly" id="edge15_Node000013_Node000014" title=" " alt="" coords="265,249,303,287,299,291,262,253"/>
+</map>

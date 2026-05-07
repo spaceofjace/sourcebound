@@ -1,0 +1,51 @@
+<map id="SystemManager.cpp" name="SystemManager.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="475,5,629,31"/>
+<area shape="rect" id="Node000002" href="$SystemManager_8h.html" title="Manages ECS systems and their component signatures." alt="" coords="466,79,638,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="555,31,555,65,549,65,549,31"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="249,313,327,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="486,121,440,141,396,169,365,200,338,237,301,302,296,299,333,234,361,197,393,165,437,136,484,116"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="830,167,917,192"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="630,116,817,162,816,167,628,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="377,240,463,265"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="524,121,497,142,470,168,449,199,433,229,428,226,444,196,466,165,493,138,521,117"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="941,167,1065,192"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="639,112,928,162,927,168,638,118"/>
+<area shape="rect" id="Node000007" href="$ConsoleSink_8h.html" title="Concrete implementation of ISink that logs to the console." alt="" coords="30,167,239,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="466,119,209,167,208,162,465,114"/>
+<area shape="rect" id="Node000012" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="494,313,565,339"/>
+<area shape="poly" id="edge14_Node000002_Node000012" title=" " alt="" coords="506,121,468,141,429,167,393,201,366,241,363,258,367,271,378,283,394,293,436,308,481,317,480,322,435,313,391,298,374,287,362,274,357,258,362,239,389,197,425,163,466,136,503,116"/>
+<area shape="rect" id="Node000015" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="587,387,690,412"/>
+<area shape="poly" id="edge29_Node000002_Node000015" title=" " alt="" coords="588,116,663,164,705,197,735,227,756,263,769,313,772,327,769,340,756,356,740,369,704,386,702,382,737,364,752,352,764,337,767,327,764,314,751,265,731,230,701,201,660,169,585,121"/>
+<area shape="rect" id="Node000018" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="641,240,727,265"/>
+<area shape="poly" id="edge20_Node000002_Node000018" title=" " alt="" coords="582,117,610,138,637,165,659,196,675,226,671,229,654,199,633,168,606,142,579,121"/>
+<area shape="rect" id="Node000020" href="$ISystemManager_8h.html" title="Declares the interface for managing registered systems." alt="" coords="481,167,623,192"/>
+<area shape="poly" id="edge23_Node000002_Node000020" title=" " alt="" coords="555,119,555,153,549,153,549,119"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="5,240,85,265"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="122,194,72,233,69,229,119,190"/>
+<area shape="rect" id="Node000009" href="$Logger_8h.html" title="Central static logging interface for the application." alt="" coords="161,240,250,265"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="148,190,186,228,182,232,144,194"/>
+<area shape="rect" id="Node000011" href="$ISink_8h.html" title="Declares the logging sink interface." alt="" coords="71,313,175,339"/>
+<area shape="poly" id="edge13_Node000007_Node000011" title=" " alt="" coords="136,193,127,300,122,299,131,192"/>
+<area shape="poly" id="edge9_Node000009_Node000003" title=" " alt="" coords="220,263,266,302,262,306,217,267"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="119,387,217,412"/>
+<area shape="poly" id="edge10_Node000009_Node000010" title=" " alt="" coords="206,266,189,339,179,374,174,373,184,338,201,265"/>
+<area shape="poly" id="edge11_Node000009_Node000011" title=" " alt="" coords="194,267,148,306,145,302,190,263"/>
+<area shape="poly" id="edge12_Node000011_Node000010" title=" " alt="" coords="132,338,156,374,151,377,128,340"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="496,387,563,412"/>
+<area shape="poly" id="edge15_Node000012_Node000013" title=" " alt="" coords="532,339,532,373,527,373,527,339"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="385,387,471,412"/>
+<area shape="poly" id="edge16_Node000012_Node000014" title=" " alt="" coords="515,341,457,381,454,376,512,336"/>
+<area shape="poly" id="edge17_Node000012_Node000015" title=" " alt="" coords="548,336,611,377,608,381,545,341"/>
+<area shape="rect" id="Node000016" title=" " alt="" coords="564,460,623,485"/>
+<area shape="poly" id="edge18_Node000015_Node000016" title=" " alt="" coords="633,414,610,450,606,447,629,411"/>
+<area shape="rect" id="Node000017" title=" " alt="" coords="647,460,718,485"/>
+<area shape="poly" id="edge19_Node000015_Node000017" title=" " alt="" coords="648,411,671,447,666,450,644,414"/>
+<area shape="poly" id="edge22_Node000018_Node000012" title=" " alt="" coords="660,268,568,310,566,305,658,263"/>
+<area shape="rect" id="Node000019" title=" " alt="" coords="640,313,755,339"/>
+<area shape="poly" id="edge21_Node000018_Node000019" title=" " alt="" coords="689,265,695,299,690,300,684,266"/>
+<area shape="poly" id="edge24_Node000020_Node000003" title=" " alt="" coords="547,194,518,230,499,250,476,268,443,286,408,300,341,318,340,313,406,295,441,281,473,263,495,246,514,226,542,191"/>
+<area shape="poly" id="edge25_Node000020_Node000005" title=" " alt="" coords="532,194,455,236,452,231,530,190"/>
+<area shape="poly" id="edge26_Node000020_Node000012" title=" " alt="" coords="553,193,536,300,531,299,548,192"/>
+<area shape="poly" id="edge27_Node000020_Node000015" title=" " alt="" coords="559,191,631,373,626,375,554,193"/>
+<area shape="poly" id="edge28_Node000020_Node000018" title=" " alt="" coords="574,190,652,231,649,236,572,194"/>
+</map>

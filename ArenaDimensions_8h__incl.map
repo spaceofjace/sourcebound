@@ -1,0 +1,37 @@
+<map id="ArenaDimensions.h" name="ArenaDimensions.h">
+<area shape="rect" id="Node000001" title="Provides calculations for arena and window size based on level configuration." alt="" coords="472,5,621,31"/>
+<area shape="rect" id="Node000002" href="$Vec2_8h.html" title="Simple representation of a 2D Vector." alt="" coords="487,299,601,324"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="563,29,605,66,652,122,670,153,681,186,682,220,670,252,644,279,612,296,609,291,641,274,666,249,677,219,676,187,665,156,647,125,601,70,560,33"/>
+<area shape="rect" id="Node000004" href="$LevelData_8h.html" title="Contains data structures for level configuration and arena layout." alt="" coords="383,79,483,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="530,33,465,74,462,69,527,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="513,372,575,397"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="547,324,547,358,541,358,541,324"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="439,103,458,168,474,209,494,249,524,287,520,290,490,252,469,211,453,169,433,105"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="325,225,400,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="411,106,383,126,371,138,361,153,355,182,358,212,353,212,350,182,356,151,367,135,380,122,408,102"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="371,152,429,177"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="430,105,414,141,409,139,425,103"/>
+<area shape="rect" id="Node000007" href="$BrickConfig_8h.html" title="Defines optional ECS component configuration for a single brick entity." alt="" coords="187,152,295,177"/>
+<area shape="poly" id="edge7_Node000004_Node000007" title=" " alt="" coords="403,107,287,149,285,144,402,102"/>
+<area shape="rect" id="Node000016" href="$BrickLayoutConfig_8h.html" title="Describes global layout properties for brick grids in a level." alt="" coords="504,225,656,251"/>
+<area shape="poly" id="edge18_Node000004_Node000016" title=" " alt="" coords="447,103,561,214,557,218,443,106"/>
+<area shape="poly" id="edge8_Node000007_Node000005" title=" " alt="" coords="262,175,333,216,330,221,259,180"/>
+<area shape="rect" id="Node000008" href="$Components_8h.html" title="Defines core gameplay component structures for ECS entities." alt="" coords="62,225,301,251"/>
+<area shape="poly" id="edge9_Node000007_Node000008" title=" " alt="" coords="233,179,202,217,198,213,229,176"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="240,248,474,294,473,299,239,253"/>
+<area shape="rect" id="Node000009" href="$Color_8h.html" title="Defines the Color struct used for RGBA color representation and a set of standard colors." alt="" coords="5,299,163,324"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="167,253,113,292,110,288,164,249"/>
+<area shape="rect" id="Node000010" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="187,299,307,324"/>
+<area shape="poly" id="edge12_Node000008_Node000010" title=" " alt="" coords="194,249,229,287,225,290,190,253"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="112,372,179,397"/>
+<area shape="poly" id="edge13_Node000010_Node000011" title=" " alt="" coords="232,326,175,366,172,362,229,322"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="203,372,290,397"/>
+<area shape="poly" id="edge14_Node000010_Node000012" title=" " alt="" coords="249,324,249,358,244,358,244,324"/>
+<area shape="rect" id="Node000013" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="314,372,417,397"/>
+<area shape="poly" id="edge15_Node000010_Node000013" title=" " alt="" coords="267,322,335,362,333,367,264,326"/>
+<area shape="rect" id="Node000014" title=" " alt="" coords="291,445,349,471"/>
+<area shape="poly" id="edge16_Node000013_Node000014" title=" " alt="" coords="360,399,337,435,332,432,356,396"/>
+<area shape="rect" id="Node000015" title=" " alt="" coords="374,445,445,471"/>
+<area shape="poly" id="edge17_Node000013_Node000015" title=" " alt="" coords="375,396,397,432,393,435,370,399"/>
+<area shape="poly" id="edge19_Node000016_Node000002" title=" " alt="" coords="576,252,558,288,554,285,572,250"/>
+</map>

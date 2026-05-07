@@ -1,0 +1,11 @@
+<map id="sb::ecs::ComponentManager::add_component" name="sb::ecs::ComponentManager::add_component">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,79,212,119"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1log_1_1Logger.html#a12d899c9a66370059c75fba7dbeff975" title=" " alt="" coords="285,5,441,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,77,259,41,292,31,294,37,261,46,160,82"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1ComponentManager.html#a6093a6371f115a5d40b5e84a4cdc5616" title=" " alt="" coords="260,79,467,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="212,97,246,97,246,102,212,102"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1log_1_1Logger.html#aece2091991667b9ec7ed33de30e8b53b" title=" " alt="" coords="515,116,672,141"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="189,117,260,129,318,133,363,133,467,129,501,128,501,133,467,134,363,138,318,138,260,134,188,122"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="320,80,318,70,325,60,340,55,363,53,390,56,405,63,402,68,389,61,363,58,341,60,328,65,323,71,326,78"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="467,110,501,114,501,120,467,115"/>
+</map>

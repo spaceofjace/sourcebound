@@ -1,0 +1,25 @@
+<map id="ISystemManager.h" name="ISystemManager.h">
+<area shape="rect" id="Node000001" title="Declares the interface for managing registered systems." alt="" coords="161,5,303,31"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,79,83,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="203,33,88,76,87,71,201,28"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="107,79,194,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="221,33,176,72,172,68,217,29"/>
+<area shape="rect" id="Node000004" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="281,152,351,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="241,30,305,139,300,141,237,32"/>
+<area shape="rect" id="Node000007" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="158,225,261,251"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="233,31,215,211,209,211,228,31"/>
+<area shape="rect" id="Node000010" href="$ISystem_8h.html" title="Declares the interface for all game systems in the ECS framework." alt="" coords="321,79,407,104"/>
+<area shape="poly" id="edge10_Node000001_Node000010" title=" " alt="" coords="254,28,332,70,329,74,252,33"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="396,225,463,251"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="336,175,401,216,398,220,333,180"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="285,225,371,251"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="321,177,326,211,321,212,315,178"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="300,180,240,220,237,215,297,175"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="136,299,195,324"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="204,252,182,288,177,286,200,250"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="219,299,290,324"/>
+<area shape="poly" id="edge8_Node000007_Node000009" title=" " alt="" coords="219,250,242,286,238,289,215,252"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="358,106,334,142,329,139,354,103"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="376,152,491,177"/>
+<area shape="poly" id="edge11_Node000010_Node000011" title=" " alt="" coords="377,102,415,140,411,144,374,106"/>
+</map>

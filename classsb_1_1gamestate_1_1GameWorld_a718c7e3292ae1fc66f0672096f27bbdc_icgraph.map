@@ -1,0 +1,9 @@
+<map id="sb::gamestate::GameWorld::add_component" name="sb::gamestate::GameWorld::add_component">
+<area shape="rect" id="Node000001" title=" " alt="" coords="233,69,432,109"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1CollisionSystem.html#aa645e8eb7add9bb9c0524ab804390935" title="Performs collision detection and applies movement constraints or bounce behaviors,..." alt="" coords="5,5,185,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="244,68,169,48,171,43,245,63"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1HitSystem.html#a913b4aabdab06bc20aa51618d7b274b4" title="Checks for pending hits and applies them as appropriate." alt="" coords="24,69,167,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="220,92,167,92,167,87,220,87"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1ecs_1_1TriggerSystem.html#ad424de71257df5c193e662827a0679c4" title="Checks for WasTriggered and forwards on to other systems, as needed." alt="" coords="11,133,179,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="245,116,171,136,169,131,244,110"/>
+</map>

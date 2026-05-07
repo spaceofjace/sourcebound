@@ -1,0 +1,13 @@
+<map id="sb::ecs::CollisionSystem::update" name="sb::ecs::CollisionSystem::update">
+<area shape="rect" id="Node000001" title="Performs collision detection and applies movement constraints or bounce behaviors,..." alt="" coords="5,101,185,141"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1gamestate_1_1GameWorld.html#a718c7e3292ae1fc66f0672096f27bbdc" title=" " alt="" coords="233,5,432,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,99,232,55,252,47,254,52,234,60,137,104"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1gamestate_1_1GameWorld.html#ab9ac3744a16be6a9a2892f0996f82ca2" title=" " alt="" coords="233,69,432,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,107,219,102,220,107,186,112"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1gamestate_1_1GameWorld.html#a8d9c25cca53ddca25d6efd54e7e1354b" title=" " alt="" coords="233,133,432,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="186,131,220,135,219,141,185,136"/>
+<area shape="rect" id="Node000005" href="$structsb_1_1math_1_1Vec2.html#a4a1c51cc6c1037b5ba5aee1c4ea2ba08" title="Returns a normalized (unit length) version of the vector." alt="" coords="233,198,432,223"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="136,139,234,183,263,192,261,197,232,188,134,144"/>
+<area shape="rect" id="Node000006" href="$structsb_1_1math_1_1Vec2.html#a637ad2ae03dd0d28cbc253f22b4cfd98" title="Returns the magnitude (length) of the vector." alt="" coords="480,198,676,223"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="432,208,466,208,466,213,432,213"/>
+</map>

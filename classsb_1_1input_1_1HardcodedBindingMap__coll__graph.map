@@ -1,0 +1,5 @@
+<map id="sb::input::HardcodedBindingMap" name="sb::input::HardcodedBindingMap">
+<area shape="rect" id="Node000001" title="A preconfigured set of hardcoded bindings to serve as a placeholder until the implementation of seria..." alt="" coords="5,79,239,104"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1IBindingMap.html" title="An interface built to allow for bindings to be serializable from some source (presumably on disk,..." alt="" coords="39,5,205,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,44,125,79,119,79,119,44"/>
+</map>

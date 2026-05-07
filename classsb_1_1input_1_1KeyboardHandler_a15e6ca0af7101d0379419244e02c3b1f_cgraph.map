@@ -1,0 +1,13 @@
+<map id="sb::input::KeyboardHandler::poll_inputs" name="sb::input::KeyboardHandler::poll_inputs">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,133,204,173"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1BaseInputHandler.html#a497ff52e3ef170e39b8f8170658cd807" title=" " alt="" coords="252,5,455,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,131,185,93,251,55,268,48,270,53,253,60,187,97,134,135"/>
+<area shape="rect" id="Node000003" href="$structsb_1_1input_1_1InputCode.html#a8a917b1135e32e7d1c243dbb998a831e" title=" " alt="" coords="277,69,429,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,131,263,110,265,115,184,136"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1input_1_1IInputNormalizer.html#a0e5e44c3a126874a299692279d3fd7a9" title=" " alt="" coords="256,133,451,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="204,151,242,151,242,156,204,156"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1input_1_1BaseInputHandler.html#ab635c1d63d2f28b1e48b8c558bff0e36" title=" " alt="" coords="252,197,455,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="184,171,263,191,262,197,182,176"/>
+<area shape="rect" id="Node000006" href="$structsb_1_1input_1_1InputCode.html#a06b9aed029fa35a36e5781e44946f339" title="Creates a virtual InputCode used to represent system&#45;initiated quit requests." alt="" coords="277,261,429,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="134,172,187,209,253,247,270,254,268,259,251,252,185,214,131,176"/>
+</map>

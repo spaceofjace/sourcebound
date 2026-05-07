@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classsb_1_1rendering_1_1IRenderer.html" title="Abstract interface for the rendering layer." alt="" coords="5,5,184,31"/>
+<area shape="rect" id="Node000001" href="$classsb_1_1rendering_1_1SdlRenderer.html" title=" " alt="" coords="232,5,427,31"/>
+<area shape="poly" id="edge24_Node000000_Node000001" title=" " alt="" coords="198,15,232,15,232,21,198,21"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="sb::gamestate::GameWorld::remove_component" name="sb::gamestate::GameWorld::remove_component">
+<area shape="rect" id="Node000001" title=" " alt="" coords="252,69,451,109"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1DestructionSystem.html#a3214ef88cd3ccbf2d36206c033eab87a" title="Checks for pending destruction and destroys entities as needed." alt="" coords="5,5,204,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="260,68,182,48,183,43,261,63"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1HitSystem.html#a913b4aabdab06bc20aa51618d7b274b4" title="Checks for pending hits and applies them as appropriate." alt="" coords="33,69,176,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="238,92,176,92,176,87,238,87"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1ecs_1_1TriggerSystem.html#ad424de71257df5c193e662827a0679c4" title="Checks for WasTriggered and forwards on to other systems, as needed." alt="" coords="21,133,189,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="261,115,183,136,182,131,260,110"/>
+</map>

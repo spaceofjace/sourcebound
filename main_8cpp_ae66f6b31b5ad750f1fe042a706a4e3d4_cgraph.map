@@ -1,0 +1,15 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,141,60,166"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1input_1_1KeyboardHandler.html#a15e6ca0af7101d0379419244e02c3b1f" title=" " alt="" coords="108,133,307,173"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="60,151,94,151,94,156,60,156"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1input_1_1BaseInputHandler.html#a497ff52e3ef170e39b8f8170658cd807" title=" " alt="" coords="355,5,557,45"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="233,131,287,93,353,55,370,48,372,53,356,60,290,97,236,135"/>
+<area shape="rect" id="Node000004" href="$structsb_1_1input_1_1InputCode.html#a8a917b1135e32e7d1c243dbb998a831e" title=" " alt="" coords="380,69,532,109"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="285,131,366,110,367,115,286,136"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1input_1_1IInputNormalizer.html#a0e5e44c3a126874a299692279d3fd7a9" title=" " alt="" coords="359,133,553,173"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="307,151,345,151,345,156,307,156"/>
+<area shape="rect" id="Node000006" href="$classsb_1_1input_1_1BaseInputHandler.html#ab635c1d63d2f28b1e48b8c558bff0e36" title=" " alt="" coords="355,197,557,237"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="286,171,366,191,364,197,285,176"/>
+<area shape="rect" id="Node000007" href="$structsb_1_1input_1_1InputCode.html#a06b9aed029fa35a36e5781e44946f339" title="Creates a virtual InputCode used to represent system&#45;initiated quit requests." alt="" coords="380,261,532,301"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="236,172,290,209,356,247,372,254,370,259,353,252,287,214,233,176"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="sb::ecs::SystemManager::set_signature" name="sb::ecs::SystemManager::set_signature">
+<area shape="rect" id="Node000001" title="Assigns a required component signature to a registered system." alt="" coords="235,5,416,45"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1SystemManager.html#aa4d427127da9e592994ba5a6a6dc1dbb" title="Templated convenience method to assign a system signature." alt="" coords="5,5,187,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="221,28,187,28,187,23,221,23"/>
+</map>

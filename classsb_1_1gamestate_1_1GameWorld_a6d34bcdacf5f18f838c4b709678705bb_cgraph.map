@@ -1,0 +1,5 @@
+<map id="sb::gamestate::GameWorld::load_level" name="sb::gamestate::GameWorld::load_level">
+<area shape="rect" id="Node000001" title="Loads a level using the provided layout data." alt="" coords="5,5,204,45"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1log_1_1Logger.html#a189c87ac0f86aea34e952e4c0f82eefc" title=" " alt="" coords="252,13,403,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,23,238,23,238,28,204,28"/>
+</map>

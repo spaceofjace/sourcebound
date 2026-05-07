@@ -1,0 +1,9 @@
+<map id="IRenderer.h" name="IRenderer.h">
+<area shape="rect" id="Node000001" title="9*" alt="" coords="72,5,168,31"/>
+<area shape="rect" id="Node000002" href="$Vec2_8h.html" title="Simple representation of a 2D Vector." alt="" coords="5,79,120,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,33,83,70,79,66,108,29"/>
+<area shape="rect" id="Node000004" href="$Color_8h.html" title="Defines the Color struct used for RGBA color representation and a set of standard colors." alt="" coords="144,79,211,104"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="132,29,161,66,157,70,127,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="31,152,94,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="65,104,65,138,60,138,60,104"/>
+</map>

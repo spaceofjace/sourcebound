@@ -1,0 +1,5 @@
+<map id="sb::ecs::TriggerSystem" name="sb::ecs::TriggerSystem">
+<area shape="rect" id="Node000001" title="Scans for triggered entities and applies logic based on Triggerable and WasTriggered." alt="" coords="5,79,173,104"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1ISystem.html" title="Abstract base class for ECS systems." alt="" coords="25,5,153,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,44,92,79,87,79,87,44"/>
+</map>

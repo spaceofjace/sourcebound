@@ -1,0 +1,5 @@
+<map id="sb::gamestate::ICommandQueue" name="sb::gamestate::ICommandQueue">
+<area shape="rect" id="Node000001" title="Functions as a communication bus for actions enqueued into the game world." alt="" coords="5,5,241,31"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1gamestate_1_1CommandQueue.html" title="A simple concrete implementation for enqueuing commands." alt="" coords="7,79,239,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,44,126,79,121,79,121,44"/>
+</map>

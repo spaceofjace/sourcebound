@@ -1,0 +1,7 @@
+<map id="sb::gamestate::GameWorld::get_entities_with_signature" name="sb::gamestate::GameWorld::get_entities_with_signature">
+<area shape="rect" id="Node000001" title="Retrieves all entities that match the given signature." alt="" coords="252,37,463,77"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1DestructionSystem.html#a3214ef88cd3ccbf2d36206c033eab87a" title="Checks for pending destruction and destroys entities as needed." alt="" coords="5,5,204,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="238,45,204,41,204,35,239,40"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1LivesSystem.html#ab9c3c2348532fcd7ecf5c22fd46ca967" title="Checks for loss of all Ball entities and manages life count." alt="" coords="25,69,184,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,75,184,82,184,77,238,70"/>
+</map>

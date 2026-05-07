@@ -1,0 +1,16 @@
+<map id="IRenderer.h" name="IRenderer.h">
+<area shape="rect" id="Node000001" title="9*" alt="" coords="251,5,347,31"/>
+<area shape="rect" id="Node000002" href="$RenderSystem_8h.html" title="[brief description of file&#39;s purpose]" alt="" coords="162,79,291,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="279,43,240,80,236,77,275,39"/>
+<area shape="rect" id="Node000006" href="$SdlRenderer_8h.html" title="SDL implementation of the IRenderer interface." alt="" coords="316,79,428,104"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="322,38,362,77,358,80,319,42"/>
+<area shape="rect" id="Node000003" href="$GameWorld_8cpp.html" title=" " alt="" coords="5,152,131,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="190,112,95,154,93,149,188,107"/>
+<area shape="rect" id="Node000004" href="$RenderSystem_8cpp.html" title=" " alt="" coords="155,152,299,177"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="229,118,229,152,224,152,224,118"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html" title=" " alt="" coords="323,152,405,177"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="262,108,343,149,340,154,259,113"/>
+<area shape="poly" id="edge7_Node000006_Node000005" title=" " alt="" coords="372,118,368,152,363,152,367,117"/>
+<area shape="rect" id="Node000007" href="$SdlRenderer_8cpp.html" title=" " alt="" coords="430,152,557,177"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="405,109,475,149,472,154,402,113"/>
+</map>

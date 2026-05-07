@@ -1,0 +1,21 @@
+<map id="Components.h" name="Components.h">
+<area shape="rect" id="Node000001" title="Defines core gameplay component structures for ECS entities." alt="" coords="194,5,310,31"/>
+<area shape="rect" id="Node000002" href="$Color_8h.html" title="Defines the Color struct used for RGBA color representation and a set of standard colors." alt="" coords="5,79,163,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="226,33,125,76,123,71,224,28"/>
+<area shape="rect" id="Node000003" href="$Vec2_8h.html" title="Simple representation of a 2D Vector." alt="" coords="187,79,317,104"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="255,31,255,65,249,65,249,31"/>
+<area shape="rect" id="Node000005" href="$Entity_8h.html" title="Simple struct for Entity in the ECS module (includes version)" alt="" coords="361,79,481,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="280,28,382,71,380,76,278,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="210,152,273,177"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="253,105,248,139,242,138,248,104"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="297,152,364,177"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="408,106,358,145,355,141,405,102"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="389,152,475,177"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="426,104,431,138,426,139,420,105"/>
+<area shape="rect" id="Node000008" href="$ecs__config_8h.html" title="Configuration constants and type definitions for ECS modules." alt="" coords="499,152,602,177"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="443,102,518,143,516,147,441,106"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="476,225,535,251"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="545,179,522,215,518,212,541,176"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="559,225,630,251"/>
+<area shape="poly" id="edge9_Node000008_Node000010" title=" " alt="" coords="560,176,583,212,578,215,556,179"/>
+</map>

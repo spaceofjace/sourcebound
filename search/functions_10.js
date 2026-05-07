@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['reflect_0',['reflect',['../namespacesb_1_1math.html#acafd7bf597950acef0b8b8c2d21f90b2',1,'sb::math']]],
+  ['register_5fcomponent_1',['register_component',['../classsb_1_1ecs_1_1ComponentManager.html#a4d43cd77ccac51e5bc5e807f43f2780f',1,'sb::ecs::ComponentManager::register_component()'],['../classsb_1_1gamestate_1_1GameWorld.html#aa7200b0a2f8e64f79bfb19d3a3d3d085',1,'sb::gamestate::GameWorld::register_component()']]],
+  ['register_5fsystem_2',['register_system',['../classsb_1_1ecs_1_1ISystemManager.html#a60d3f393582dda89896651d800323cfe',1,'sb::ecs::ISystemManager::register_system()'],['../classsb_1_1ecs_1_1SystemManager.html#a3015c5d65c1ec4a3cf908722e28bc57e',1,'sb::ecs::SystemManager::register_system(std::type_index type, std::shared_ptr&lt; ISystem &gt; system) override'],['../classsb_1_1ecs_1_1SystemManager.html#a622e5d86b9ec41e6ff4194bddb7842c2',1,'sb::ecs::SystemManager::register_system(Args &amp;&amp;... args)']]],
+  ['remove_5fcomponent_3',['remove_component',['../classsb_1_1ecs_1_1ComponentManager.html#a545fd4d7f0acd6cd64f951e05d60ffc3',1,'sb::ecs::ComponentManager::remove_component()'],['../classsb_1_1gamestate_1_1GameWorld.html#abfeeeb13ab8d15e40316c0330f3c641f',1,'sb::gamestate::GameWorld::remove_component()']]],
+  ['remove_5fdata_4',['remove_data',['../classsb_1_1ecs_1_1DenseComponentArray.html#a2336d57e5bceee33bd54704cce48690a',1,'sb::ecs::DenseComponentArray']]],
+  ['renderablesimpleshape_5',['renderablesimpleshape',['../structsb_1_1ecs_1_1RenderableSimpleShape.html#ab2b1ccd3e458989d5babd4e0a3ded419',1,'sb::ecs::RenderableSimpleShape::RenderableSimpleShape()=default'],['../structsb_1_1ecs_1_1RenderableSimpleShape.html#ac4679db7b808b91576f88bffc91cf3d9',1,'sb::ecs::RenderableSimpleShape::RenderableSimpleShape(const sb::rendering::Color &amp;color, const SimpleShapeType type, const bool filled)']]],
+  ['rendersystem_6',['RenderSystem',['../classsb_1_1ecs_1_1RenderSystem.html#a09762fa5739b6688460dee6458602c7f',1,'sb::ecs::RenderSystem']]],
+  ['resolve_7',['resolve',['../classsb_1_1input_1_1HardcodedBindingMap.html#a47c3e7bb54d2ed8443020547baf4f453',1,'sb::input::HardcodedBindingMap::resolve()'],['../classsb_1_1input_1_1IBindingMap.html#adebda2e86561b7aa447261e4701aece8',1,'sb::input::IBindingMap::resolve()']]]
+];

@@ -1,0 +1,27 @@
+<map id="sb::log::Logger::error" name="sb::log::Logger::error">
+<area shape="rect" id="Node000001" title=" " alt="" coords="505,301,661,326"/>
+<area shape="rect" id="Node000002" href="$classsb_1_1ecs_1_1ComponentManager.html#a483646b6b2c00e1c33bb1a591f30f822" title=" " alt="" coords="243,5,449,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="574,288,561,239,538,177,503,114,481,85,456,59,438,48,441,43,459,55,485,81,508,111,543,175,566,237,579,286"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1ecs_1_1EntityManager.html#af0dbf8a3f8833be0384a50c16b986dba" title=" " alt="" coords="261,69,431,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="570,289,553,251,528,207,496,162,456,123,430,109,433,105,459,119,500,158,533,204,558,249,575,286"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1ecs_1_1ComponentManager.html#ad1829095b8fc57b0f93d2f7f7e42f43e" title=" " alt="" coords="243,133,449,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="563,291,518,239,489,211,456,188,432,176,434,171,459,183,492,207,522,235,567,287"/>
+<area shape="rect" id="Node000005" href="$classsb_1_1ecs_1_1ComponentManager.html#a30ed0816113fb8b7ba44ce6d1fc26d33" title=" " alt="" coords="243,197,449,237"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="547,296,456,252,423,240,425,235,458,247,549,291"/>
+<area shape="rect" id="Node000006" href="$classsb_1_1ecs_1_1SystemManager.html#a019d99ef7670263fb1dc0a494867a21d" title="Retrieves a registered system by runtime type." alt="" coords="255,261,437,301"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="491,304,437,296,437,291,492,298"/>
+<area shape="rect" id="Node000007" href="$classsb_1_1ecs_1_1ComponentManager.html#a4d43cd77ccac51e5bc5e807f43f2780f" title=" " alt="" coords="243,325,449,365"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="492,328,450,334,449,329,491,323"/>
+<area shape="rect" id="Node000008" href="$classsb_1_1ecs_1_1SystemManager.html#a3015c5d65c1ec4a3cf908722e28bc57e" title="Registers a system instance under a runtime type key." alt="" coords="255,389,437,429"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="549,335,458,380,425,392,423,387,456,375,547,331"/>
+<area shape="rect" id="Node000010" href="$classsb_1_1data_1_1HardcodedGameDataManager.html#a08044f1fc608f474a56d52c5215e1f0b" title="Sets the current level ID (for internal tracking or stage switching)." alt="" coords="235,453,457,493"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="567,339,522,392,492,420,459,444,434,456,432,451,456,439,489,416,518,388,563,336"/>
+<area shape="rect" id="Node000011" href="$classsb_1_1ecs_1_1SystemManager.html#aed99a85ddfbf316ce34fd30f89118b18" title="Assigns a required component signature to a registered system." alt="" coords="255,517,437,557"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="575,340,558,378,533,423,500,468,459,507,438,520,436,515,456,503,496,465,528,420,553,375,570,338"/>
+<area shape="rect" id="Node000013" href="$classsb_1_1ecs_1_1RenderSystem.html#a5c4dab0cd7c78f7694ccb00b0d7a6af5" title=" " alt="" coords="261,581,431,621"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="579,340,566,389,543,452,508,516,485,546,459,571,433,587,430,583,456,567,481,542,503,513,538,450,561,388,574,339"/>
+<area shape="rect" id="Node000009" href="$classsb_1_1ecs_1_1SystemManager.html#a622e5d86b9ec41e6ff4194bddb7842c2" title="Templated convenience method to register a system." alt="" coords="5,389,187,429"/>
+<area shape="poly" id="edge8_Node000008_Node000009" title=" " alt="" coords="241,412,187,412,187,407,241,407"/>
+<area shape="rect" id="Node000012" href="$classsb_1_1ecs_1_1SystemManager.html#aa4d427127da9e592994ba5a6a6dc1dbb" title="Templated convenience method to assign a system signature." alt="" coords="5,517,187,557"/>
+<area shape="poly" id="edge11_Node000011_Node000012" title=" " alt="" coords="241,540,187,540,187,535,241,535"/>
+</map>

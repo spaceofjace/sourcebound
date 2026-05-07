@@ -1,0 +1,11 @@
+<map id="sb::input::InputCode::FromKeyboard" name="sb::input::InputCode::FromKeyboard">
+<area shape="rect" id="Node000001" title=" " alt="" coords="361,69,513,109"/>
+<area shape="rect" id="Node000002" href="$structsb_1_1input_1_1InputCode.html#a7f6a56190699294306aa9e3a359bd938" title=" " alt="" coords="135,5,287,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="352,68,281,48,283,43,353,63"/>
+<area shape="rect" id="Node000003" href="$classsb_1_1input_1_1HardcodedBindingMap.html#a644bd27b6033041204b9667ed56e7a0b" title="Loads input bindings from persistent storage." alt="" coords="108,69,313,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="347,92,314,92,314,87,347,87"/>
+<area shape="rect" id="Node000004" href="$classsb_1_1input_1_1KeyboardHandler.html#a15e6ca0af7101d0379419244e02c3b1f" title=" " alt="" coords="111,133,310,173"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="353,116,283,136,281,131,352,111"/>
+<area shape="rect" id="Node000005" href="$main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" title=" " alt="" coords="5,141,60,166"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="97,156,60,156,60,151,97,151"/>
+</map>

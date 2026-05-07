@@ -1,0 +1,9 @@
+<map id="sb::ecs::Transform" name="sb::ecs::Transform">
+<area shape="rect" id="Node000001" title="Combines position, velocity, size, and rotation into a unified spatial representation." alt="" coords="137,93,277,119"/>
+<area shape="rect" id="Node000002" href="$structsb_1_1ecs_1_1Position.html" title="Represents 2D position in coordinate system." alt="" coords="5,5,132,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,36,146,67,188,91,185,96,143,72,95,40"/>
+<area shape="rect" id="Node000003" href="$structsb_1_1ecs_1_1Size.html" title="Physical width and height scalars." alt="" coords="156,5,259,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="210,45,210,93,205,93,205,45"/>
+<area shape="rect" id="Node000004" href="$structsb_1_1ecs_1_1Rotation.html" title="Provides rotational angle." alt="" coords="283,5,414,31"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="320,40,228,95,225,91,317,35"/>
+</map>

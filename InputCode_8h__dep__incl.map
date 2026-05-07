@@ -1,0 +1,30 @@
+<map id="InputCode.h" name="InputCode.h">
+<area shape="rect" id="Node000001" title="Defines a unified abstraction for all input bindings." alt="" coords="415,5,515,31"/>
+<area shape="rect" id="Node000002" href="$HardcodedBindingMap_8h.html" title="A preconfigured set of hardcoded bindings until serialization is available." alt="" coords="137,152,318,177"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="415,38,368,56,321,81,274,118,239,153,236,150,270,114,318,76,366,51,413,33"/>
+<area shape="rect" id="Node000005" href="$IBindingMap_8h.html" title="Represents a source of loadable and saveable bindings." alt="" coords="331,79,446,104"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="444,42,403,80,399,76,441,38"/>
+<area shape="rect" id="Node000008" href="$IInputNormalizer_8h.html" title="An abstraction for translating raw inputs through bindings and into commands." alt="" coords="471,79,613,104"/>
+<area shape="poly" id="edge9_Node000001_Node000008" title=" " alt="" coords="489,38,531,76,528,80,485,42"/>
+<area shape="rect" id="Node000012" href="$KeyboardHandler_8cpp.html" title=" " alt="" coords="558,372,718,397"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="529,28,584,45,638,71,661,89,680,110,692,135,697,163,697,240,691,280,678,318,648,373,643,371,673,315,686,278,691,239,691,164,687,137,675,113,658,93,635,76,582,50,527,33"/>
+<area shape="rect" id="Node000003" href="$HardCodedBindingMap_8cpp.html" title=" " alt="" coords="5,225,204,251"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="197,186,126,227,123,223,195,182"/>
+<area shape="rect" id="Node000004" href="$main_8cpp.html" title=" " alt="" coords="250,372,333,397"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="237,190,275,323,290,371,285,373,270,325,232,191"/>
+<area shape="poly" id="edge5_Node000005_Node000002" title=" " alt="" coords="351,112,255,154,253,149,349,107"/>
+<area shape="rect" id="Node000006" href="$InputNormalizer_8h.html" title="Concrete implementation of InputNormalizer." alt="" coords="342,152,481,177"/>
+<area shape="poly" id="edge6_Node000005_Node000006" title=" " alt="" coords="399,117,410,151,405,153,394,118"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="369,186,342,203,319,227,302,265,294,306,292,344,293,372,287,372,286,344,288,306,297,263,314,224,338,199,366,181"/>
+<area shape="rect" id="Node000007" href="$InputNormalizer_8cpp.html" title=" " alt="" coords="329,225,483,251"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="412,191,410,225,404,225,407,191"/>
+<area shape="poly" id="edge15_Node000008_Node000006" title=" " alt="" coords="510,113,434,154,431,149,507,108"/>
+<area shape="rect" id="Node000009" href="$IInputHandler_8h.html" title="An abstraction representing some source of player inputs (keyboard, mouse, controller,..." alt="" coords="511,152,632,177"/>
+<area shape="poly" id="edge10_Node000008_Node000009" title=" " alt="" coords="555,116,569,151,564,153,550,118"/>
+<area shape="rect" id="Node000010" href="$BaseInputHandler_8h.html" title=" " alt="" coords="507,225,657,251"/>
+<area shape="poly" id="edge11_Node000009_Node000010" title=" " alt="" coords="578,191,583,225,578,226,572,192"/>
+<area shape="rect" id="Node000011" href="$KeyboardHandler_8h.html" title="Concrete implementation of the InputHandler interface for polling keyboard inputs." alt="" coords="509,299,655,324"/>
+<area shape="poly" id="edge12_Node000010_Node000011" title=" " alt="" coords="585,264,585,299,579,299,579,264"/>
+<area shape="poly" id="edge14_Node000011_Node000004" title=" " alt="" coords="523,330,333,376,332,371,522,325"/>
+<area shape="poly" id="edge13_Node000011_Node000012" title=" " alt="" coords="602,333,631,370,627,374,598,337"/>
+</map>
