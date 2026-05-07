@@ -16,7 +16,7 @@ To get up and running with Sourcebound:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourname/sourcebound.git
+   git clone https://github.com/spaceofjace/sourcebound.git
    cd sourcebound
    ```
 2. Build using CMake:
